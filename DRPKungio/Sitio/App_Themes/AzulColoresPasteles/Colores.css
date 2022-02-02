@@ -1,0 +1,608 @@
+﻿/**     colores          **/
+.colorMorado {
+    background: #DA70D6;
+}
+/**  HotPink	   **/
+.colorRosa {
+    background: #FF69B4;
+}
+/**  BurlyWood	   **/
+.colorCafe {
+    background: #DEB887;
+}
+
+.colorAzul {
+    background: #4634F9;
+}
+
+.colorAzulClaro {
+    background: #22F6F0;
+}
+
+.colorRojo {
+    background: #FF0040;
+}
+
+.colorVerde {
+    background: #23FA67;
+}
+
+.colorVerdeClaro {
+    background: #A1F82B;
+}
+
+.colorAmarillo {
+    background: #F7FE2E;
+}
+
+.colorNaranja {
+    background: #FF8000;
+}
+
+.colorBlanco {
+    background: #D8D8D8;
+}
+
+.colorGris {
+    background: silver;
+}
+
+.colorNegro {
+    background: #190707;
+}
+
+.colorRojoLightCoral {
+    background: #F08080;
+}
+
+.colorRojoSalmon {
+    background: #FA8072;
+}
+
+.colorRojoIndianRed {
+    background: #CD5C5C;
+}
+
+.colorRojoRed {
+    background: #FF0000;
+}
+
+.colorRojoCrimson {
+    background: #DC143C;
+}
+
+.colorRojoFireBrick {
+    background: #B22222;
+}
+
+.colorRojoBrown {
+    background: #A52A2A;
+}
+
+.colorRojoDarkRed {
+    background: #8B0000;
+}
+
+.colorRojoMaroon {
+    background: #800000;
+}
+
+.colorRosaMistyRose {
+    background: #FFE4E1;
+}
+
+.colorRosaPink {
+    background: #FFC0CB;
+}
+
+.colorRosaLightPink {
+    background: #FFB6C1;
+}
+
+.colorRosaHotPink {
+    background: #FF69B4;
+}
+
+.colorRosaRosyBrown {
+    background: #BC8F8F;
+}
+
+.colorRosaPaleVioletRed {
+    background: #DB7093;
+}
+
+.colorRosaDeepPink {
+    background: #FF1493;
+}
+
+.colorRosaMediumVioletRed {
+    background: #C71585;
+}
+
+.colorNaranjaPapayaWhip {
+    background: #FFEFD5;
+}
+
+.colorNaranjaBlanchedAlmond {
+    background: #FFEBCD;
+}
+
+.colorNaranjaBisque {
+    background: #FFE4C4;
+}
+
+.colorNaranjaMoccasin {
+    background: #FFE4B5;
+}
+
+.colorNaranjaPeachPuff {
+    background: #FFDAB9;
+}
+
+.colorNaranjaNavajoWhite {
+    background: #FFDEAD;
+}
+
+.colorNaranjaLightSalmon {
+    background: #FFA07A;
+}
+
+.colorNaranjaDarkSalmon {
+    background: #E9967A;
+}
+
+.colorNaranjaOrange {
+    background: #FFA500;
+}
+
+.colorNaranjaDarkOrange {
+    background: #FF8C00;
+}
+
+.colorNaranjaCoral {
+    background: #FF7F50;
+}
+
+.colorNaranjaTomato {
+    background: #FF6347;
+}
+
+.colorNaranjaOrangeRed {
+    background: #FF4500;
+}
+
+.colorCaféWheat {
+    background: #F5DEB3;
+}
+
+.colorCaféBurlyWood {
+    background: #DEB887;
+}
+
+.colorCaféTan {
+    background: #D2B48C;
+}
+
+.colorCaféSandyBrown {
+    background: #F4A460;
+}
+
+.colorCaféGoldenrod {
+    background: #DAA520;
+}
+
+.colorCaféPeru {
+    background: #CD853F;
+}
+
+.colorCaféDarkGoldenrod {
+    background: #B8860B;
+}
+
+.colorCaféChocolate {
+    background: #D2691E;
+}
+
+.colorCaféSienna {
+    background: #A0522D;
+}
+
+.colorCaféSaddleBrown {
+    background: #8B4513;
+}
+
+.colorAmarilloLightYellow {
+    background: #FFFFE0;
+}
+
+.colorAmarilloCornsilk {
+    background: #FFF8DC;
+}
+
+.colorAmarilloLemonChiffon {
+    background: #FFFACD;
+}
+
+.colorAmarilloLightGoldenrodYellow {
+    background: #FAFAD2;
+}
+
+.colorAmarilloPaleGoldenrod {
+    background: #EEE8AA;
+}
+
+.colorAmarilloKhaki {
+    background: #F0E68C;
+}
+
+.colorAmarilloYellow {
+    background: #FFFF00;
+}
+
+.colorAmarilloGold {
+    background: #FFD700;
+}
+
+.colorAmarilloDarkKhaki {
+    background: #BDB76B;
+}
+
+.colorVerdeGreenYellow {
+    background: #ADFF2F;
+}
+
+.colorVerdeChartreuse {
+    background: #7FFF00;
+}
+
+.colorVerdeLawnGreen {
+    background: #7CFC00;
+}
+
+.colorVerdeYellowGreen {
+    background: #9ACD32;
+}
+
+.colorVerdeOliveDrab {
+    background: #6B8E23;
+}
+
+.colorVerdeOlive {
+    background: #808000;
+}
+
+.colorVerdeDarkOliveGreen {
+    background: #556B2F;
+}
+
+.colorVerdePaleGreen {
+    background: #98FB98;
+}
+
+.colorVerdeLightGreen {
+    background: #90EE90;
+}
+
+.colorVerdeMediumSpringGreen {
+    background: #00FA9A;
+}
+
+.colorVerdeSpringGreen {
+    background: #00FF7F;
+}
+
+.colorVerdeLime {
+    background: #00FF00;
+}
+
+.colorVerdeDarkSeaGreen {
+    background: #8FBC8F;
+}
+
+.colorVerdeLimeGreen {
+    background: #32CD32;
+}
+
+.colorVerdeMediumSeaGreen {
+    background: #3CB371;
+}
+
+.colorVerdeSeaGreen {
+    background: #2E8B57;
+}
+
+.colorVerdeForestGreen {
+    background: #228B22;
+}
+
+.colorVerdeGreen {
+    background: #8000;
+}
+
+.colorVerdeDarkGreen {
+    background: #6400;
+}
+
+.colorAzulVerdeLightCyan {
+    background: #E0FFFF;
+}
+
+.colorAzulVerdePaleTurquoise {
+    background: #AFEEEE;
+}
+
+.colorAzulVerdeAquamarine {
+    background: #7FFFD4;
+}
+
+.colorAzulVerdeAqua / Cyan {
+    background: #00FFFF;
+}
+
+.colorAzulVerdeTurquoise {
+    background: #40E0D0;
+}
+
+.colorAzulVerdeMediumTurquoise {
+    background: #48D1CC;
+}
+
+.colorAzulVerdeDarkTurquoise {
+    background: #00CED1;
+}
+
+.colorAzulVerdeMediumAquamarine {
+    background: #66CDAA;
+}
+
+.colorAzulVerdeLightSeaGreen {
+    background: #20B2AA;
+}
+
+.colorAzulVerdeCadetBlue {
+    background: #5F9EA0;
+}
+
+.colorAzulVerdeDarkCyan {
+    background: #008B8B;
+}
+
+.colorAzulVerdeTeal {
+    background: #8080;
+}
+
+.colorAzulLavender {
+    background: #E6E6FA;
+}
+
+.colorAzulBlueWeb {
+    background: #CEE7FF;
+}
+
+.colorAzulPowderBlue {
+    background: #B0E0E6;
+}
+
+.colorAzulLightBlue {
+    background: #ADD8E6;
+}
+
+.colorAzulLightSkyBlue {
+    background: #87CEFA;
+}
+
+.colorAzulSkyBlue {
+    background: #87CEEB;
+}
+
+.colorAzulLightSteelBlue {
+    background: #B0C4DE;
+}
+
+.colorAzulDeepSkyBlue {
+    background: #00BFFF;
+}
+
+.colorAzulCornflowerBlue {
+    background: #6495ED;
+}
+
+.colorAzulDodgerBlue {
+    background: #1E90FF;
+}
+
+.colorAzulSteelBlue {
+    background: #4682B4;
+}
+
+.colorAzulRoyalBlue {
+    background: #41690;
+}
+
+.colorAzulBlue {
+    background: #0000FF;
+}
+
+.colorAzulMediumBlue {
+    background: #0000CD;
+}
+
+.colorAzulDarkBlue {
+    background: #00008B;
+}
+
+.colorAzulNavy {
+    background: #80;
+}
+
+.colorAzulMidnightBlue {
+    background: #191970;
+}
+
+.colorVioletaThistle {
+    background: #D8BFD8;
+}
+
+.colorVioletaPlum {
+    background: #DDA0DD;
+}
+
+.colorVioletaViolet {
+    background: #EE82EE;
+}
+
+.colorVioletaOrchid {
+    background: #DA70D6;
+}
+
+.colorVioletaFuchsia / Magenta {
+    background: #FF00FF;
+}
+
+.colorVioletaMediumPurple {
+    background: #9370DB;
+}
+
+.colorVioletaMediumOrchid {
+    background: #BA55D3;
+}
+
+.colorVioletaMediumSlateBlue {
+    background: #7B68EE;
+}
+
+.colorVioletaSlateBlue {
+    background: #6A5ACD;
+}
+
+.colorVioletaBlueViolet {
+    background: #8A2BE2;
+}
+
+.colorVioletaDarkViolet {
+    background: #9400D3;
+}
+
+.colorVioletaDarkOrchid {
+    background: #9932CC;
+}
+
+.colorVioletaDarkMagenta {
+    background: #8B008B;
+}
+
+.colorVioletaPurple {
+    background: #800080;
+}
+
+.colorVioletaDarkSlateBlue {
+    background: #483D8B;
+}
+
+.colorVioletaIndigo {
+    background: #4B0082;
+}
+
+.colorBlancoWhite {
+    background: #FFFFFF;
+}
+
+.colorBlancoWhiteSmoke {
+    background: #F5F5F5;
+}
+
+.colorBlancoSnow {
+    background: #FFFAFA;
+}
+
+.colorBlancoSeashell {
+    background: #FFF5EE;
+}
+
+.colorBlancoLinen {
+    background: #FAF0E6;
+}
+
+.colorBlancoAntiqueWhite {
+    background: #FAEBD7;
+}
+
+.colorBlancoOldLace {
+    background: #FDF5E6;
+}
+
+.colorBlancoFloralWhite {
+    background: #FFFAF0;
+}
+
+.colorBlancoIvory {
+    background: #FFFFF0;
+}
+
+.colorBlancoBeige {
+    background: #F5F5DC;
+}
+
+.colorBlancoHoneydew {
+    background: #F0FFF0;
+}
+
+.colorBlancoMintCream {
+    background: #F5FFFA;
+}
+
+.colorBlancoAzure {
+    background: #F0FFFF;
+}
+
+.colorBlancoAliceBlue {
+    background: #F0F8FF;
+}
+
+.colorBlancoGhostWhite {
+    background: #F8F8FF;
+}
+
+.colorBlancoLavenderBlush {
+    background: #FFF0F5;
+}
+
+.colorGrisGainsboro {
+    background: #DCDCDC;
+}
+
+.colorGrisLightGrey {
+    background: #D3D3D3;
+}
+
+.colorGrisSilver {
+    background: #C0C0C0;
+}
+
+.colorGrisDarkGray {
+    background: #A9A9A9;
+}
+
+.colorGrisLightSlateGray {
+    background: #778899;
+}
+
+.colorGrisSlateGray {
+    background: #708090;
+}
+
+.colorGrisGray {
+    background: #808080;
+}
+
+.colorGrisDimGray {
+    background: #696969;
+}
+
+.colorGris#1C1C1C {
+    background: #2F4F4F;
+}
+
+.colorGrisBlack {
+    background: #190707;
+}

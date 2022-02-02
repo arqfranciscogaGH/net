@@ -1,0 +1,781 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D85FFD63-E816-42C4-98E5-3CEDD7A09F9F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sitio</RootNamespace>
+    <AssemblyName>Sitio</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DRP.Modelo">
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\DRP.Modelo.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.FlujoTrabajo.Administrador">
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.FlujoTrabajo.Administrador.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.AdministradorBaseDatos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.AdministradorBaseDatos.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.AdministradorConsultas">
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.AdministradorConsultas.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Catalogo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Catalogo.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Catalogo.Usr">
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Catalogo.Usr.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Comun, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Comun.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Configuracion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Configuracion.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.ConsultorDinamico">
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.ConsultorDinamico.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Contexto, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Contexto.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Controles, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Controles.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Error">
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Error.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Eventos">
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Eventos.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Modelo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Modelo.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Negocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Negocio.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.ServiciosAplicacion">
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.ServiciosAplicacion.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Sesion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Sesion.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Variables">
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Variables.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Seguridad.Administrador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Seguridad.Administrador.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Seguridad.GeneradorMenus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Seguridad.GeneradorMenus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>packages\AspNet.ScriptManager.jQuery.3.3.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Acceso.aspx" />
+    <Content Include="AdministracionControles\AdministracionAccionesControl.aspx" />
+    <Content Include="AdministracionControles\AdministracionCuestionario.aspx" />
+    <Content Include="AdministracionControles\AdministracionPlaneacionCaptura.aspx" />
+    <Content Include="AdministracionControles\AdministrarRespuestas.aspx" />
+    <Content Include="AdministracionControles\CapturaInformacion.aspx" />
+    <Content Include="AdministracionControles\CapturaVariables.aspx" />
+    <Content Include="AdministracionControles\ConsultarEvaluaciones.aspx" />
+    <Content Include="AdministracionControles\Evaluacion.aspx" />
+    <Content Include="AdministracionControles\VerCuestionario.aspx" />
+    <Content Include="AdministracionControles\VerPlaneacion.aspx" />
+    <Content Include="App_Themes\AzulColoresPasteles\Colores.css" />
+    <Content Include="App_Themes\AzulColoresPasteles\Fondos\fondoAplicacion.jpg" />
+    <Content Include="App_Themes\AzulColoresPasteles\Fondos\fondoMensaje.png" />
+    <Content Include="App_Themes\AzulColoresPasteles\Fondos\fondoPagina.jpg" />
+    <Content Include="App_Themes\AzulColoresPasteles\maqueta.css" />
+    <Content Include="App_Themes\AzulColoresPasteles\medias.css" />
+    <Content Include="App_Themes\NegroColoresPasteles\Colores.css" />
+    <Content Include="App_Themes\NegroColoresPasteles\Fondos\fondoAplicacion.jpg" />
+    <Content Include="App_Themes\NegroColoresPasteles\Fondos\fondoMensaje.png" />
+    <Content Include="App_Themes\NegroColoresPasteles\Fondos\fondoPagina.jpg" />
+    <Content Include="App_Themes\NegroColoresPasteles\maqueta.css" />
+    <Content Include="App_Themes\NegroColoresPasteles\medias.css" />
+    <Content Include="Comun\Controles\ListaPersonalizada.ascx" />
+    <Content Include="Comun\Controles\UcWebArbol.ascx" />
+    <Content Include="Comun\Controles\UcWebBanner.ascx" />
+    <Content Include="Comun\Controles\ucWebBarraProgreso.ascx" />
+    <Content Include="Comun\Controles\ucWebCambiarIdioma.ascx" />
+    <Content Include="Comun\Controles\UcWebCambiarTema.ascx" />
+    <Content Include="Comun\Controles\ucWebConsultorDinamico.ascx" />
+    <Content Include="Comun\Controles\UcWebEncabezadoPagina.ascx" />
+    <Content Include="Comun\Controles\UcWebMensaje.ascx" />
+    <Content Include="Comun\Controles\UcWebMenuFuncionalidad.ascx" />
+    <Content Include="Comun\Controles\UcWebPiePagina.ascx" />
+    <Content Include="Comun\Iconos\Acceso.png" />
+    <Content Include="Comun\Iconos\Actualizar.png" />
+    <Content Include="Comun\Iconos\ActualizarElemento.png" />
+    <Content Include="Comun\Iconos\advertencia.png" />
+    <Content Include="Comun\Iconos\Agregar.png" />
+    <Content Include="Comun\Iconos\AgregarElemento.png" />
+    <Content Include="Comun\Iconos\Aplicacion.ico" />
+    <Content Include="Comun\Iconos\aviso.png" />
+    <Content Include="Comun\Iconos\Ayuda.png" />
+    <Content Include="Comun\Iconos\Calculadora.png" />
+    <Content Include="Comun\Iconos\calculadora1.png" />
+    <Content Include="Comun\Iconos\calculadora2.png" />
+    <Content Include="Comun\Iconos\calculadora3.png" />
+    <Content Include="Comun\Iconos\calculadora5.png" />
+    <Content Include="Comun\Iconos\Casa.png" />
+    <Content Include="Comun\Iconos\Columnas.png" />
+    <Content Include="Comun\Iconos\Consultar.png" />
+    <Content Include="Comun\Iconos\Contacto.png" />
+    <Content Include="Comun\Iconos\Eliminar.png" />
+    <Content Include="Comun\Iconos\EliminarElemento.png" />
+    <Content Include="Comun\Iconos\EliminarFiltro.png" />
+    <Content Include="Comun\Iconos\Empleo.png" />
+    <Content Include="Comun\Iconos\error.png" />
+    <Content Include="Comun\Iconos\Exportar.png" />
+    <Content Include="Comun\Iconos\Filtrar.png" />
+    <Content Include="Comun\Iconos\flechaAbajo1.png" />
+    <Content Include="Comun\Iconos\flechaAbajo2.png" />
+    <Content Include="Comun\Iconos\flechaArriba1.png" />
+    <Content Include="Comun\Iconos\flechaArriba2.png" />
+    <Content Include="Comun\Iconos\fondoTituloVentana.jpg" />
+    <Content Include="Comun\Iconos\icoAgregar.png" />
+    <Content Include="Comun\Iconos\icoCerrar.png" />
+    <Content Include="Comun\Iconos\icoDialogoAyudaBlanco.png" />
+    <Content Include="Comun\Iconos\icoDialogoAyudaColor.png" />
+    <Content Include="Comun\Iconos\icoEliminar.png" />
+    <Content Include="Comun\Iconos\Lista.png" />
+    <Content Include="Comun\Iconos\Mapa.png" />
+    <Content Include="Comun\Iconos\Menu.png" />
+    <Content Include="Comun\Iconos\Nuevo.png" />
+    <Content Include="Comun\Iconos\NuevoElemento.png" />
+    <Content Include="Comun\Iconos\Pregunta.png" />
+    <Content Include="Comun\Iconos\SeleccionarFiltro.png" />
+    <Content Include="Comun\Iconos\sort_asc.png" />
+    <Content Include="Comun\Iconos\sort_asc3.png" />
+    <Content Include="Comun\Iconos\sort_desc.png" />
+    <Content Include="Comun\Iconos\sort_desc3.png" />
+    <Content Include="Comun\Img\encabezado.jpg" />
+    <Content Include="Comun\Img\fondoITOriginal.jpg" />
+    <Content Include="Comun\Img\FondoLineas.jpg" />
+    <Content Include="Comun\Img\FondoMundo.jpg" />
+    <Content Include="Comun\LibreriasIconos\fontello\css\animation.css" />
+    <Content Include="Comun\LibreriasIconos\fontello\css\fontello-codes.css" />
+    <Content Include="Comun\LibreriasIconos\fontello\css\fontello-embedded.css" />
+    <Content Include="Comun\LibreriasIconos\fontello\css\fontello-ie7-codes.css" />
+    <Content Include="Comun\LibreriasIconos\fontello\css\fontello-ie7.css" />
+    <Content Include="Comun\LibreriasIconos\fontello\css\fontello.css" />
+    <Content Include="Comun\LibreriasIconos\fontello\demo.html" />
+    <Content Include="Comun\LibreriasIconos\fontello\font\fontello.svg" />
+    <Content Include="Comun\LibreriasIconos\fontello\LICENSE.txt" />
+    <Content Include="Comun\LibreriasIconos\fontello\README.txt" />
+    <Content Include="Comun\Scripts\AdministradorElementosCompuestos.js" />
+    <Content Include="Comun\Scripts\ArqSig.Geografico.AdministradorGeocodificacion.js" />
+    <Content Include="Comun\Scripts\ArqSig.Geografico.AdministradorGoogle.js" />
+    <Content Include="Comun\Scripts\ArqSigNet.Nucleo.AdministradorAplicaciones.js" />
+    <Content Include="Comun\Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Comun\Scripts\Menu.js" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Comun\LibreriasIconos\fontello\config.json" />
+    <Content Include="Comun\LibreriasIconos\fontello\font\fontello.eot" />
+    <Content Include="Comun\LibreriasIconos\fontello\font\fontello.ttf" />
+    <Content Include="Comun\LibreriasIconos\fontello\font\fontello.woff" />
+    <Content Include="Comun\LibreriasIconos\fontello\font\fontello.woff2" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Inicio.aspx" />
+    <Content Include="Menu.aspx" />
+    <Content Include="MenuPrincipal.aspx" />
+    <Content Include="Prueba.aspx" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Seguridad\AdministracionAplicacion.aspx" />
+    <Content Include="Seguridad\AdministracionArea.aspx" />
+    <Content Include="Seguridad\AdministracionConfiguracion.aspx" />
+    <Content Include="Seguridad\AdministracionGrupo.aspx" />
+    <Content Include="Seguridad\AdministracionMenu.aspx" />
+    <Content Include="Seguridad\AdministracionPerfil.aspx" />
+    <Content Include="Seguridad\AdministracionPrivilegios.aspx" />
+    <Content Include="Seguridad\AdministracionPuesto.aspx" />
+    <Content Include="Seguridad\AdministracionSuscripcion.aspx" />
+    <Content Include="Seguridad\AdministracionUsuarios.aspx" />
+    <Content Include="Seguridad\CatalogoGeneral.aspx" />
+    <Content Include="Seguridad\ConfiguracionBasica.aspx" />
+    <Content Include="Seguridad\VerMenu.aspx" />
+    <Content Include="Site.Master" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+    <Content Include="Site.Mobile.Master" />
+    <Content Include="Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acceso.aspx.cs">
+      <DependentUpon>Acceso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Acceso.aspx.designer.cs">
+      <DependentUpon>Acceso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\AdministracionAccionesControl.aspx.cs">
+      <DependentUpon>AdministracionAccionesControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\AdministracionAccionesControl.aspx.designer.cs">
+      <DependentUpon>AdministracionAccionesControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\AdministracionCuestionario.aspx.cs">
+      <DependentUpon>AdministracionCuestionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\AdministracionCuestionario.aspx.designer.cs">
+      <DependentUpon>AdministracionCuestionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\AdministracionPlaneacionCaptura.aspx.cs">
+      <DependentUpon>AdministracionPlaneacionCaptura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\AdministracionPlaneacionCaptura.aspx.designer.cs">
+      <DependentUpon>AdministracionPlaneacionCaptura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\AdministrarRespuestas.aspx.cs">
+      <DependentUpon>AdministrarRespuestas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\AdministrarRespuestas.aspx.designer.cs">
+      <DependentUpon>AdministrarRespuestas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\CapturaInformacion.aspx.cs">
+      <DependentUpon>CapturaInformacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\CapturaInformacion.aspx.designer.cs">
+      <DependentUpon>CapturaInformacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\CapturaVariables.aspx.cs">
+      <DependentUpon>CapturaVariables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\CapturaVariables.aspx.designer.cs">
+      <DependentUpon>CapturaVariables.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\ConsultarEvaluaciones.aspx.cs">
+      <DependentUpon>ConsultarEvaluaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\ConsultarEvaluaciones.aspx.designer.cs">
+      <DependentUpon>ConsultarEvaluaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\Evaluacion.aspx.cs">
+      <DependentUpon>Evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\Evaluacion.aspx.designer.cs">
+      <DependentUpon>Evaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\VerCuestionario.aspx.cs">
+      <DependentUpon>VerCuestionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\VerCuestionario.aspx.designer.cs">
+      <DependentUpon>VerCuestionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionControles\VerPlaneacion.aspx.cs">
+      <DependentUpon>VerPlaneacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionControles\VerPlaneacion.aspx.designer.cs">
+      <DependentUpon>VerPlaneacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Comun\Clases\AdministradorControlesUI.cs" />
+    <Compile Include="Comun\Clases\AdministradorSistema.cs" />
+    <Compile Include="Comun\Controles\ListaPersonalizada.ascx.cs">
+      <DependentUpon>ListaPersonalizada.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\ListaPersonalizada.ascx.designer.cs">
+      <DependentUpon>ListaPersonalizada.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebArbol.ascx.cs">
+      <DependentUpon>UcWebArbol.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebArbol.ascx.designer.cs">
+      <DependentUpon>UcWebArbol.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebBanner.ascx.cs">
+      <DependentUpon>UcWebBanner.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebBanner.ascx.designer.cs">
+      <DependentUpon>UcWebBanner.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\ucWebBarraProgreso.ascx.cs">
+      <DependentUpon>ucWebBarraProgreso.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\ucWebBarraProgreso.ascx.designer.cs">
+      <DependentUpon>ucWebBarraProgreso.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\ucWebCambiarIdioma.ascx.cs">
+      <DependentUpon>ucWebCambiarIdioma.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\ucWebCambiarIdioma.ascx.designer.cs">
+      <DependentUpon>ucWebCambiarIdioma.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebCambiarTema.ascx.cs">
+      <DependentUpon>UcWebCambiarTema.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebCambiarTema.ascx.designer.cs">
+      <DependentUpon>UcWebCambiarTema.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\ucWebConsultorDinamico.ascx.cs">
+      <DependentUpon>ucWebConsultorDinamico.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\ucWebConsultorDinamico.ascx.designer.cs">
+      <DependentUpon>ucWebConsultorDinamico.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebEncabezadoPagina.ascx.cs">
+      <DependentUpon>UcWebEncabezadoPagina.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebEncabezadoPagina.ascx.designer.cs">
+      <DependentUpon>UcWebEncabezadoPagina.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebMensaje.ascx.cs">
+      <DependentUpon>UcWebMensaje.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebMensaje.ascx.designer.cs">
+      <DependentUpon>UcWebMensaje.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebMenuFuncionalidad.ascx.cs">
+      <DependentUpon>UcWebMenuFuncionalidad.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebMenuFuncionalidad.ascx.designer.cs">
+      <DependentUpon>UcWebMenuFuncionalidad.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebPiePagina.ascx.cs">
+      <DependentUpon>UcWebPiePagina.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comun\Controles\UcWebPiePagina.ascx.designer.cs">
+      <DependentUpon>UcWebPiePagina.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipal.aspx.cs">
+      <DependentUpon>MenuPrincipal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.aspx.designer.cs">
+      <DependentUpon>MenuPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prueba.aspx.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Prueba.aspx.designer.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionAplicacion.aspx.cs">
+      <DependentUpon>AdministracionAplicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionAplicacion.aspx.designer.cs">
+      <DependentUpon>AdministracionAplicacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionArea.aspx.cs">
+      <DependentUpon>AdministracionArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionArea.aspx.designer.cs">
+      <DependentUpon>AdministracionArea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionConfiguracion.aspx.cs">
+      <DependentUpon>AdministracionConfiguracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionConfiguracion.aspx.designer.cs">
+      <DependentUpon>AdministracionConfiguracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionGrupo.aspx.cs">
+      <DependentUpon>AdministracionGrupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionGrupo.aspx.designer.cs">
+      <DependentUpon>AdministracionGrupo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionMenu.aspx.cs">
+      <DependentUpon>AdministracionMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionMenu.aspx.designer.cs">
+      <DependentUpon>AdministracionMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionPerfil.aspx.cs">
+      <DependentUpon>AdministracionPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionPerfil.aspx.designer.cs">
+      <DependentUpon>AdministracionPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionPrivilegios.aspx.cs">
+      <DependentUpon>AdministracionPrivilegios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionPrivilegios.aspx.designer.cs">
+      <DependentUpon>AdministracionPrivilegios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionPuesto.aspx.cs">
+      <DependentUpon>AdministracionPuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionPuesto.aspx.designer.cs">
+      <DependentUpon>AdministracionPuesto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionSuscripcion.aspx.cs">
+      <DependentUpon>AdministracionSuscripcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionSuscripcion.aspx.designer.cs">
+      <DependentUpon>AdministracionSuscripcion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionUsuarios.aspx.cs">
+      <DependentUpon>AdministracionUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\AdministracionUsuarios.aspx.designer.cs">
+      <DependentUpon>AdministracionUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\CatalogoGeneral.aspx.cs">
+      <DependentUpon>CatalogoGeneral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\CatalogoGeneral.aspx.designer.cs">
+      <DependentUpon>CatalogoGeneral.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\ConfiguracionBasica.aspx.cs">
+      <DependentUpon>ConfiguracionBasica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\ConfiguracionBasica.aspx.designer.cs">
+      <DependentUpon>ConfiguracionBasica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\VerMenu.aspx.cs">
+      <DependentUpon>VerMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\VerMenu.aspx.designer.cs">
+      <DependentUpon>VerMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57022</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:57022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

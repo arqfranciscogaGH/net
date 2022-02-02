@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitio", "Sitio.csproj", "{D85FFD63-E816-42C4-98E5-3CEDD7A09F9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D85FFD63-E816-42C4-98E5-3CEDD7A09F9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D85FFD63-E816-42C4-98E5-3CEDD7A09F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D85FFD63-E816-42C4-98E5-3CEDD7A09F9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D85FFD63-E816-42C4-98E5-3CEDD7A09F9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {479B21AD-FA21-491D-A5FA-A8D111E1C62D}
+	EndGlobalSection
+EndGlobal
