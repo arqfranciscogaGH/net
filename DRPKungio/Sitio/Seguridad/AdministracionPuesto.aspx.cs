@@ -88,13 +88,11 @@ namespace Sitio.Seguridad
         {
             if (!IsPostBack)
             {
-
-
             }
             Configurar();
             InscribirEventos();
+            ActualizarElementos(false);
             ConfigurarAlCargarPaginaSiempre();
-            ActualizarElementos();
             ucWebBarraProgreso1.DesActivar();
         }
 
@@ -139,21 +137,6 @@ namespace Sitio.Seguridad
             _entidad = administradorNegocio.Instanciar<Puesto>();
             _tipoEntidad = _entidad.GetType();
             _lista = administradorNegocio.Consultar<Puesto>(s => s.Activo == true).ToList();
-            //  carga  modulos en  combobox
-            //string campo = "IdModuloSistema";
-            //string valor = "ModuloSistema1";
-            //if (DropDownListAplicacion.Items.Count == 0)
-            //{
-            //    _contexto = (ModeloSistema)AdministradorContexto.Iniciar<ModeloSistema>();
-            //    List<ModuloSistema> modulos = _contexto.ModuloSistema.ToList();
-            //    cc.Cargar(DropDownListAplicacion, modulos, campo, valor);
-            //    DropDownListAplicacion.AutoPostBack = true;
-            //    DropDownListAplicacion.DataBind();
-            //}
-            //if (_entidad.IdModulo != 0)
-            //{
-            //    DropDownListAplicacion.SelectedIndex = DropDownListAplicacion.Items.IndexOf(DropDownListAplicacion.Items.FindByValue(_entidad.IdModulo.ToString()));
-            //}
         }
 
         private void Configurar()
@@ -168,7 +151,6 @@ namespace Sitio.Seguridad
         private void InscribirEventos()
         {
             ucWebConsultorDinamico1.EventoElememtoSeleccionado = SeleccionarCaptura1;
-            //DropDownListAplicacion.SelectedIndexChanged += DropDownListAplicacion_SelectedIndexChanged;
 
         }
 
@@ -215,29 +197,10 @@ namespace Sitio.Seguridad
                         generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor, captura, _tipoEntidad, _entidad);
                         generadorControles.AplicarAcciones(contenedor, captura);
                     }
-                    ////  se limpia  captura secundaria
-                    //btnNuevo_Click2(null, null);
-                    ////  se actuliza  elementos secundarios
-                    //ActulizarElementosConsultaSecundaria(null, null);
                 }
             }
         }
 
-        //protected void DropDownListAplicacion_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    DropDownList listaaplicacion = (DropDownList)sender;
-        //    IdModulo = int.Parse(listaaplicacion.SelectedItem.Value);
-        //    IdElemento = 0;
-        //    if (IdModulo != 0)
-        //    {
-        //        btnNuevo_Click(null, null);
-        //        btnNuevo_Click2(null, null);
-        //        IdModulo = int.Parse(listaaplicacion.SelectedItem.Value);
-        //        _entidad.IdModulo = IdModulo;
-        //        //  se actuliza  elementos 
-        //        ActulizarElementos();
-        //    }
-        //}
 
         #endregion
 
@@ -266,16 +229,12 @@ namespace Sitio.Seguridad
             {
                 btnEliminar_Click(sender, e);
             }
-            //else if (accion == "Vista  Previa")
-            //{
-            //    Ver();
-            //}
-            else if (accion == "Cancelar" || accion == "Salir")
+            if (accion == "Agregar" || accion == "Modificar" || accion == "Eliminar")
             {
-                Salir();
+                ActualizarElementos(true);
+                UcWebMensaje1.MostrarMensaje("Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
             }
-            UcWebMensaje1.MostrarMensaje("Puesto, Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
-        }
+               }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -293,16 +252,12 @@ namespace Sitio.Seguridad
 
             if (_entidad != null)
             {
-
-
                 _entidad.IdPuesto = 0;
                 _entidad.IdSuscriptor = int.Parse(AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IdSuscriptor.ToString());
                 administradorNegocio.Agregar((Puesto)_entidad);
                 administradorNegocio.GuardarCambios();
                 generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                 IdElemento = _entidad.IdPuesto;
-                //IdElemento = _entidad.IdMenu;
-                ActualizarElementos();
             }
         }
 
@@ -316,7 +271,6 @@ namespace Sitio.Seguridad
                     _entidad = (Puesto)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                     administradorNegocio.Actualizar((Puesto)_entidad);
                     administradorNegocio.GuardarCambios();
-                    ActualizarElementos();
                 }
             }
         }
@@ -341,7 +295,6 @@ namespace Sitio.Seguridad
             {
 
             }
-            ActualizarElementos();
         }
 
         #endregion
@@ -352,44 +305,25 @@ namespace Sitio.Seguridad
 
         #region  Paso  9 Métodos para   actualizar  grids
 
-        public void ActualizarElementos()
+        public void ActualizarElementos(bool actualizar)
         {
-            ActualizarElementosConsultaPrincipal(null, null);
+            ActualizarElementosConsultaPrincipal(null, null, actualizar);
             //ActualizarElementosConsultaSecundaria(null, null);
         }
 
-        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e)
+        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e, bool actualizar)
         {
             if (_entidad != null)
             {
-                _lista = null;
-                _lista = administradorNegocio.Consultar<Puesto>(s => s.Activo == true).ToList();
-                ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
+
+                //_lista = administradorNegocio.Consultar(s =>  s.Activo != null).ToList();
+                if (_lista == null || actualizar)
+                    _lista = administradorNegocio.ObtenerLista<Puesto>().ToList();
+
             }
+            ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
         }
-        ////protected void ActualizarElementosConsultaSecundaria(object sender, EventArgs e)
-        ////{
-        ////    if (IdElemento != null && IdElemento != 0)
-        ////    {
-        ////        _entidad2.IdMenu = IdElemento;
-        ////        _lista2 = administradorNegocio.ObtenerOpcionesMenu(_entidad2);
-        ////        if (_lista2 != null && _lista2.GetType().ToString() != "System.Data.DataSet")
-        ////        {
-        ////            ucWebConsultorDinamico2.AsigarOrigenDatos((IEnumerable<object>)_lista2, _tipoEntidad2);
-        ////        }
-        ////        else
-        ////            ActulizarElementosConsultaSecundariaVacio();
-        ////    }
-        ////    else
-        ////    {
-        ////        _lista2 = null;
-        ////        ActulizarElementosConsultaSecundariaVacio();
-        ////    }
-        ////}
-        ////public void ActulizarElementosConsultaSecundariaVacio()
-        ////{
-        ////    ucWebConsultorDinamico2.AsigarOrigenDatos((IEnumerable<object>)_lista2, _tipoEntidad2);
-        ////}
+
 
         #endregion
 
@@ -399,11 +333,7 @@ namespace Sitio.Seguridad
         {
             respuesta = respuesta.ToString();
         }
-        private void Salir()
-        {
-            generadorControles = null;
-            Response.Redirect("MenuPrincipal.aspx");
-        }
+
 
         #endregion
 

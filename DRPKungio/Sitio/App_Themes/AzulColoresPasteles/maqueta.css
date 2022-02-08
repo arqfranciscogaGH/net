@@ -728,71 +728,6 @@ h2 {
 
 
 
-    /**               menu  Lista        **/
-    .Menu.Lista {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        z-index: 5000;
-        align-items: center;
-        /*background: var(--ColorFondo);  esto para que se vea el fondoy no un color */
-    }
-
-    .Menu.Lista ul {
-        box-sizing: border-box;
-        display: flex;
-        justify-content: flex-end;
-        width: 100%;
-        -webkit-transition: all .3s ease;
-        -moz-transition: all .3s ease;
-        -ms-transition: all .3s ease;
-        transition: all .3s ease;
-    }
-
-    /*  ocultas opciones de submenus de menu */
-    .Menu.Lista ul ul {
-        display: none;
-    }
-    /*esto  para que  muestren las opciones en el over*/
-    /*.Menu.Lista ul li:hover ul {
-
-    display: block;
-    width: auto;
-    position: relative;
-}*/
-
-    .Menu.Lista ul li {
-        box-sizing: border-box;
-        display: block;
-        margin: 0;
-        height: 100%;
-        border-bottom: 1px groove #E6E6E6;
-        border-bottom: 1px groove rgba(255, 255, 255,.3);
-        /* border abajo  em  opciones de menu vertical */
-    }
-
-
-    .Menu.Lista > ul > li a {
-        box-sizing: border-box;
-        display: block;
-        text-decoration: none;
-        text-align: center;
-        padding: .5em .5em;
-        width: auto;
-        min-width: 10em;
-        margin: 0;
-        background: #1A1A7B;
-        background: var(--ColorFondo);
-        color: #E6E6E6;
-        top: 0;
-    }
-
-
-        /*   las opciones de los  sumenus  seran verticales */
-
-    .Menu.Lista ul li ul li {
-        display: block;
-    }
 
 
 
@@ -1018,6 +953,71 @@ h2 {
 
 
 
+/**               menu  Lista        **/
+.Menu.Lista {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 5000;
+    align-items: center;
+    /*background: var(--ColorFondo);  esto para que se vea el fondoy no un color */
+}
+
+    .Menu.Lista ul {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+        /*  ocultas opciones de submenus de menu */
+        .Menu.Lista ul ul {
+            display: none;
+        }
+        /*esto  para que  muestren las opciones en el over*/
+        /*.Menu.Lista ul li:hover ul {
+
+    display: block;
+    width: auto;
+    position: relative;
+}*/
+
+        .Menu.Lista ul li {
+            box-sizing: border-box;
+            display: block;
+            margin: 0;
+            height: 100%;
+            border-bottom: 1px groove #E6E6E6;
+            border-bottom: 1px groove rgba(255, 255, 255,.3);
+            /* border abajo  em  opciones de menu vertical */
+        }
+
+
+    .Menu.Lista > ul > li a {
+        box-sizing: border-box;
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        padding: .5em .5em;
+        width: auto;
+        min-width: 8em;
+        margin: 0;
+        background: #1A1A7B;
+        background: var(--ColorFondo);
+        color: #E6E6E6;
+        top: 0;
+    }
+
+
+    /*   las opciones de los  sumenus  seran verticales */
+
+    .Menu.Lista ul li ul li {
+        display: block;
+    }
 
 
 
@@ -1032,7 +1032,8 @@ nav {
     z-index: 5000;
     position: absolute;
     margin-left: 0%;
-    top: 35px;
+    top: 55px;
+    width: 85%;
     /*outline:1px solid red;*/
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
@@ -1042,16 +1043,14 @@ nav {
 
 
 
-/**                                        Medias vertical       **/
-
-/**                     menu  normal        **/
 
 /* celular muy pequeño  */
 @media (max-width: 700px) {
 
     nav {
+        top: 6em;
         left: 0%;
-        width: 85%;
+        width: 40%;
     }
 
     .Menu.Lista ul {
@@ -1060,7 +1059,9 @@ nav {
         width: 100%;
         height: 100%;
     }
-
+    .Menu.Lista > ul > li a {
+        text-align: left;
+    }
     .Menu.Animado ul {
         /*display: block;*/
         flex-direction: column;
@@ -1079,21 +1080,14 @@ nav {
     }
 }
 
-/**                                                    Medias horizontal       **/
-
 /*    tableta */
-/*@media  (min-width:700px ) and (max-width: 920px)    {*/
-/* medias  laptop */
-/*@media  (min-width:920px ) and  (max-width: 1999px)*/
-/* medias  laptop */
-
-@media (min-width:700px ) and (max-width: 1999px) {
+@media (min-width:700px ) and (max-width: 920px) {
     nav {
-        width: 85%;
+        left: 0%;
+        width: 90%;
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        left: 0%;
     }
 
         /**                           menu  normal        **/
@@ -1111,7 +1105,45 @@ nav {
             text-decoration: none;
             padding: 15px 20px;
         }
+
+    .Menu.Lista > ul > li a {
+        align-items: center;
+    }
 }
+
+
+/* medias  laptop  o  pc */
+@media  (min-width:921px ) and  (max-width: 2999px)
+{
+    nav {
+        left: 0%;
+        width: 88%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    /**                           menu  normal        **/
+
+    nav ul li {
+        display: block;
+        width: auto;
+        border-bottom: 1px groove rgba(255, 255, 255,.3);
+        /* border abajo  em  opciones de menu vertical */
+    }
+
+    nav a {
+        box-sizing: border-box;
+        display: block;
+        text-decoration: none;
+        padding: 15px 20px;
+    }
+
+    .Menu.Lista > ul > li a {
+        align-items: center;
+    }
+}
+
 
 .Contenido_Seccion {
     box-sizing: border-box;
@@ -1252,7 +1284,7 @@ aside, .Publicidad_Seccion {
             top: 3px;
             display: inline-flex;
             height: auto;
-            width: 9em;
+            width: 11em;
         }
     /*.Ventana.ColorTema {
  
@@ -3131,7 +3163,7 @@ a:hover {
     max-width: 40%;
     width: 150em;
     min-height: 15%;
-    max-height: 25%;
+    max-height: 35%;
     font-family: Arial;
     font-size: 12px;
     font-weight: bold;
@@ -3236,7 +3268,7 @@ a:hover {
 .contenedorBotonesMensaje {
     position: relative;
     text-align: center;
-    padding-bottom: 1px;
+    padding-bottom: 5px;
     width: 100%;
     height: 100%;
 }
@@ -3283,13 +3315,13 @@ a:hover {
     list-style: none;
     float: left;
     margin-top: -5em;
-    margin-left: 40%;
+    margin-left: 0%;
     width: 18em;
     min-width: 18em;
-    height: 18em;
+    height: 14em;
     /*min-height: 25em;*/
     padding: 10px 10px;
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.5);
     -ms-box-shadow: 1px 1px 8px 3px gainsboro;
     -o-box-shadow: 1px 1px 8px 3px gainsboro;
     -mox-box-shadow: 1px 1px 8px 3px gainsboro;

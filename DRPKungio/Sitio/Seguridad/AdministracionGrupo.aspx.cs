@@ -87,13 +87,11 @@ namespace Sitio.Seguridad
         {
             if (!IsPostBack)
             {
-
-
-            }
+            }http://localhost:57022/Seguridad/AdministracionAplicacion.aspx.cs
             Configurar();
             InscribirEventos();
+            ActualizarElementos(false);
             ConfigurarAlCargarPaginaSiempre();
-            ActualizarElementos();
             ucWebBarraProgreso1.DesActivar();
         }
 
@@ -200,32 +198,11 @@ namespace Sitio.Seguridad
                         generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor, captura, _tipoEntidad, _entidad);
                         generadorControles.ParametrosDinamicos = "@TipoElemento=G" + ";@IdElemento=" + _entidad.IdGrupo.ToString();
                         generadorControles.AplicarAcciones(contenedor, captura);
-                        UcWebMensaje1.MostrarMensaje("3", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
-
-                    }
-                    ////  se limpia  captura secundaria
-                    //btnNuevo_Click2(null, null);
-                    ////  se actuliza  elementos secundarios
-                    //ActulizarElementosConsultaSecundaria(null, null);
+                     }
                 }
             }
         }
 
-        //protected void DropDownListAplicacion_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    DropDownList listaaplicacion = (DropDownList)sender;
-        //    IdModulo = int.Parse(listaaplicacion.SelectedItem.Value);
-        //    IdElemento = 0;
-        //    if (IdModulo != 0)
-        //    {
-        //        btnNuevo_Click(null, null);
-        //        btnNuevo_Click2(null, null);
-        //        IdModulo = int.Parse(listaaplicacion.SelectedItem.Value);
-        //        _entidad.IdModulo = IdModulo;
-        //        //  se actuliza  elementos 
-        //        ActulizarElementos();
-        //    }
-        //}
 
         #endregion
 
@@ -254,15 +231,11 @@ namespace Sitio.Seguridad
             {
                 btnEliminar_Click(sender, e);
             }
-            //else if (accion == "Vista  Previa")
-            //{
-            //    Ver();
-            //}
-            else if (accion == "Cancelar" || accion == "Salir")
+            if (accion == "Agregar" || accion == "Modificar" || accion == "Eliminar")
             {
-                Salir();
+                ActualizarElementos(true);
+                UcWebMensaje1.MostrarMensaje("Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
             }
-            UcWebMensaje1.MostrarMensaje("Grupo, Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -271,7 +244,6 @@ namespace Sitio.Seguridad
             valoresControles = generadorControles.ObtenerValoresControlesPorAplicacion(contenedor, captura);
             _entidad = Instanciar();
             _entidad = (Grupo)generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor, captura, _tipoEntidad, _entidad);
-            //_entidad.IdModulo = IdModulo;
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -290,8 +262,6 @@ namespace Sitio.Seguridad
                 string sql = "exec  ActualizarPrivilegios 'I','G'," + _entidad.IdGrupo + ",'" + _entidad.Privilegios + "'";
                 administradorNegocio.ExecutarSql(sql);
                 administradorNegocio.GuardarCambios();
-                //IdElemento = _entidad.IdMenu;
-                ActualizarElementos();
             }
         }
 
@@ -307,7 +277,7 @@ namespace Sitio.Seguridad
                     string sql = "exec  ActualizarPrivilegios 'A','G'," + _entidad.IdGrupo + ",'" + _entidad.Privilegios + "'";
                     administradorNegocio.ExecutarSql(sql);
                     administradorNegocio.GuardarCambios();
-                    ActualizarElementos();
+ 
                 }
             }
         }
@@ -332,7 +302,7 @@ namespace Sitio.Seguridad
             {
 
             }
-            ActualizarElementos();
+  
         }
 
         #endregion
@@ -343,20 +313,23 @@ namespace Sitio.Seguridad
 
         #region  Paso  9 Métodos para   actualizar  grids
 
-        public void ActualizarElementos()
+        public void ActualizarElementos(bool actualizar)
         {
-            ActualizarElementosConsultaPrincipal(null, null);
+            ActualizarElementosConsultaPrincipal(null, null, actualizar);
             //ActualizarElementosConsultaSecundaria(null, null);
         }
 
-        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e)
+        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e, bool actualizar)
         {
             if (_entidad != null)
             {
-                _lista = null;
-                _lista = administradorNegocio.Consultar(s => s.IdSuscriptor == AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IdSuscriptor && s.Activo == true).ToList();
-                ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
+
+                //_lista = administradorNegocio.Consultar(s =>  s.Activo != null).ToList();
+                if (_lista == null || actualizar)
+                    _lista = administradorNegocio.ObtenerLista().ToList();
+
             }
+            ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
         }
 
 
@@ -367,11 +340,6 @@ namespace Sitio.Seguridad
         public void ObtenerRespuesta(object respuesta)
         {
             respuesta = respuesta.ToString();
-        }
-        private void Salir()
-        {
-            generadorControles = null;
-            Response.Redirect("MenuPrincipal.aspx");
         }
 
         #endregion

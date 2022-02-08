@@ -96,13 +96,11 @@ namespace Sitio.Seguridad
         {
             if (!IsPostBack)
             {
-
-
             }
             Configurar();
             InscribirEventos();
+            ActualizarElementos(false);
             ConfigurarAlCargarPaginaSiempre();
-            ActualizarElementos();
             ucWebBarraProgreso1.DesActivar();
         }
 
@@ -218,7 +216,7 @@ namespace Sitio.Seguridad
                 IdModulo = int.Parse(DropDownListAplicacion.SelectedItem.Value);
                 //_entidad.IdModulo = IdModulo;
                 //  se actuliza  elementos 
-                ActualizarElementos();
+                ActualizarElementos(true);
             }
         }
         public void SeleccionarCaptura1(object sender, ArgumentosConsulta argsConsulta)
@@ -269,15 +267,11 @@ namespace Sitio.Seguridad
             {
                 btnEliminar_Click(sender, e);
             }
-            else if (accion == "Vista  Previa")
+            if (accion == "Agregar" || accion == "Modificar" || accion == "Eliminar")
             {
-                Ver();
+                ActualizarElementos(true);
+                UcWebMensaje1.MostrarMensaje("Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
             }
-            else if (accion == "Cancelar" || accion == "Salir")
-            {
-                Salir();
-            }
-            UcWebMensaje1.MostrarMensaje("Menú, Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -301,7 +295,7 @@ namespace Sitio.Seguridad
                 administradorNegocio.GuardarCambios();
                 generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                 IdElemento = _entidad.IdPrivilegio;
-                ActualizarElementos();
+       
             }
         }
 
@@ -342,13 +336,12 @@ namespace Sitio.Seguridad
             {
 
             }
-            ActualizarElementosConsultaPrincipal(sender, e);
         }
 
         #endregion
 
         #region acciones de  captura dos
- 
+
 
         #endregion
 
@@ -356,23 +349,23 @@ namespace Sitio.Seguridad
 
         #region  Paso  9 Métodos para   actualizar  grids
 
-        public void ActualizarElementos()
+        public void ActualizarElementos(bool actualizar)
         {
-            ActualizarElementosConsultaPrincipal(null, null);
-   
+            ActualizarElementosConsultaPrincipal(null, null, actualizar);
+            //ActualizarElementosConsultaSecundaria(null, null);
         }
-        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e)
+
+        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e, bool actualizar)
         {
             if (_entidad != null)
             {
-                _lista = null;
-                 //if  (_entidad.IdModulo!=null && _entidad.IdModulo > 0)
-                 //   _lista = administradorNegocio.Consultar(s => s.IdModulo==_entidad.IdModulo && s.Activo == true).ToList();
-                 //else
+
+                //_lista = administradorNegocio.Consultar(s =>  s.Activo != null).ToList();
+                if (_lista == null || actualizar)
                     _lista = administradorNegocio.ObtenerLista().ToList();
 
-                ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
             }
+            ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
         }
 
         #endregion
@@ -404,16 +397,8 @@ namespace Sitio.Seguridad
         {
             respuesta = respuesta.ToString();
         }
-        private void Salir()
-        {
-            generadorControles = null;
-            Response.Redirect("MenuPrincipal.aspx");
-        }
-        private void Ver()
-        {
-            if (IdElemento != null && IdElemento > 0)
-                Response.Redirect("/Controles/Seguridad/VerMenu.aspx?" + IdElemento.ToString());
-        }
+
+ 
 
         #endregion
 

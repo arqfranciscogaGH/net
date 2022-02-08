@@ -56,8 +56,7 @@
     <Reference Include="MeNet.FlujoTrabajo.Administrador">
       <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.FlujoTrabajo.Administrador.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Nucleo.AdministradorBaseDatos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="MeNet.Nucleo.AdministradorBaseDatos">
       <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.AdministradorBaseDatos.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.AdministradorConsultas">
@@ -85,15 +84,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Contexto.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Nucleo.Controles, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="MeNet.Nucleo.Controles">
       <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Controles.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Error">
       <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Error.dll</HintPath>
-    </Reference>
-    <Reference Include="MeNet.Nucleo.Eventos">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Eventos.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Modelo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,8 +112,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Seguridad.Administrador.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Seguridad.GeneradorMenus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="MeNet.Seguridad.GeneradorMenus">
       <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Seguridad.GeneradorMenus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -739,6 +733,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\fga\Proyectos\net\MENet\Codigo\Librerias\MeNet.Nucleo.Eventos\MeNet.Nucleo.Eventos.csproj">
+      <Project>{21d3630d-28c6-4c31-965e-62f8a860f021}</Project>
+      <Name>MeNet.Nucleo.Eventos</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

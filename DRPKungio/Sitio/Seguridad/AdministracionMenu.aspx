@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdministracionMenu.aspx.cs" Inherits="Sitio.Seguridad.AdministracionMenu" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation = "false"  EnableEventValidation = "false" CodeBehind="AdministracionMenu.aspx.cs" Inherits="Sitio.Seguridad.AdministracionMenu" %>
 
 <%@ Register src="../Comun/Controles/ucWebBarraProgreso.ascx" tagname="ucWebBarraProgreso" tagprefix="uc1" %>
 <%@ Register src="../Comun/Controles/UcWebMenuFuncionalidad.ascx" tagname="UcWebMenuFuncionalidad" tagprefix="uc2" %>

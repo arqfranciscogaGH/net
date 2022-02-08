@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdministracionSuscripcion.aspx.cs" Inherits="Sitio.Seguridad.AdministracionSuscripcion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation = "false" CodeBehind="AdministracionSuscripcion.aspx.cs" Inherits="Sitio.Seguridad.AdministracionSuscripcion" %>
 
 
 <%@ Register src="../Comun/Controles/ucWebBarraProgreso.ascx" tagname="ucWebBarraProgreso" tagprefix="uc1" %>

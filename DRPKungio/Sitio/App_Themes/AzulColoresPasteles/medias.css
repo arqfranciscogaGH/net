@@ -27,6 +27,14 @@
     .PiePagina_Seccion {
         display: none;
     }
+    .contenedorMensaje {
+        min-width: 35%;
+        max-width: 45%;
+        min-height: 35%;
+        max-height: 45%;
+     }
+
+
 } 
 
 

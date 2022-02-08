@@ -312,37 +312,59 @@ namespace Sitio.Comun.Controles
         /// <param name="TipoImagenMensaje">Tipo de imagen que se desplegara en el mensaje</param>
         /// <param name="TipoBotonesMensaje">Tipo de botones que se desplegaran en el mensaje</param>
         /// 
-        public void MostrarMensajeError(BitacoraError bitacora, Object padre, DelegadoRespuestaGeneral accion)
+		protected void Page_Load(object sender, EventArgs e)
         {
-            _bitacoraError = bitacora;
-            ContenidoMensaje = bitacora.Mensaje;
-            IdControl = padre.GetType().Name;
-            TituloMensaje = "Incidencia";
-            MostrarMensaje(TituloMensaje, ContenidoMensaje, TipoImagen.Error, BotonesMensaje.Aceptar, IdControl, accion);
-            GenerarMensajeError();
-            this.ahrefBoton2.Text = "Ver  Detalle";
-            this.ahrefBoton2.Visible = true;
+            if (this.ComportamientoEventos == TipoEvento.Servidor)
+            {
+                //ahrefBoton1.ServerClick += new EventHandler(EventoClickBoton1);
+                ahrefBoton1.Click += new EventHandler(EventoClickBoton1);
+                ahrefBoton2.Click += new EventHandler(EventoClickBoton2);
+                ahrefBoton3.Click += new EventHandler(EventoClickBoton3);
+            }
+
+            if (this.ComportamientoEventos == TipoEvento.Cliente)
+            {
+                if (this.NombreInstanciaCliente != string.Empty && this.NombreInstanciaCliente != null)
+                {
+                    divFondoMensaje.ID = this.NombreInstanciaCliente;
+                }
+            }
         }
 
-        public void MostrarMensaje(string TituloMensaje, string ContenidoMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, Object padre, DelegadoRespuestaGeneral accion)
+        // mensaje por clave   con delegado  EventHandler
+
+        public void MostrarMensaje(string claveMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, Object padre, EventHandler accion)
         {
-            IdControl = padre.GetType().Name;
-            MostrarMensaje(TituloMensaje, ContenidoMensaje, TipoImagenMensaje, TipoBotonesMensaje, IdControl, accion);
+            string mensaje = string.Empty;
+            string titulo = string.Empty;
+
+            try
+            {
+                ObjectResult<ObtenerTerminologia_Result> terminologia = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.AdministradorTerminologia.ObtenerTerminologia(claveMensaje, AdministradorSistema.AdministradorSeguridadActual.IdIdioma);
+                if (terminologia != null)
+                {
+                    titulo = terminologia.FirstOrDefault().Titulo;
+                    mensaje = terminologia.FirstOrDefault().Texto;
+                }
+                MostrarMensaje(titulo, mensaje, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, padre, accion);
+            }
+            catch
+            {
+
+            }
         }
-        public void MostrarMensaje(string TituloMensaje, string ContenidoMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, string padre, DelegadoRespuestaGeneral accion)
-        {
-            IdControl = padre;
-            AdministradorSistema.ControaldorEventosActual.InscribirMetodoGeneral(IdControl, accion);
-            MostrarMensaje(TituloMensaje, ContenidoMensaje, TipoImagenMensaje, TipoBotonesMensaje);
-        }
+
+        // mensaje por clave   con delegado  DelegadoRespuestaGeneral
+
         public void MostrarMensaje(string claveMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, Object padre, DelegadoRespuestaGeneral accion)
         {
             string mensaje = string.Empty;
             string titulo = string.Empty;
+            String idPagina = padre.GetType().Name;
             try
             {
                 ObjectResult<ObtenerTerminologia_Result> terminologia = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.AdministradorTerminologia.ObtenerTerminologia(claveMensaje, AdministradorSistema.AdministradorSeguridadActual.IdIdioma);
-                
+
                 if (terminologia != null)
                 {
                     ObtenerTerminologia_Result terminologiaElemento = terminologia.ToList().FirstOrDefault();
@@ -356,37 +378,48 @@ namespace Sitio.Comun.Controles
 
             }
         }
-        public void MostrarMensaje(string claveMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, Object padre, EventHandler accion)
-        {
-            string mensaje = string.Empty;
-            string titulo = string.Empty;
-            try
-            {
-                ObjectResult<ObtenerTerminologia_Result> terminologia = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.AdministradorTerminologia.ObtenerTerminologia(claveMensaje, AdministradorSistema.AdministradorSeguridadActual.IdIdioma);
-                if (terminologia != null)
-                {
-                    titulo = terminologia.FirstOrDefault().Titulo;
-                    mensaje = terminologia.FirstOrDefault().Texto;
-                }
-                MostrarMensaje(titulo, mensaje, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, accion);
-            }
-            catch
-            {
 
-            }
+        //
+        // mensaje  con delegado  DelegadoRespuestaGeneral
+        //
+
+        // con  id  de pagina
+        public void MostrarMensaje(string TituloMensaje, string ContenidoMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, Object padre, DelegadoRespuestaGeneral accion)
+        {
+            String idPagina = padre.GetType().Name;
+            IdControl = idPagina;
+            MostrarMensaje(TituloMensaje, ContenidoMensaje, TipoImagenMensaje, TipoBotonesMensaje, idPagina, accion);
         }
+        // con  Id idependiente
+
+        public void MostrarMensaje(string TituloMensaje, string ContenidoMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, String idPagina, DelegadoRespuestaGeneral accion)
+        {
+            IdControl = idPagina;
+            AdministradorSistema.ControaldorEventosActual.InscribirMetodoGeneral(idPagina, accion);
+            mostrar(TituloMensaje, ContenidoMensaje, TipoImagenMensaje, TipoBotonesMensaje, idPagina);
+        }
+
+        // mensaje  con delegado  EventHandler
+
+        // con  id  de pagina
+
         public void MostrarMensaje(string TituloMensaje, string ContenidoMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, Object padre, EventHandler accion)
         {
-            IdControl = padre.GetType().Name;
-            MostrarMensaje(TituloMensaje, ContenidoMensaje, TipoImagenMensaje, TipoBotonesMensaje, IdControl, accion);
+            String idPagina = padre.GetType().Name;
+            IdControl = idPagina;
+            MostrarMensaje(TituloMensaje, ContenidoMensaje, TipoImagenMensaje, TipoBotonesMensaje, idPagina, accion);
         }
-        public void MostrarMensaje(string TituloMensaje, string ContenidoMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, string padre, EventHandler accion)
+
+        // con  Id idependiente
+
+        public void MostrarMensaje(string TituloMensaje, string ContenidoMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, String idPagina, EventHandler accion)
         {
-            IdControl = padre;
-            AdministradorSistema.ControaldorEventosActual.InscribirMetodoEventHandler(IdControl, accion);
-            MostrarMensaje(TituloMensaje, ContenidoMensaje, TipoImagenMensaje, TipoBotonesMensaje);
+            IdControl = idPagina;
+            AdministradorSistema.ControaldorEventosActual.InscribirMetodoEventHandler(idPagina, accion);
+            mostrar(TituloMensaje, ContenidoMensaje, TipoImagenMensaje, TipoBotonesMensaje, idPagina);
         }
-        private  void MostrarMensaje(string TituloMensaje, string ContenidoMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje )
+
+        private  void mostrar(string TituloMensaje, string ContenidoMensaje, TipoImagen TipoImagenMensaje, BotonesMensaje TipoBotonesMensaje, string id)
 		{
 			this.TituloMensaje = TituloMensaje;
 			this.ContenidoMensaje = ContenidoMensaje;
@@ -398,7 +431,8 @@ namespace Sitio.Comun.Controles
 				case BotonesMensaje.Aceptar:
 					{
 						this.ahrefBoton1.Text = this.TextoBotonAceptar;
-						this.ahrefBoton1.Visible = true;
+   
+                        this.ahrefBoton1.Visible = true;
 						this.ahrefBoton2.Visible = false;
 						this.ahrefBoton3.Visible = false;
 						break;
@@ -538,43 +572,21 @@ namespace Sitio.Comun.Controles
             this.Visible = true;
 		}
 
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			if (this.ComportamientoEventos == TipoEvento.Servidor)
-			{
-                //ahrefBoton1.ServerClick += new EventHandler(EventoClickBoton1);
-                ahrefBoton1.Click += new EventHandler(EventoClickBoton1);
-				ahrefBoton2.Click += new EventHandler(EventoClickBoton2);
-				ahrefBoton3.Click += new EventHandler(EventoClickBoton3);
-			}
 
-			if (this.ComportamientoEventos == TipoEvento.Cliente)
-			{
-				if (this.NombreInstanciaCliente != string.Empty && this.NombreInstanciaCliente != null)
-				{
-					divFondoMensaje.ID = this.NombreInstanciaCliente;
-				}
-			}
-		}
-
-		protected void EventoClickBoton1(object sender, EventArgs e)
+        public void MostrarMensajeError(BitacoraError bitacora, Object padre, DelegadoRespuestaGeneral accion)
         {
-            this.Visible = false;
-            SeleccionarRespuesta(sender, e);
-
+            _bitacoraError = bitacora;
+            ContenidoMensaje = bitacora.Mensaje;
+            IdControl = padre.GetType().Name;
+            TituloMensaje = "Incidencia";
+            MostrarMensaje(TituloMensaje, ContenidoMensaje, TipoImagen.Error, BotonesMensaje.Aceptar, IdControl, accion);
+            GenerarMensajeError();
+            this.ahrefBoton2.Text = "Ver  Detalle";
+            this.ahrefBoton2.Visible = true;
         }
 
-		protected void EventoClickBoton2(object sender, EventArgs e)
-		{
-            if ( _bitacoraError != null)
-            {
-                this.Visible = true;
-                DetalleTextoMensaje.Visible = true;
-            }
-  
-            SeleccionarRespuesta(sender, e);
-        }
-        public  void GenerarMensajeError()
+
+        public void GenerarMensajeError()
         {
             Control contenedorDetalle = (Control)DetalleTextoMensaje;
             if (contenedorDetalle != null  && _bitacoraError != null)
@@ -596,17 +608,30 @@ namespace Sitio.Comun.Controles
                 TituloReferencia.Text = "Referencia:";
                 contenedorDetalle.Controls.Add(TituloReferencia);
 
-
-
                 Label textoReferencia = new Label();
                 textoReferencia.CssClass = "textoMensaje";
                 textoReferencia.Text = _bitacoraError.Referencia;
                 contenedorDetalle.Controls.Add(textoReferencia);
-
  
             }
         }
+        protected void EventoClickBoton1(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            SeleccionarRespuesta(sender, e);
 
+        }
+
+        protected void EventoClickBoton2(object sender, EventArgs e)
+        {
+            if (_bitacoraError != null)
+            {
+                this.Visible = true;
+                DetalleTextoMensaje.Visible = true;
+            }
+
+            SeleccionarRespuesta(sender, e);
+        }
         protected void EventoClickBoton3(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -618,9 +643,16 @@ namespace Sitio.Comun.Controles
 
 
             LinkButton accion = (LinkButton)sender;
-            AdministradorSistema.ControaldorEventosActual.GenerarEvento(IdControl, sender, accion.Text);
-            AdministradorSistema.ControaldorEventosActual.GenerarEvento(IdControl, sender,(EventArgs) e);
+
+            //AdministradorSistema.ControaldorEventosActual.GenerarEvento(IdControl, sender, accion.Text);
+            //AdministradorSistema.ControaldorEventosActual.AnularMetodo(IdControl);
+            //AdministradorSistema.ControaldorEventosActual.GenerarEvento(IdControl, sender,(EventArgs) e);
             //RespuestaMensaje(sender, e);
+            String idPagina = accion.Page.GetType().Name;
+
+            AdministradorSistema.ControaldorEventosActual.GenerarEvento(idPagina, sender, accion.Text);
+            AdministradorSistema.ControaldorEventosActual.AnularMetodo(idPagina);
+
         }
     }
 }

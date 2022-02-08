@@ -91,13 +91,11 @@ namespace Sitio.Seguridad
         {
             if (!IsPostBack)
             {
-
-
             }
             Configurar();
             InscribirEventos();
+            ActualizarElementos(false);
             ConfigurarAlCargarPaginaSiempre();
-            ActualizarElementos();
             ucWebBarraProgreso1.DesActivar();
         }
 
@@ -220,10 +218,7 @@ namespace Sitio.Seguridad
                         generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor, captura, _tipoEntidad, _entidad);
                         generadorControles.AplicarAcciones(contenedor, captura);
                     }
-                    ////  se limpia  captura secundaria
-                    //btnNuevo_Click2(null, null);
-                    ////  se actuliza  elementos secundarios
-                    //ActulizarElementosConsultaSecundaria(null, null);
+
                 }
             }
         }
@@ -271,15 +266,11 @@ namespace Sitio.Seguridad
             {
                 btnEliminar_Click(sender, e);
             }
-            //else if (accion == "Vista  Previa")
-            //{
-            //    Ver();
-            //}
-            else if (accion == "Cancelar" || accion == "Salir")
+            if (accion == "Agregar" || accion == "Modificar" || accion == "Eliminar")
             {
-                Salir();
+                ActualizarElementos(true);
+                UcWebMensaje1.MostrarMensaje("Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
             }
-            UcWebMensaje1.MostrarMensaje("Suscripción, Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -288,7 +279,6 @@ namespace Sitio.Seguridad
             valoresControles = generadorControles.ObtenerValoresControlesPorAplicacion(contenedor, captura);
             _entidad = Instanciar();
             _entidad = (Suscripcion)generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor, captura, _tipoEntidad, _entidad);
-            //_entidad.IdModulo = IdModulo;
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -304,8 +294,8 @@ namespace Sitio.Seguridad
                 administradorNegocio.GuardarCambios();
                 generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                 IdElemento = _entidad.IdSuscriptor;
-                //IdElemento = _entidad.IdMenu;
-                ActualizarElementos();
+
+
             }
         }
 
@@ -319,7 +309,7 @@ namespace Sitio.Seguridad
                     _entidad = (Suscripcion)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                     administradorNegocio.Actualizar((Suscripcion)_entidad);
                     administradorNegocio.GuardarCambios();
-                    ActualizarElementos();
+     
                 }
             }
         }
@@ -344,52 +334,30 @@ namespace Sitio.Seguridad
             {
 
             }
-            ActualizarElementos();
-        }
+         }
         #endregion
         #endregion
 
         #region  Paso  9 Métodos para   actualizar  grids
 
-        public void ActualizarElementos()
+        public void ActualizarElementos(bool actualizar)
         {
-            ActualizarElementosConsultaPrincipal(null, null);
+            ActualizarElementosConsultaPrincipal(null, null, actualizar);
             //ActualizarElementosConsultaSecundaria(null, null);
         }
 
-        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e)
+        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e, bool actualizar)
         {
             if (_entidad != null)
             {
-                _lista = null;
-                _lista = administradorNegocio.Consultar<Suscripcion>(s => s.Activo == true).ToList();
-                ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
-            }
-        }
-        ////protected void ActualizarElementosConsultaSecundaria(object sender, EventArgs e)
-        ////{
-        ////    if (IdElemento != null && IdElemento != 0)
-        ////    {
-        ////        _entidad2.IdMenu = IdElemento;
-        ////        _lista2 = administradorNegocio.ObtenerOpcionesMenu(_entidad2);
-        ////        if (_lista2 != null && _lista2.GetType().ToString() != "System.Data.DataSet")
-        ////        {
-        ////            ucWebConsultorDinamico2.AsigarOrigenDatos((IEnumerable<object>)_lista2, _tipoEntidad2);
-        ////        }
-        ////        else
-        ////            ActulizarElementosConsultaSecundariaVacio();
-        ////    }
-        ////    else
-        ////    {
-        ////        _lista2 = null;
-        ////        ActulizarElementosConsultaSecundariaVacio();
-        ////    }
-        ////}
-        ////public void ActulizarElementosConsultaSecundariaVacio()
-        ////{
-        ////    ucWebConsultorDinamico2.AsigarOrigenDatos((IEnumerable<object>)_lista2, _tipoEntidad2);
-        ////}
 
+                //_lista = administradorNegocio.Consultar(s =>  s.Activo != null).ToList();
+                if (_lista == null || actualizar)
+                    _lista = administradorNegocio.ObtenerLista<Suscripcion>().ToList();
+
+            }
+            ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
+        }
         #endregion
 
         #region  paso  10 Métodos comunes
@@ -398,12 +366,7 @@ namespace Sitio.Seguridad
         {
             respuesta = respuesta.ToString();
         }
-        private void Salir()
-        {
-            generadorControles = null;
-            Response.Redirect("MenuPrincipal.aspx");
-        }
-
+ 
         #endregion
 
     }

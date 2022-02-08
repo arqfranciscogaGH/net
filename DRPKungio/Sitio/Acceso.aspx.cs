@@ -47,7 +47,6 @@ namespace Sitio
                 IniciarControladores();
                 ConfigurarAlCargarPaginaSoloInicialmente();
                 DefinirCaptura();
-
             }
             Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
             CargarControles();
@@ -60,13 +59,10 @@ namespace Sitio
 
             if (!IsPostBack)
             {
-
-
             }
             Configurar();
             InscribirEventos();
             ConfigurarAlCargarPaginaSiempre();
-            //ActualizarElementos();
             ucWebBarraProgreso1.DesActivar();
         }
 
@@ -169,7 +165,7 @@ namespace Sitio
                 }
   
                 ucWebBarraProgreso1.DesActivar();
-                Salir();
+                VerMenu();
 
             }
             else if (accion == "Regresar")
@@ -182,10 +178,7 @@ namespace Sitio
             {
                 //btnActualizar_Click(sender, e);
             }
-            else if (accion == "Salir")
-            {
-                Salir();
-            }
+ 
 
         }
 
@@ -214,8 +207,7 @@ namespace Sitio
                     }
                     else
                     {
-                       //administrarSeguridad.AsignarPerfilPorDefecto();
-                       Salir();
+                        VerMenu();
                     }
                 }
             }
@@ -290,15 +282,14 @@ namespace Sitio
             respuesta = respuesta.ToString();
         }
 
-        private void Salir()
+        private void VerMenu()
         {
-            generadorControles = null;
-            Response.Redirect("Menu.aspx");
-            //Response.Redirect("MenuPrincipal.aspx");
+      
+            String PaginaMenu = System.Configuration.ConfigurationManager.AppSettings["PaginaMenu"].ToString();
+            Response.Redirect(PaginaMenu);
         }
+    }
 
         #endregion
 
-
-    }
 }
