@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Modelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="llave" Type="varchar(max)" />
+          <Property Name="clave" Type="varchar(max)" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="descricpion" Type="varchar(max)" />
+          <Property Name="idTipoCliente" Type="varchar" MaxLength="1" />
+          <Property Name="idEstado" Type="int" />
+          <Property Name="idSuscriptor" Type="int" />
+          <Property Name="idOperacion" Type="int" />
+          <Property Name="idUsuario" Type="int" />
+          <Property Name="apellidoPaterno" Type="varchar" MaxLength="100" />
+          <Property Name="apellidoMaterno" Type="varchar" MaxLength="100" />
+          <Property Name="rfc" Type="varchar" MaxLength="20" />
+          <Property Name="curp" Type="varchar" MaxLength="30" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" />
+          <Property Name="telefonoMovil" Type="varchar" MaxLength="10" />
+          <Property Name="correo" Type="varchar(max)" />
+          <Property Name="genero" Type="varchar" MaxLength="1" />
+          <Property Name="direccion" Type="varchar(max)" />
+          <Property Name="referencia" Type="nvarchar" MaxLength="50" />
+          <Property Name="banco" Type="varchar(max)" />
+          <Property Name="cuentaBanco" Type="varchar(max)" />
+          <Property Name="importe" Type="int" />
+          <Property Name="saldo" Type="int" />
+          <Property Name="rutaFoto" Type="nvarchar" MaxLength="50" />
+          <Property Name="urlFoto" Type="varchar(max)" />
+          <Property Name="fechaNacimiento" Type="varchar" MaxLength="10" />
+          <Property Name="fecha" Type="varchar" MaxLength="10" />
+          <Property Name="fechaEntrega" Type="varchar" MaxLength="10" />
+          <Property Name="fechaRegistro" Type="varchar" MaxLength="10" />
+          <Property Name="idSocio" Type="int" />
+          <Property Name="fechaEstatus" Type="varchar" MaxLength="10" />
+          <Property Name="estatus" Type="smallint" />
+        </EntityType>
+        <EntityContainer Name="ModeloStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ModeloCliente" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Modelo.Cliente" />
+        </EntityContainer>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="llave" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="clave" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descricpion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idTipoCliente" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="idEstado" Type="Int32" />
+          <Property Name="idSuscriptor" Type="Int32" />
+          <Property Name="idOperacion" Type="Int32" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="apellidoPaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="apellidoMaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rfc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="curp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="telefonoMovil" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="genero" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="banco" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cuentaBanco" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="importe" Type="Int32" />
+          <Property Name="saldo" Type="Int32" />
+          <Property Name="rutaFoto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="urlFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fechaNacimiento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fechaEntrega" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fechaRegistro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="idSocio" Type="Int32" />
+          <Property Name="fechaEstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Int16" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModeloStoreContainer" CdmEntityContainer="ModeloCliente">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="Modelo.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="fechaEstatus" ColumnName="fechaEstatus" />
+                <ScalarProperty Name="idSocio" ColumnName="idSocio" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="fechaEntrega" ColumnName="fechaEntrega" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="urlFoto" ColumnName="urlFoto" />
+                <ScalarProperty Name="rutaFoto" ColumnName="rutaFoto" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="importe" ColumnName="importe" />
+                <ScalarProperty Name="cuentaBanco" ColumnName="cuentaBanco" />
+                <ScalarProperty Name="banco" ColumnName="banco" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="telefonoMovil" ColumnName="telefonoMovil" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="rfc" ColumnName="rfc" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idOperacion" ColumnName="idOperacion" />
+                <ScalarProperty Name="idSuscriptor" ColumnName="idSuscriptor" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="idTipoCliente" ColumnName="idTipoCliente" />
+                <ScalarProperty Name="descricpion" ColumnName="descricpion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="llave" ColumnName="llave" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

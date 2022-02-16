@@ -1,0 +1,101 @@
+﻿
+/* medias  de secciones  del tamaño mas chico al grande*/
+/* celular muy pequeño  */
+@media (max-width: 700px) {
+
+     body
+    {
+       /*background:pink;*/
+    }
+    .Contenido_Seccion
+    {   
+        width:100%;
+    }
+    aside, Publicidad_Seccion
+    {   
+        display:none;
+    }
+    .Consultor_Seccion {
+        box-sizing: border-box;
+        width: 100%;
+     }
+    .Captura_Seccion {
+        box-sizing: border-box;
+        width: 100%;
+        max-height: 50%;
+    }
+    .PiePagina_Seccion {
+        display: none;
+    }
+    .contenedorMensaje {
+        min-width: 35%;
+        max-width: 45%;
+        min-height: 35%;
+        max-height: 45%;
+     }
+
+
+} 
+
+
+/* celular gdet o tableta   */
+@media  (min-width:700px ) and (max-width: 920px)    { 
+    body {
+         /*background:yellow;*/
+    }
+    .Contenido_Seccion
+    {   
+        width:70%;
+        min-height:29.2em;
+        max-height:29.2em;
+        /*height:auto;*/
+    }
+    aside, Publicidad_Seccion
+    {
+        width:30%;
+     }
+    .Consultor_Seccion {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .Captura_Seccion {
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .PiePagina_Seccion {
+        display: none;
+    }
+}
+/* medias equio de computo laptop o patalla */
+@media  (min-width:920px ) and  (max-width: 1299px)    { 
+    body {
+
+         /*background:blue;*/
+    }
+    .Contenido_Seccion
+    {   
+        width:70%;
+        min-height:29.2em;
+        max-height:29.2em;
+    }
+    aside, Publicidad_Seccion
+    {
+       width:30%;
+     }
+    .Consultor_Seccion
+    {
+        box-sizing:border-box;
+        width:40%;  
+    }
+    .Captura_Seccion
+    {
+        box-sizing:border-box;
+        width:58%;   
+
+     }
+    .PiePagina_Seccion {
+        display: none;
+    }
+         
+}
