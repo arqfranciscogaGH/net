@@ -182,25 +182,23 @@ h2 {
     }
 
     .Consultor_Seccion.AltoCh {
-        min-height: 6.0em;
-        max-height: 12.0em;
+        min-height: 5.0em;
+        max-height: 20.0em;
     }
 
     .Consultor_Seccion.AltoMed {
         min-height: 10.0em;
-        max-height: 18.0em;
+        max-height: 35.0em;
     }
 
     .Consultor_Seccion.AltoGde {
-        min-height: 20.0em;
-        max-height: 33.0em;
+        min-height: 15.0em;
+        max-height: 42.0em;
     }
 
     .Consultor_Seccion.AltoTotal {
-        /*min-height:20.0em;
-    max-height:33.0em;*/
-        min-height: 20%;
-        max-height: 100%;
+        min-height: 25.0em;
+        max-height: 45.0em;
     }
 
     .Consultor_Seccion.Arriba {
@@ -253,23 +251,25 @@ h2 {
     }
 
     .Captura_Seccion.AltoCh {
-        min-height: 6.0em;
-        max-height: 12.0em;
+        min-height: 5.0em;
+        max-height: 20.0em;
     }
 
     .Captura_Seccion.AltoMed {
         min-height: 10.0em;
-        max-height: 25.0em;
+        max-height: 35.0em;
     }
 
     .Captura_Seccion.AltoGde {
         min-height: 15.0em;
-        max-height: 35.0em;
+        max-height: 42.0em;
     }
 
     .Captura_Seccion.AltoTotal {
-        min-height: 50%;
-        max-height: 100%;
+        /*min-height: 20%;
+        max-height: 30%;*/
+        min-height: 25.0em;
+        max-height: 45.0em;
     }
 
     .Captura_Seccion.AltoAuto {
@@ -417,25 +417,27 @@ h2 {
     display: inline-block;
     float: left;
     color: #1A1A7B;
+    background:  rgba(0, 0, 0,.7);
     /*outline:1px solid blue;*/
 }
 
 .MenuTitulo {
     box-sizing: border-box;
     /*line-height:40px;*/
-    font-size: 30px;
+    font-size: 20px;
     padding: 5px 5px;
     display: inline-block;
     float: left;
-    color: #1A1A7B;
+    color: rgba(100, 250, 250,.7);
+    
     /*outline:1px solid blue;*/
 }
 
 .MenuBotonActivacion {
     box-sizing: border-box;
     /*line-height:40px;*/
-    font-size: 30px;
-    padding: 5px 20px;
+    font-size: 25px;
+    padding: 10px 10px;
     /*margin:5px 5px;*/
     display: block;
     color: #1A1A7B;
@@ -444,27 +446,28 @@ h2 {
     margin-left: auto;
     cursor: pointer;
 }
-
+.ElementoCerrarSesion {
+    box-sizing: border-box;
+    /*position: absolute;*/
+    /*position: relative;*/
+    /*line-height:40px;*/
+    font-size: 25px;
+    padding: 10px 10px;
+    /*margin:5px 5px;*/
+    display: block;
+    color: #1A1A7B;
+    align-content: center;
+    /*left: 97%;
+    top: 3em;*/
+    border-radius: 5px;
+    /*margin-left: auto;*/
+    cursor: pointer;
+}
 .MenuActivo {
     left: 0px;
 }
 
-.ElementoCerrarSesion {
-    box-sizing: border-box;
-    position: absolute;
-    /*line-height:40px;*/
-    font-size: 30px;
-    padding: 5px 20px;
-    /*margin:5px 5px;*/
-    display: block;
-    color: #1A1A7B;
-    align-content: flex-end;
-    left: 94%;
-    top: 2em;
-    border-radius: 5px;
-    margin-left: auto;
-    cursor: pointer;
-}
+
 
 .ContenedorSeguridad {
     box-sizing: border-box;
@@ -476,6 +479,7 @@ h2 {
     margin: 1em 2em;
     padding: 1px 1px;
     display: none;
+    border-radius: 5px;
 }
 
 .ContenedorSeguridadVisible {
@@ -483,22 +487,29 @@ h2 {
     position: absolute;
     /*visibility: hidden;*/
     /*align-content: flex-end;*/
-    left: 85%;
+    right: 5%;
     color: #E6E6E6;
     margin: 1em 2em;
     padding: 1px 1px;
     display: block;
+    border-radius: 5px;
+    z-index: 6000;
+    border: solid 1px silver;
+    -webkit-box-shadow: 0px 0px 8px 3px #AAA;
+    -mox-box-shadow: 0px 0px 8px 3px #AAA;
+    box-shadow: 0px 0px 8px 3px #AAA;
+    background-color: rgba(0, 0, 0,.5);
 }
 
 .ContenedorElementoSeguridad {
     box-sizing: border-box;
+    width: 100%;
 }
 
 .ContenedorTextoSeguridad {
     box-sizing: border-box;
     display: inline;
-    min-width: 20em;
-    max-width: 20%;
+    width: 100%;
     font-size: 15px;
     color: #E6E6E6;
 }
@@ -513,9 +524,9 @@ h2 {
     color: #E6E6E6;
 }
 
-    .ContenedorIconoSeguridad.Cerrar {
-        cursor: pointer;
-    }
+.ContenedorIconoSeguridad.Cerrar {
+    cursor: pointer;
+}
 
 
 
@@ -1680,48 +1691,45 @@ VentanaEncabezado {
 
 /**     validador  de campos    ***/
 
+
 .Validador {
     box-sizing: border-box;
     position: relative;
-    width: 100px;
-    max-width: 700px;
+    max-width: 95%;
     height: auto;
     padding: 5px 5px 5px 15px;
+    margin-left: 5px;
     visibility: hidden;
-    display: table-caption;
     z-index: -100;
     text-align: center;
     font: normal 12px Arial;
-    border: solid 2px red;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    border: solid 2px #1A1A7B;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     color: #E6E6E6;
     background: url(Iconos/icoDialogoAyudaColor.png) left center no-repeat;
-    background: #1A1A7B;
+    background: red;
 }
 
-.Validador:after {
-  
-    position: relative;
-    width: 15px;
-    height: 15px;
-    top: 100%;
-    left: 70%;
-    content: '';
-    transform: rotate(45deg);
-    margin-left: -5px;
-    margin-top: -5px;
-    /*border-top: 0px solid red;
-    border-right: 2px solid red;
-    border-bottom: 2px solid red;
-    border-left: 0px solid red;
-    background: #1A1A7B;*/
-
-
-}
-
-/*.Validador
+    .Validador:after {
+        position: relative;
+        width: 15px;
+        height: 15px;
+        top: 100%;
+        left: 70%;
+        content: '';
+        transform: rotate(45deg);
+        /*margin-left: -5px;
+        margin-top: -5px;
+        border-top: 0px solid #1A1A7B;
+        border-right: 2px solid #1A1A7B;
+        border-bottom: 2px solid #1A1A7B;
+        border-left: 0px solid red;
+        background: #1A1A7B;*/
+    }
+/*
+.Validador
 {
     position:absolute;
     margin-left:0px;
@@ -1740,7 +1748,7 @@ VentanaEncabezado {
     -webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
-}*/
+}
 
 
 /*****************       ayuda para campos   *******************/
@@ -2509,12 +2517,12 @@ select:not(:checked) {
 .IconoFuente {
     /*margin-right:0.1em;*/
     text-decoration: none;
-    margin:1px 1px;
+    margin:1px 2px;
     padding:1px 1px;
 }
 
     .IconoFuente.Ch {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .IconoFuente.Med {

@@ -31,6 +31,15 @@ namespace Sitio.Seguridad {
         protected global::Sitio.Comun.Controles.ucWebBarraProgreso ucWebBarraProgreso1;
         
         /// <summary>
+        /// Control UcWebEncabezadoPagina1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Sitio.Comun.Controles.UcWebEncabezadoPagina UcWebEncabezadoPagina1;
+        
+        /// <summary>
         /// Control UcWebMenuFuncionalidad2.
         /// </summary>
         /// <remarks>

@@ -23,13 +23,12 @@ namespace Sitio
         private static Captura captura;
         private string ClaveAplicacion = "Acceso";
         private static Control contenedor;
-
+        private string nombreBoton = "Ingresar";
         private string Cuenta = string.Empty;
         private string Contrasena = string.Empty;
         private string idControlPerfil = string.Empty;
 
 
-        private static string nombreBoton = "Ingresar";
 
         #endregion
 
@@ -139,9 +138,9 @@ namespace Sitio
                 AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil= lista.SelectedValue.ToString();
                 AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ObtenerMenuPrincipal();
             }
-            if (accion == "Recuperar Contraseña ")
+            if (accion == "Recuperar contraseña")
             {
-   
+                btnRecuperar_Click(sender, e);
             }
             else if (accion == "Entrar")
             {
@@ -161,7 +160,7 @@ namespace Sitio
                     AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil = IdPerfil;
 
                     AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ObtenerMenuPrincipal();
-                    AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.Privilegios = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ObtenerPrivilegios();
+                   // AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.Privilegios = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ObtenerPrivilegios();
                 }
   
                 ucWebBarraProgreso1.DesActivar();

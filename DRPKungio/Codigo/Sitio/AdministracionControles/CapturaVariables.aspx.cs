@@ -150,7 +150,7 @@ namespace Sitio.AdministracionControles
             administrarSeguridad.IniciarSesionUsuario();
 
             generadorControles = new GeneradorControlesWeb();
-            generadorControles.AdministradorVariablesActual = AdministradorSistema.AdministradorVariablesSesion;
+            generadorControles.AdministradorVariablesActual = AdministradorSistema.AdministradorVariablesSistema;
             generadorControles.Iniciar();
 
         }
@@ -234,8 +234,8 @@ namespace Sitio.AdministracionControles
             }
             else
             {
-                IdFlujoTrabajo = (string)AdministradorSistema.AdministradorVariablesSesion.Obtener(IdVariableIdFlujoTrabajo);
-                Identificador = (string)AdministradorSistema.AdministradorVariablesSesion.Obtener(IdVariableIdentificadorFlujoTrabajo);
+                IdFlujoTrabajo = (string)AdministradorSistema.AdministradorVariablesSistema.Obtener(IdVariableIdFlujoTrabajo);
+                Identificador = (string)AdministradorSistema.AdministradorVariablesSistema.Obtener(IdVariableIdentificadorFlujoTrabajo);
             }
             //  IdFlujoTrabajo
             if (valores != null && valores.Length > 0)
@@ -244,7 +244,7 @@ namespace Sitio.AdministracionControles
             }
             if (IdFlujoTrabajo != null && IdFlujoTrabajo != string.Empty && IdFlujoTrabajo != "0")
             {
-                AdministradorSistema.AdministradorVariablesSesion.Agregar(IdVariableIdFlujoTrabajo, IdFlujoTrabajo);
+                AdministradorSistema.AdministradorVariablesSistema.Agregar(IdVariableIdFlujoTrabajo, IdFlujoTrabajo);
                 ObtenerFlujo(IdFlujoTrabajo);
             }
         
@@ -255,7 +255,7 @@ namespace Sitio.AdministracionControles
             }
             if (Identificador != null && Identificador != string.Empty && Identificador != "0")
             {
-                AdministradorSistema.AdministradorVariablesSesion.Agregar(IdVariableIdentificadorFlujoTrabajo, Identificador);
+                AdministradorSistema.AdministradorVariablesSistema.Agregar(IdVariableIdentificadorFlujoTrabajo, Identificador);
                 captura.Identificador = Identificador;
                 _obtener = true;
             }

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuraciones>
+
+  <Correos>
+    <Correo Id="Ejemplo_CCD" Servidor="smtp.gmail.com" Puerto="587" Usuario="enviaa@mapdata.com.mx" Contrasena="enviaamapdata01"
+                 CorreoEmisor="enviaa@mapdata.com.mx" Asunto="Prueba Componente Correo" Plantilla="Comun/Servicios/Correo/Plantillas/NotificacionMensaje.html"
+                 CorreoDestino="jorodriguez@mapdata.com.mx" TipoMensaje="html" Mensaje="Mensaje de prueba. Estimado : NombreCorreo" ></Correo>
+    <Correo Id="FGAGOOGLE_CCD" Servidor="smtp.gmail.com" Puerto="587" Usuario="arqfranciscoga@gmail.com" Contrasena="fga26021969"
+                 CorreoEmisor="arqfranciscoga@gmail.com" Asunto="Prueba Componente Correo"  Plantilla="Comun/Servicios/Correo/Plantillas/NotificacionMensaje.html"
+                 CorreoDestino="arqfranciscoga@gmail.com" TipoMensaje="html" Mensaje="Mensaje de prueba. Estimado : NombreCorreo" ></Correo>
+    <Correo Id="FGALIVE_CCD" Servidor="smtp.live.com" Puerto="25" Usuario="arqfranciscoga@live.com" Contrasena="Fga26021969" 
+                 CorreoEmisor="arqfranciscoga@live.com" Asunto="Prueba Componente Correo" Plantilla="Comun/Servicios/Correo/Plantillas/NotificacionMensaje.html"
+                 CorreoDestino="arqfranciscoga@live.com" TipoMensaje="html" Mensaje="Mensaje de prueba. Estimado : NombreCorreo" ></Correo>
+
+  </Correos>
+
+
+</Configuraciones>

@@ -44,12 +44,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DRP.Modelo">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\DRP.Modelo.dll</HintPath>
+    <Reference Include="DRP.Modelo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\DRP.Modelo.dll</HintPath>
     </Reference>
     <Reference Include="Entidad.Cliente, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LibreriasCompiladas\Entidad.Cliente.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\Entidad.Cliente.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -63,65 +64,86 @@
     <Reference Include="MeNet.Nucleo.AdministradorBaseDatos">
       <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.AdministradorBaseDatos.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Nucleo.AdministradorConsultas">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.AdministradorConsultas.dll</HintPath>
+    <Reference Include="MeNet.Nucleo.AdministradorConsultas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.AdministradorConsultas.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.AdministradorCorreo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.AdministradorCorreo.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.AdministradorUtilerias">
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.AdministradorUtilerias.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Catalogo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Catalogo.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Catalogo.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Nucleo.Catalogo.Usr">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Catalogo.Usr.dll</HintPath>
+    <Reference Include="MeNet.Nucleo.Catalogo.Usr, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Catalogo.Usr.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Comun, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Comun.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Comun.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Configuracion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Configuracion.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Configuracion.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Nucleo.ConsultorDinamico">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.ConsultorDinamico.dll</HintPath>
+    <Reference Include="MeNet.Nucleo.ConsultorDinamico, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.ConsultorDinamico.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Contexto, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Contexto.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Contexto.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Nucleo.Controles">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Controles.dll</HintPath>
+    <Reference Include="MeNet.Nucleo.Controles, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Controles.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Nucleo.Error">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Error.dll</HintPath>
+    <Reference Include="MeNet.Nucleo.Error, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Error.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Eventos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Eventos.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Eventos.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Extensiones">
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Extensiones.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Modelo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Modelo.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Modelo.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Nucleo.Negocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MeNet.Nucleo.Negocio">
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Negocio.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.ServiciosAplicacion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Negocio.dll</HintPath>
-    </Reference>
-    <Reference Include="MeNet.Nucleo.ServiciosAplicacion">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.ServiciosAplicacion.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.ServiciosAplicacion.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Sesion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Sesion.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Sesion.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Nucleo.Variables">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Variables.dll</HintPath>
+    <Reference Include="MeNet.Nucleo.Utilerias, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Utilerias.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Nucleo.Variables, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Variables.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Seguridad.Administrador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Seguridad.Administrador.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Seguridad.Administrador.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Seguridad.GeneradorMenus">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Seguridad.GeneradorMenus.dll</HintPath>
+    <Reference Include="MeNet.Seguridad.GeneradorMenus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Seguridad.GeneradorMenus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -222,6 +244,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Acceso.aspx" />
+    <Content Include="AdminDocs.aspx" />
     <Content Include="AdministracionControles\AdministracionAccionesControl.aspx" />
     <Content Include="AdministracionControles\AdministracionCuestionario.aspx" />
     <Content Include="AdministracionControles\AdministracionPlaneacionCaptura.aspx" />
@@ -238,6 +261,8 @@
     <Content Include="App_Themes\AzulColoresPasteles\Fondos\fondoPagina.jpg" />
     <Content Include="App_Themes\AzulColoresPasteles\maqueta.css" />
     <Content Include="App_Themes\AzulColoresPasteles\medias.css" />
+    <Content Include="App_Themes\Base\maqueta.css" />
+    <Content Include="App_Themes\Base\medias.css" />
     <Content Include="App_Themes\NegroColoresPasteles\Colores.css" />
     <Content Include="App_Themes\NegroColoresPasteles\Fondos\fondoAplicacion.jpg" />
     <Content Include="App_Themes\NegroColoresPasteles\Fondos\fondoMensaje.png" />
@@ -245,6 +270,7 @@
     <Content Include="App_Themes\NegroColoresPasteles\maqueta.css" />
     <Content Include="App_Themes\NegroColoresPasteles\medias.css" />
     <Content Include="AdministracionCliente.aspx" />
+    <Content Include="CargarDocs.aspx" />
     <Content Include="Comun\Controles\ListaPersonalizada.ascx" />
     <Content Include="Comun\Controles\UcWebArbol.ascx" />
     <Content Include="Comun\Controles\UcWebBanner.ascx" />
@@ -256,13 +282,25 @@
     <Content Include="Comun\Controles\UcWebMensaje.ascx" />
     <Content Include="Comun\Controles\UcWebMenuFuncionalidad.ascx" />
     <Content Include="Comun\Controles\UcWebPiePagina.ascx" />
+    <Content Include="Comun\css\animate.css" />
+    <Content Include="Comun\css\bootstrap.min.css" />
+    <Content Include="Comun\css\fancybox_loading.gif" />
+    <Content Include="Comun\css\fancybox_overlay.png" />
+    <Content Include="Comun\css\fancybox_sprite.png" />
+    <Content Include="Comun\css\font-awesome.min.css" />
+    <Content Include="Comun\css\jquery.fancybox.css" />
+    <Content Include="Comun\css\main.css" />
+    <Content Include="Comun\css\owl.carousel.css" />
+    <Content Include="Comun\css\responsive.css" />
+    <Content Include="Comun\favicon\Aplicacion.ico" />
+    <Content Include="Comun\favicon\Aplicacion5.ico" />
     <Content Include="Comun\Iconos\Acceso.png" />
     <Content Include="Comun\Iconos\Actualizar.png" />
     <Content Include="Comun\Iconos\ActualizarElemento.png" />
     <Content Include="Comun\Iconos\advertencia.png" />
     <Content Include="Comun\Iconos\Agregar.png" />
     <Content Include="Comun\Iconos\AgregarElemento.png" />
-    <Content Include="Comun\Iconos\Aplicacion.ico" />
+    <Content Include="Comun\favicon\Aplicacion2.ico" />
     <Content Include="Comun\Iconos\aviso.png" />
     <Content Include="Comun\Iconos\Ayuda.png" />
     <Content Include="Comun\Iconos\Calculadora.png" />
@@ -306,6 +344,18 @@
     <Content Include="Comun\Img\fondoITOriginal.jpg" />
     <Content Include="Comun\Img\FondoLineas.jpg" />
     <Content Include="Comun\Img\FondoMundo.jpg" />
+    <Content Include="Comun\js\bootstrap.min.js" />
+    <Content Include="Comun\js\jquery-countTo.js" />
+    <Content Include="Comun\js\jquery.appear.js" />
+    <Content Include="Comun\js\jquery.fancybox.pack.js" />
+    <Content Include="Comun\js\jquery.mixitup.min.js" />
+    <Content Include="Comun\js\jquery.nav.js" />
+    <Content Include="Comun\js\jquery.parallax-1.1.3.js" />
+    <Content Include="Comun\js\main.js" />
+    <Content Include="Comun\js\owl.carousel.min.js" />
+    <Content Include="Comun\js\vendor\jquery-1.11.1.min.js" />
+    <Content Include="Comun\js\vendor\modernizr-2.6.2.min.js" />
+    <Content Include="Comun\js\wow.min.js" />
     <Content Include="Comun\LibreriasIconos\fontello\css\animation.css" />
     <Content Include="Comun\LibreriasIconos\fontello\css\fontello-codes.css" />
     <Content Include="Comun\LibreriasIconos\fontello\css\fontello-embedded.css" />
@@ -316,12 +366,25 @@
     <Content Include="Comun\LibreriasIconos\fontello\font\fontello.svg" />
     <Content Include="Comun\LibreriasIconos\fontello\LICENSE.txt" />
     <Content Include="Comun\LibreriasIconos\fontello\README.txt" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\css\fontawesome-all.css" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.svg" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.svg" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.svg" />
     <Content Include="Comun\Scripts\AdministradorElementosCompuestos.js" />
     <Content Include="Comun\Scripts\ArqSig.Geografico.AdministradorGeocodificacion.js" />
     <Content Include="Comun\Scripts\ArqSig.Geografico.AdministradorGoogle.js" />
     <Content Include="Comun\Scripts\ArqSigNet.Nucleo.AdministradorAplicaciones.js" />
     <Content Include="Comun\Scripts\jquery-1.8.0.min.js" />
     <Content Include="Comun\Scripts\Menu.js" />
+    <Content Include="Comun\Servicios\Correo\Plantillas\ActivacionCuenta.html" />
+    <Content Include="Comun\Servicios\Correo\Plantillas\Bienvenido.html" />
+    <Content Include="Comun\Servicios\Correo\Plantillas\MensajeConfirmacion.html" />
+    <Content Include="Comun\Servicios\Correo\Plantillas\NotificacionMensaje.html" />
+    <Content Include="Comun\Servicios\Correo\Plantillas\promocion.html" />
+    <Content Include="Comun\Servicios\Correo\Plantillas\RecuperacionContrasena.html" />
+    <Content Include="Comun\Servicios\Correo\Plantillas\RegistroUsuario.html" />
+    <Content Include="Comun\Servicios\Correo\ServicioCorreo.asmx" />
+    <Content Include="Comun\Servicios\Correo\Xml\Configuracion.xml" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -329,7 +392,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -345,9 +407,85 @@
     <Content Include="Comun\LibreriasIconos\fontello\font\fontello.ttf" />
     <Content Include="Comun\LibreriasIconos\fontello\font\fontello.woff" />
     <Content Include="Comun\LibreriasIconos\fontello\font\fontello.woff2" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.eot" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.ttf" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.woff" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.woff2" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.eot" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.ttf" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.woff" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.woff2" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.eot" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.ttf" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff" />
+    <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff2" />
+    <Content Include="Comun\js\.DS_Store" />
+    <Content Include="img\.DS_Store" />
+    <EntityDeploy Include="Models\Modelo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Modelo.edmx.diagram">
+      <DependentUpon>Modelo.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Inicio.aspx" />
+    <Content Include="img\about.png" />
+    <Content Include="img\client\1.jpg" />
+    <Content Include="img\client\2.jpg" />
+    <Content Include="img\client\3.jpg" />
+    <Content Include="img\expertise1.jpg" />
+    <Content Include="img\icons\camera.png" />
+    <Content Include="img\icons\cog.png" />
+    <Content Include="img\icons\fondologo.fw.png" />
+    <Content Include="img\icons\fondologo.png" />
+    <Content Include="img\icons\iphone-black.png" />
+    <Content Include="img\icons\iphone-white.png" />
+    <Content Include="img\icons\list-bg.png" />
+    <Content Include="img\icons\logoKungio3.png" />
+    <Content Include="img\icons\logoNegroValores.fw.png" />
+    <Content Include="img\icons\monitor.png" />
+    <Content Include="img\icons\plus.png" />
+    <Content Include="img\icons\plusmin.png" />
+    <Content Include="img\icons\ruler.png" />
+    <Content Include="img\icons\search.png" />
+    <Content Include="img\logo.jfif" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\logo2.png" />
+    <Content Include="img\logoKungio1.png" />
+    <Content Include="img\logoKungio2.png" />
+    <Content Include="img\logoKungio3.png" />
+    <Content Include="img\logoKungio5.png" />
+    <Content Include="img\logo\logoKungio10.png" />
+    <Content Include="img\logo\logoKungio11.png" />
+    <Content Include="img\logo\logoKungio12.png" />
+    <Content Include="img\logo\logoKungio13.png" />
+    <Content Include="img\portfolio\portfolio-1.fw.png" />
+    <Content Include="img\portfolio\portfolio-1.jpg" />
+    <Content Include="img\portfolio\portfolio-2.fw.png" />
+    <Content Include="img\portfolio\portfolio-2.jpg" />
+    <Content Include="img\slider-bg.jpg" />
+    <Content Include="img\slider\bg1o.jpg" />
+    <Content Include="img\slider\bg2o.jpg" />
+    <Content Include="img\slider\bg30s.jpg" />
+    <Content Include="img\slider\bg32s.jpg" />
+    <Content Include="img\slider\bg33s.jpg" />
+    <Content Include="img\slider\bg5o.jpg" />
+    <Content Include="img\slider\s1.jpg" />
+    <Content Include="img\slider\s2.jpg" />
+    <Content Include="img\slider\s3.jpg" />
+    <Content Include="inicio.aspx" />
+    <Content Include="Models\Modelo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelo.edmx</DependentUpon>
+      <LastGenOutput>Modelo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Modelo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelo.edmx</DependentUpon>
+      <LastGenOutput>Modelo.cs</LastGenOutput>
+    </Content>
+    <Content Include="Pagina.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="MenuPrincipal.aspx" />
     <Content Include="Prueba.aspx" />
@@ -406,6 +544,13 @@
     </Compile>
     <Compile Include="Acceso.aspx.designer.cs">
       <DependentUpon>Acceso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDocs.aspx.cs">
+      <DependentUpon>AdminDocs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDocs.aspx.designer.cs">
+      <DependentUpon>AdminDocs.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdministracionControles\AdministracionAccionesControl.aspx.cs">
       <DependentUpon>AdministracionAccionesControl.aspx</DependentUpon>
@@ -494,6 +639,13 @@
     <Compile Include="AdministracionCliente.aspx.designer.cs">
       <DependentUpon>AdministracionCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CargarDocs.aspx.cs">
+      <DependentUpon>CargarDocs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CargarDocs.aspx.designer.cs">
+      <DependentUpon>CargarDocs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Comun\Clases\AdministradorControlesUI.cs" />
     <Compile Include="Comun\Clases\AdministradorSistema.cs" />
     <Compile Include="Comun\Controles\ListaPersonalizada.ascx.cs">
@@ -572,6 +724,10 @@
     <Compile Include="Comun\Controles\UcWebPiePagina.ascx.designer.cs">
       <DependentUpon>UcWebPiePagina.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Comun\Servicios\Correo\ServicioCorreo.asmx.cs">
+      <DependentUpon>ServicioCorreo.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -589,12 +745,37 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Inicio.aspx.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
+    <Compile Include="inicio.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inicio.aspx.designer.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlujoTrabajoDocumento.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Modelo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Modelo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Modelo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pagina.aspx.cs">
+      <DependentUpon>Pagina.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Inicio.aspx.designer.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
+    <Compile Include="Pagina.aspx.designer.cs">
+      <DependentUpon>Pagina.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
@@ -734,7 +915,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -749,6 +929,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

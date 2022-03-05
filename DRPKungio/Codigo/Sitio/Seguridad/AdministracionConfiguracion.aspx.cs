@@ -88,6 +88,10 @@ namespace Sitio.Seguridad
             }
 
             Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
+            UcWebMenuFuncionalidad2.DefinirMenuPrincipal();
+            UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
+            UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
+
             if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
             {
                 CargarControles();
@@ -111,8 +115,9 @@ namespace Sitio.Seguridad
             {
                 Configurar();
                 InscribirEventos();
+                ActualizarElementos(false);
                 ConfigurarAlCargarPaginaSiempre();
-                ActualizarElementos();
+
             }
             else
             {
@@ -160,9 +165,11 @@ namespace Sitio.Seguridad
         private void ConfigurarAlCargarPaginaSoloInicialmente()
         {
             administradorNegocio = new AdministradorConfiguracion();
+
             _entidad = administradorNegocio.Instanciar();
+            
             _tipoEntidad = _entidad.GetType();
-            _lista = administradorNegocio.ObtenerLista();
+            _lista = obtenerLista();
 
         }
 
@@ -194,6 +201,12 @@ namespace Sitio.Seguridad
         public MeNet.Nucleo.Configuracion.Configuracion Instanciar()
         {
             _entidad = administradorNegocio.Instanciar();
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil == "1")
+                _entidad.IdAplicacion = 1;
+            else if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil == "2")
+                _entidad.IdAplicacion = 7073;
+            else
+                _entidad.IdAplicacion = 10;
             return _entidad;
         }
 
@@ -306,6 +319,7 @@ namespace Sitio.Seguridad
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             _entidad = Instanciar();
+            _entidad.IdAplicacion = 7073;
             _entidad = (MeNet.Nucleo.Configuracion.Configuracion)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
 
             if (_entidad != null)
@@ -316,7 +330,7 @@ namespace Sitio.Seguridad
                 administradorNegocio.GuardarCambios();
                 generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                 //IdElemento = _entidad.IdMenu;
-                ActualizarElementos();
+                ActualizarElementos(true);
             }
         }
 
@@ -330,7 +344,7 @@ namespace Sitio.Seguridad
                     _entidad = (MeNet.Nucleo.Configuracion.Configuracion)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                     administradorNegocio.Actualizar( ( MeNet.Nucleo.Configuracion.Configuracion)_entidad);
                     administradorNegocio.GuardarCambios();
-                    ActualizarElementos();
+                    ActualizarElementos(true);
                 }
             }
         }
@@ -358,7 +372,7 @@ namespace Sitio.Seguridad
             {
 
             }
-            ActualizarElementos();
+            ActualizarElementos(true);
         }
 
         #endregion
@@ -369,45 +383,31 @@ namespace Sitio.Seguridad
 
         #region  Paso  9 Métodos para   actualizar  grids
 
-        public void ActualizarElementos()
+        public void ActualizarElementos( bool actualizar)
         {
-            ActualizarElementosConsultaPrincipal(null, null);
+            ActualizarElementosConsultaPrincipal(null, null, actualizar);
             //ActualizarElementosConsultaSecundaria(null, null);
         }
 
-        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e)
+        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e, bool actualizar)
         {
             if (_entidad != null)
             {
-                _lista = null;
-                _lista = administradorNegocio.Consultar(s => s.Activo == true).ToList();
+                if (_lista == null || actualizar)
+                    _lista = obtenerLista();
                 ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
             }
         }
-        ////protected void ActualizarElementosConsultaSecundaria(object sender, EventArgs e)
-        ////{
-        ////    if (IdElemento != null && IdElemento != 0)
-        ////    {
-        ////        _entidad2.IdMenu = IdElemento;
-        ////        _lista2 = administradorNegocio.ObtenerOpcionesMenu(_entidad2);
-        ////        if (_lista2 != null && _lista2.GetType().ToString() != "System.Data.DataSet")
-        ////        {
-        ////            ucWebConsultorDinamico2.AsigarOrigenDatos((IEnumerable<object>)_lista2, _tipoEntidad2);
-        ////        }
-        ////        else
-        ////            ActulizarElementosConsultaSecundariaVacio();
-        ////    }
-        ////    else
-        ////    {
-        ////        _lista2 = null;
-        ////        ActulizarElementosConsultaSecundariaVacio();
-        ////    }
-        ////}
-        ////public void ActulizarElementosConsultaSecundariaVacio()
-        ////{
-        ////    ucWebConsultorDinamico2.AsigarOrigenDatos((IEnumerable<object>)_lista2, _tipoEntidad2);
-        ////}
-
+        private List<Configuracion> obtenerLista()
+        {
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil == "1")
+                _lista = administradorNegocio.ObtenerLista();
+            else if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil == "2")
+                _lista = administradorNegocio.Consultar(s => s.IdAplicacion == 7073 ).ToList();
+            else
+                _lista = administradorNegocio.Consultar(s => s.IdAplicacion == 10 ).ToList();
+            return _lista;
+        }
         #endregion
 
         #region  paso  10 Métodos comunes

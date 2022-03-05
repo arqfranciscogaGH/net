@@ -10,6 +10,8 @@ using MeNet.Seguridad.Administrador;
 //  clases  comunes
 using Sitio.Comun.Clases;
 
+using System.Configuration;
+
 namespace Sitio.Comun.Controles
 {
     public partial class UcWebEncabezadoPagina : System.Web.UI.UserControl
@@ -47,9 +49,11 @@ namespace Sitio.Comun.Controles
         }
         protected void IdBotonElementosSeguridad_Click(object sender, EventArgs e)
         {
+            String pagina = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PaginaAcceso;
+            AdministradorSistema.CerrarSesion();
+            Response.Redirect(pagina);
+            //Response.Redirect("~/Acceso.aspx");
 
-            AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.CerrarSesion();
-            Response.Redirect("Acceso.aspx");
             //if  (IdContenedorSeguridad.Visible)
             //     IdContenedorSeguridad.Visible = false;
             //else

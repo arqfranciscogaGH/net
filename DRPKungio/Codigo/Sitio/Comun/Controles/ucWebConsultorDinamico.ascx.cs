@@ -56,12 +56,12 @@ namespace Sitio.Comun.Controles
         public AdminisradorConsultor ObtenerAdministrardorConsultor()
         { 
             string Id = ObtenerIdConsultor();
-            AdminisradorConsultor adminisradorConsultor = (AdminisradorConsultor)AdministradorSistema.AdministradorVariablesSesion.Obtener(Id);
+            AdminisradorConsultor adminisradorConsultor = (AdminisradorConsultor)AdministradorSistema.AdministradorVariablesSistema.Obtener(Id);
             if (adminisradorConsultor == null)
             {
                 adminisradorConsultor = new AdminisradorConsultor();
                 adminisradorConsultor.Id = Id;
-                AdministradorSistema.AdministradorVariablesSesion.Agregar(Id, adminisradorConsultor);
+                AdministradorSistema.AdministradorVariablesSistema.Agregar(Id, adminisradorConsultor);
             }
             return adminisradorConsultor;
         }

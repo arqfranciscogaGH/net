@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\LibreriasCompiladas\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\LibreriasCompiladas\</OutputPath>
+    <OutputPath>..\..\..\LibreriasCompiladas\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -38,13 +38,13 @@
       <HintPath>..\..\Sitio\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.AdministradorBaseDatos">
-      <HintPath>..\..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.AdministradorBaseDatos.dll</HintPath>
+      <HintPath>..\..\..\LibreriasCompiladas\MeNet.Nucleo.AdministradorBaseDatos.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Contexto">
-      <HintPath>..\..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Contexto.dll</HintPath>
+      <HintPath>..\..\..\LibreriasCompiladas\MeNet.Nucleo.Contexto.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.Negocio">
-      <HintPath>..\..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.Negocio.dll</HintPath>
+      <HintPath>..\..\..\LibreriasCompiladas\MeNet.Nucleo.Negocio.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

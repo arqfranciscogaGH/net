@@ -1,15 +1,173 @@
 ﻿/**     colores          **/
-.colorMorado {
-    background: #DA70D6;
+
+
+/**  Rojo  **/
+/**  Rojo Claro   **/
+.colorRojoC1 {
+    background: #FDEDEC;
 }
-/**  HotPink	   **/
-.colorRosa {
-    background: #FF69B4;
+
+.colorRojoC2 {
+    background: #FADBD8;
 }
-/**  BurlyWood	   **/
-.colorCafe {
-    background: #DEB887;
+
+.colorRojoC3 {
+    background: #F5B7B1;
 }
+
+.colorRojoC4 {
+    background: #F1948A;
+}
+
+.colorRojoC5 {
+    background: #EC7063;
+}
+
+.colorRojoC6 {
+    background: #E74C3C;
+}
+
+.colorRojoC7 {
+    background: #CB4335;
+}
+
+.colorRojoC8 {
+    background: #B03A2E;
+}
+
+.colorRojoC9 {
+    background: #943126;
+}
+
+.colorRojoC10 {
+    background: #78281F;
+}
+
+/**  Rojo Osbcuro   **/
+.colorRojoO1 {
+    background: #F9EBEA;
+}
+
+.colorRojoO2 {
+    background: #F2D7D5;
+}
+
+.colorRojoO3 {
+    background: #E6B0AA;
+}
+
+.colorRojoO4 {
+    background: #D98880;
+}
+
+.colorRojoO5 {
+    background: #CD6155;
+}
+
+.colorRojoO6 {
+    background: #C0392B;
+}
+
+.colorRojoO7 {
+    background: #A93226;
+}
+
+.colorRojoO8 {
+    background: #922B21;
+}
+
+.colorRojoO9 {
+    background: #7B241C;
+}
+
+.colorRojoO10 {
+    background: #641E16;
+}
+
+
+/**  Morado  **/
+/**  Morado Claro   **/
+.colorMoradoC1 {
+    background: #F5EEF8;
+}
+
+.colorMoradoC2 {
+    background: #EBDEF0;
+}
+
+.colorMoradoC3 {
+    background: #D7BDE2;
+}
+
+.colorMoradoC4 {
+    background: #C39BD3;
+}
+
+.colorMoradoC5 {
+    background: #AF7AC5;
+}
+
+.colorMoradoC6 {
+    background: #9B59B6;
+}
+
+.colorMoradoC7 {
+    background: #884EA0;
+}
+
+.colorMoradoC8 {
+    background: #76448A;
+}
+
+.colorMoradoC9 {
+    background: #633974;
+}
+
+.colorMoradoC10 {
+    background: #512E5F;
+}
+
+/**  Morado Osbcuro   **/
+.colorMoradoO1 {
+    background: #F4ECF7;
+}
+
+.colorMoradoO2 {
+    background: #E8DAEF;
+}
+
+.colorMoradoO3 {
+    background: #D2B4DE;
+}
+
+.colorMoradoO4 {
+    background: #BB8FCE;
+}
+
+.colorMoradoO5 {
+    background: #A569BD;
+}
+
+.colorMoradoO6 {
+    background: #8E44AD;
+}
+
+.colorMoradoO7 {
+    background: #7D3C98;
+}
+
+.colorMoradoO8 {
+    background: #6C3483;
+}
+
+.colorMoradoO9 {
+    background: #5B2C6F;
+}
+
+.colorMoradoO10 {
+    background: #4A235A;
+}
+
 /**  Azul  **/
 /**  Azul Claro   **/
 .colorAzulC1 {
@@ -83,17 +241,280 @@
     background: #154360;
 }
 
-.colorAzul {
-    background: #4634F9;
+
+
+/**  AzulVerde  **/
+/**  AzulVerde Claro   **/
+.colorAzulVerdeC1 {
+    background: #E8F8F5;
 }
 
-.colorAzulClaro {
-    background: #22F6F0;
+.colorAzulVerdeC2 {
+    background: #D1F2EB;
 }
 
+.colorAzulVerdeC3 {
+    background: #A3E4D7;
+}
+
+.colorAzulVerdeC4 {
+    background: #76D7C4;
+}
+
+.colorAzulVerdeC5 {
+    background: #48C9B0;
+}
+
+.colorAzulVerdeC6 {
+    background: #1ABC9C;
+}
+
+.colorAzulVerdeC7 {
+    background: #17A589;
+}
+
+.colorAzulVerdeC8 {
+    background: #148F77;
+}
+
+.colorAzulVerdeC9 {
+    background: #117864;
+}
+
+.colorAzulVerdeC10 {
+    background: #0E6251;
+}
+
+/**  AzulVerde Osbcuro   **/
+.colorAzulVerdeO1 {
+    background: #E8F6F3;
+}
+
+.colorAzulVerdeO2 {
+    background: #D0ECE7;
+}
+
+.colorAzulVerdeO3 {
+    background: #A2D9CE;
+}
+
+.colorAzulVerdeO4 {
+    background: #73C6B6;
+}
+
+.colorAzulVerdeO5 {
+    background: #45B39D;
+}
+
+.colorAzulVerdeO6 {
+    background: #16A085;
+}
+
+.colorAzulVerdeO7 {
+    background: #138D75;
+}
+
+.colorAzulVerdeO8 {
+    background: #117A65;
+}
+
+.colorAzulVerdeO9 {
+    background: #0E6655;
+}
+
+.colorAzulVerdeO10 {
+    background: #0B5345;
+}
+
+
+/**  Verde  **/
+/**  Verde Claro   **/
+.colorVerdeC1 {
+    background: #EAFAF1;
+}
+
+.colorVerdeC2 {
+    background: #D5F5E3;
+}
+
+.colorVerdeC3 {
+    background: #ABEBC6;
+}
+
+.colorVerdeC4 {
+    background: #82E0AA;
+}
+
+.colorVerdeC5 {
+    background: #58D68D;
+}
+
+.colorVerdeC6 {
+    background: #2ECC71;
+}
+
+.colorVerdeC7 {
+    background: #28B463;
+}
+
+.colorVerdeC8 {
+    background: #239B56;
+}
+
+.colorVerdeC9 {
+    background: #1D8348;
+}
+
+.colorVerdeC10 {
+    background: #186A3B;
+}
+
+/**  Verde Osbcuro   **/
+.colorVerdeO1 {
+    background: #D4EFDF;
+}
+
+.colorVerdeO2 {
+    background: #D4EFDF;
+}
+
+.colorVerdeO3 {
+    background: #A9DFBF;
+}
+
+.colorVerdeO4 {
+    background: #7DCEA0;
+}
+
+.colorVerdeO5 {
+    background: #52BE80;
+}
+
+.colorVerdeO6 {
+    background: #27AE60;
+}
+
+.colorVerdeO7 {
+    background: #229954;
+}
+
+.colorVerdeO8 {
+    background: #1E8449;
+}
+
+.colorVerdeO9 {
+    background: #196F3D;
+}
+
+.colorVerdeO10 {
+    background: #145A32;
+}
+
+/**  Amarillo  **/
+/**  Amarillo Claro   **/
+.colorAmarilloC1 {
+    background: #D5F5E3;
+}
+
+.colorAmarilloC2 {
+    background: #FCF3CF;
+}
+
+.colorAmarilloC3 {
+    background: #F9E79F;
+}
+
+.colorAmarilloC4 {
+    background: #F7DC6F;
+}
+
+.colorAmarilloC5 {
+    background: #F4D03F;
+}
+
+.colorAmarilloC6 {
+    background: #F1C40F;
+}
+
+.colorAmarilloC7 {
+    background: #D4AC0D;
+}
+
+.colorAmarilloC8 {
+    background: #B7950B;
+}
+
+.colorAmarilloC9 {
+    background: #9A7D0A;
+}
+
+.colorAmarilloC10 {
+    background: #7D6608;
+}
+
+/**  Amarillo Osbcuro   **/
+.colorAmarilloO1 {
+    background: #FEF5E7;
+}
+
+.colorAmarilloO2 {
+    background: #FDEBD0;
+}
+
+.colorAmarilloO3 {
+    background: #FAD7A0;
+}
+
+.colorAmarilloO4 {
+    background: #F8C471;
+}
+
+.colorAmarilloO5 {
+    background: #F5B041;
+}
+
+.colorAmarilloO6 {
+    background: #F39C12;
+}
+
+.colorAmarilloO7 {
+    background: #D68910;
+}
+
+.colorAmarilloO8 {
+    background: #B9770E;
+}
+
+.colorAmarilloO9 {
+    background: #9C640C;
+}
+
+.colorAmarilloO10 {
+    background: #7E5109;
+}
+
+
+/**  otros	   **/
 .colorRojo {
     background: #FF0040;
 }
+
+.colorMorado {
+    background: #DA70D6;
+}
+/**  HotPink	   **/
+.colorRosa {
+    background: #FF69B4;
+}
+/**  BurlyWood	   **/
+.colorCafe {
+    background: #DEB887;
+}
+
+.colorNaranja {
+    background: #FF8000;
+}
+
 
 .colorVerde {
     background: #23FA67;
@@ -106,11 +527,13 @@
 .colorAmarillo {
     background: #F7FE2E;
 }
-
-.colorNaranja {
-    background: #FF8000;
+.colorAzul {
+    background: #4634F9;
 }
 
+.colorAzulClaro {
+    background: #22F6F0;
+}
 .colorBlanco {
     background: #D8D8D8;
 }

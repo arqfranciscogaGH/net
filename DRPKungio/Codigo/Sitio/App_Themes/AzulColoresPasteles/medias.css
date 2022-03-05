@@ -33,7 +33,12 @@
         min-height: 35%;
         max-height: 45%;
      }
+    .ElementoCerrarSesion {
 
+        left: 90%;
+        top: 3em;
+ 
+    }
 
 } 
 
@@ -97,5 +102,5 @@
     .PiePagina_Seccion {
         display: none;
     }
-         
+        
 }

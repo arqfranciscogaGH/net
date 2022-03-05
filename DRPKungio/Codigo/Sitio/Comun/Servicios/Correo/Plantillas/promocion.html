@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        body {
+            font-family: arial;
+            margin: 0;
+            padding: 0;
+        }
+
+        .conten_webmail {
+            margin: 0 auto;
+            width: 600px;
+            height: 447px;
+            color: #95A4B9;
+            font: normal 11px Arial;
+            border: solid 1px #D6DAE0;
+            background: #fff;
+        }
+
+        .box_text {
+            vertical-align: top;
+        }
+
+        h1 {
+            color: #CAD1DB;
+            font: bold 18px Arial;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            color: red;
+        }
+
+        img {
+            border: none;
+        }
+
+        p {
+            color: #95A4B9;
+            font: bold 11px Arial;
+            float: left;
+            width: 560px;
+            padding: 10px;
+            text-align: left;
+            margin: 0 10px;
+        }
+
+        a {
+            font: bold 11px Arial;
+            text-decoration: none;
+            color: #fc0;
+        }
+
+            a:hover {
+                text-decoration: none;
+                color: #9EACBE;
+            }
+
+            a img {
+                vertical-align: middle;
+                margin: 0 3px;
+            }
+
+        b {
+            font: bold 12px Arial;
+            color: #000;
+        }
+
+        .styleEmpresa {
+            /*            height: 47px;*/
+            color: black;
+            font: normal 14px Arial;
+        }
+        .styleTituloPromocion {
+            /*            height: 102px;*/
+            color: red;
+            font: normal 12px Arial;
+        }
+        .style5 {
+            /*            height: 102px;*/
+
+            font: normal 12px Arial;
+        }
+
+        .style6 {
+            /*            height: 45px;*/
+            color: blue;
+            font: normal 10px Arial;
+        }
+
+        .style7 {
+            height: 12px;
+        }
+        .styleLogo {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            top: 1px;
+            left: 10%;
+            width: auto;
+            height: auto;
+        }
+        .imaagenLogo {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: auto;
+            height: auto;
+            max-width: 500px;
+            max-height: 70px;
+            top: 1px;
+            left: 10%
+        }
+    </style>
+
+</head>
+<body>
+    <table class="conten_webmail" cellspacing="0" cellpadding="0">
+        <tr>
+
+            <td class="styleLogo">
+                <div class="imaagenLogo">
+                    <img src="cid:@logo" alt="">
+                </div>
+            </td>
+            <td class="styleEmpresa">
+                <h1>@empresa</h1>
+    
+            </td>
+
+        </tr>
+        <tr>
+            <td style="vertical-align:top; height: 47px;" class="style4">
+                <p style="">Estimado(a) @nombre</p>
+                <p>Usted tiene ahora una promocióm.</p>
+            </td>
+            <td class="styleTituloPromocion">
+                <p style="text-align:justify;">
+                    @texto
+                </p>
+            </td>
+
+            <td class="styleTituloPromocion">
+                <p>Usted tiene ahora una promocióm.</p>
+                <br />
+                <p>
+                    <a href="@sitio">Sitio</a>
+                </p>
+            </td>
+            <div class="imaagenLogo">
+                <img src="cid:@imagen1" alt="">
+            </div>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td class="style5">
+                <p style="text-align:justify;">
+                    <b></b>
+                </p>
+            </td>
+        </tr>
+        <tr><td></td></tr>
+
+        <tr style="background:#687D94;">
+            <td style="text-align:center;">  Considera nuestra promoción,  no esperes contanos </td>
+            <td class="style5">
+                <p style="text-align:justify;">
+                    @texto
+                </p>
+            </td>
+        </tr>
+        <tr><td></td></tr>
+    </table>
+    <img src="cid:@imagen2" alt="" />
+</body>
+</html>

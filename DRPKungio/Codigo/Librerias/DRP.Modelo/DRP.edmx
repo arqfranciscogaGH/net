@@ -1,0 +1,1907 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Modelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccesoCaptura">
+          <Key>
+            <PropertyRef Name="IdAccesoCaptura" />
+          </Key>
+          <Property Name="IdAccesoCaptura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDefinicionCaptura" Type="int" />
+          <Property Name="Tipo" Type="varchar" MaxLength="30" />
+          <Property Name="Acceso" Type="varchar" MaxLength="150" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Aplicacion">
+          <Key>
+            <PropertyRef Name="IdAplicacion" />
+          </Key>
+          <Property Name="IdAplicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="30" />
+          <Property Name="IdSistema" Type="int" />
+          <Property Name="IdModuloSistema" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="Tipo" Type="varchar" MaxLength="10" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="IdAutorCreacion" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaActualizacion" Type="datetime" />
+          <Property Name="IdAutorActualizacion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Capa" Type="varchar" MaxLength="30" />
+          <Property Name="Clase" Type="varchar" MaxLength="150" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdArea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="IdCentroCosto" Type="int" />
+          <Property Name="IdAreaSuperior" Type="int" Nullable="false" />
+          <Property Name="IdSuscriptor" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="BitacoraError">
+          <Key>
+            <PropertyRef Name="IdErrorAplicacion" />
+          </Key>
+          <Property Name="IdErrorAplicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSistema" Type="int" />
+          <Property Name="IdModulo" Type="int" />
+          <Property Name="IdAplicacion" Type="int" />
+          <Property Name="Severidad" Type="nvarchar" MaxLength="10" />
+          <Property Name="Componente" Type="nvarchar" MaxLength="250" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Clase" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdError" Type="int" />
+          <Property Name="Mensaje" Type="nvarchar(max)" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="Referencia" Type="nvarchar(max)" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="CuentaUsuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cuenta" Type="varchar" MaxLength="100" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="250" />
+          <Property Name="IdEstacionTrabajo" Type="varchar" MaxLength="50" />
+          <Property Name="IdUsuarioSuperior" Type="int" />
+          <Property Name="FechaRegistro" Type="smalldatetime" />
+          <Property Name="FechaVigencia" Type="smalldatetime" />
+          <Property Name="FechaCambioEstatus" Type="smalldatetime" />
+          <Property Name="Tema" Type="varchar" MaxLength="30" />
+          <Property Name="IdEstatusUsuario" Type="smallint" />
+          <Property Name="Activo" Type="tinyint" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="Sesiones" Type="int" />
+          <Property Name="Intentos" Type="int" />
+          <Property Name="IdIdioma" Type="int" />
+          <Property Name="Perfiles" Type="nvarchar(max)" />
+          <Property Name="Grupos" Type="nvarchar(max)" />
+          <Property Name="Expira" Type="bit" />
+          <Property Name="Privilegios" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DefinicionCaptura">
+          <Key>
+            <PropertyRef Name="IdDefinicionCaptura" />
+          </Key>
+          <Property Name="IdDefinicionCaptura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPlaneacionCaptura" Type="int" Nullable="false" />
+          <Property Name="IdContenedor" Type="int" Nullable="false" />
+          <Property Name="Orden" Type="int" Nullable="false" />
+          <Property Name="Publico" Type="bit" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Domicilio">
+          <Key>
+            <PropertyRef Name="IdDomicilio" />
+          </Key>
+          <Property Name="IdDomicilio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="TipoDomicilio" Type="varchar" MaxLength="1" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Latitud" Type="float" />
+          <Property Name="IdPais" Type="int" />
+          <Property Name="Pais" Type="varchar" MaxLength="50" />
+          <Property Name="ClaveEstado" Type="varchar" MaxLength="10" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="ClaveMunicipio" Type="varchar" MaxLength="10" />
+          <Property Name="Municipio" Type="varchar" MaxLength="70" />
+          <Property Name="ClaveLocalidad" Type="varchar" MaxLength="20" />
+          <Property Name="Localidad" Type="varchar" MaxLength="70" />
+          <Property Name="ClaveColonia" Type="varchar" MaxLength="20" />
+          <Property Name="Colonia" Type="varchar" MaxLength="100" />
+          <Property Name="CP" Type="varchar" MaxLength="10" />
+          <Property Name="Calle" Type="varchar" MaxLength="100" />
+          <Property Name="NumeroInterior" Type="varchar" MaxLength="30" />
+          <Property Name="NumeroExterior" Type="varchar" MaxLength="30" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="Clave" Type="varchar" MaxLength="10" />
+          <Property Name="FechaIngreso" Type="smalldatetime" />
+          <Property Name="FechaTerminacion" Type="smalldatetime" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="IdArea" Type="int" />
+          <Property Name="IdPuesto" Type="int" />
+          <Property Name="CostoHora" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Sueldo" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="NumeroSeguro" Type="varchar" MaxLength="20" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="IdEstatus" Type="varchar" MaxLength="1" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="IdEmpledoSuperior" Type="int" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="IdSuscriptor" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="ErrorPersonalizado">
+          <Key>
+            <PropertyRef Name="IdError" />
+          </Key>
+          <Property Name="IdError" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave" Type="nvarchar" MaxLength="10" />
+          <Property Name="Severidad" Type="nvarchar" MaxLength="10" />
+          <Property Name="Mensaje" Type="nvarchar(max)" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="IdIdioma" Type="int" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.ESTADO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ESTADO">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="AreaKm2" />
+            <PropertyRef Name="Shape_STArea__" />
+            <PropertyRef Name="Shape_STLength__" />
+            <PropertyRef Name="Shape_STArea_1" />
+            <PropertyRef Name="Shape_STLength_1" />
+          </Key>
+          <Property Name="OBJECTID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AreaKm2" Type="numeric" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="XCentroide" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="YCentroide" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="IdPais" Type="smallint" />
+          <Property Name="ClaveEstado" Type="nvarchar" MaxLength="2" />
+          <Property Name="MetaTerritorial" Type="int" />
+          <Property Name="AvanceTerritorial" Type="int" />
+          <Property Name="Tipo" Type="smallint" />
+          <Property Name="Shape_STArea__" Type="numeric" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape_STLength__" Type="numeric" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape_STArea_1" Type="numeric" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape_STLength_1" Type="numeric" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape" Type="geometry" />
+        </EntityType>
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="IdGrupo" />
+          </Key>
+          <Property Name="IdGrupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="Privilegios" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Idioma">
+          <Key>
+            <PropertyRef Name="IdIdioma" />
+          </Key>
+          <Property Name="IdIdioma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cultura" Type="nvarchar" MaxLength="30" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="255" />
+          <Property Name="Caracteristicas" Type="varchar" MaxLength="255" />
+          <Property Name="IdModulo" Type="int" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="Tipo" Type="varchar" MaxLength="20" />
+          <Property Name="MenuPrincipal" Type="varchar" MaxLength="2" />
+          <Property Name="Marco" Type="varchar" MaxLength="20" />
+          <Property Name="Tamano" Type="varchar" MaxLength="5" />
+          <Property Name="Borde" Type="varchar" MaxLength="40" />
+          <Property Name="Sombra" Type="varchar" MaxLength="20" />
+          <Property Name="Efecto" Type="varchar" MaxLength="20" />
+          <Property Name="MostrarTitulo" Type="varchar" MaxLength="2" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="ColorMenu" Type="varchar" MaxLength="40" />
+          <Property Name="ColorMarco" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.ModuloSistema' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ModuloSistema">
+          <Key>
+            <PropertyRef Name="IdModuloSistema" />
+          </Key>
+          <Property Name="IdModuloSistema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.MUNICIPIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="MUNICIPIO">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Shape_STArea__" />
+            <PropertyRef Name="Shape_STLength__" />
+            <PropertyRef Name="Shape_STArea_1" />
+            <PropertyRef Name="Shape_STLength_1" />
+          </Key>
+          <Property Name="OBJECTID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AreaKm2" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="XCentroide" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="YCentroide" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="ClaveEstado" Type="nvarchar" MaxLength="2" />
+          <Property Name="ClaveMunicipio" Type="nvarchar" MaxLength="5" />
+          <Property Name="Tipo" Type="smallint" />
+          <Property Name="MetaTerritorial" Type="int" />
+          <Property Name="AvanceTerritorial" Type="int" />
+          <Property Name="Shape_STArea__" Type="numeric" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape_STLength__" Type="numeric" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape_STArea_1" Type="numeric" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape_STLength_1" Type="numeric" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape" Type="geometry" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="OpcionMenu">
+          <Key>
+            <PropertyRef Name="IdOpcionMenu" />
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdOpcionMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMenu" Type="int" Nullable="false" />
+          <Property Name="Orden" Type="smallint" />
+          <Property Name="Titulo" Type="varchar" MaxLength="255" />
+          <Property Name="Ayuda" Type="char" MaxLength="18" />
+          <Property Name="TipoComando" Type="varchar" MaxLength="10" />
+          <Property Name="Comando" Type="varchar" MaxLength="255" />
+          <Property Name="Caracteristicas" Type="varchar" MaxLength="255" />
+          <Property Name="Parametros" Type="varchar" MaxLength="255" />
+          <Property Name="IdPrivilegio" Type="int" />
+          <Property Name="Color" Type="varchar" MaxLength="40" />
+          <Property Name="Imagen" Type="varchar" MaxLength="40" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="OpcionMenuIdioma">
+          <Key>
+            <PropertyRef Name="IdOpcionMenu" />
+            <PropertyRef Name="IdIdioma" />
+          </Key>
+          <Property Name="IdOpcionMenu" Type="int" Nullable="false" />
+          <Property Name="IdIdioma" Type="int" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="255" />
+          <Property Name="Ayuda" Type="char" MaxLength="18" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="IdPais" />
+          </Key>
+          <Property Name="IdPais" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Pagina" Type="varchar" MaxLength="100" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="IdMenu" Type="int" />
+          <Property Name="Privilegios" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipoPersona" Type="varchar" MaxLength="1" />
+          <Property Name="RFC" Type="varchar" MaxLength="15" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="Curp" Type="varchar" MaxLength="19" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="Genero" Type="varchar" MaxLength="1" />
+          <Property Name="Correo" Type="varchar" MaxLength="150" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="TelefonoMovil" Type="varchar" MaxLength="30" />
+          <Property Name="Saldo" Type="decimal" Precision="14" Scale="2" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="PlaneacionCaptura">
+          <Key>
+            <PropertyRef Name="IdPlaneacionCaptura" />
+          </Key>
+          <Property Name="IdPlaneacionCaptura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAplicacion" Type="int" Nullable="false" />
+          <Property Name="IdSuscriptor" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="TipoCaptura" Type="varchar" MaxLength="3" />
+          <Property Name="TipoEvento" Type="varchar" MaxLength="3" />
+          <Property Name="TipoPeriodo" Type="varchar" MaxLength="30" />
+          <Property Name="Periodicidad" Type="varchar" MaxLength="30" />
+          <Property Name="FechaRegistro" Type="date" />
+          <Property Name="FechaInicial" Type="date" />
+          <Property Name="FechaFinal" Type="date" />
+          <Property Name="HoraInicial" Type="time" Precision="7" />
+          <Property Name="HoraFinal" Type="time" Precision="7" />
+          <Property Name="IdEstatus" Type="smallint" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Privilegio">
+          <Key>
+            <PropertyRef Name="IdPrivilegio" />
+          </Key>
+          <Property Name="IdPrivilegio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAplicacion" Type="int" />
+          <Property Name="Clave" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Permiso" Type="varchar(max)" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PrivilegioAsignado">
+          <Key>
+            <PropertyRef Name="IdPrivilegiAsignado" />
+          </Key>
+          <Property Name="IdPrivilegiAsignado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="50" />
+          <Property Name="TipoElemento" Type="varchar" MaxLength="20" />
+          <Property Name="IdElemento" Type="int" Nullable="false" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Puesto">
+          <Key>
+            <PropertyRef Name="IdPuesto" />
+          </Key>
+          <Property Name="IdPuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="IdSuscriptor" Type="int" />
+        </EntityType>
+        <EntityType Name="SesionUsuario">
+          <Key>
+            <PropertyRef Name="IdSesion" />
+          </Key>
+          <Property Name="IdSesion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="FechaIngreso" Type="smalldatetime" />
+          <Property Name="LlaveSesion" Type="varchar" MaxLength="80" />
+          <Property Name="CuentaUsuario" Type="varchar" MaxLength="100" />
+          <Property Name="Tema" Type="varchar" MaxLength="30" />
+          <Property Name="AgenteSesion" Type="varchar" MaxLength="250" />
+          <Property Name="Dispositivo" Type="varchar" MaxLength="60" />
+          <Property Name="Equipo" Type="varchar" MaxLength="60" />
+          <Property Name="IdEstatusRegistro" Type="tinyint" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="IdIdioma" Type="int" />
+        </EntityType>
+        <EntityType Name="SesionUsuarioHistorial">
+          <Key>
+            <PropertyRef Name="IdSesionHistorial" />
+          </Key>
+          <Property Name="IdSesionHistorial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSesion" Type="int" />
+          <Property Name="FechaIngreso" Type="smalldatetime" />
+          <Property Name="LlaveSesion" Type="varchar" MaxLength="80" />
+          <Property Name="CuentaUsuario" Type="varchar" MaxLength="100" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="AgenteSesion" Type="varchar" MaxLength="250" />
+          <Property Name="Dispositivo" Type="varchar" MaxLength="60" />
+          <Property Name="Equipo" Type="varchar" MaxLength="60" />
+          <Property Name="IdSuscriptor" Type="int" />
+          <Property Name="ClaveAplicacion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Sistema">
+          <Key>
+            <PropertyRef Name="IdSistema" />
+          </Key>
+          <Property Name="IdSistema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="IdAutorCreacion" Type="int" />
+          <Property Name="FechaActualizacion" Type="datetime" />
+          <Property Name="IdAutorActualizacion" Type="int" />
+          <Property Name="IdSuscripcion" Type="int" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Suscripcion">
+          <Key>
+            <PropertyRef Name="IdSuscriptor" />
+          </Key>
+          <Property Name="IdSuscriptor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCorto" Type="varchar" MaxLength="50" />
+          <Property Name="Tipo" Type="varchar" MaxLength="3" />
+          <Property Name="FechaContratacion" Type="smalldatetime" />
+          <Property Name="FechaInicio" Type="smalldatetime" />
+          <Property Name="FechaVencimiento" Type="smalldatetime" />
+          <Property Name="Servicios" Type="varchar" MaxLength="250" />
+          <Property Name="NumeroUsuarios" Type="smallint" />
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="IdSuscriptorSuperior" Type="int" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Terminologia">
+          <Key>
+            <PropertyRef Name="IdTerminologia" />
+          </Key>
+          <Property Name="IdTerminologia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAplicacion" Type="int" />
+          <Property Name="Clave" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="TerminologiaIdioma">
+          <Key>
+            <PropertyRef Name="IdTerminologiaIdioma" />
+          </Key>
+          <Property Name="IdTerminologiaIdioma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTerminologia" Type="int" />
+          <Property Name="IdIdioma" Type="int" />
+          <Property Name="Texto" Type="varchar(max)" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="Titulo" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="UnidadNegocio">
+          <Key>
+            <PropertyRef Name="IdUnidadNegocio" />
+          </Key>
+          <Property Name="IdUnidadNegocio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="IdSuscriptor" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <Association Name="FK_BitacoraError_Aplicacion">
+          <End Role="Aplicacion" Type="Self.Aplicacion" Multiplicity="0..1" />
+          <End Role="BitacoraError" Type="Self.BitacoraError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aplicacion">
+              <PropertyRef Name="IdAplicacion" />
+            </Principal>
+            <Dependent Role="BitacoraError">
+              <PropertyRef Name="IdAplicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BitacoraError_IdError">
+          <End Role="ErrorPersonalizado" Type="Self.ErrorPersonalizado" Multiplicity="0..1" />
+          <End Role="BitacoraError" Type="Self.BitacoraError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErrorPersonalizado">
+              <PropertyRef Name="IdError" />
+            </Principal>
+            <Dependent Role="BitacoraError">
+              <PropertyRef Name="IdError" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ActualizarPrivilegios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Accion" Type="varchar" Mode="In" />
+          <Parameter Name="TipoElemento" Type="varchar" Mode="In" />
+          <Parameter Name="IdElemento" Type="int" Mode="In" />
+          <Parameter Name="Privilegios" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ConsultarPlaneaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipoCaptura" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdAplicacion" Type="int" Mode="In" />
+          <Parameter Name="IdSuscriptor" Type="int" Mode="In" />
+          <Parameter Name="publico" Type="int" Mode="In" />
+          <Parameter Name="IdUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdPerfil" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdGrupos" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdPuesto" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdArea" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdEstausCaptura" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="ObtenerPlaneacionCaptura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAplicacion" Type="int" Mode="In" />
+          <Parameter Name="IdSuscriptor" Type="int" Mode="In" />
+          <Parameter Name="IdUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdPerfil" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdArea" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdPuesto" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdGrupos" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdClasificacionCaptura" Type="nvarchar" Mode="In" />
+          <Parameter Name="IdOtro" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ObtenerPrivilegios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="IdPerfil" Type="int" Mode="In" />
+          <Parameter Name="IdGrupo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ObtenerPrivilegiosPorTipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipoElemento" Type="varchar" Mode="In" />
+          <Parameter Name="IdElemento" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ObtenerTerminologia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
+          <Parameter Name="IdIdioma" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ObtenerTerminologias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAplicacion" Type="int" Mode="In" />
+          <Parameter Name="IdIdioma" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModeloStoreContainer">
+          <EntitySet Name="AccesoCaptura" EntityType="Self.AccesoCaptura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aplicacion" EntityType="Self.Aplicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BitacoraError" EntityType="Self.BitacoraError" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuentaUsuario" EntityType="Self.CuentaUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefinicionCaptura" EntityType="Self.DefinicionCaptura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Domicilio" EntityType="Self.Domicilio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorPersonalizado" EntityType="Self.ErrorPersonalizado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Idioma" EntityType="Self.Idioma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpcionMenuIdioma" EntityType="Self.OpcionMenuIdioma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlaneacionCaptura" EntityType="Self.PlaneacionCaptura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privilegio" EntityType="Self.Privilegio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrivilegioAsignado" EntityType="Self.PrivilegioAsignado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puesto" EntityType="Self.Puesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SesionUsuario" EntityType="Self.SesionUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SesionUsuarioHistorial" EntityType="Self.SesionUsuarioHistorial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sistema" EntityType="Self.Sistema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suscripcion" EntityType="Self.Suscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Terminologia" EntityType="Self.Terminologia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TerminologiaIdioma" EntityType="Self.TerminologiaIdioma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadNegocio" EntityType="Self.UnidadNegocio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ESTADO].[OBJECTID] AS [OBJECTID], 
+    [ESTADO].[Nombre] AS [Nombre], 
+    [ESTADO].[AreaKm2] AS [AreaKm2], 
+    [ESTADO].[XCentroide] AS [XCentroide], 
+    [ESTADO].[YCentroide] AS [YCentroide], 
+    [ESTADO].[IdPais] AS [IdPais], 
+    [ESTADO].[ClaveEstado] AS [ClaveEstado], 
+    [ESTADO].[MetaTerritorial] AS [MetaTerritorial], 
+    [ESTADO].[AvanceTerritorial] AS [AvanceTerritorial], 
+    [ESTADO].[Tipo] AS [Tipo], 
+    [ESTADO].[Shape_STArea__] AS [Shape_STArea__], 
+    [ESTADO].[Shape_STLength__] AS [Shape_STLength__], 
+    [ESTADO].[Shape_STArea_1] AS [Shape_STArea_1], 
+    [ESTADO].[Shape_STLength_1] AS [Shape_STLength_1], 
+    [ESTADO].[Shape] AS [Shape]
+    FROM [dbo].[ESTADO] AS [ESTADO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ModuloSistema" EntityType="Self.ModuloSistema" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ModuloSistema].[IdModuloSistema] AS [IdModuloSistema], 
+    [ModuloSistema].[Nombre] AS [Nombre], 
+    [ModuloSistema].[Activo] AS [Activo]
+    FROM [dbo].[ModuloSistema] AS [ModuloSistema]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MUNICIPIO" EntityType="Self.MUNICIPIO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MUNICIPIO].[OBJECTID] AS [OBJECTID], 
+    [MUNICIPIO].[Nombre] AS [Nombre], 
+    [MUNICIPIO].[AreaKm2] AS [AreaKm2], 
+    [MUNICIPIO].[XCentroide] AS [XCentroide], 
+    [MUNICIPIO].[YCentroide] AS [YCentroide], 
+    [MUNICIPIO].[ClaveEstado] AS [ClaveEstado], 
+    [MUNICIPIO].[ClaveMunicipio] AS [ClaveMunicipio], 
+    [MUNICIPIO].[Tipo] AS [Tipo], 
+    [MUNICIPIO].[MetaTerritorial] AS [MetaTerritorial], 
+    [MUNICIPIO].[AvanceTerritorial] AS [AvanceTerritorial], 
+    [MUNICIPIO].[Shape_STArea__] AS [Shape_STArea__], 
+    [MUNICIPIO].[Shape_STLength__] AS [Shape_STLength__], 
+    [MUNICIPIO].[Shape_STArea_1] AS [Shape_STArea_1], 
+    [MUNICIPIO].[Shape_STLength_1] AS [Shape_STLength_1], 
+    [MUNICIPIO].[Shape] AS [Shape]
+    FROM [dbo].[MUNICIPIO] AS [MUNICIPIO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OpcionMenu" EntityType="Self.OpcionMenu" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OpcionMenu].[IdOpcionMenu] AS [IdOpcionMenu], 
+    [OpcionMenu].[IdMenu] AS [IdMenu], 
+    [OpcionMenu].[Orden] AS [Orden], 
+    [OpcionMenu].[Titulo] AS [Titulo], 
+    [OpcionMenu].[Ayuda] AS [Ayuda], 
+    [OpcionMenu].[TipoComando] AS [TipoComando], 
+    [OpcionMenu].[Comando] AS [Comando], 
+    [OpcionMenu].[Caracteristicas] AS [Caracteristicas], 
+    [OpcionMenu].[Parametros] AS [Parametros], 
+    [OpcionMenu].[IdPrivilegio] AS [IdPrivilegio], 
+    [OpcionMenu].[Color] AS [Color], 
+    [OpcionMenu].[Imagen] AS [Imagen], 
+    [OpcionMenu].[Activo] AS [Activo]
+    FROM [dbo].[OpcionMenu] AS [OpcionMenu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Pais" EntityType="Self.Pais" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Pais].[IdPais] AS [IdPais], 
+    [Pais].[Nombre] AS [Nombre]
+    FROM [dbo].[Pais] AS [Pais]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BitacoraError_Aplicacion" Association="Self.FK_BitacoraError_Aplicacion">
+            <End Role="Aplicacion" EntitySet="Aplicacion" />
+            <End Role="BitacoraError" EntitySet="BitacoraError" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BitacoraError_IdError" Association="Self.FK_BitacoraError_IdError">
+            <End Role="ErrorPersonalizado" EntitySet="ErrorPersonalizado" />
+            <End Role="BitacoraError" EntitySet="BitacoraError" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccesoCaptura">
+          <Key>
+            <PropertyRef Name="IdAccesoCaptura" />
+          </Key>
+          <Property Name="IdAccesoCaptura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDefinicionCaptura" Type="Int32" />
+          <Property Name="Tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Acceso" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Aplicacion">
+          <Key>
+            <PropertyRef Name="IdAplicacion" />
+          </Key>
+          <Property Name="IdAplicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdSistema" Type="Int32" />
+          <Property Name="IdModuloSistema" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="IdAutorCreacion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+          <Property Name="IdAutorActualizacion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Capa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Clase" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="BitacoraError" Relationship="Self.FK_BitacoraError_Aplicacion" FromRole="Aplicacion" ToRole="BitacoraError" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdCentroCosto" Type="Int32" />
+          <Property Name="IdAreaSuperior" Type="Int32" Nullable="false" />
+          <Property Name="IdSuscriptor" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="BitacoraError">
+          <Key>
+            <PropertyRef Name="IdErrorAplicacion" />
+          </Key>
+          <Property Name="IdErrorAplicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSistema" Type="Int32" />
+          <Property Name="IdModulo" Type="Int32" />
+          <Property Name="IdAplicacion" Type="Int32" />
+          <Property Name="Severidad" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Componente" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Clase" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdError" Type="Int32" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Referencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="Aplicacion" Relationship="Self.FK_BitacoraError_Aplicacion" FromRole="BitacoraError" ToRole="Aplicacion" />
+          <NavigationProperty Name="ErrorPersonalizado" Relationship="Modelo.FK_BitacoraError_IdError" FromRole="BitacoraError" ToRole="ErrorPersonalizado" />
+        </EntityType>
+        <EntityType Name="CuentaUsuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cuenta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstacionTrabajo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuarioSuperior" Type="Int32" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="FechaVigencia" Type="DateTime" Precision="0" />
+          <Property Name="FechaCambioEstatus" Type="DateTime" Precision="0" />
+          <Property Name="Tema" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstatusUsuario" Type="Int16" />
+          <Property Name="Activo" Type="Byte" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="Sesiones" Type="Int32" />
+          <Property Name="Intentos" Type="Int32" />
+          <Property Name="IdIdioma" Type="Int32" />
+          <Property Name="Perfiles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Grupos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Expira" Type="Boolean" />
+          <Property Name="Privilegios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DefinicionCaptura">
+          <Key>
+            <PropertyRef Name="IdDefinicionCaptura" />
+          </Key>
+          <Property Name="IdDefinicionCaptura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPlaneacionCaptura" Type="Int32" Nullable="false" />
+          <Property Name="IdContenedor" Type="Int32" Nullable="false" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+          <Property Name="Publico" Type="Boolean" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="Clave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+          <Property Name="FechaTerminacion" Type="DateTime" Precision="0" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="IdArea" Type="Int32" />
+          <Property Name="IdPuesto" Type="Int32" />
+          <Property Name="CostoHora" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Sueldo" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="NumeroSeguro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="IdEstatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="IdEmpledoSuperior" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdSuscriptor" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="IdGrupo" />
+          </Key>
+          <Property Name="IdGrupo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="Privilegios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Idioma">
+          <Key>
+            <PropertyRef Name="IdIdioma" />
+          </Key>
+          <Property Name="IdIdioma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cultura" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Caracteristicas" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdModulo" Type="Int32" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MenuPrincipal" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Marco" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tamano" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Borde" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Sombra" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Efecto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MostrarTitulo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="ColorMenu" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ColorMarco" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OpcionMenuIdioma">
+          <Key>
+            <PropertyRef Name="IdOpcionMenu" />
+            <PropertyRef Name="IdIdioma" />
+          </Key>
+          <Property Name="IdOpcionMenu" Type="Int32" Nullable="false" />
+          <Property Name="IdIdioma" Type="Int32" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ayuda" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Name="IdPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pagina" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="IdMenu" Type="Int32" />
+          <Property Name="Privilegios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipoPersona" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="RFC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Curp" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Genero" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoMovil" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Saldo" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PlaneacionCaptura">
+          <Key>
+            <PropertyRef Name="IdPlaneacionCaptura" />
+          </Key>
+          <Property Name="IdPlaneacionCaptura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAplicacion" Type="Int32" Nullable="false" />
+          <Property Name="IdSuscriptor" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TipoCaptura" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="TipoEvento" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPeriodo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Periodicidad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="FechaInicial" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinal" Type="DateTime" Precision="0" />
+          <Property Name="HoraInicial" Type="Time" Precision="7" />
+          <Property Name="HoraFinal" Type="Time" Precision="7" />
+          <Property Name="IdEstatus" Type="Int16" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Puesto">
+          <Key>
+            <PropertyRef Name="IdPuesto" />
+          </Key>
+          <Property Name="IdPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SesionUsuario">
+          <Key>
+            <PropertyRef Name="IdSesion" />
+          </Key>
+          <Property Name="IdSesion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+          <Property Name="LlaveSesion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CuentaUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tema" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AgenteSesion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Dispositivo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Equipo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstatusRegistro" Type="Byte" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="IdIdioma" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SesionUsuarioHistorial">
+          <Key>
+            <PropertyRef Name="IdSesionHistorial" />
+          </Key>
+          <Property Name="IdSesionHistorial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSesion" Type="Int32" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+          <Property Name="LlaveSesion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CuentaUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="AgenteSesion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Dispositivo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Equipo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="ClaveAplicacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ESTADO">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="AreaKm2" />
+            <PropertyRef Name="Shape_STArea__" />
+            <PropertyRef Name="Shape_STLength__" />
+            <PropertyRef Name="Shape_STArea_1" />
+            <PropertyRef Name="Shape_STLength_1" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AreaKm2" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="XCentroide" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="YCentroide" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="IdPais" Type="Int16" />
+          <Property Name="ClaveEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTerritorial" Type="Int32" />
+          <Property Name="AvanceTerritorial" Type="Int32" />
+          <Property Name="Tipo" Type="Int16" />
+          <Property Name="Shape_STArea__" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape_STLength__" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape_STArea_1" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape_STLength_1" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Shape" Type="Geometry" />
+        </EntityType>
+        <EntityType Name="ModuloSistema">
+          <Key>
+            <PropertyRef Name="IdModuloSistema" />
+          </Key>
+          <Property Name="IdModuloSistema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OpcionMenu">
+          <Key>
+            <PropertyRef Name="IdOpcionMenu" />
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdOpcionMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMenu" Type="Int32" Nullable="false" />
+          <Property Name="Orden" Type="Int16" />
+          <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ayuda" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="TipoComando" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Comando" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Caracteristicas" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Parametros" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdPrivilegio" Type="Int32" />
+          <Property Name="Color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_BitacoraError_Aplicacion">
+          <End Role="Aplicacion" Type="Self.Aplicacion" Multiplicity="0..1" />
+          <End Role="BitacoraError" Type="Self.BitacoraError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aplicacion">
+              <PropertyRef Name="IdAplicacion" />
+            </Principal>
+            <Dependent Role="BitacoraError">
+              <PropertyRef Name="IdAplicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModeloDRP" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccesoCaptura" EntityType="Self.AccesoCaptura" />
+          <EntitySet Name="Aplicacion" EntityType="Self.Aplicacion" />
+          <EntitySet Name="Area" EntityType="Self.Area" />
+          <EntitySet Name="BitacoraError" EntityType="Self.BitacoraError" />
+          <EntitySet Name="CuentaUsuario" EntityType="Self.CuentaUsuario" />
+          <EntitySet Name="DefinicionCaptura" EntityType="Self.DefinicionCaptura" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" />
+          <EntitySet Name="Idioma" EntityType="Self.Idioma" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="OpcionMenuIdioma" EntityType="Self.OpcionMenuIdioma" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="PlaneacionCaptura" EntityType="Self.PlaneacionCaptura" />
+          <EntitySet Name="Puesto" EntityType="Self.Puesto" />
+          <EntitySet Name="SesionUsuario" EntityType="Self.SesionUsuario" />
+          <EntitySet Name="SesionUsuarioHistorial" EntityType="Self.SesionUsuarioHistorial" />
+          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" />
+          <EntitySet Name="ModuloSistema" EntityType="Self.ModuloSistema" />
+          <EntitySet Name="OpcionMenu" EntityType="Self.OpcionMenu" />
+          <AssociationSet Name="FK_BitacoraError_Aplicacion" Association="Self.FK_BitacoraError_Aplicacion">
+            <End Role="Aplicacion" EntitySet="Aplicacion" />
+            <End Role="BitacoraError" EntitySet="BitacoraError" />
+          </AssociationSet>
+          <FunctionImport Name="ActualizarPrivilegios">
+            <Parameter Name="Accion" Mode="In" Type="String" />
+            <Parameter Name="TipoElemento" Mode="In" Type="String" />
+            <Parameter Name="IdElemento" Mode="In" Type="Int32" />
+            <Parameter Name="Privilegios" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ObtenerPrivilegios" ReturnType="Collection(Modelo.ObtenerPrivilegios_Result)">
+            <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="IdPerfil" Mode="In" Type="Int32" />
+            <Parameter Name="IdGrupo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ObtenerPrivilegiosPorTipo" ReturnType="Collection(Modelo.ObtenerPrivilegiosPorTipo_Result)">
+            <Parameter Name="TipoElemento" Mode="In" Type="String" />
+            <Parameter Name="IdElemento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Domicilio" EntityType="Modelo.Domicilio" />
+          <EntitySet Name="ErrorPersonalizado" EntityType="Modelo.ErrorPersonalizado" />
+          <EntitySet Name="Privilegio" EntityType="Modelo.Privilegio" />
+          <EntitySet Name="PrivilegioAsignado" EntityType="Modelo.PrivilegioAsignado" />
+          <EntitySet Name="Sistema" EntityType="Modelo.Sistema" />
+          <EntitySet Name="Suscripcion" EntityType="Modelo.Suscripcion" />
+          <EntitySet Name="Terminologia" EntityType="Modelo.Terminologia" />
+          <EntitySet Name="TerminologiaIdioma" EntityType="Modelo.TerminologiaIdioma" />
+          <EntitySet Name="UnidadNegocio" EntityType="Modelo.UnidadNegocio" />
+          <EntitySet Name="MUNICIPIO" EntityType="Modelo.MUNICIPIO" />
+          <EntitySet Name="Pais" EntityType="Modelo.Pais" />
+          <AssociationSet Name="FK_BitacoraError_IdError" Association="Modelo.FK_BitacoraError_IdError">
+            <End Role="ErrorPersonalizado" EntitySet="ErrorPersonalizado" />
+            <End Role="BitacoraError" EntitySet="BitacoraError" />
+          </AssociationSet>
+          <FunctionImport Name="ObtenerPlaneacionCaptura" ReturnType="Collection(Modelo.ObtenerPlaneacionCaptura_Result)">
+            <Parameter Name="IdAplicacion" Mode="In" Type="Int32" />
+            <Parameter Name="IdSuscriptor" Mode="In" Type="Int32" />
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+            <Parameter Name="IdPerfil" Mode="In" Type="String" />
+            <Parameter Name="IdArea" Mode="In" Type="String" />
+            <Parameter Name="IdPuesto" Mode="In" Type="String" />
+            <Parameter Name="IdGrupos" Mode="In" Type="String" />
+            <Parameter Name="IdClasificacionCaptura" Mode="In" Type="String" />
+            <Parameter Name="IdOtro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ObtenerTerminologia" ReturnType="Collection(Modelo.ObtenerTerminologia_Result)">
+            <Parameter Name="Clave" Mode="In" Type="String" />
+            <Parameter Name="IdIdioma" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ObtenerTerminologias" ReturnType="Collection(Modelo.ObtenerTerminologias_Result)">
+            <Parameter Name="IdAplicacion" Mode="In" Type="Int32" />
+            <Parameter Name="IdIdioma" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ConsultarPlaneaciones" ReturnType="Collection(Modelo.ConsultarPlaneaciones_Result)">
+            <Parameter Name="TipoCaptura" Mode="In" Type="String" />
+            <Parameter Name="IdAplicacion" Mode="In" Type="Int32" />
+            <Parameter Name="IdSuscriptor" Mode="In" Type="Int32" />
+            <Parameter Name="publico" Mode="In" Type="Int32" />
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+            <Parameter Name="IdPerfil" Mode="In" Type="String" />
+            <Parameter Name="IdGrupos" Mode="In" Type="String" />
+            <Parameter Name="IdPuesto" Mode="In" Type="String" />
+            <Parameter Name="IdArea" Mode="In" Type="String" />
+            <Parameter Name="IdEstausCaptura" Mode="In" Type="Int16" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ObtenerPrivilegios_Result">
+          <Property Type="String" Name="ClaveAplicacion" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="IdPrivilegiAsignado" Nullable="true" />
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Permiso" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ObtenerPrivilegiosPorTipo_Result">
+          <Property Type="Int32" Name="IdNodo1" Nullable="true" />
+          <Property Type="String" Name="Nodo1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="ActivoNodo1" Nullable="false" />
+          <Property Type="Int32" Name="IdNodo2" Nullable="false" />
+          <Property Type="String" Name="Nodo2" Nullable="true" />
+          <Property Type="Int32" Name="ActivoNodo2" Nullable="false" />
+          <Property Type="String" Name="IdNodo3" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Nodo3" Nullable="true" />
+          <Property Type="Boolean" Name="ActivoNodo3" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Domicilio">
+          <Key>
+            <PropertyRef Name="IdDomicilio" />
+          </Key>
+          <Property Name="IdDomicilio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdPersona" Type="Int32" />
+          <Property Name="TipoDomicilio" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Longitud" Type="Double" />
+          <Property Name="Latitud" Type="Double" />
+          <Property Name="IdPais" Type="Int32" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveEstado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveMunicipio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Municipio" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveLocalidad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Localidad" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="ClaveColonia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Calle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroInterior" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroExterior" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ErrorPersonalizado">
+          <Key>
+            <PropertyRef Name="IdError" />
+          </Key>
+          <Property Name="IdError" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Severidad" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="IdIdioma" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="BitacoraError" Relationship="Modelo.FK_BitacoraError_IdError" FromRole="ErrorPersonalizado" ToRole="BitacoraError" />
+        </EntityType>
+        <EntityType Name="Privilegio">
+          <Key>
+            <PropertyRef Name="IdPrivilegio" />
+          </Key>
+          <Property Name="IdPrivilegio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAplicacion" Type="Int32" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Permiso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PrivilegioAsignado">
+          <Key>
+            <PropertyRef Name="IdPrivilegiAsignado" />
+          </Key>
+          <Property Name="IdPrivilegiAsignado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoElemento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdElemento" Type="Int32" Nullable="false" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Sistema">
+          <Key>
+            <PropertyRef Name="IdSistema" />
+          </Key>
+          <Property Name="IdSistema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="IdAutorCreacion" Type="Int32" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+          <Property Name="IdAutorActualizacion" Type="Int32" />
+          <Property Name="IdSuscripcion" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Suscripcion">
+          <Key>
+            <PropertyRef Name="IdSuscriptor" />
+          </Key>
+          <Property Name="IdSuscriptor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCorto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="FechaContratacion" Type="DateTime" Precision="0" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
+          <Property Name="Servicios" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroUsuarios" Type="Int16" />
+          <Property Name="IdPersona" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="IdSuscriptorSuperior" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Terminologia">
+          <Key>
+            <PropertyRef Name="IdTerminologia" />
+          </Key>
+          <Property Name="IdTerminologia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAplicacion" Type="Int32" />
+          <Property Name="Clave" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TerminologiaIdioma">
+          <Key>
+            <PropertyRef Name="IdTerminologiaIdioma" />
+          </Key>
+          <Property Name="IdTerminologiaIdioma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTerminologia" Type="Int32" />
+          <Property Name="IdIdioma" Type="Int32" />
+          <Property Name="Texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UnidadNegocio">
+          <Key>
+            <PropertyRef Name="IdUnidadNegocio" />
+          </Key>
+          <Property Name="IdUnidadNegocio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdSuscriptor" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="MUNICIPIO">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Shape_STArea__" />
+            <PropertyRef Name="Shape_STLength__" />
+            <PropertyRef Name="Shape_STArea_1" />
+            <PropertyRef Name="Shape_STLength_1" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaKm2" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="XCentroide" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="YCentroide" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="ClaveEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ClaveMunicipio" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="Int16" />
+          <Property Name="MetaTerritorial" Type="Int32" />
+          <Property Name="AvanceTerritorial" Type="Int32" />
+          <Property Name="Shape_STArea__" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape_STLength__" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape_STArea_1" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape_STLength_1" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape" Type="Geometry" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="IdPais" />
+          </Key>
+          <Property Name="IdPais" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_BitacoraError_IdError">
+          <End Type="Modelo.ErrorPersonalizado" Role="ErrorPersonalizado" Multiplicity="0..1" />
+          <End Type="Modelo.BitacoraError" Role="BitacoraError" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErrorPersonalizado">
+              <PropertyRef Name="IdError" />
+            </Principal>
+            <Dependent Role="BitacoraError">
+              <PropertyRef Name="IdError" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ObtenerPlaneacionCaptura_Result">
+          <Property Type="Int32" Name="IdPlaneacionCaptura" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="TipoCaptura" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="TipoEvento" Nullable="true" MaxLength="3" />
+          <Property Type="Boolean" Name="Activo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ObtenerTerminologia_Result">
+          <Property Type="String" Name="Titulo" Nullable="true" />
+          <Property Type="String" Name="Texto" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ObtenerTerminologias_Result">
+          <Property Type="String" Name="Clave" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Titulo" Nullable="true" />
+          <Property Type="String" Name="Texto" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ConsultarPlaneaciones_Result">
+          <Property Type="Int32" Name="IdPlaneacionCaptura" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="IdCaptura" Nullable="true" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="9" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModeloStoreContainer" CdmEntityContainer="ModeloDRP">
+          <EntitySetMapping Name="AccesoCaptura">
+            <EntityTypeMapping TypeName="Modelo.AccesoCaptura">
+              <MappingFragment StoreEntitySet="AccesoCaptura">
+                <ScalarProperty Name="IdAccesoCaptura" ColumnName="IdAccesoCaptura" />
+                <ScalarProperty Name="IdDefinicionCaptura" ColumnName="IdDefinicionCaptura" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Acceso" ColumnName="Acceso" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aplicacion">
+            <EntityTypeMapping TypeName="Modelo.Aplicacion">
+              <MappingFragment StoreEntitySet="Aplicacion">
+                <ScalarProperty Name="IdAplicacion" ColumnName="IdAplicacion" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
+                <ScalarProperty Name="IdModuloSistema" ColumnName="IdModuloSistema" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IdAutorCreacion" ColumnName="IdAutorCreacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="IdAutorActualizacion" ColumnName="IdAutorActualizacion" />
+                <ScalarProperty Name="Capa" ColumnName="Capa" />
+                <ScalarProperty Name="Clase" ColumnName="Clase" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="Modelo.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdCentroCosto" ColumnName="IdCentroCosto" />
+                <ScalarProperty Name="IdAreaSuperior" ColumnName="IdAreaSuperior" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BitacoraError">
+            <EntityTypeMapping TypeName="Modelo.BitacoraError">
+              <MappingFragment StoreEntitySet="BitacoraError">
+                <ScalarProperty Name="IdErrorAplicacion" ColumnName="IdErrorAplicacion" />
+                <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="IdAplicacion" ColumnName="IdAplicacion" />
+                <ScalarProperty Name="Severidad" ColumnName="Severidad" />
+                <ScalarProperty Name="Componente" ColumnName="Componente" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Clase" ColumnName="Clase" />
+                <ScalarProperty Name="IdError" ColumnName="IdError" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CuentaUsuario">
+            <EntityTypeMapping TypeName="Modelo.CuentaUsuario">
+              <MappingFragment StoreEntitySet="CuentaUsuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="IdEstacionTrabajo" ColumnName="IdEstacionTrabajo" />
+                <ScalarProperty Name="IdUsuarioSuperior" ColumnName="IdUsuarioSuperior" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaVigencia" ColumnName="FechaVigencia" />
+                <ScalarProperty Name="FechaCambioEstatus" ColumnName="FechaCambioEstatus" />
+                <ScalarProperty Name="Tema" ColumnName="Tema" />
+                <ScalarProperty Name="IdEstatusUsuario" ColumnName="IdEstatusUsuario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Sesiones" ColumnName="Sesiones" />
+                <ScalarProperty Name="Intentos" ColumnName="Intentos" />
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
+                <ScalarProperty Name="Grupos" ColumnName="Grupos" />
+                <ScalarProperty Name="Expira" ColumnName="Expira" />
+                <ScalarProperty Name="Privilegios" ColumnName="Privilegios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefinicionCaptura">
+            <EntityTypeMapping TypeName="Modelo.DefinicionCaptura">
+              <MappingFragment StoreEntitySet="DefinicionCaptura">
+                <ScalarProperty Name="IdDefinicionCaptura" ColumnName="IdDefinicionCaptura" />
+                <ScalarProperty Name="IdPlaneacionCaptura" ColumnName="IdPlaneacionCaptura" />
+                <ScalarProperty Name="IdContenedor" ColumnName="IdContenedor" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Publico" ColumnName="Publico" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="Modelo.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaTerminacion" ColumnName="FechaTerminacion" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="CostoHora" ColumnName="CostoHora" />
+                <ScalarProperty Name="Sueldo" ColumnName="Sueldo" />
+                <ScalarProperty Name="NumeroSeguro" ColumnName="NumeroSeguro" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdEmpledoSuperior" ColumnName="IdEmpledoSuperior" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="Modelo.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupo">
+            <EntityTypeMapping TypeName="Modelo.Grupo">
+              <MappingFragment StoreEntitySet="Grupo">
+                <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Privilegios" ColumnName="Privilegios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Idioma">
+            <EntityTypeMapping TypeName="Modelo.Idioma">
+              <MappingFragment StoreEntitySet="Idioma">
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Cultura" ColumnName="Cultura" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="Modelo.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Caracteristicas" ColumnName="Caracteristicas" />
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="MenuPrincipal" ColumnName="MenuPrincipal" />
+                <ScalarProperty Name="Marco" ColumnName="Marco" />
+                <ScalarProperty Name="Tamano" ColumnName="Tamano" />
+                <ScalarProperty Name="Borde" ColumnName="Borde" />
+                <ScalarProperty Name="Sombra" ColumnName="Sombra" />
+                <ScalarProperty Name="Efecto" ColumnName="Efecto" />
+                <ScalarProperty Name="MostrarTitulo" ColumnName="MostrarTitulo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="ColorMenu" ColumnName="ColorMenu" />
+                <ScalarProperty Name="ColorMarco" ColumnName="ColorMarco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OpcionMenuIdioma">
+            <EntityTypeMapping TypeName="Modelo.OpcionMenuIdioma">
+              <MappingFragment StoreEntitySet="OpcionMenuIdioma">
+                <ScalarProperty Name="IdOpcionMenu" ColumnName="IdOpcionMenu" />
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Ayuda" ColumnName="Ayuda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil">
+            <EntityTypeMapping TypeName="Modelo.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Pagina" ColumnName="Pagina" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="Privilegios" ColumnName="Privilegios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="Modelo.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Curp" ColumnName="Curp" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="TelefonoMovil" ColumnName="TelefonoMovil" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlaneacionCaptura">
+            <EntityTypeMapping TypeName="Modelo.PlaneacionCaptura">
+              <MappingFragment StoreEntitySet="PlaneacionCaptura">
+                <ScalarProperty Name="IdPlaneacionCaptura" ColumnName="IdPlaneacionCaptura" />
+                <ScalarProperty Name="IdAplicacion" ColumnName="IdAplicacion" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TipoCaptura" ColumnName="TipoCaptura" />
+                <ScalarProperty Name="TipoEvento" ColumnName="TipoEvento" />
+                <ScalarProperty Name="TipoPeriodo" ColumnName="TipoPeriodo" />
+                <ScalarProperty Name="Periodicidad" ColumnName="Periodicidad" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="HoraInicial" ColumnName="HoraInicial" />
+                <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puesto">
+            <EntityTypeMapping TypeName="Modelo.Puesto">
+              <MappingFragment StoreEntitySet="Puesto">
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SesionUsuario">
+            <EntityTypeMapping TypeName="Modelo.SesionUsuario">
+              <MappingFragment StoreEntitySet="SesionUsuario">
+                <ScalarProperty Name="IdSesion" ColumnName="IdSesion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="LlaveSesion" ColumnName="LlaveSesion" />
+                <ScalarProperty Name="CuentaUsuario" ColumnName="CuentaUsuario" />
+                <ScalarProperty Name="Tema" ColumnName="Tema" />
+                <ScalarProperty Name="AgenteSesion" ColumnName="AgenteSesion" />
+                <ScalarProperty Name="Dispositivo" ColumnName="Dispositivo" />
+                <ScalarProperty Name="Equipo" ColumnName="Equipo" />
+                <ScalarProperty Name="IdEstatusRegistro" ColumnName="IdEstatusRegistro" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SesionUsuarioHistorial">
+            <EntityTypeMapping TypeName="Modelo.SesionUsuarioHistorial">
+              <MappingFragment StoreEntitySet="SesionUsuarioHistorial">
+                <ScalarProperty Name="IdSesionHistorial" ColumnName="IdSesionHistorial" />
+                <ScalarProperty Name="IdSesion" ColumnName="IdSesion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="LlaveSesion" ColumnName="LlaveSesion" />
+                <ScalarProperty Name="CuentaUsuario" ColumnName="CuentaUsuario" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="AgenteSesion" ColumnName="AgenteSesion" />
+                <ScalarProperty Name="Dispositivo" ColumnName="Dispositivo" />
+                <ScalarProperty Name="Equipo" ColumnName="Equipo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="ClaveAplicacion" ColumnName="ClaveAplicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO">
+            <EntityTypeMapping TypeName="Modelo.ESTADO">
+              <MappingFragment StoreEntitySet="ESTADO">
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="AreaKm2" ColumnName="AreaKm2" />
+                <ScalarProperty Name="XCentroide" ColumnName="XCentroide" />
+                <ScalarProperty Name="YCentroide" ColumnName="YCentroide" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="ClaveEstado" ColumnName="ClaveEstado" />
+                <ScalarProperty Name="MetaTerritorial" ColumnName="MetaTerritorial" />
+                <ScalarProperty Name="AvanceTerritorial" ColumnName="AvanceTerritorial" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Shape_STArea__" ColumnName="Shape_STArea__" />
+                <ScalarProperty Name="Shape_STLength__" ColumnName="Shape_STLength__" />
+                <ScalarProperty Name="Shape_STArea_1" ColumnName="Shape_STArea_1" />
+                <ScalarProperty Name="Shape_STLength_1" ColumnName="Shape_STLength_1" />
+                <ScalarProperty Name="Shape" ColumnName="Shape" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModuloSistema">
+            <EntityTypeMapping TypeName="Modelo.ModuloSistema">
+              <MappingFragment StoreEntitySet="ModuloSistema">
+                <ScalarProperty Name="IdModuloSistema" ColumnName="IdModuloSistema" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OpcionMenu">
+            <EntityTypeMapping TypeName="Modelo.OpcionMenu">
+              <MappingFragment StoreEntitySet="OpcionMenu">
+                <ScalarProperty Name="IdOpcionMenu" ColumnName="IdOpcionMenu" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Ayuda" ColumnName="Ayuda" />
+                <ScalarProperty Name="TipoComando" ColumnName="TipoComando" />
+                <ScalarProperty Name="Comando" ColumnName="Comando" />
+                <ScalarProperty Name="Caracteristicas" ColumnName="Caracteristicas" />
+                <ScalarProperty Name="Parametros" ColumnName="Parametros" />
+                <ScalarProperty Name="IdPrivilegio" ColumnName="IdPrivilegio" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ActualizarPrivilegios" FunctionName="Modelo.Store.ActualizarPrivilegios" />
+          <FunctionImportMapping FunctionImportName="ObtenerPrivilegios" FunctionName="Modelo.Store.ObtenerPrivilegios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Modelo.ObtenerPrivilegios_Result">
+                <ScalarProperty Name="ClaveAplicacion" ColumnName="ClaveAplicacion" />
+                <ScalarProperty Name="IdPrivilegiAsignado" ColumnName="IdPrivilegiAsignado" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Permiso" ColumnName="Permiso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ObtenerPrivilegiosPorTipo" FunctionName="Modelo.Store.ObtenerPrivilegiosPorTipo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Modelo.ObtenerPrivilegiosPorTipo_Result">
+                <ScalarProperty Name="IdNodo1" ColumnName="IdNodo1" />
+                <ScalarProperty Name="Nodo1" ColumnName="Nodo1" />
+                <ScalarProperty Name="ActivoNodo1" ColumnName="ActivoNodo1" />
+                <ScalarProperty Name="IdNodo2" ColumnName="IdNodo2" />
+                <ScalarProperty Name="Nodo2" ColumnName="Nodo2" />
+                <ScalarProperty Name="ActivoNodo2" ColumnName="ActivoNodo2" />
+                <ScalarProperty Name="IdNodo3" ColumnName="IdNodo3" />
+                <ScalarProperty Name="Nodo3" ColumnName="Nodo3" />
+                <ScalarProperty Name="ActivoNodo3" ColumnName="ActivoNodo3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Domicilio">
+            <EntityTypeMapping TypeName="Modelo.Domicilio">
+              <MappingFragment StoreEntitySet="Domicilio">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="NumeroExterior" ColumnName="NumeroExterior" />
+                <ScalarProperty Name="NumeroInterior" ColumnName="NumeroInterior" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="ClaveColonia" ColumnName="ClaveColonia" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="ClaveLocalidad" ColumnName="ClaveLocalidad" />
+                <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+                <ScalarProperty Name="ClaveMunicipio" ColumnName="ClaveMunicipio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="ClaveEstado" ColumnName="ClaveEstado" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="TipoDomicilio" ColumnName="TipoDomicilio" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdDomicilio" ColumnName="IdDomicilio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorPersonalizado">
+            <EntityTypeMapping TypeName="Modelo.ErrorPersonalizado">
+              <MappingFragment StoreEntitySet="ErrorPersonalizado">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Severidad" ColumnName="Severidad" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="IdError" ColumnName="IdError" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privilegio">
+            <EntityTypeMapping TypeName="Modelo.Privilegio">
+              <MappingFragment StoreEntitySet="Privilegio">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Permiso" ColumnName="Permiso" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="IdAplicacion" ColumnName="IdAplicacion" />
+                <ScalarProperty Name="IdPrivilegio" ColumnName="IdPrivilegio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrivilegioAsignado">
+            <EntityTypeMapping TypeName="Modelo.PrivilegioAsignado">
+              <MappingFragment StoreEntitySet="PrivilegioAsignado">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="IdElemento" ColumnName="IdElemento" />
+                <ScalarProperty Name="TipoElemento" ColumnName="TipoElemento" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="IdPrivilegiAsignado" ColumnName="IdPrivilegiAsignado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sistema">
+            <EntityTypeMapping TypeName="Modelo.Sistema">
+              <MappingFragment StoreEntitySet="Sistema">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdSuscripcion" ColumnName="IdSuscripcion" />
+                <ScalarProperty Name="IdAutorActualizacion" ColumnName="IdAutorActualizacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="IdAutorCreacion" ColumnName="IdAutorCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suscripcion">
+            <EntityTypeMapping TypeName="Modelo.Suscripcion">
+              <MappingFragment StoreEntitySet="Suscripcion">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdSuscriptorSuperior" ColumnName="IdSuscriptorSuperior" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="NumeroUsuarios" ColumnName="NumeroUsuarios" />
+                <ScalarProperty Name="Servicios" ColumnName="Servicios" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="NombreCorto" ColumnName="NombreCorto" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Terminologia">
+            <EntityTypeMapping TypeName="Modelo.Terminologia">
+              <MappingFragment StoreEntitySet="Terminologia">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="IdAplicacion" ColumnName="IdAplicacion" />
+                <ScalarProperty Name="IdTerminologia" ColumnName="IdTerminologia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TerminologiaIdioma">
+            <EntityTypeMapping TypeName="Modelo.TerminologiaIdioma">
+              <MappingFragment StoreEntitySet="TerminologiaIdioma">
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+                <ScalarProperty Name="IdTerminologia" ColumnName="IdTerminologia" />
+                <ScalarProperty Name="IdTerminologiaIdioma" ColumnName="IdTerminologiaIdioma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadNegocio">
+            <EntityTypeMapping TypeName="Modelo.UnidadNegocio">
+              <MappingFragment StoreEntitySet="UnidadNegocio">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdUnidadNegocio" ColumnName="IdUnidadNegocio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUNICIPIO">
+            <EntityTypeMapping TypeName="Modelo.MUNICIPIO">
+              <MappingFragment StoreEntitySet="MUNICIPIO">
+                <ScalarProperty Name="Shape" ColumnName="Shape" />
+                <ScalarProperty Name="Shape_STLength_1" ColumnName="Shape_STLength_1" />
+                <ScalarProperty Name="Shape_STArea_1" ColumnName="Shape_STArea_1" />
+                <ScalarProperty Name="Shape_STLength__" ColumnName="Shape_STLength__" />
+                <ScalarProperty Name="Shape_STArea__" ColumnName="Shape_STArea__" />
+                <ScalarProperty Name="AvanceTerritorial" ColumnName="AvanceTerritorial" />
+                <ScalarProperty Name="MetaTerritorial" ColumnName="MetaTerritorial" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="ClaveMunicipio" ColumnName="ClaveMunicipio" />
+                <ScalarProperty Name="ClaveEstado" ColumnName="ClaveEstado" />
+                <ScalarProperty Name="YCentroide" ColumnName="YCentroide" />
+                <ScalarProperty Name="XCentroide" ColumnName="XCentroide" />
+                <ScalarProperty Name="AreaKm2" ColumnName="AreaKm2" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="Modelo.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ObtenerPlaneacionCaptura" FunctionName="Modelo.Store.ObtenerPlaneacionCaptura">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Modelo.ObtenerPlaneacionCaptura_Result">
+                <ScalarProperty Name="IdPlaneacionCaptura" ColumnName="IdPlaneacionCaptura" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TipoCaptura" ColumnName="TipoCaptura" />
+                <ScalarProperty Name="TipoEvento" ColumnName="TipoEvento" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ObtenerTerminologia" FunctionName="Modelo.Store.ObtenerTerminologia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Modelo.ObtenerTerminologia_Result">
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ObtenerTerminologias" FunctionName="Modelo.Store.ObtenerTerminologias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Modelo.ObtenerTerminologias_Result">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarPlaneaciones" FunctionName="Modelo.Store.ConsultarPlaneaciones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Modelo.ConsultarPlaneaciones_Result">
+                <ScalarProperty Name="IdPlaneacionCaptura" ColumnName="IdPlaneacionCaptura" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdCaptura" ColumnName="IdCaptura" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

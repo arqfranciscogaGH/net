@@ -9,19 +9,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head runat="server">
+    <title>Prueba</title>
     <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-compatible" content="IE=edge" />
-    <meta name="keywords" content="captura, dinamica, formulario,campo, responsiva " />
-    <meta name="description" content="es una captura de forulario dinámico responsiva" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="keywords" content="Servicios Credito infonavit linea IV Pension Afore  Prcalificate" />
+    <meta name="description" content="Servicios Credito infonavit linea IV en Kungio">
     <meta name="viewport"  content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"/>
 
-    <meta property="og:title" content="DRP" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="robots" content="index,follow,all" />
+    <meta name="author" content="Francisco Garcia | STI" />
+
+    <link rel="shortcut icon" href="Comun/favicon/Aplicacion.ico" type="image/x-icon">
+    <link rel="icon" href="Comun/favicon/Aplicacion.ico" type="image/x-icon">
+
+    <meta property="og:title" content="KunGio" />
     <meta property="og:type" content="video-movie" />
     <meta property="og:url" content="http://kugio-mx/inicio.aspx"" />
-    <meta property="og:image" content="Comun/Iconos/Aplicacion.ico"" />
+    <meta property="og:image" content="Comun/favicon/Aplicacion.ico"" />
 
-    <title>Prueba</title>
-    <link rel="icon" href="Comun/Iconos/Aplicacion.ico" />
 <%--    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">

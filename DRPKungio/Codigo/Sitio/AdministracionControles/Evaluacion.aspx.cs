@@ -227,8 +227,8 @@ namespace Sitio.AdministracionControles
             else
             {
 
-                IdPlaneacionCaptura = (string)AdministradorSistema.AdministradorVariablesGlobal.Obtener(IdVariableIdPlaneacionCaptura);
-                Identificador = (string)AdministradorSistema.AdministradorVariablesGlobal.Obtener(IdVariableIdentificadordCaptura);
+                IdPlaneacionCaptura = (string)AdministradorSistema.AdministradorVariablesSistema.Obtener(IdVariableIdPlaneacionCaptura);
+                Identificador = (string)AdministradorSistema.AdministradorVariablesSistema.Obtener(IdVariableIdentificadordCaptura);
             }
             // IdPlaneacionCaptura
             if (valores != null && valores.Length >= 0)
@@ -237,7 +237,7 @@ namespace Sitio.AdministracionControles
             }
             if (IdPlaneacionCaptura != null && IdPlaneacionCaptura != string.Empty && IdPlaneacionCaptura != "0")
             {
-                AdministradorSistema.AdministradorVariablesGlobal.Agregar(IdVariableIdentificadordCaptura, IdPlaneacionCaptura);
+                AdministradorSistema.AdministradorVariablesSistema.Agregar(IdVariableIdentificadordCaptura, IdPlaneacionCaptura);
                 captura.IdPlaneacionCaptura = int.Parse(IdPlaneacionCaptura);
             }
             // Identificador
@@ -247,7 +247,7 @@ namespace Sitio.AdministracionControles
             }
             if (Identificador != null && Identificador != string.Empty && Identificador != "0")
             {
-                AdministradorSistema.AdministradorVariablesGlobal.Agregar(IdVariableIdentificadordCaptura, Identificador);
+                AdministradorSistema.AdministradorVariablesSistema.Agregar(IdVariableIdentificadordCaptura, Identificador);
                 captura.Identificador = Identificador;
                 _obtener = true;
             }

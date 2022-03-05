@@ -95,6 +95,10 @@ namespace Sitio.AdministracionControles
                 DefinirCaptura();
             }
             Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
+            UcWebMenuFuncionalidad2.DefinirMenuPrincipal();
+            UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
+            UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
+
             CargarControles();
         }
 

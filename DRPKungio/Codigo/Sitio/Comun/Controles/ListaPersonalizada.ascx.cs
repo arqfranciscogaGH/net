@@ -120,7 +120,7 @@ namespace Sitio.Comun.Controles
             {
                 adminisrador = new AdministradorListaPersonalizada();
                 adminisrador.Id = Id;
-                AdministradorSistema.AdministradorVariablesSesion.Agregar(Id, adminisrador);
+                AdministradorSistema.AdministradorVariablesSistema.Agregar(Id, adminisrador);
             }
             return adminisrador;
         }

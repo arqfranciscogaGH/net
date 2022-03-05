@@ -13,13 +13,13 @@ namespace Sitio.Comun.Controles {
     public partial class UcWebEncabezadoPagina {
         
         /// <summary>
-        /// Control IdBotonElementosSeguridad.
+        /// Control idLogo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton IdBotonElementosSeguridad;
+        protected global::System.Web.UI.HtmlControls.HtmlImage idLogo;
         
         /// <summary>
         /// Control IdContenedorSeguridad.
@@ -65,5 +65,14 @@ namespace Sitio.Comun.Controles {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl NombrePerfil;
+        
+        /// <summary>
+        /// Control IdBotonElementosSeguridad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton IdBotonElementosSeguridad;
     }
 }

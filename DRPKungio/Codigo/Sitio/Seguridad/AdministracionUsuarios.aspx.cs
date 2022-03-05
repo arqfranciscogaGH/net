@@ -88,6 +88,10 @@ namespace Sitio.Seguridad
                 DefinirCaptura();
             }
             Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
+            UcWebMenuFuncionalidad2.DefinirMenuPrincipal();
+            UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
+            UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
+
             CargarControles();
         }
 
@@ -145,7 +149,7 @@ namespace Sitio.Seguridad
             administradorNegocio = new AdministradorUsuarios();
             _entidad = administradorNegocio.Instanciar<CuentaUsuario>();
             _tipoEntidad = _entidad.GetType();
-            _lista = administradorNegocio.ObtenerLista<CuentaUsuario>();
+            _lista = obtenerLista();
 
             //  carga  modulos en  combobox
             //string campo = "IdModuloSistema";
@@ -229,8 +233,9 @@ namespace Sitio.Seguridad
                         {
                             persona = new Persona();
                             persona.IdUsuario = _entidad.IdUsuario;
-                        }
                            
+                        }
+                        persona.Activo = _entidad.Activo == 1 ? true : false;
                         generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, persona.GetType(), persona);
 
 
@@ -243,6 +248,7 @@ namespace Sitio.Seguridad
                             domicilio.IdUsuario = _entidad.IdUsuario;
                             domicilio.IdPersona = persona.IdPersona;
                         }
+                        domicilio.Activo = _entidad.Activo == 1 ? true : false;
                         generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, domicilio.GetType(), domicilio);
 
 
@@ -254,6 +260,7 @@ namespace Sitio.Seguridad
                             empleado = new Empleado();
                             empleado.IdUsuario = _entidad.IdUsuario;
                         }
+                        empleado.Activo = _entidad.Activo == 1 ? true : false;
                         generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, empleado.GetType(), empleado);
 
                         //  Cuenta Usuario
@@ -372,13 +379,13 @@ namespace Sitio.Seguridad
                 {
  
                     //  Persona
-                    Persona persona =GuardarPersona("ACTULIZAR", _entidad);
+                    Persona persona =GuardarPersona("ACTUALIZAR", _entidad);
 
                     //  Domicilio
-                    GuardarDomicilio("ACTULIZAR", _entidad, persona);
+                    GuardarDomicilio("ACTUALIZAR", _entidad, persona);
 
                     //  Empleado
-                    GuardarEmpleado("ACTULIZAR", _entidad);
+                    GuardarEmpleado("ACTUALIZAR", _entidad);
 
                     //   cuenta  de usuario
 
@@ -405,7 +412,7 @@ namespace Sitio.Seguridad
                 administradorNegocio.Agregar((Persona)persona);
 
             }
-            else if (accion.ToUpper() == "ACTULIZAR" || persona != null)
+            else if (accion.ToUpper() == "ACTUALIZAR" && persona != null)
             {
                 generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, persona.GetType(), persona);
                 administradorNegocio.Actualizar((Persona)persona); administradorNegocio.Actualizar((Persona)persona);
@@ -431,7 +438,7 @@ namespace Sitio.Seguridad
                 domicilio.IdSuscriptor = int.Parse(AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IdSuscriptor.ToString());
                 administradorNegocio.Agregar((Domicilio)domicilio);
             }
-            else if (accion.ToUpper() == "ACTULIZAR" || domicilio != null)
+            else if (accion.ToUpper() == "ACTUALIZAR" && domicilio != null)
             {
                 generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, domicilio.GetType(), domicilio);
                 administradorNegocio.Actualizar((Domicilio)domicilio); administradorNegocio.Actualizar((Domicilio)domicilio);
@@ -452,7 +459,7 @@ namespace Sitio.Seguridad
                 empleado.IdUsuario = _entidad.IdUsuario;
                 administradorNegocio.Agregar((Empleado)empleado);
             }
-            else if (accion.ToUpper() == "ACTULIZAR" || empleado != null)
+            else if (accion.ToUpper() == "ACTUALIZAR" && empleado != null)
             {
                 generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, empleado.GetType(), empleado);
                 administradorNegocio.Actualizar((Empleado)empleado); administradorNegocio.Actualizar((Empleado)empleado);
@@ -526,16 +533,27 @@ namespace Sitio.Seguridad
         {
             if (_entidad != null)
             {
-
-                //_lista = administradorNegocio.Consultar(s =>  s.Activo != null).ToList();
                 if (_lista == null || actualizar)
-                    _lista = administradorNegocio.Consultar<CuentaUsuario>(s => s.IdSuscriptor == AdministradorSistema.SesionSistemaActual.IdSuscriptor).ToList();
+                    _lista = obtenerLista();
 
             }
             ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
         }
 
-
+        private List<CuentaUsuario> obtenerLista()
+        {
+            String IdPerfil=AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil;
+            String IdUsuarioCadena = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdUsuario;
+            int IdUsuario = 0;
+            IdUsuario=IdUsuarioCadena == "" ? 0 : int.Parse(IdUsuarioCadena);
+            if (IdPerfil == "1" || IdPerfil == "3")
+                _lista = administradorNegocio.ObtenerLista<CuentaUsuario>();
+            else if (IdPerfil == "4")
+                _lista = administradorNegocio.Consultar<CuentaUsuario>(s => s.IdUsuarioSuperior == IdUsuario).ToList();
+            else
+                _lista = administradorNegocio.Consultar<CuentaUsuario>(s => s.IdUsuarioSuperior == -1).ToList();
+            return _lista;
+        }
         #endregion
 
         #region  paso  10 Métodos comunes

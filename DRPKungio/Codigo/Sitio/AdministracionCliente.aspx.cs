@@ -85,10 +85,11 @@ namespace Sitio
                 UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
                 UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
 
-            CargarControles();
+                CargarControles();
             }
 
             //  metodo   carga  de  página  
+
 
             protected void Page_Load(object sender, EventArgs e)
             {
@@ -102,15 +103,15 @@ namespace Sitio
                 ucWebBarraProgreso1.DesActivar();
             }
 
-            #endregion
+        #endregion
 
-            #region  paso  5 Configurar
+        #region  paso  5 Configurar
 
-            public void IniciarControladores()
+        public void IniciarControladores()
             {
                 ClaveAplicacion = "AdministracionCliente";
                 AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.ClaveAplicacion = ClaveAplicacion;
-                AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IniciarSesionUsuario();
+                //AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IniciarSesionUsuario();
 
                 generadorControles = new GeneradorControlesWeb();
                 generadorControles.ControaldorAplicacionActual = AdministradorSistema.ControaldorAplicacion;
@@ -143,32 +144,19 @@ namespace Sitio
                 administradorNegocio = new AdministradorCliente();
                 _entidad = administradorNegocio.Instanciar();
                 _tipoEntidad = _entidad.GetType();
-                // _lista = administradorNegocio.ObtenerLista();
-                obtenerLista();
-                //ActualizarElementosConsultaPrincipal(null,null,false );
+                 _lista = obtenerLista();
 
-            }
+        }
 
-            private void obtenerLista()
-            {
-                String fechaActual = DateTime.Now.ToString("dd-MM-yyyy");
-                int idOperacion = 1;
-                if (DateTime.Now.Hour >= 8 && DateTime.Now.Hour <= 14)
-                    idOperacion = 1;
-                else
-                    idOperacion = 2;
-                //if (_lista == null || actualizar)
-                _lista = administradorNegocio.Consultar(s => s.idSuscriptor == 3 && s.fechaRegistro == fechaActual && s.idOperacion == idOperacion).ToList();
 
-            }
 
-    private void Configurar()
+        private void Configurar()
             {
                 ucWebConsultorDinamico1.CrearControles(generadorControles, captura);
                 ucWebConsultorDinamico1.Paginacion = true;
                 ucWebConsultorDinamico1.NumeroRegistrosPagina = 10;
                 ucWebConsultorDinamico1.NumeroRegistrosConsulta = 5000;
-                ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "id,nombre,curp,referencia,telefonoMovil", "Id");
+                ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "id,nombre,curp,referencia,telefonoMovil", "");
             }
 
             private void InscribirEventos()
@@ -190,8 +178,10 @@ namespace Sitio
             public Cliente Instanciar()
             {
                 _entidad = administradorNegocio.Instanciar();
+                _entidad.estatus = 1;
+                _entidad = asignar(_entidad);
                 return _entidad;
-               _entidad = asignar(_entidad);
+      
             }
 
             public Cliente Obtener()
@@ -204,9 +194,20 @@ namespace Sitio
 
         public Cliente asignar(Cliente _entidad)
         {
+
+            _entidad.idUsuario = int.Parse(AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdUsuario);
+            _entidad.idSocio = _entidad.idUsuario;
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil == "5")
+            {
+                _entidad.idSuscriptor = 3;
+            }
+            else
+                _entidad.idSuscriptor = 2;
+
             _entidad.fechaRegistro = DateTime.Now.ToString("dd-MM-yyyy");
+            //_entidad.fechaRegistro = DateTime.Now.ToString("MM-dd-yyyy");
             _entidad.cuentaBanco = DateTime.Now.Hour.ToString();
-            _entidad.idSuscriptor = 3;
+    
             if (DateTime.Now.Hour >= 8 && DateTime.Now.Hour <= 14)
                 _entidad.idOperacion = 1;
             else
@@ -243,7 +244,7 @@ namespace Sitio
 
             #endregion
 
-            #region paso  8  acciones de  captura 
+        #region paso  8  acciones de  captura 
 
             #region acciones de  captura uno
 
@@ -341,7 +342,7 @@ namespace Sitio
 
             #endregion
 
-            #region  Paso  9 Métodos para   actualizar  grids
+        #region  Paso  9 Métodos para   actualizar  grids
 
             public void ActualizarElementos(bool actualizar)
             {
@@ -353,28 +354,33 @@ namespace Sitio
             {
                 if (_entidad != null)
                 {
+                   if (_lista == null || actualizar)
+                            _lista = obtenerLista();
+                }
+                ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
+            }
 
-
-                //_lista = administradorNegocio.Consultar(s =>  s.Activo != null).ToList();
+            private List<Cliente> obtenerLista()
+            {
                 String fechaActual = DateTime.Now.ToString("dd-MM-yyyy");
                 int idOperacion = 1;
                 if (DateTime.Now.Hour >= 8 && DateTime.Now.Hour <= 14)
                     idOperacion = 1;
                 else
                     idOperacion = 2;
-
-                if (_lista == null || actualizar)
-                        _lista = administradorNegocio.Consultar(s => s.idSuscriptor==3 && s.fechaRegistro == fechaActual  && s.idOperacion==idOperacion).ToList();
-
-                }
-                ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
+     
+                if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil=="5")
+                    _lista = administradorNegocio.Consultar(s => s.idSuscriptor == 3 && s.fechaRegistro == fechaActual && s.idOperacion == idOperacion).ToList();
+                else
+                    _lista = administradorNegocio.Consultar(s => s.estatus == 1 || s.estatus == null).ToList();
+                return _lista;
             }
 
-            #endregion
+        #endregion
 
-            #region  paso  10 Métodos comunes
+        #region  paso  10 Métodos comunes
 
-            public void ObtenerRespuesta(object respuesta)
+        public void ObtenerRespuesta(object respuesta)
             {
                 respuesta = respuesta.ToString();
             }

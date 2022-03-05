@@ -8,8 +8,6 @@
 //------------------------------------------------------------------------------
 
 namespace Sitio {
-    
-    
     public partial class AdministracionCliente {
         
         /// <summary>
@@ -31,15 +29,6 @@ namespace Sitio {
         protected global::Sitio.Comun.Controles.ucWebBarraProgreso ucWebBarraProgreso1;
         
         /// <summary>
-        /// Control UcWebMenuFuncionalidad2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Sitio.Comun.Controles.UcWebMenuFuncionalidad UcWebMenuFuncionalidad2;
-        
-        /// <summary>
         /// Control UcWebEncabezadoPagina1.
         /// </summary>
         /// <remarks>
@@ -47,6 +36,15 @@ namespace Sitio {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Sitio.Comun.Controles.UcWebEncabezadoPagina UcWebEncabezadoPagina1;
+        
+        /// <summary>
+        /// Control UcWebMenuFuncionalidad2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Sitio.Comun.Controles.UcWebMenuFuncionalidad UcWebMenuFuncionalidad2;
         
         /// <summary>
         /// Control UcWebBanner1.
