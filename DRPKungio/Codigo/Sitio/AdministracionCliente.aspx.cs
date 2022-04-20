@@ -105,13 +105,13 @@ namespace Sitio
 
         #endregion
 
-        #region  paso  5 Configurar
+            #region  paso  5 Configurar
 
         public void IniciarControladores()
             {
                 ClaveAplicacion = "AdministracionCliente";
                 AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.ClaveAplicacion = ClaveAplicacion;
-                //AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IniciarSesionUsuario();
+                AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IniciarSesionUsuario();
 
                 generadorControles = new GeneradorControlesWeb();
                 generadorControles.ControaldorAplicacionActual = AdministradorSistema.ControaldorAplicacion;
@@ -194,31 +194,36 @@ namespace Sitio
 
         public Cliente asignar(Cliente _entidad)
         {
-
-            _entidad.idUsuario = int.Parse(AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdUsuario);
-            _entidad.idSocio = _entidad.idUsuario;
-            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil == "5")
+             String IdUsuario=AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdUsuario;
+            _entidad.idUsuario = int.Parse(IdUsuario == null || IdUsuario == "" ? "2": IdUsuario) ;
+            if (_entidad.idSocio==null || _entidad.idSocio == 0)
+                 _entidad.idSocio = _entidad.idUsuario;
+            if (_entidad.idSuscriptor == null || _entidad.idSuscriptor == 0)
             {
-                _entidad.idSuscriptor = 3;
+                if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil == "5")
+                    _entidad.idSuscriptor = 3;
+                else
+                    _entidad.idSuscriptor = 2;
             }
-            else
-                _entidad.idSuscriptor = 2;
 
-            _entidad.fechaRegistro = DateTime.Now.ToString("dd-MM-yyyy");
-            //_entidad.fechaRegistro = DateTime.Now.ToString("MM-dd-yyyy");
-            _entidad.cuentaBanco = DateTime.Now.Hour.ToString();
-    
-            if (DateTime.Now.Hour >= 8 && DateTime.Now.Hour <= 14)
-                _entidad.idOperacion = 1;
-            else
-                _entidad.idOperacion = 2;
-
+            if (_entidad.fechaRegistro == null || _entidad.fechaRegistro == "")
+                _entidad.fechaRegistro = DateTime.Now.ToString("dd-MM-yyyy");
+            _entidad.fechaEstatus= DateTime.Now.ToString("dd-MM-yyyy");
+            if (_entidad.cuentaBanco == null || _entidad.cuentaBanco == "")
+                _entidad.cuentaBanco = DateTime.Now.Hour.ToString();
+            if (_entidad.idOperacion == null || _entidad.idOperacion == 0)
+            {
+                if (DateTime.Now.Hour >= 8 && DateTime.Now.Hour <= 14)
+                    _entidad.idOperacion = 1;
+                else
+                    _entidad.idOperacion = 2;
+            }
             return _entidad;
         }
 
         #endregion
 
-        #region paso  7  metodos de seleccion de  registros
+            #region paso  7  metodos de seleccion de  registros
 
 
         // selecccion  de captura uno
@@ -243,8 +248,8 @@ namespace Sitio
             }
 
             #endregion
-
-        #region paso  8  acciones de  captura 
+    
+            #region paso  8  acciones de  captura 
 
             #region acciones de  captura uno
 
@@ -342,7 +347,7 @@ namespace Sitio
 
             #endregion
 
-        #region  Paso  9 Métodos para   actualizar  grids
+            #region  Paso  9 Métodos para   actualizar  grids
 
             public void ActualizarElementos(bool actualizar)
             {
@@ -378,7 +383,7 @@ namespace Sitio
 
         #endregion
 
-        #region  paso  10 Métodos comunes
+            #region  paso  10 Métodos comunes
 
         public void ObtenerRespuesta(object respuesta)
             {

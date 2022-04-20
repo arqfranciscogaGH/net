@@ -40,6 +40,8 @@
           <Property Name="fechaEntrega" Type="varchar" MaxLength="10" />
           <Property Name="fechaRegistro" Type="varchar" MaxLength="10" />
           <Property Name="idSocio" Type="int" />
+          <Property Name="observaciones" Type="varchar(max)" />
+          <Property Name="acciones" Type="varchar(max)" />
           <Property Name="fechaEstatus" Type="varchar" MaxLength="10" />
           <Property Name="estatus" Type="smallint" />
         </EntityType>
@@ -88,6 +90,8 @@
           <Property Name="fechaEntrega" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="fechaRegistro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="idSocio" Type="Int32" />
+          <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="acciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="fechaEstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="Int16" />
         </EntityType>
@@ -102,6 +106,8 @@
               <MappingFragment StoreEntitySet="Cliente">
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
                 <ScalarProperty Name="fechaEstatus" ColumnName="fechaEstatus" />
+                <ScalarProperty Name="acciones" ColumnName="acciones" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
                 <ScalarProperty Name="idSocio" ColumnName="idSocio" />
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
                 <ScalarProperty Name="fechaEntrega" ColumnName="fechaEntrega" />

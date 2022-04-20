@@ -255,6 +255,7 @@
     <Content Include="AdministracionControles\Evaluacion.aspx" />
     <Content Include="AdministracionControles\VerCuestionario.aspx" />
     <Content Include="AdministracionControles\VerPlaneacion.aspx" />
+    <Content Include="AgregarArchivoCarrusel.aspx" />
     <Content Include="App_Themes\AzulColoresPasteles\Colores.css" />
     <Content Include="App_Themes\AzulColoresPasteles\Fondos\fondoAplicacion.jpg" />
     <Content Include="App_Themes\AzulColoresPasteles\Fondos\fondoMensaje.png" />
@@ -271,6 +272,11 @@
     <Content Include="App_Themes\NegroColoresPasteles\medias.css" />
     <Content Include="AdministracionCliente.aspx" />
     <Content Include="CargarDocs.aspx" />
+    <Content Include="Carrusel\s1.jpg" />
+    <Content Include="Carrusel\s2.jpg" />
+    <Content Include="Carrusel\s3.jpg" />
+    <Content Include="Comun\app\css\app.css" />
+    <Content Include="Comun\app\js\main.js" />
     <Content Include="Comun\Controles\ListaPersonalizada.ascx" />
     <Content Include="Comun\Controles\UcWebArbol.ascx" />
     <Content Include="Comun\Controles\UcWebBanner.ascx" />
@@ -344,6 +350,7 @@
     <Content Include="Comun\Img\fondoITOriginal.jpg" />
     <Content Include="Comun\Img\FondoLineas.jpg" />
     <Content Include="Comun\Img\FondoMundo.jpg" />
+    <Content Include="Comun\jquery\jquery.min.js" />
     <Content Include="Comun\js\bootstrap.min.js" />
     <Content Include="Comun\js\jquery-countTo.js" />
     <Content Include="Comun\js\jquery.appear.js" />
@@ -366,6 +373,12 @@
     <Content Include="Comun\LibreriasIconos\fontello\font\fontello.svg" />
     <Content Include="Comun\LibreriasIconos\fontello\LICENSE.txt" />
     <Content Include="Comun\LibreriasIconos\fontello\README.txt" />
+    <Content Include="Comun\owlCarousel\css\owl.carousel.css" />
+    <Content Include="Comun\owlCarousel\css\owl.carousel.min.css" />
+    <Content Include="Comun\owlCarousel\css\owl.theme.default.css" />
+    <Content Include="Comun\owlCarousel\css\owl.theme.default.min.css" />
+    <Content Include="Comun\owlCarousel\js\owl.carousel.js" />
+    <Content Include="Comun\owlCarousel\js\owl.carousel.min.js" />
     <Content Include="Comun\plugins\fontawesome-free-5.0.1\css\fontawesome-all.css" />
     <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.svg" />
     <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.svg" />
@@ -385,6 +398,7 @@
     <Content Include="Comun\Servicios\Correo\Plantillas\RegistroUsuario.html" />
     <Content Include="Comun\Servicios\Correo\ServicioCorreo.asmx" />
     <Content Include="Comun\Servicios\Correo\Xml\Configuracion.xml" />
+    <Content Include="Consultas\Comisiones.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -420,11 +434,13 @@
     <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff" />
     <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff2" />
     <Content Include="Comun\js\.DS_Store" />
+    <Content Include="i.aspx" />
     <Content Include="img\.DS_Store" />
     <EntityDeploy Include="Models\Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="InicioPortal.aspx" />
     <Content Include="Models\Modelo.edmx.diagram">
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Content>
@@ -530,6 +546,7 @@
     <Content Include="Seguridad\CatalogoGeneral.aspx" />
     <Content Include="Seguridad\ConfiguracionBasica.aspx" />
     <Content Include="Seguridad\VerMenu.aspx" />
+    <Content Include="Servicios\RegistrarServicio.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -621,6 +638,13 @@
     </Compile>
     <Compile Include="AdministracionControles\VerPlaneacion.aspx.designer.cs">
       <DependentUpon>VerPlaneacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarArchivoCarrusel.aspx.cs">
+      <DependentUpon>AgregarArchivoCarrusel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarArchivoCarrusel.aspx.designer.cs">
+      <DependentUpon>AgregarArchivoCarrusel.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -728,6 +752,13 @@
       <DependentUpon>ServicioCorreo.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Consultas\Comisiones.aspx.cs">
+      <DependentUpon>Comisiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\Comisiones.aspx.designer.cs">
+      <DependentUpon>Comisiones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -745,6 +776,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="i.aspx.cs">
+      <DependentUpon>i.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="i.aspx.designer.cs">
+      <DependentUpon>i.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inicio.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>inicio.aspx</DependentUpon>
@@ -752,7 +790,17 @@
     <Compile Include="inicio.aspx.designer.cs">
       <DependentUpon>inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InicioPortal.aspx.cs">
+      <DependentUpon>InicioPortal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioPortal.aspx.designer.cs">
+      <DependentUpon>InicioPortal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\FlujoTrabajoDocumento.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImagenCarrusel.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Modelo.Context.cs">
@@ -889,6 +937,13 @@
     </Compile>
     <Compile Include="Seguridad\VerMenu.aspx.designer.cs">
       <DependentUpon>VerMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\RegistrarServicio.aspx.cs">
+      <DependentUpon>RegistrarServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicios\RegistrarServicio.aspx.designer.cs">
+      <DependentUpon>RegistrarServicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

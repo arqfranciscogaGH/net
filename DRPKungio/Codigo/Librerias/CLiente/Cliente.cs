@@ -45,6 +45,8 @@ namespace Entidad.Cliente
         public string fechaEntrega { get; set; }
         public string fechaRegistro { get; set; }
         public Nullable<int> idSocio { get; set; }
+        public string observaciones { get; set; }
+        public string acciones { get; set; }
         public string fechaEstatus { get; set; }
         public Nullable<short> estatus { get; set; }
     }

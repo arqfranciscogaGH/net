@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="false" EnableEventValidation="false"  CodeBehind="inicio.aspx.cs" Inherits="Sitio.inicio" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="inicio.aspx.cs" Inherits="Sitio.inicio" %>
+
 
 <!DOCTYPE html>
 
@@ -40,7 +41,7 @@
     <!-- Fancybox -->
     <link rel="stylesheet" href="Comun/css/jquery.fancybox.css">
     <!-- owl carousel -->
-    <link rel="stylesheet" href="Comun/css/owl.carousel.css">
+<%--    <link rel="stylesheet" href="Comun/css/owl.carousel.css">--%>
     <!-- Animate -->
     <link rel="stylesheet" href="Comun/css/animate.css">
     <!-- Main Stylesheet -->
@@ -48,7 +49,13 @@
     <!-- Main Responsive -->
     <link rel="stylesheet" href="Comun/css/responsive.css">
 
-    <!-- Modernizer Script for old Browsers -->
+    <!-- owl carousel -->
+
+    <link rel="stylesheet" href="comun/owlCarousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="comun/owlCarousel/css/owl.theme.default.min.css">
+
+      <!-- app -->
+    <link rel="stylesheet" href="comun/app/css/app.css">
 
 </head>
 
@@ -87,7 +94,7 @@
                     <!--<li><a href="#pricing">Precios</a></li>-->
                     <li><a href="#contact">Contacto</a></li>
                     <li><a href="#precalificate">Precalificar</a></li>
-
+                   <li><a href="http://kungio.com/acceso">Ingresar</a></li>
 
                 </ul>
             </nav>
@@ -102,45 +109,48 @@
     Home Slider
     ==================================== -->
     <section id="home">
-        <div id="home-carousel" class="carousel slide" data-interval="false" >
-            <ol class="carousel-indicators">
-                <li data-target="#home-carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#home-carousel" data-slide-to="1"></li>
-                <li data-target="#home-carousel" data-slide-to="2"></li>
-            </ol>
-            <!--/.carousel-indicators-->
-            <div class="carousel-inner">
-                <div class="item active" style="background-image: url('img/slider/s1.jpg')">
-                    <div class="carousel-caption">
+ <%--       <div id="home-carousel" class="carousel slide" data-interval="false" >--%>
+       
+          <div  class="owl-container"  >
+
+          <div  id="ContenedorCarruselInicio" class="owl-carousel" Runat="server" > 
+<%--            <ol class="carousel-indicators">
+                    <li data-target="#ContenedorCarruselInicio" data-slide-to="0" class="active"></li>
+                    <li data-target="#ContenedorCarruselInicio" data-slide-to="1"></li>
+                    <li data-target="#ContenedorCarruselInicio" data-slide-to="2"></li>
+                </ol>--%>
+                <!--/.carousel-indicators-->
+ <%--               <div class="item active" style="background-image: url('Carrusel/s1.jpg')">
+                    <div class="carrusel-titulo">
                         <div class="animated bounceInRight">
                             <h2>BIENVENIDO !! <br>NOSOTROS  TE  ASESOREAMOS.</h2>
                             <p>Contamos con grupo de expertos que están listos para asesorarte. </p>
                         </div>
                     </div>
-                </div>
-                <div class="item" style="background-image: url('img/slider/s2.jpg')">
-                    <div class="carousel-caption">
+                </div>--%>
+<%--            <div class="item" style="background-image: url('Carrusel/s2.jpg')">
+                    <div class="carrusel-titulo">
                         <div class="animated bounceInDown">
                             <h2>BIENVENIDO !! <br>NOSOTROS  TE  ASESOREAMOS.</h2>
                             <p>Estás a un clic de poder iniciar la remodelación de tu casa. </p>
                         </div>
                     </div>
                 </div>
-                <div class="item" style="background-image: url('img/slider/s3.jpg')">
-                    <div class="carousel-caption">
+                <div class="item" style="background-image: url('Carrusel/s3.jpg')">
+                    <div class="carrusel-titulo">
                         <div class="animated bounceInUp">
                             <h2>BIENVENIDO !! <br>NOSOTROS  TE  ASESOREAMOS.</h2>
                             <p>Las oportunidades grandes nacen de haber sabido aprovechar las pequeñas. </p>
                         </div>
                     </div>
-                </div>
+                </div>--%>
             </div>
             <!--/.carousel-inner-->
             <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
-                <a class="sl-prev hidden-xs" href="#home-carousel" data-slide="prev">
+                <a class="sl-prev hidden-xs" href="#ContenedorCarruselInicio" data-slide="prev">
                     <i class="fa fa-angle-left fa-3x"></i>
                 </a>
-                <a class="sl-next" href="#home-carousel" data-slide="next">
+                <a class="sl-next" href="#ContenedorCarruselInicio" data-slide="next">
                     <i class="fa fa-angle-right fa-3x"></i>
                 </a>
             </nav>
@@ -709,11 +719,13 @@
     <!-- theme custom scripts -->
     <script src="Comun/js/main.js"></script>
 
+    <script src="comun/jquery/jquery.min.js"></script>
+    <script src="comun/owlCarousel/js/owl.carousel.min.js"></script>
+    <script src="comun/app/js/main.js"></script>
 
     </form>
 </body>
 </html>
-
 
 
 

@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
+using Sitio.Comun.Clases;
+using System.Web.UI.HtmlControls;
+using Sitio.Models;
 
 namespace Sitio
 {
@@ -12,7 +15,39 @@ namespace Sitio
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Control contenedor = BuscadorControlesUI.ObtenerControl(this.Page, "ContenedorCarruselInicio");
 
+
+            Modelo db = new Modelo();
+            List<ImagenCarrusel> listaImagenes = db.ImagenCarrusel.ToList();
+            foreach (ImagenCarrusel imagen in listaImagenes.Take(10))
+            {
+
+                HtmlGenericControl divItem = new HtmlGenericControl("div");
+                divItem.Attributes["class"] = "item";
+                //divItem.Attributes["style"] = "background-image: url('Carrusel/s1.jpg')";
+                divItem.Attributes["style"] = "background-image: url('Carrusel/" + imagen.nombre + "')";
+
+                HtmlGenericControl divTitulo = new HtmlGenericControl("div");
+                divTitulo.Attributes["class"] = "carrusel-titulo";
+
+                HtmlGenericControl divAnimacion = new HtmlGenericControl("div");
+                divAnimacion.Attributes["class"] = "animated bounceInDown";
+
+                HtmlGenericControl h2 = new HtmlGenericControl("h2");
+                h2.InnerHtml = imagen.titulo;
+
+                HtmlGenericControl p = new HtmlGenericControl("p");
+                p.InnerHtml = imagen.mensaje;
+
+                divAnimacion.Controls.Add(h2);
+                divAnimacion.Controls.Add(p);
+                divTitulo.Controls.Add(divAnimacion);
+                divItem.Controls.Add(divTitulo);
+
+                contenedor.Controls.Add(divItem);
+                //ContenedorCarruselInicio.Controls.Add(divItem);
+            }
         }
 
         protected void btnEnviar_Click(object sender, EventArgs e)
@@ -103,7 +138,7 @@ namespace Sitio
             SmtpClient sc = new SmtpClient();
             m.From = new MailAddress(cuenta);
             m.To.Add(destinatarios);
-            m.Subject = "Solictud  Precalificate : " + txtPNombre.Text ;
+            m.Subject = "Solictud  Precalificate : " + txtPNombre.Text;
             String mensaje = "";
             mensaje = "<h1> Precalificate </h1>";
             mensaje += "<p> Nombre: " + txtNombre.Text + "</p>";

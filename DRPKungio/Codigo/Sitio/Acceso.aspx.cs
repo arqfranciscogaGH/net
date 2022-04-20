@@ -39,30 +39,42 @@ namespace Sitio
         #region métodos de eventos
         protected void Page_PreInit(object sender, EventArgs e)
         {
-            ucWebBarraProgreso1.Activar();
-
-            if (!IsPostBack)
+            try
             {
-                IniciarControladores();
-                ConfigurarAlCargarPaginaSoloInicialmente();
-                DefinirCaptura();
-            }
-            Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
-            CargarControles();
+                ucWebBarraProgreso1.Activar();
 
+                if (!IsPostBack)
+                {
+                    IniciarControladores();
+                    ConfigurarAlCargarPaginaSoloInicialmente();
+                    DefinirCaptura();
+                }
+                Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
+                CargarControles();
+            }
+            catch (Exception err)
+            {
+
+            }
         }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (!IsPostBack)
+            try
             {
+                if (!IsPostBack)
+                {
+                }
+                Configurar();
+                InscribirEventos();
+                ConfigurarAlCargarPaginaSiempre();
+                ucWebBarraProgreso1.DesActivar();
             }
-            Configurar();
-            InscribirEventos();
-            ConfigurarAlCargarPaginaSiempre();
-            ucWebBarraProgreso1.DesActivar();
+            catch (Exception err)
+            {
+             
+            }
         }
 
         #endregion

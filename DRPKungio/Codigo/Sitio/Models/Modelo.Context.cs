@@ -26,5 +26,6 @@ namespace Sitio.Models
         }
     
         public virtual DbSet<FlujoTrabajoDocumento> FlujoTrabajoDocumento { get; set; }
+        public virtual DbSet<ImagenCarrusel> ImagenCarrusel { get; set; }
     }
 }

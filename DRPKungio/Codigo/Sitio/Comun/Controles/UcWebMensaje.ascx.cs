@@ -568,7 +568,6 @@ namespace Sitio.Comun.Controles
 						}
 				}
 			}
-
             this.Visible = true;
 		}
 

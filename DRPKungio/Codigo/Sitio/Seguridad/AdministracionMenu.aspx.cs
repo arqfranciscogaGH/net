@@ -85,33 +85,47 @@ namespace Sitio.Seguridad
 
         protected void Page_PreInit(object sender, EventArgs e)
         {
-            ucWebBarraProgreso1.Activar();
-            if (!IsPostBack)
+            try
             {
-                IniciarControladores();
-                ConfigurarAlCargarPaginaSoloInicialmente();
-                DefinirCaptura();
-            }
-            Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
-            UcWebMenuFuncionalidad2.DefinirMenuPrincipal();
-            UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
-            UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
+                ucWebBarraProgreso1.Activar();
+                if (!IsPostBack)
+                {
+                    IniciarControladores();
+                    ConfigurarAlCargarPaginaSoloInicialmente();
+                    DefinirCaptura();
+                }
+                Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
+                UcWebMenuFuncionalidad2.DefinirMenuPrincipal();
+                UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
+                UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
 
-            CargarControles();
+                CargarControles();
+            }
+            catch (Exception err)
+            {
+                
+            }
         }
 
         //  metodo   carga  de  página  
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
+                if (!IsPostBack)
+                {
+                }
+                Configurar();
+                InscribirEventos();
+                ActualizarElementos(false);
+                ConfigurarAlCargarPaginaSiempre();
+                ucWebBarraProgreso1.DesActivar();
             }
-            Configurar();
-            InscribirEventos();
-            ActualizarElementos(false);
-            ConfigurarAlCargarPaginaSiempre();
-            ucWebBarraProgreso1.DesActivar();
+            catch (Exception err)
+            {
+
+            }
         }
 
         #endregion
