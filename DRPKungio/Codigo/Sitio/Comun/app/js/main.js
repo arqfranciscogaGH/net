@@ -2,7 +2,8 @@
   // jquery
   // OwlCarousel2-2.3.4
 
-$(document).ready(function(){
+$(document).ready(function () {
+    //debugger
     $("#ContenedorCarruselInicio").owlCarousel(
     {
         autoplay:1000,
@@ -11,7 +12,9 @@ $(document).ready(function(){
         singleItem:true,
         loop:true,
         margin:10,
-        nav:false,
+        nav: true,
+            navText: ["<div class='navegacionCarruselAnterior sl-prev hidden-xs'><i class='navegacionCarruselAnterior fa fa-angle-left fa-3x'></i></div>", "<div class='navegacionCarruselSiguiente sl-next'><i class='navegacionCarruselSiguiente fa fa-angle-right fa-3x'></i></div>"],
+
         responsive:{
             0:{
                 items:1
@@ -26,7 +29,7 @@ $(document).ready(function(){
     });
   });
 
-  const api_url="http://api.kungio.com/api/Clientes/prueba";
+  const api_url="http://kungio.com/api/Clientes/prueba";
   const  api_url2="http://jsonplaceholder.typicode.com/users";
   // busqueda de informacion
   const productos=[
@@ -40,6 +43,7 @@ const textoIngresado=document.querySelector('#textoIngresado');
 const botonBuscar=document.querySelector('#botonBuscar');
 const resultado=document.querySelector('#resultado');
 const resultadoConsulta=document.querySelector('#resultadoConsulta');
+const resultadoConsulta2 = document.querySelector('#resultadoConsulta2');
 
 let headers = new Headers();
 
@@ -53,13 +57,15 @@ headers.append('GET', 'POST', 'OPTIONS');
 
 // headers.append('Authorization', 'Basic ' + base64.encode(username + ":" + password));
 
-fetch(api_url, {
-    //mode: 'no-cors',
-    credentials: 'include',
-    method: 'GET',
-    headers: headers
-  })
-
+//fetch(api_url2, {
+//    //mode: 'no-cors',
+//    credentials: 'include',
+//    method: 'GET',
+//    headers: headers
+//  })
+//then((response) => { 
+//    //response.json()
+//});
 fetch(api_url
     , {
         //mode: 'no-cors',
@@ -67,12 +73,12 @@ fetch(api_url
         method: 'POST',
         headers: headers
       })
-.then( (response)=> response.json() )
 .then( (clientes) => {
     const html= clientes.map( (cliente) => `<li> ${cliente.nombre} </li>` );
-    resultadoConsulta.innerHTML= `<ul> ${html} </ul>` ;
+    resultadoConsulta2.innerHTML= `<ul> ${html} </ul>` ;
   
 });
+
 //  filtrar
 const filtrar =()=>{
 

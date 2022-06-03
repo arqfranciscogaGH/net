@@ -137,20 +137,28 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Variables.dll</HintPath>
     </Reference>
-    <Reference Include="MeNet.Seguridad.Administrador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\LibreriasCompiladas\MeNet.Seguridad.Administrador.dll</HintPath>
-    </Reference>
     <Reference Include="MeNet.Seguridad.GeneradorMenus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\LibreriasCompiladas\MeNet.Seguridad.GeneradorMenus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.17.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.6.17.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.17.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Logging.6.17.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.17.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Tokens.6.17.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.17.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.IdentityModel.Tokens.Jwt.6.17.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -256,6 +264,12 @@
     <Content Include="AdministracionControles\VerCuestionario.aspx" />
     <Content Include="AdministracionControles\VerPlaneacion.aspx" />
     <Content Include="AgregarArchivoCarrusel.aspx" />
+    <Content Include="App_Themes\AzulClaro\Colores.css" />
+    <Content Include="App_Themes\AzulClaro\Fondos\fondoAplicacion.jpg" />
+    <Content Include="App_Themes\AzulClaro\Fondos\fondoMensaje.png" />
+    <Content Include="App_Themes\AzulClaro\Fondos\fondoPagina.jpg" />
+    <Content Include="App_Themes\AzulClaro\maqueta.css" />
+    <Content Include="App_Themes\AzulClaro\medias.css" />
     <Content Include="App_Themes\AzulColoresPasteles\Colores.css" />
     <Content Include="App_Themes\AzulColoresPasteles\Fondos\fondoAplicacion.jpg" />
     <Content Include="App_Themes\AzulColoresPasteles\Fondos\fondoMensaje.png" />
@@ -272,10 +286,12 @@
     <Content Include="App_Themes\NegroColoresPasteles\medias.css" />
     <Content Include="AdministracionCliente.aspx" />
     <Content Include="CargarDocs.aspx" />
-    <Content Include="Carrusel\s1.jpg" />
-    <Content Include="Carrusel\s2.jpg" />
-    <Content Include="Carrusel\s3.jpg" />
+    <Content Include="Carrusel\1_c.jpg" />
+    <Content Include="Carrusel\2_c.jpg" />
+    <Content Include="Carrusel\3_c.jpg" />
+    <Content Include="Carrusel\4_c.jpg" />
     <Content Include="Comun\app\css\app.css" />
+    <Content Include="Comun\app\css\carrusel.css" />
     <Content Include="Comun\app\js\main.js" />
     <Content Include="Comun\Controles\ListaPersonalizada.ascx" />
     <Content Include="Comun\Controles\UcWebArbol.ascx" />
@@ -350,6 +366,9 @@
     <Content Include="Comun\Img\fondoITOriginal.jpg" />
     <Content Include="Comun\Img\FondoLineas.jpg" />
     <Content Include="Comun\Img\FondoMundo.jpg" />
+    <Content Include="Comun\Img\servicios\mejoravit.jpg" />
+    <Content Include="Comun\Img\servicios\remodelavit.jpg" />
+    <Content Include="Comun\jquery\jquery-3.6.0.min.js" />
     <Content Include="Comun\jquery\jquery.min.js" />
     <Content Include="Comun\js\bootstrap.min.js" />
     <Content Include="Comun\js\jquery-countTo.js" />
@@ -387,8 +406,21 @@
     <Content Include="Comun\Scripts\ArqSig.Geografico.AdministradorGeocodificacion.js" />
     <Content Include="Comun\Scripts\ArqSig.Geografico.AdministradorGoogle.js" />
     <Content Include="Comun\Scripts\ArqSigNet.Nucleo.AdministradorAplicaciones.js" />
+    <Content Include="Comun\Scripts\bootstrap.js" />
+    <Content Include="Comun\Scripts\bootstrap.min.js" />
     <Content Include="Comun\Scripts\jquery-1.8.0.min.js" />
+    <None Include="Comun\Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Comun\Scripts\jquery-3.3.1.js" />
+    <Content Include="Comun\Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Comun\Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Comun\Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Comun\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Comun\Scripts\jquery.validate.js" />
+    <Content Include="Comun\Scripts\jquery.validate.min.js" />
+    <Content Include="Comun\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Comun\Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Comun\Scripts\Menu.js" />
+    <Content Include="Comun\Scripts\modernizr-2.8.3.js" />
     <Content Include="Comun\Servicios\Correo\Plantillas\ActivacionCuenta.html" />
     <Content Include="Comun\Servicios\Correo\Plantillas\Bienvenido.html" />
     <Content Include="Comun\Servicios\Correo\Plantillas\MensajeConfirmacion.html" />
@@ -434,16 +466,21 @@
     <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff" />
     <Content Include="Comun\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff2" />
     <Content Include="Comun\js\.DS_Store" />
-    <Content Include="i.aspx" />
+    <Content Include="inicio.aspx" />
     <Content Include="img\.DS_Store" />
     <EntityDeploy Include="Models\Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="InicioPortal.aspx" />
     <Content Include="Models\Modelo.edmx.diagram">
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Content>
+    <Content Include="portafolioServicios\MePensiono.JPG" />
+    <Content Include="portafolioServicios\MePensiono.pdf" />
+    <Content Include="portafolioServicios\RetiroAfore.JPG" />
+    <Content Include="portafolioServicios\RetiroAfore.pdf" />
+    <Content Include="Comun\Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Comun\Scripts\jquery-3.3.1.slim.min.map" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="img\about.png" />
@@ -490,7 +527,7 @@
     <Content Include="img\slider\s1.jpg" />
     <Content Include="img\slider\s2.jpg" />
     <Content Include="img\slider\s3.jpg" />
-    <Content Include="inicio.aspx" />
+    <Content Include="inicioanterior.aspx" />
     <Content Include="Models\Modelo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Modelo.edmx</DependentUpon>
@@ -504,6 +541,7 @@
     <Content Include="Pagina.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="MenuPrincipal.aspx" />
+    <Content Include="portafolioServicios\SmartBusinessCorp.jpg" />
     <Content Include="Prueba.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -545,7 +583,9 @@
     <Content Include="Seguridad\AdministracionUsuarios.aspx" />
     <Content Include="Seguridad\CatalogoGeneral.aspx" />
     <Content Include="Seguridad\ConfiguracionBasica.aspx" />
+    <Content Include="Seguridad\ParmetrosConfiguracion.aspx" />
     <Content Include="Seguridad\VerMenu.aspx" />
+    <Content Include="Servicios\AdministracionNivelRed.aspx" />
     <Content Include="Servicios\RegistrarServicio.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
@@ -654,6 +694,7 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AdministracionCliente.aspx.cs">
@@ -670,8 +711,13 @@
     <Compile Include="CargarDocs.aspx.designer.cs">
       <DependentUpon>CargarDocs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Comun\Clases\AdminisradorLLavescs.cs" />
     <Compile Include="Comun\Clases\AdministradorControlesUI.cs" />
     <Compile Include="Comun\Clases\AdministradorSistema.cs" />
+    <Compile Include="Comun\Clases\TokenGenerator.cs" />
+    <Compile Include="Comun\Clases\TokenValidationHandler.cs" />
+    <Compile Include="Controllers\ComisionesRedController.cs" />
+    <Compile Include="Controllers\ConsultaComisionesController.cs" />
     <Compile Include="Comun\Controles\ListaPersonalizada.ascx.cs">
       <DependentUpon>ListaPersonalizada.ascx</DependentUpon>
     </Compile>
@@ -766,6 +812,20 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\accederController.cs" />
+    <Compile Include="Controllers\AutetificacionController.cs" />
+    <Compile Include="Controllers\BuscarController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ConsultarSociosController.cs" />
+    <Compile Include="Controllers\CuentaUsuariosController.cs" />
+    <Compile Include="Controllers\FTAvanzarActividadController.cs" />
+    <Compile Include="Controllers\FTConsultaController.cs" />
+    <Compile Include="Controllers\FTVerEstatusTareaController.cs" />
+    <Compile Include="Controllers\inicioPortalController.cs" />
+    <Compile Include="Controllers\menusController.cs" />
+    <Compile Include="Controllers\MisComisionesController.cs" />
+    <Compile Include="Controllers\SuscripcionsController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -773,34 +833,72 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Comun\Clases\VerificarAutentificacion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="i.aspx.cs">
-      <DependentUpon>i.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="i.aspx.designer.cs">
-      <DependentUpon>i.aspx</DependentUpon>
-    </Compile>
     <Compile Include="inicio.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="inicio.aspx.designer.cs">
       <DependentUpon>inicio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="InicioPortal.aspx.cs">
-      <DependentUpon>InicioPortal.aspx</DependentUpon>
+    <Compile Include="inicioanterior.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>inicioanterior.aspx</DependentUpon>
     </Compile>
-    <Compile Include="InicioPortal.aspx.designer.cs">
-      <DependentUpon>InicioPortal.aspx</DependentUpon>
+    <Compile Include="inicioanterior.aspx.designer.cs">
+      <DependentUpon>inicioanterior.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AvanzarActividad_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cliente.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Configuracion.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarComisionesPorSocio_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarComisiones_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarDirectorios_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarDocumentosFlujoTrabajo_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarMisPendientes_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarServiciosPorCliente_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarSocios_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cuenta.cs" />
+    <Compile Include="Models\CuentaUsuario.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Directorio.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Documento.cs" />
     <Compile Include="Models\FlujoTrabajoDocumento.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FTAvanzarActividad.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ImagenCarrusel.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InsertarDirectorio_Result.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Modelo.Context.cs">
@@ -817,6 +915,48 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NivelRed.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Seguimiento_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Suscripcion.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerDashBoard_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerEstadisticasFlujoPorVistaDetallePorFiltro_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerEstadisticasFlujoPorVista_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerEstatusTarea_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerFlujoTrabajo_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerInfoInstancia_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerlujoTrabajoPorTareaDetalle_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerProductividadVencidasdDetalle_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerProductividadVencidas_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerTramite_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VerVariablesInstancia_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Pagina.aspx.cs">
       <DependentUpon>Pagina.aspx</DependentUpon>
@@ -931,12 +1071,26 @@
     <Compile Include="Seguridad\ConfiguracionBasica.aspx.designer.cs">
       <DependentUpon>ConfiguracionBasica.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seguridad\ParmetrosConfiguracion.aspx.cs">
+      <DependentUpon>ParmetrosConfiguracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\ParmetrosConfiguracion.aspx.designer.cs">
+      <DependentUpon>ParmetrosConfiguracion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Seguridad\VerMenu.aspx.cs">
       <DependentUpon>VerMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seguridad\VerMenu.aspx.designer.cs">
       <DependentUpon>VerMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\AdministracionNivelRed.aspx.cs">
+      <DependentUpon>AdministracionNivelRed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicios\AdministracionNivelRed.aspx.designer.cs">
+      <DependentUpon>AdministracionNivelRed.aspx</DependentUpon>
     </Compile>
     <Compile Include="Servicios\RegistrarServicio.aspx.cs">
       <DependentUpon>RegistrarServicio.aspx</DependentUpon>
@@ -969,12 +1123,32 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\inicioPortal\Index.cshtml" />
+    <Content Include="Views\Shared\_layout_acceso.cshtml" />
+    <Content Include="Views\Shared\_layout_menu.cshtml" />
+    <Content Include="Views\menus\Index.cshtml" />
+    <None Include="Views\acceder\Index.cshtml" />
+    <Content Include="Views\captura.cshtml" />
+    <Content Include="Views\Shared\_layout_captura.cshtml" />
+    <Content Include="Views\Shared\_layout_consulta.cshtml" />
+    <Content Include="Views\ClienteCaptura.cshtml" />
+    <Content Include="Views\ClienteLista.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Buscar\Index.cshtml" />
+    <Content Include="Views\ConsultaComisiones\Index.cshtml" />
+    <Content Include="Views\ComisionesRed\Index.cshtml" />
+    <Content Include="Views\MisComisiones\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -987,6 +1161,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Librerias\MeNet.Seguridad.Administrador\MeNet.Seguridad.Administrador.csproj">
+      <Project>{91165932-7ec8-4cd9-81aa-92e4c20bf290}</Project>
+      <Name>MeNet.Seguridad.Administrador</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

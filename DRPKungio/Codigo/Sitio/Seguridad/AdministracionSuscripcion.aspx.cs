@@ -35,7 +35,8 @@ namespace Sitio.Seguridad
         #region  paso  2  declaracion variables
 
         private string ClaveAplicacion = "AdministracionSuscripcion";
-
+        private string ClaveMensajeOperacionCompleta = "1";
+        private string ClaveMensajePermiso = "2";
         //  reglas  de megocio
 
         private static AdministradorComun administradorNegocio;
@@ -86,7 +87,14 @@ namespace Sitio.Seguridad
             UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
             UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
 
-            CargarControles();
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                CargarControles();
+            }
+            else
+            {
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
         }
 
         //  metodo   carga  de  página  
@@ -95,11 +103,21 @@ namespace Sitio.Seguridad
         {
             if (!IsPostBack)
             {
+
             }
-            Configurar();
-            InscribirEventos();
-            ActualizarElementos(false);
-            ConfigurarAlCargarPaginaSiempre();
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                Configurar();
+                InscribirEventos();
+                ActualizarElementos(false);
+                ConfigurarAlCargarPaginaSiempre();
+
+            }
+            else
+            {
+
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
             ucWebBarraProgreso1.DesActivar();
         }
 

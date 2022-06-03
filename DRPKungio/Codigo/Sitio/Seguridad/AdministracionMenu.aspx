@@ -36,12 +36,13 @@
     <meta property="og:url" content="http://kugio-mx/inicio.aspx"" />
     <meta property="og:image" content="Comun/favicon/Aplicacion.ico"" />
 
+
     <link href="../Comun/LibreriasIconos/fontello/css/fontello.css" rel="stylesheet" />
     <link href="../Comun/LibreriasIconos/fontello/css/animation.css" rel="stylesheet" />
 
-    <script type="text/javascript" src="../Comun/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="../Comun/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="../Comun/Scripts/ArqSigNet.Nucleo.AdministradorAplicaciones.js" type="text/javascript"></script>
     <script src="../Comun/Scripts/AdministradorElementosCompuestos.js" type="text/javascript"></script>
-<%--    <script src="../Comun/Scripts/ArqSigNet.Nucleo.AdministradorAplicaciones.js" type="text/javascript"></script>--%>
     <script src="../Comun/Scripts/Menu.js"></script>
 
 </head>

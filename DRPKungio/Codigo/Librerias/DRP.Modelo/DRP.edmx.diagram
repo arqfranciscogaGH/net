@@ -23,9 +23,6 @@
         <EntityTypeShape EntityType="Modelo.Puesto" Width="1.5" PointX="6.5" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelo.SesionUsuario" Width="1.5" PointX="11.875" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelo.SesionUsuarioHistorial" Width="1.5" PointX="14.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelo.ESTADO" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelo.ModuloSistema" Width="1.5" PointX="4.125" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelo.OpcionMenu" Width="1.5" PointX="14.875" PointY="11.25" IsExpanded="true" />
         <AssociationConnector Association="Modelo.FK_BitacoraError_Aplicacion" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Modelo.Domicilio" Width="1.5" PointX="16.75" PointY="0.75" />
         <EntityTypeShape EntityType="Modelo.ErrorPersonalizado" Width="1.5" PointX="0.75" PointY="16" />
@@ -36,9 +33,12 @@
         <EntityTypeShape EntityType="Modelo.Terminologia" Width="1.5" PointX="8.75" PointY="16.75" />
         <EntityTypeShape EntityType="Modelo.TerminologiaIdioma" Width="1.5" PointX="10.75" PointY="16.75" />
         <EntityTypeShape EntityType="Modelo.UnidadNegocio" Width="1.5" PointX="12.75" PointY="16.75" />
-        <EntityTypeShape EntityType="Modelo.MUNICIPIO" Width="1.5" PointX="14.75" PointY="16.75" />
-        <EntityTypeShape EntityType="Modelo.Pais" Width="1.5" PointX="6.75" PointY="10.75" />
         <AssociationConnector Association="Modelo.FK_BitacoraError_IdError" />
+        <EntityTypeShape EntityType="Modelo.OpcionMenu" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Modelo.ESTADO" Width="1.5" PointX="12.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Modelo.ModuloSistema" Width="1.5" PointX="6.375" PointY="10.75" />
+        <EntityTypeShape EntityType="Modelo.MUNICIPIO" Width="1.5" PointX="15.375" PointY="16.75" />
+        <EntityTypeShape EntityType="Modelo.Pais" Width="1.5" PointX="3.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

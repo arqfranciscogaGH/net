@@ -36,8 +36,9 @@ namespace Sitio.Seguridad
 
 
         private ModeloSistema _contexto;
-        private string ClaveAplicacion = "";
-
+        private string ClaveAplicacion = "AdministracionMenu";
+        private string ClaveMensajeOperacionCompleta = "1";
+        private string ClaveMensajePermiso = "2";
         //  reglas  de megocio
         private static AdministradorMenus administradorNegocio;
 
@@ -85,25 +86,25 @@ namespace Sitio.Seguridad
 
         protected void Page_PreInit(object sender, EventArgs e)
         {
-            try
+            ucWebBarraProgreso1.Activar();
+            if (!IsPostBack)
             {
-                ucWebBarraProgreso1.Activar();
-                if (!IsPostBack)
-                {
-                    IniciarControladores();
-                    ConfigurarAlCargarPaginaSoloInicialmente();
-                    DefinirCaptura();
-                }
-                Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
-                UcWebMenuFuncionalidad2.DefinirMenuPrincipal();
-                UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
-                UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
+                IniciarControladores();
+                ConfigurarAlCargarPaginaSoloInicialmente();
+                DefinirCaptura();
+            }
+            Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
+            UcWebMenuFuncionalidad2.DefinirMenuPrincipal();
+            UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
+            UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
 
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
                 CargarControles();
             }
-            catch (Exception err)
+            else
             {
-                
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
             }
         }
 
@@ -111,21 +112,24 @@ namespace Sitio.Seguridad
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!IsPostBack)
             {
-                if (!IsPostBack)
-                {
-                }
+
+            }
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
                 Configurar();
                 InscribirEventos();
                 ActualizarElementos(false);
                 ConfigurarAlCargarPaginaSiempre();
-                ucWebBarraProgreso1.DesActivar();
-            }
-            catch (Exception err)
-            {
 
             }
+            else
+            {
+
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
+            ucWebBarraProgreso1.DesActivar();
         }
 
         #endregion
@@ -134,7 +138,7 @@ namespace Sitio.Seguridad
 
         public void IniciarControladores()
         {
-            ClaveAplicacion = "AdministracionMenu";
+          
             AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.ClaveAplicacion = ClaveAplicacion;
             AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IniciarSesionUsuario();
 
@@ -163,7 +167,7 @@ namespace Sitio.Seguridad
             captura2.IdClasificacionCaptura = 1;
 
             captura2.IdEstausCaptura = 1;
-
+            ClaveAplicacion = "AdministracionMenu";
         }
         // definición de  bloques  de  captura  de  datos
         public void CargarControles()

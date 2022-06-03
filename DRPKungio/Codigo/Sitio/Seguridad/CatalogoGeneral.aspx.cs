@@ -37,7 +37,8 @@ namespace Sitio.Seguridad
     {
         #region variables
         private string ClaveAplicacion = "AdministracionCatalogo";
-
+        private string ClaveMensajeOperacionCompleta = "1";
+        private string ClaveMensajePermiso = "2";
 
         private static GeneradorControlesWeb generadorControles;
 
@@ -85,18 +86,35 @@ namespace Sitio.Seguridad
             UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
             UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
 
-            CargarControles();
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                CargarControles();
+            }
+            else
+            {
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+
             }
-            Configurar();
-            InscribirEventos();
-            ActualizarElementos(false);
-            ConfigurarAlCargarPaginaSiempre();
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                Configurar();
+                InscribirEventos();
+                ActualizarElementos(false);
+                ConfigurarAlCargarPaginaSiempre();
+
+            }
+            else
+            {
+
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
             ucWebBarraProgreso1.DesActivar();
 
 
@@ -139,6 +157,7 @@ namespace Sitio.Seguridad
             captura2.IdPlaneacionCaptura = 7;
             captura2.IdClasificacionCaptura = 1;
             captura2.IdEstausCaptura = 1;
+            ClaveAplicacion = "AdministracionCatalogo";
         }
 
         // definición de  bloques  de  captura  de  datos

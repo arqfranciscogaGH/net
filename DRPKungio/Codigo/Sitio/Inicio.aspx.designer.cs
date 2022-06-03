@@ -40,6 +40,15 @@ namespace Sitio {
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
+        /// Control txtTelefonoMovil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTelefonoMovil;
+        
+        /// <summary>
         /// Control txtCorreo.
         /// </summary>
         /// <remarks>
@@ -67,13 +76,31 @@ namespace Sitio {
         protected global::System.Web.UI.WebControls.Button btnEnviar;
         
         /// <summary>
-        /// Control txtPNombre.
+        /// Control txtNombreC.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPNombre;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreC;
+        
+        /// <summary>
+        /// Control txtTelefonoMovilC.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTelefonoMovilC;
+        
+        /// <summary>
+        /// Control txtCorreoC.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCorreoC;
         
         /// <summary>
         /// Control txtImss.
@@ -92,15 +119,6 @@ namespace Sitio {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFecNac;
-        
-        /// <summary>
-        /// Control txtPCorreo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPCorreo;
         
         /// <summary>
         /// Control btnCali.

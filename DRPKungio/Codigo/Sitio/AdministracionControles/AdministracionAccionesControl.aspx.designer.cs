@@ -13,13 +13,13 @@ namespace Sitio.AdministracionControles {
     public partial class AdministracionAccionesControl {
         
         /// <summary>
-        /// Control frmAAccionesPreguntas.
+        /// Control frmAccionesPreguntas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmAAccionesPreguntas;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmAccionesPreguntas;
         
         /// <summary>
         /// Control ucWebBarraProgreso1.
@@ -29,6 +29,15 @@ namespace Sitio.AdministracionControles {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Sitio.Comun.Controles.ucWebBarraProgreso ucWebBarraProgreso1;
+        
+        /// <summary>
+        /// Control UcWebEncabezadoPagina1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Sitio.Comun.Controles.UcWebEncabezadoPagina UcWebEncabezadoPagina1;
         
         /// <summary>
         /// Control UcWebMenuFuncionalidad2.
@@ -58,15 +67,6 @@ namespace Sitio.AdministracionControles {
         protected global::Sitio.Comun.Controles.ucWebConsultorDinamico ucWebConsultorDinamico1;
         
         /// <summary>
-        /// Control UcWebMensaje1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Sitio.Comun.Controles.UcWebMensaje UcWebMensaje1;
-        
-        /// <summary>
         /// Control BloqueCaptura.
         /// </summary>
         /// <remarks>
@@ -74,6 +74,15 @@ namespace Sitio.AdministracionControles {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl BloqueCaptura;
+        
+        /// <summary>
+        /// Control UcWebMensaje1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Sitio.Comun.Controles.UcWebMensaje UcWebMensaje1;
         
         /// <summary>
         /// Control UcWebPiePagina1.

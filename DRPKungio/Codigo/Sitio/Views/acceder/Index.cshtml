@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "acceso";
+}
+
+<h2>acceder</h2>
+
+<form id="frm">
+    <div class="col-lg-6  col-lf-offset-3">
+        Usuario 2
+        <input type="text" id="txtUsuario" name="Usuario" />
+        Contrasea 2
+        <input type="text" id="txtContrasena" name="Contrasena" />
+        <input class="btn  btn-success" id="btnEnviar" value="Enviar" />
+        <input type="submit" class="btn  btn-success" id="btnIngresar" value="Ingresar" />
+    </div>
+</form>
+
+
+<script>
+
+
+          $("#btnEnviar").on("click", function (e) {
+            alert("entro");
+            var UsuarioV = $("#txtUsuario").val();
+            var ContrasenaV = $("#txtContrasena").val();
+
+            var filter = {
+                Usuario: UsuarioV,
+                Contrasena: ContrasenaV
+            }
+
+             $.ajax({
+                type: "post",
+                data: filter,
+                url: "@Url.Action("Ingresar", "acceder")",
+                success: function (data) {
+                        switch (data.success) {
+                            case "OK":
+                                alert(UsuarioV + " " + ContrasenaV );
+                                break;
+                            default:
+                                alert("error");
+                                break;
+                        }
+                }
+             });
+          });
+
+          $(document).ready(function () {
+                alert("cargo");
+                $("#frm").submit(function(e){
+                    alert("Enter");
+ 		            e.preventDefault();
+                    url="@Url.Content("~/acceder/Enter")"
+                    parametros = $(this).serialize();
+                    alert(parametros);
+                    $.post(url, parametros, function (data) {
+
+                        if (data == "1") {
+                            document.location.href = "@Url.Content("~/")"
+                        } else {
+                            alert(data);
+                        }
+                    });
+
+            });
+         });
+
+
+
+</script>

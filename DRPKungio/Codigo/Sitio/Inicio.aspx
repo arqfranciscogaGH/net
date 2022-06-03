@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="inicio.aspx.cs" Inherits="Sitio.inicio" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false"  CodeBehind="inicio.aspx.cs" Inherits="Sitio.inicio" %>
 
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
     <!-- Fancybox -->
     <link rel="stylesheet" href="Comun/css/jquery.fancybox.css">
     <!-- owl carousel -->
-<%--    <link rel="stylesheet" href="Comun/css/owl.carousel.css">--%>
+    <link rel="stylesheet" href="Comun/css/owl.carousel.css">
     <!-- Animate -->
     <link rel="stylesheet" href="Comun/css/animate.css">
     <!-- Main Stylesheet -->
@@ -56,7 +56,10 @@
 
       <!-- app -->
     <link rel="stylesheet" href="comun/app/css/app.css">
+    <link rel="stylesheet" href="comun/app/css/carrusel.css">
 
+
+  
 </head>
 
 
@@ -120,7 +123,7 @@
                     <li data-target="#ContenedorCarruselInicio" data-slide-to="2"></li>
                 </ol>--%>
                 <!--/.carousel-indicators-->
- <%--               <div class="item active" style="background-image: url('Carrusel/s1.jpg')">
+<%--                <div class="item active" style="background-image: url('Carrusel/s1.jpg')">
                     <div class="carrusel-titulo">
                         <div class="animated bounceInRight">
                             <h2>BIENVENIDO !! <br>NOSOTROS  TE  ASESOREAMOS.</h2>
@@ -146,14 +149,14 @@
                 </div>--%>
             </div>
             <!--/.carousel-inner-->
-            <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
+<%--            <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
                 <a class="sl-prev hidden-xs" href="#ContenedorCarruselInicio" data-slide="prev">
                     <i class="fa fa-angle-left fa-3x"></i>
                 </a>
-                <a class="sl-next" href="#ContenedorCarruselInicio" data-slide="next">
+                <a class="sl-next" data-slide="next">
                     <i class="fa fa-angle-right fa-3x"></i>
                 </a>
-            </nav>
+            </nav>--%>
         </div>
     </section>
     <!--
@@ -364,45 +367,49 @@
         <nav class="project-filter clearfix text-center wow fadeInLeft" data-wow-delay="0.5s">
             <ul class="list-inline">
                 <li><a href="javascript:;" class="filter" data-filter="all">Todos</a></li>
-                <li><a href="javascript:;" class="filter" data-filter=".LineaIV">RECUPERO MI INFONAVIT</a></li>
-                <li><a href="javascript:;" class="filter" data-filter=".RecuperaAfore">RECUPERO MI AFORE</a></li>
-                <li><a href="javascript:;" class="filter" data-filter=".Pensionate">ME PENSIONO</a></li>
+                <li><a href="javascript:;" class="filter" data-filter=".MePensiono">ME PENSIONO </a></li>
+                <li><a href="javascript:;" class="filter" data-filter=".RetiroAfore">RETIRO CAPITAL MI AFORE</a></li>
+                <li><a href="javascript:;" class="filter" data-filter=".SmartBusinessCorp">SMART BUSINESS CORP</a></li>
 <%--                <li><a href="javascript:;" class="filter" data-filter=".print">Otro</a></li>--%>
             </ul>
         </nav>
         <div id="projects" class="clearfix">
-            <figure class="mix portfolio-item LineaIV">
-                <img class="img-responsive" src="img/portfolio/portfolio-1.jpg" alt="Portfolio Item">
-                <a href="img/portfolio/portfolio-1.jpg" title="Title One" rel="portfolio" class="fancybox"><span class="plus"></span></a>
-                <figcaption class="mask">
-                    <h3>RECUPERO MI INFONAVIT</h3>
-                    <span></span>
+            <figure class="mix portfolio-item MePensiono">
+                 <img class="img-responsive" src="portafolioServicios/MePensiono.jpg" alt="Portfolio Item">
+                 <a href="portafolioServicios/MePensiono.jpg" title="Me Pensiono" rel="portfolio" class="fancybox"><span class="plus"></span></a>
+                 <figcaption class="mask">
+                     <h3>ME PENSIONO  </h3>
+                     <span></span>
+                     <a href="portafolioServicios/MePensiono.pdf" download="MePensiono">Descargar </a>
                 </figcaption>
             </figure>
             <figure class="mix portfolio-item RecuperaAfore">
-                <img class="img-responsive" src="img/portfolio/portfolio-2.jpg" alt="Portfolio Item">
-                <a href="img/portfolio/portfolio-2.jpg" title="Title Two" rel="portfolio" class="fancybox"><span class="plus"></span></a>
+                <img class="img-responsive" src="portafolioServicios/RetiroAfore.jpg" alt="Portfolio Item">
+                <a href="portafolioServicios/RetiroAfore.jpg" title="Me Pensiono" rel="portfolio" class="fancybox"><span class="plus"></span></a>
                 <figcaption class="mask">
-                    <h3>RECUPERO MI AFORE</h3>
+                    <h3>RETIRO CAPITAL MI AFORE</h3>
                     <span>  </span>
+                    <a href="portafolioServicios/RetiroAfore.pdf" download="RetiroAfore">Descargar </a>
                 </figcaption>
             </figure>
-            <!--<figure class="mix portfolio-item Pensionate">
-                <img class="img-responsive" src="img/portfolio/portfolio-3.jpg" alt="Portfolio Item">
-                <a href="img/portfolio/portfolio-3.jpg" title="Title Three" rel="portfolio" class="fancybox"><span class="plus"></span></a>
+            <figure class="mix portfolio-item SmartBusinessCorp">
+                <img class="img-responsive" src="portafolioServicios/SmartBusinessCorp.jpg" alt="Portfolio Item">
+                <a href="portafolioServicios/SmartBusinessCorp.jpg" title="Smart Business Corp" rel="portfolio" class="fancybox"><span class="plus"></span></a>
+
                 <figcaption class="mask">
-                    <h3>ME PENSIONO</h3>
+                    <h3>SMART BUSINESS CORP</h3>
                     <span></span>
+                    <a href="portafolioServicios/SmartBusinessCorp.jpg" download="SmartBusinessCorp">Descargar </a>
                 </figcaption>
             </figure>
-            <figure class="mix portfolio-item print">
+<%--            <figure class="mix portfolio-item print">
                 <img class="img-responsive" src="img/portfolio/portfolio-4.jpg" alt="Portfolio Item">
                 <a href="img/portfolio/portfolio-4.jpg" title="Title Four" rel="portfolio" class="fancybox"><span class="plus"></span></a>
                 <figcaption class="mask">
                     <h3>Otro</h3>
                     <span>Fotografias</span>
                 </figcaption>
-            </figure>-->
+            </figure>--%>
 
 
         </div> <!-- end #projects -->
@@ -423,7 +430,7 @@
                             <div class="fact-icon">
                                 <i class="fa fa-users fa-lg"></i>
                             </div>
-                            <span data-to="152">0</span>
+                            <span data-to="2000">0</span>
                             <p>Clientes Satisfechos</p>
                         </div>
                     </div>
@@ -432,7 +439,7 @@
                             <div class="fact-icon">
                                 <i class="fab fa-slideshare fa-lg"></i>
                             </div>
-                            <span data-to="150">0</span>
+                            <span data-to="3000">0</span>
                             <p>Tramites </p>
                         </div>
                     </div>
@@ -442,7 +449,7 @@
                             <div class="fact-icon">
                                 <i class="fa fa-clock fa-lg"></i>
                             </div>
-                            <span data-to="2500">0</span>
+                            <span data-to="10000">0</span>
                             <p>Horas Trabajadas</p>
                         </div>
                     </div>
@@ -452,7 +459,7 @@
                             <div class="fact-icon">
                                 <i class="fa fa-check-square fa-lg"></i>
                             </div>
-                            <span data-to="120">0</span>
+                            <span data-to="12">0</span>
                             <p>Servicios</p>
                         </div>
                     </div>
@@ -593,6 +600,11 @@
                                 <%--<input type="text" class="form-control" name="name" placeholder="Nombre" required="">--%>
 
                             </div>
+
+                            <div class="input-field">
+                                <asp:TextBox ID="txtTelefonoMovil" placeholder="Whatsapp:" runat="server" CssClass="form-control" ></asp:TextBox>
+<%--                            <input type="email" class="form-control" name="email" placeholder="Correo" required="">--%>
+                            </div>
                             <div class="input-field">
                                 <asp:TextBox ID="txtCorreo" placeholder="Correo:" runat="server" CssClass="form-control" ></asp:TextBox>
 <%--                            <input type="email" class="form-control" name="email" placeholder="Correo" required="">--%>
@@ -637,8 +649,17 @@
                     <div class="contact-form clearfix">
                         <form action="index.html" method="post">
                             <div class="input-field">
-                                <asp:TextBox ID="txtPNombre" placeholder="Nombre:" runat="server" CssClass="form-control" ></asp:TextBox>
+                                <asp:TextBox ID="txtNombreC" placeholder="Nombre:" runat="server" CssClass="form-control" ></asp:TextBox>
 <%--                            <input type="text" class="form-control" name="name" placeholder="Nombre" required="">--%>
+                            </div>
+
+                            <div class="input-field">
+                                <asp:TextBox ID="txtTelefonoMovilC" placeholder="Whatsapp:" runat="server" CssClass="form-control" ></asp:TextBox>
+<%--                            <input type="email" class="form-control" name="email" placeholder="Correo" required="">--%>
+                            </div>
+                            <div class="input-field">
+                                <asp:TextBox ID="txtCorreoC" placeholder="Correo:" runat="server" CssClass="form-control" ></asp:TextBox>
+<%--                                <input type="email" class="form-control" name="email" placeholder="Correo" required="">--%>
                             </div>
                             <div class="input-field">
                                 <asp:TextBox ID="txtImss" placeholder="No. Imss:" runat="server" CssClass="form-control" ></asp:TextBox>
@@ -647,10 +668,6 @@
                             <div class="input-field">
                                 <asp:TextBox ID="txtFecNac" placeholder="Fecha Nacimiento:" runat="server" CssClass="form-control" ></asp:TextBox>
 <%--                                <input type="text" class="form-control" name="fecnac" placeholder="Fecha Nacimiento " required="">--%>
-                            </div>
-                            <div class="input-field">
-                                <asp:TextBox ID="txtPCorreo" placeholder="Correo:" runat="server" CssClass="form-control" ></asp:TextBox>
-<%--                                <input type="email" class="form-control" name="email" placeholder="Correo" required="">--%>
                             </div>
                             <asp:Button ID="btnCali" CssClass="btn btn-blue" runat="server" Text="Precalificar" OnClick="btnCali_Click" />
 <%--                        <input type="submit" class="btn btn-blue pull-right" value="Calificar" id="msg-submit">--%>
@@ -697,9 +714,13 @@
     JavaScripts
     ========================== -->
     <!-- main jQuery -->
-    <script src="Comun/js/vendor/jquery-1.11.1.min.js"></script>
+   
     <!-- Bootstrap -->
     <script src="Comun/js/bootstrap.min.js"></script>
+  <%--  <script src="comun/scripts/jquery-1.8.0.min.js"></script>  --%>
+    <script src="comun/jquery/jquery.min.js"></script>
+    
+<%--     <script src="Comun/js/vendor/jquery-1.11.1.min.js"></script>--%>
     <!-- jquery.nav -->
     <script src="Comun/js/jquery.nav.js"></script>
     <!-- Portfolio Filtering -->
@@ -719,16 +740,9 @@
     <!-- theme custom scripts -->
     <script src="Comun/js/main.js"></script>
 
-    <script src="comun/jquery/jquery.min.js"></script>
     <script src="comun/owlCarousel/js/owl.carousel.min.js"></script>
     <script src="comun/app/js/main.js"></script>
 
     </form>
 </body>
 </html>
-
-
-
-
-
-

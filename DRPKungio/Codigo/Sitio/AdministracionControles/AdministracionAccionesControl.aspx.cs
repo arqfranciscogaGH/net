@@ -41,9 +41,11 @@ namespace Sitio.AdministracionControles
 
             private ModeloSistema _contexto;
             private string ClaveAplicacion = "AdministracionAccionesControl";
+            private string ClaveMensajeOperacionCompleta = "1";
+            private string ClaveMensajePermiso = "2";
 
-            //  reglas  de megocio
-            private static AdministradorControles administradorNegocio;
+        //  reglas  de megocio
+        private static AdministradorControles administradorNegocio;
 
 
             // primer   captura
@@ -81,14 +83,24 @@ namespace Sitio.AdministracionControles
                 ucWebBarraProgreso1.Activar();
                 if (!IsPostBack)
                 {
-                    ObtenerParametros();
                     IniciarControladores();
-
-                    ConfigurarAlCargarPaginaSoloInicialmente();  // cambio considerar  en todos
+                    ConfigurarAlCargarPaginaSoloInicialmente();
                     DefinirCaptura();
                 }
+
                 Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
-                CargarControles();
+                UcWebMenuFuncionalidad2.DefinirMenuPrincipal();
+                UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
+                UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
+
+                if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+                {
+                    CargarControles();
+                }
+                else
+                {
+                    UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+                }
             }
 
             //  metodo   carga  de  página  

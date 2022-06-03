@@ -18,7 +18,7 @@ namespace Sitio
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                    name: "Default",
+                    name: "inicioPortal",
                     url: "{controller}/{action}/{id}",
                     defaults: new { action = "Index", id = UrlParameter.Optional }
                 );  

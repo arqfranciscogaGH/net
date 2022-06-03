@@ -1,4 +1,10 @@
 ﻿//window.onload = function () {
+//window.addEventListener('resize', cambiarBotones);
+
+//$(window).resize(function () {
+      
+//    alert("resize ");
+//});
 
 $(document).ready(function () {
     //var botonMenu = document.getElementById('IdBotonMenu');http://localhost:10442/../css
@@ -9,24 +15,67 @@ $(document).ready(function () {
     //$("#IdBotonMenu").on('click', function () {
     //    $("#IdMenuNav").toggleClass("MenuActivo");
     //})
+    // Get the size of the device screen
+    var screenWidth = screen.width;
+    var screenHeight = screen.height;
+
+    // Get the browser window size
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+
+    // Get the size of the entire webpage
+    const pageWidth = document.documentElement.scrollWidth;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    var clase = $("#IdBotonMenu").attr('class');
+
+    if (windowWidth < 701) {
+        //alert("< 701");
+        if (clase == "MenuBotonActivacion icon-window-minimize") {
+            //alert("< 701 menu minimizado");
+            $('#IdBotonMenu').removeClass('MenuBotonActivacion icon-window-minimize').addClass('MenuBotonActivacion icon-menu');
+            //$('nav').css({ 'left': '-100%' });
+            $('nav').css({ 'margin-left': '-100%' });
+        }
+        else {
+            //alert("< 701 menu ");
+            //$('nav').css({ 'left': '-100%' });
+            $('nav').css({ 'margin-left': '-100%' });
+        }
+    }
+    else {
+        //alert(" >  701");
+        if (clase == "MenuBotonActivacion icon-window-minimize") {
+            //alert(" >  701 , menu minimizado");
+
+            //$('nav').css({ 'left': '0%' });
+            $('nav').css({ 'margin-left': '0%' });
+        }
+        else {
+            //alert(">  701 , menu ");
+            $('#IdBotonMenu').removeClass('MenuBotonActivacion icon-menu').addClass('MenuBotonActivacion icon-window-minimize');
+            //$('nav').css({ 'left': '0%' });
+            $('nav').css({ 'margin-left': '0%' });
+        }
+    }
+    
 
     $('#IdBotonMenu').on('click', function () {
         var clase = $("#IdBotonMenu").attr('class');
-
+       
         if ( clase == "MenuBotonActivacion icon-window-minimize") {
-
+            //alert("click minimize ");
             $('#IdBotonMenu').removeClass('MenuBotonActivacion icon-window-minimize').addClass('MenuBotonActivacion icon-menu');
-            //$('nav').css({ 'left': '-900px' });
+            //$('nav').css({ 'left': '0px' });
             $('nav').css({ 'margin-left': '-100%' });
-            //$('nav').css('visibility', 'hidden' );
-
+            //$('nav').css("visibility", 'visible');
         }
         else {
-
+            //alert("click menu ");
             $('#IdBotonMenu').removeClass('MenuBotonActivacion icon-menu').addClass('MenuBotonActivacion icon-window-minimize');
-            //$('nav').css({ 'left': '0px' });
-            $('nav').css({ 'margin-left': '0' });
-            //$('nav').css("visibility", 'visible');
+            //$('nav').css({ 'left': '-100%' });
+            $('nav').css({ 'margin-left': '0%' });
+           //$('nav').css('visibility', 'hidden' );
         }
 
     });

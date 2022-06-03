@@ -1059,10 +1059,13 @@ nav {
 @media (max-width: 700px) {
 
     #IdBotonMenu {
+       
+       
     }
 
     nav {
-        left: 0%;
+        /*left: -100%;*/
+        margin-left: -100%;
         top: 6em;
         width: 40%;
     }
@@ -1096,13 +1099,14 @@ nav {
 
 /*    tableta */
 @media (min-width:700px ) and (max-width: 920px) {
-        nav {
-            left: 0%;
-            width: 90%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
+    nav {
+        left: 0%;
+        margin-left: 0%;
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
 
         /**                           menu  normal        **/
 
@@ -1131,6 +1135,7 @@ nav {
 {
     nav {
         left: 0%;
+        margin-left: 0%;
         width: 88%;
         display: flex;
         justify-content: flex-end;

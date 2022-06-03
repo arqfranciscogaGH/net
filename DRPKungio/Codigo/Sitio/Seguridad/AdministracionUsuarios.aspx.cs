@@ -41,7 +41,8 @@ namespace Sitio.Seguridad
 
         private ModeloSistema _contexto;
         private string ClaveAplicacion = "AdministracionUsuarios";
-
+        private string ClaveMensajeOperacionCompleta = "1";
+        private string ClaveMensajePermiso = "2";
         //  reglas  de megocio
 
         private static AdministradorUsuarios  administradorNegocio;
@@ -92,7 +93,14 @@ namespace Sitio.Seguridad
             UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
             UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
 
-            CargarControles();
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                CargarControles();
+            }
+            else
+            {
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
         }
 
         //  metodo   carga  de  página  
@@ -101,11 +109,21 @@ namespace Sitio.Seguridad
         {
             if (!IsPostBack)
             {
+
             }
-            Configurar();
-            InscribirEventos();
-            ActualizarElementos(false);
-            ConfigurarAlCargarPaginaSiempre();
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                Configurar();
+                InscribirEventos();
+                ActualizarElementos(false);
+                ConfigurarAlCargarPaginaSiempre();
+
+            }
+            else
+            {
+
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
             ucWebBarraProgreso1.DesActivar();
         }
 
@@ -223,7 +241,8 @@ namespace Sitio.Seguridad
                     _entidad = Obtener();
                     if (_entidad != null)
                     {
-
+                        Dictionary<string, AtributoControl> valoresControles = new Dictionary<string, AtributoControl>();
+                        valoresControles = generadorControles.ObtenerValoresControlesPorAplicacion(contenedor, captura);
 
                         //  Persona
 
@@ -252,16 +271,20 @@ namespace Sitio.Seguridad
                         generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, domicilio.GetType(), domicilio);
 
 
-                        //  Empleado
-                        Empleado empleado = new Empleado();
-                        empleado = administradorNegocio.Obtener<Empleado>(s => s.IdUsuario == _entidad.IdUsuario);
-                        if (empleado == null)
+                        AtributoControl cuestionarioPersona = valoresControles.FirstOrDefault(c => c.Value.IdContenedor == 9046).Value;
+                        if  (cuestionarioPersona !=null  && cuestionarioPersona.IdContenedor== 9046)
                         {
-                            empleado = new Empleado();
-                            empleado.IdUsuario = _entidad.IdUsuario;
+                            //  Empleado
+                            Empleado empleado = new Empleado();
+                            empleado = administradorNegocio.Obtener<Empleado>(s => s.IdUsuario == _entidad.IdUsuario);
+                            if (empleado == null)
+                            {
+                                empleado = new Empleado();
+                                empleado.IdUsuario = _entidad.IdUsuario;
+                            }
+                            empleado.Activo = _entidad.Activo == 1 ? true : false;
+                            generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, empleado.GetType(), empleado);
                         }
-                        empleado.Activo = _entidad.Activo == 1 ? true : false;
-                        generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, empleado.GetType(), empleado);
 
                         //  Cuenta Usuario
                         //  se asigna  datos  a  captura
@@ -346,6 +369,11 @@ namespace Sitio.Seguridad
 
             if (_entidad != null)
             {
+
+                Dictionary<string, AtributoControl> valoresControles = new Dictionary<string, AtributoControl>();
+                valoresControles = generadorControles.ObtenerValoresControlesPorAplicacion(contenedor, captura);
+
+
                 //   cuenta  de usuario
                 _entidad.IdUsuario = 0;
                 _entidad.IdSuscriptor = int.Parse(AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IdSuscriptor.ToString());
@@ -360,12 +388,21 @@ namespace Sitio.Seguridad
                 //  Persona
                 Persona persona = GuardarPersona("AGREGAR", _entidad);
 
-                //  Domicilio
-                Domicilio domicilio =GuardarDomicilio("AGREGAR", _entidad, persona);
-                generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, domicilio.GetType(), domicilio);
-                //  Empleado
-                Empleado empleado =GuardarEmpleado("AGREGAR", _entidad);
-                generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, empleado.GetType(), empleado);
+                AtributoControl cuestionarioDomicilio = valoresControles.FirstOrDefault(c => c.Value.IdContenedor == 9047).Value;
+                if (cuestionarioDomicilio != null && cuestionarioDomicilio.IdContenedor == 9047)
+                {
+                    //  Domicilio
+                    Domicilio domicilio = GuardarDomicilio("AGREGAR", _entidad, persona);
+                    generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, domicilio.GetType(), domicilio);
+                }
+                AtributoControl cuestionarioPersona = valoresControles.FirstOrDefault(c => c.Value.IdContenedor == 9046).Value;
+                if (cuestionarioPersona != null && cuestionarioPersona.IdContenedor == 9046)
+                {
+                    //  Empleado
+                    Empleado empleado = GuardarEmpleado("AGREGAR", _entidad);
+                    generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, empleado.GetType(), empleado);
+                }
+
 
             }
         }
@@ -374,19 +411,28 @@ namespace Sitio.Seguridad
         {
             if (IdElemento != null && IdElemento != 0)
             {
+                Dictionary<string, AtributoControl> valoresControles = new Dictionary<string, AtributoControl>();
+                valoresControles = generadorControles.ObtenerValoresControlesPorAplicacion(contenedor, captura);
+
                 _entidad = Obtener();
                 if (_entidad != null)
                 {
- 
+
                     //  Persona
-                    Persona persona =GuardarPersona("ACTUALIZAR", _entidad);
+                    Persona persona = GuardarPersona("ACTUALIZAR", _entidad);
 
-                    //  Domicilio
-                    GuardarDomicilio("ACTUALIZAR", _entidad, persona);
-
-                    //  Empleado
-                    GuardarEmpleado("ACTUALIZAR", _entidad);
-
+                    AtributoControl cuestionarioDomicilio = valoresControles.FirstOrDefault(c => c.Value.IdContenedor == 9047).Value;
+                    if (cuestionarioDomicilio != null && cuestionarioDomicilio.IdContenedor == 9047)
+                    { 
+                        //  Domicilio
+                        GuardarDomicilio("ACTUALIZAR", _entidad, persona);
+                    }
+                    AtributoControl cuestionarioPersona = valoresControles.FirstOrDefault(c => c.Value.IdContenedor == 9046).Value;
+                    if (cuestionarioPersona != null && cuestionarioPersona.IdContenedor == 9046)
+                    {
+                        //  Empleado
+                        GuardarEmpleado("ACTUALIZAR", _entidad);
+                    }
                     //   cuenta  de usuario
 
                     _entidad = (CuentaUsuario)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);

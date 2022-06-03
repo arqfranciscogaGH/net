@@ -10,12 +10,12 @@
            
             </div>
         </div>
-        <div  id="ContenedorPerfil" class= "ContenedorElementoSeguridad" runat="server" ClientIDMode="Static"    >
+        <div  id="ContenedorPerfil"  class= "ContenedorElementoSeguridad" runat="server" ClientIDMode="Static"    >
             <span class= "ContenedorIconoSeguridad icon-users" > </span>
             <div id="NombrePerfil" class= "ContenedorTextoSeguridad" runat="server" ClientIDMode="Static" >
            
             </div>
         </div>
 </div>
-<span id="IdBotonMenu"  class="MenuBotonActivacion icon-window-minimize">  </span>
+<span id="IdBotonMenu"  class="MenuBotonActivacion icon-window-minimize"  >  </span>
 <asp:LinkButton ID="IdBotonElementosSeguridad"  ClientIDMode="Static"   CssClass="ElementoCerrarSesion icon-off" OnClick="IdBotonElementosSeguridad_Click" runat="server">  </asp:LinkButton>

@@ -12,6 +12,8 @@ namespace Sitio.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Modelo : DbContext
     {
@@ -26,6 +28,718 @@ namespace Sitio.Models
         }
     
         public virtual DbSet<FlujoTrabajoDocumento> FlujoTrabajoDocumento { get; set; }
+        public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<CuentaUsuario> CuentaUsuario { get; set; }
+        public virtual DbSet<Directorio> Directorio { get; set; }
+        public virtual DbSet<Suscripcion> Suscripcion { get; set; }
+        public virtual DbSet<Configuracion> Configuracion { get; set; }
+        public virtual DbSet<FTAvanzarActividad> FTAvanzarActividad { get; set; }
         public virtual DbSet<ImagenCarrusel> ImagenCarrusel { get; set; }
+        public virtual DbSet<NivelRed> NivelRed { get; set; }
+    
+        public virtual int ActualizarDirectorio(Nullable<int> id, string llave, string clave, string fecha, string nombre, string descripcion, string tipo, string direccion, string telefono, string correo, Nullable<int> idCategoria, Nullable<int> idSubCategoria, Nullable<int> idGiro, string latitud, string longitud, string rutaFoto, string urlFoto, string urlVideo, string paginaWeb, string facebook, string youTube, string otraRedSocial, Nullable<int> idSuscriptor, string fechaEstatus, Nullable<short> estatus)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var llaveParameter = llave != null ?
+                new ObjectParameter("llave", llave) :
+                new ObjectParameter("llave", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("clave", clave) :
+                new ObjectParameter("clave", typeof(string));
+    
+            var fechaParameter = fecha != null ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("descripcion", descripcion) :
+                new ObjectParameter("descripcion", typeof(string));
+    
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("direccion", direccion) :
+                new ObjectParameter("direccion", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("telefono", telefono) :
+                new ObjectParameter("telefono", typeof(string));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            var idCategoriaParameter = idCategoria.HasValue ?
+                new ObjectParameter("idCategoria", idCategoria) :
+                new ObjectParameter("idCategoria", typeof(int));
+    
+            var idSubCategoriaParameter = idSubCategoria.HasValue ?
+                new ObjectParameter("idSubCategoria", idSubCategoria) :
+                new ObjectParameter("idSubCategoria", typeof(int));
+    
+            var idGiroParameter = idGiro.HasValue ?
+                new ObjectParameter("idGiro", idGiro) :
+                new ObjectParameter("idGiro", typeof(int));
+    
+            var latitudParameter = latitud != null ?
+                new ObjectParameter("latitud", latitud) :
+                new ObjectParameter("latitud", typeof(string));
+    
+            var longitudParameter = longitud != null ?
+                new ObjectParameter("longitud", longitud) :
+                new ObjectParameter("longitud", typeof(string));
+    
+            var rutaFotoParameter = rutaFoto != null ?
+                new ObjectParameter("rutaFoto", rutaFoto) :
+                new ObjectParameter("rutaFoto", typeof(string));
+    
+            var urlFotoParameter = urlFoto != null ?
+                new ObjectParameter("urlFoto", urlFoto) :
+                new ObjectParameter("urlFoto", typeof(string));
+    
+            var urlVideoParameter = urlVideo != null ?
+                new ObjectParameter("urlVideo", urlVideo) :
+                new ObjectParameter("urlVideo", typeof(string));
+    
+            var paginaWebParameter = paginaWeb != null ?
+                new ObjectParameter("paginaWeb", paginaWeb) :
+                new ObjectParameter("paginaWeb", typeof(string));
+    
+            var facebookParameter = facebook != null ?
+                new ObjectParameter("facebook", facebook) :
+                new ObjectParameter("facebook", typeof(string));
+    
+            var youTubeParameter = youTube != null ?
+                new ObjectParameter("youTube", youTube) :
+                new ObjectParameter("youTube", typeof(string));
+    
+            var otraRedSocialParameter = otraRedSocial != null ?
+                new ObjectParameter("otraRedSocial", otraRedSocial) :
+                new ObjectParameter("otraRedSocial", typeof(string));
+    
+            var idSuscriptorParameter = idSuscriptor.HasValue ?
+                new ObjectParameter("idSuscriptor", idSuscriptor) :
+                new ObjectParameter("idSuscriptor", typeof(int));
+    
+            var fechaEstatusParameter = fechaEstatus != null ?
+                new ObjectParameter("fechaEstatus", fechaEstatus) :
+                new ObjectParameter("fechaEstatus", typeof(string));
+    
+            var estatusParameter = estatus.HasValue ?
+                new ObjectParameter("estatus", estatus) :
+                new ObjectParameter("estatus", typeof(short));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarDirectorio", idParameter, llaveParameter, claveParameter, fechaParameter, nombreParameter, descripcionParameter, tipoParameter, direccionParameter, telefonoParameter, correoParameter, idCategoriaParameter, idSubCategoriaParameter, idGiroParameter, latitudParameter, longitudParameter, rutaFotoParameter, urlFotoParameter, urlVideoParameter, paginaWebParameter, facebookParameter, youTubeParameter, otraRedSocialParameter, idSuscriptorParameter, fechaEstatusParameter, estatusParameter);
+        }
+    
+        public virtual ObjectResult<AvanzarActividad_Result> AvanzarActividad(string claveFlujo, string identificador, string idAccion, Nullable<int> idTarea, string clavEstatus, string parametros, string variables)
+        {
+            var claveFlujoParameter = claveFlujo != null ?
+                new ObjectParameter("ClaveFlujo", claveFlujo) :
+                new ObjectParameter("ClaveFlujo", typeof(string));
+    
+            var identificadorParameter = identificador != null ?
+                new ObjectParameter("Identificador", identificador) :
+                new ObjectParameter("Identificador", typeof(string));
+    
+            var idAccionParameter = idAccion != null ?
+                new ObjectParameter("IdAccion", idAccion) :
+                new ObjectParameter("IdAccion", typeof(string));
+    
+            var idTareaParameter = idTarea.HasValue ?
+                new ObjectParameter("IdTarea", idTarea) :
+                new ObjectParameter("IdTarea", typeof(int));
+    
+            var clavEstatusParameter = clavEstatus != null ?
+                new ObjectParameter("ClavEstatus", clavEstatus) :
+                new ObjectParameter("ClavEstatus", typeof(string));
+    
+            var parametrosParameter = parametros != null ?
+                new ObjectParameter("Parametros", parametros) :
+                new ObjectParameter("Parametros", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AvanzarActividad_Result>("AvanzarActividad", claveFlujoParameter, identificadorParameter, idAccionParameter, idTareaParameter, clavEstatusParameter, parametrosParameter, variablesParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarDirectorios_Result> ConsultarDirectorios(string latitud, string longitud, Nullable<double> radioMetros, string giro, string categoria, string subCategoria)
+        {
+            var latitudParameter = latitud != null ?
+                new ObjectParameter("Latitud", latitud) :
+                new ObjectParameter("Latitud", typeof(string));
+    
+            var longitudParameter = longitud != null ?
+                new ObjectParameter("Longitud", longitud) :
+                new ObjectParameter("Longitud", typeof(string));
+    
+            var radioMetrosParameter = radioMetros.HasValue ?
+                new ObjectParameter("RadioMetros", radioMetros) :
+                new ObjectParameter("RadioMetros", typeof(double));
+    
+            var giroParameter = giro != null ?
+                new ObjectParameter("Giro", giro) :
+                new ObjectParameter("Giro", typeof(string));
+    
+            var categoriaParameter = categoria != null ?
+                new ObjectParameter("Categoria", categoria) :
+                new ObjectParameter("Categoria", typeof(string));
+    
+            var subCategoriaParameter = subCategoria != null ?
+                new ObjectParameter("SubCategoria", subCategoria) :
+                new ObjectParameter("SubCategoria", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarDirectorios_Result>("ConsultarDirectorios", latitudParameter, longitudParameter, radioMetrosParameter, giroParameter, categoriaParameter, subCategoriaParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarDocumentosFlujoTrabajo_Result> ConsultarDocumentosFlujoTrabajo(Nullable<int> ideferencia)
+        {
+            var ideferenciaParameter = ideferencia.HasValue ?
+                new ObjectParameter("Ideferencia", ideferencia) :
+                new ObjectParameter("Ideferencia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarDocumentosFlujoTrabajo_Result>("ConsultarDocumentosFlujoTrabajo", ideferenciaParameter);
+        }
+    
+        public virtual int ConsultarEstadisticas(string latitud, string longitud, Nullable<double> radioMetros)
+        {
+            var latitudParameter = latitud != null ?
+                new ObjectParameter("Latitud", latitud) :
+                new ObjectParameter("Latitud", typeof(string));
+    
+            var longitudParameter = longitud != null ?
+                new ObjectParameter("Longitud", longitud) :
+                new ObjectParameter("Longitud", typeof(string));
+    
+            var radioMetrosParameter = radioMetros.HasValue ?
+                new ObjectParameter("RadioMetros", radioMetros) :
+                new ObjectParameter("RadioMetros", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ConsultarEstadisticas", latitudParameter, longitudParameter, radioMetrosParameter);
+        }
+    
+        public virtual int ConsultarHistorial(string clave, string identificador, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var identificadorParameter = identificador != null ?
+                new ObjectParameter("Identificador", identificador) :
+                new ObjectParameter("Identificador", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ConsultarHistorial", claveParameter, identificadorParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarMisPendientes_Result> ConsultarMisPendientes(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarMisPendientes_Result>("ConsultarMisPendientes", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual int ConsultarNegocios(string latitud, string longitud, Nullable<double> radioMetros, string giro)
+        {
+            var latitudParameter = latitud != null ?
+                new ObjectParameter("Latitud", latitud) :
+                new ObjectParameter("Latitud", typeof(string));
+    
+            var longitudParameter = longitud != null ?
+                new ObjectParameter("Longitud", longitud) :
+                new ObjectParameter("Longitud", typeof(string));
+    
+            var radioMetrosParameter = radioMetros.HasValue ?
+                new ObjectParameter("RadioMetros", radioMetros) :
+                new ObjectParameter("RadioMetros", typeof(double));
+    
+            var giroParameter = giro != null ?
+                new ObjectParameter("Giro", giro) :
+                new ObjectParameter("Giro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ConsultarNegocios", latitudParameter, longitudParameter, radioMetrosParameter, giroParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarServiciosPorCliente_Result> ConsultarServiciosPorCliente(Nullable<int> id, string filtro)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("filtro", filtro) :
+                new ObjectParameter("filtro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarServiciosPorCliente_Result>("ConsultarServiciosPorCliente", idParameter, filtroParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarSocios_Result> ConsultarSocios(Nullable<int> id, string filtro)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarSocios_Result>("ConsultarSocios", idParameter, filtroParameter);
+        }
+    
+        public virtual ObjectResult<InsertarDirectorio_Result> InsertarDirectorio(Nullable<int> id, string llave, string clave, string fecha, string nombre, string descripcion, string tipo, string direccion, string telefono, string correo, Nullable<int> idCategoria, Nullable<int> idSubCategoria, Nullable<int> idGiro, string latitud, string longitud, string rutaFoto, string urlFoto, string urlVideo, string paginaWeb, string facebook, string youTube, string otraRedSocial, Nullable<int> idSuscriptor, string fechaEstatus, Nullable<short> estatus)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var llaveParameter = llave != null ?
+                new ObjectParameter("llave", llave) :
+                new ObjectParameter("llave", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("clave", clave) :
+                new ObjectParameter("clave", typeof(string));
+    
+            var fechaParameter = fecha != null ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("descripcion", descripcion) :
+                new ObjectParameter("descripcion", typeof(string));
+    
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("direccion", direccion) :
+                new ObjectParameter("direccion", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("telefono", telefono) :
+                new ObjectParameter("telefono", typeof(string));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            var idCategoriaParameter = idCategoria.HasValue ?
+                new ObjectParameter("idCategoria", idCategoria) :
+                new ObjectParameter("idCategoria", typeof(int));
+    
+            var idSubCategoriaParameter = idSubCategoria.HasValue ?
+                new ObjectParameter("idSubCategoria", idSubCategoria) :
+                new ObjectParameter("idSubCategoria", typeof(int));
+    
+            var idGiroParameter = idGiro.HasValue ?
+                new ObjectParameter("idGiro", idGiro) :
+                new ObjectParameter("idGiro", typeof(int));
+    
+            var latitudParameter = latitud != null ?
+                new ObjectParameter("latitud", latitud) :
+                new ObjectParameter("latitud", typeof(string));
+    
+            var longitudParameter = longitud != null ?
+                new ObjectParameter("longitud", longitud) :
+                new ObjectParameter("longitud", typeof(string));
+    
+            var rutaFotoParameter = rutaFoto != null ?
+                new ObjectParameter("rutaFoto", rutaFoto) :
+                new ObjectParameter("rutaFoto", typeof(string));
+    
+            var urlFotoParameter = urlFoto != null ?
+                new ObjectParameter("urlFoto", urlFoto) :
+                new ObjectParameter("urlFoto", typeof(string));
+    
+            var urlVideoParameter = urlVideo != null ?
+                new ObjectParameter("UrlVideo", urlVideo) :
+                new ObjectParameter("UrlVideo", typeof(string));
+    
+            var paginaWebParameter = paginaWeb != null ?
+                new ObjectParameter("paginaWeb", paginaWeb) :
+                new ObjectParameter("paginaWeb", typeof(string));
+    
+            var facebookParameter = facebook != null ?
+                new ObjectParameter("facebook", facebook) :
+                new ObjectParameter("facebook", typeof(string));
+    
+            var youTubeParameter = youTube != null ?
+                new ObjectParameter("youTube", youTube) :
+                new ObjectParameter("youTube", typeof(string));
+    
+            var otraRedSocialParameter = otraRedSocial != null ?
+                new ObjectParameter("otraRedSocial", otraRedSocial) :
+                new ObjectParameter("otraRedSocial", typeof(string));
+    
+            var idSuscriptorParameter = idSuscriptor.HasValue ?
+                new ObjectParameter("idSuscriptor", idSuscriptor) :
+                new ObjectParameter("idSuscriptor", typeof(int));
+    
+            var fechaEstatusParameter = fechaEstatus != null ?
+                new ObjectParameter("fechaEstatus", fechaEstatus) :
+                new ObjectParameter("fechaEstatus", typeof(string));
+    
+            var estatusParameter = estatus.HasValue ?
+                new ObjectParameter("estatus", estatus) :
+                new ObjectParameter("estatus", typeof(short));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<InsertarDirectorio_Result>("InsertarDirectorio", idParameter, llaveParameter, claveParameter, fechaParameter, nombreParameter, descripcionParameter, tipoParameter, direccionParameter, telefonoParameter, correoParameter, idCategoriaParameter, idSubCategoriaParameter, idGiroParameter, latitudParameter, longitudParameter, rutaFotoParameter, urlFotoParameter, urlVideoParameter, paginaWebParameter, facebookParameter, youTubeParameter, otraRedSocialParameter, idSuscriptorParameter, fechaEstatusParameter, estatusParameter);
+        }
+    
+        public virtual ObjectResult<Seguimiento_Result> Seguimiento(string clave, string identificador, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var identificadorParameter = identificador != null ?
+                new ObjectParameter("Identificador", identificador) :
+                new ObjectParameter("Identificador", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Seguimiento_Result>("Seguimiento", claveParameter, identificadorParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<VerDashBoard_Result> VerDashBoard(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerDashBoard_Result>("VerDashBoard", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual int VerEstadisticasDetalleFlujoTrabajoPorEstatus(string clave, Nullable<int> idTarea, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var idTareaParameter = idTarea.HasValue ?
+                new ObjectParameter("IdTarea", idTarea) :
+                new ObjectParameter("IdTarea", typeof(int));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VerEstadisticasDetalleFlujoTrabajoPorEstatus", claveParameter, idTareaParameter, idIdiomaParameter);
+        }
+    
+        public virtual int VerEstadisticasDetalleFlujoTrabajoPorTarea(string clave, Nullable<int> idTarea, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var idTareaParameter = idTarea.HasValue ?
+                new ObjectParameter("IdTarea", idTarea) :
+                new ObjectParameter("IdTarea", typeof(int));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VerEstadisticasDetalleFlujoTrabajoPorTarea", claveParameter, idTareaParameter, idIdiomaParameter);
+        }
+    
+        public virtual int VerEstadisticasFlujoPorVariable(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VerEstadisticasFlujoPorVariable", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<VerEstadisticasFlujoPorVista_Result> VerEstadisticasFlujoPorVista(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerEstadisticasFlujoPorVista_Result>("VerEstadisticasFlujoPorVista", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<VerEstadisticasFlujoPorVistaDetallePorFiltro_Result> VerEstadisticasFlujoPorVistaDetallePorFiltro(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerEstadisticasFlujoPorVistaDetallePorFiltro_Result>("VerEstadisticasFlujoPorVistaDetallePorFiltro", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual int VerEstadisticasFlujoTrabajoPorEstatus(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VerEstadisticasFlujoTrabajoPorEstatus", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual int VerEstadisticasFlujoTrabajoPorTarea(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VerEstadisticasFlujoTrabajoPorTarea", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual int VerEstadisticasPorVariableHistorial(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VerEstadisticasPorVariableHistorial", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual int VerEstadisticasTrabajoPorEstatusHistorial(string clave, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VerEstadisticasTrabajoPorEstatusHistorial", claveParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<VerEstatusTarea_Result> VerEstatusTarea(Nullable<int> idTarea)
+        {
+            var idTareaParameter = idTarea.HasValue ?
+                new ObjectParameter("IdTarea", idTarea) :
+                new ObjectParameter("IdTarea", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerEstatusTarea_Result>("VerEstatusTarea", idTareaParameter);
+        }
+    
+        public virtual ObjectResult<VerFlujoTrabajo_Result> VerFlujoTrabajo(string clave, Nullable<int> numeroVersion)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var numeroVersionParameter = numeroVersion.HasValue ?
+                new ObjectParameter("NumeroVersion", numeroVersion) :
+                new ObjectParameter("NumeroVersion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerFlujoTrabajo_Result>("VerFlujoTrabajo", claveParameter, numeroVersionParameter);
+        }
+    
+        public virtual ObjectResult<VerInfoInstancia_Result> VerInfoInstancia(Nullable<int> idInstancia)
+        {
+            var idInstanciaParameter = idInstancia.HasValue ?
+                new ObjectParameter("IdInstancia", idInstancia) :
+                new ObjectParameter("IdInstancia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerInfoInstancia_Result>("VerInfoInstancia", idInstanciaParameter);
+        }
+    
+        public virtual int VerProductividadPorTareaDetalle(string clave, Nullable<int> idTarea, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var idTareaParameter = idTarea.HasValue ?
+                new ObjectParameter("IdTarea", idTarea) :
+                new ObjectParameter("IdTarea", typeof(int));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("VerProductividadPorTareaDetalle", claveParameter, idTareaParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<VerProductividadVencidas_Result> VerProductividadVencidas(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerProductividadVencidas_Result>("VerProductividadVencidas", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<VerProductividadVencidasdDetalle_Result> VerProductividadVencidasdDetalle(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerProductividadVencidasdDetalle_Result>("VerProductividadVencidasdDetalle", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<VerTramite_Result> VerTramite(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerTramite_Result>("VerTramite", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<VerVariablesInstancia_Result> VerVariablesInstancia(Nullable<int> idInstancia)
+        {
+            var idInstanciaParameter = idInstancia.HasValue ?
+                new ObjectParameter("IdInstancia", idInstancia) :
+                new ObjectParameter("IdInstancia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerVariablesInstancia_Result>("VerVariablesInstancia", idInstanciaParameter);
+        }
+    
+        public virtual ObjectResult<VerlujoTrabajoPorTareaDetalle_Result> VerlujoTrabajoPorTareaDetalle(string clave, string variables, Nullable<int> idIdioma)
+        {
+            var claveParameter = clave != null ?
+                new ObjectParameter("Clave", clave) :
+                new ObjectParameter("Clave", typeof(string));
+    
+            var variablesParameter = variables != null ?
+                new ObjectParameter("Variables", variables) :
+                new ObjectParameter("Variables", typeof(string));
+    
+            var idIdiomaParameter = idIdioma.HasValue ?
+                new ObjectParameter("IdIdioma", idIdioma) :
+                new ObjectParameter("IdIdioma", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerlujoTrabajoPorTareaDetalle_Result>("VerlujoTrabajoPorTareaDetalle", claveParameter, variablesParameter, idIdiomaParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarComisiones_Result> ConsultarComisiones()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarComisiones_Result>("ConsultarComisiones");
+        }
+    
+        public virtual ObjectResult<ConsultarComisionesPorSocio_Result> ConsultarComisionesPorSocio(Nullable<int> idSocio, string tipo)
+        {
+            var idSocioParameter = idSocio.HasValue ?
+                new ObjectParameter("idSocio", idSocio) :
+                new ObjectParameter("idSocio", typeof(int));
+    
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarComisionesPorSocio_Result>("ConsultarComisionesPorSocio", idSocioParameter, tipoParameter);
+        }
     }
 }

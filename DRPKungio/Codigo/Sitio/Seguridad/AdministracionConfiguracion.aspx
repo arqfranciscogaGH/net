@@ -1,9 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  EnableEventValidation = "false"  CodeBehind="AdministracionConfiguracion.aspx.cs" Inherits="Sitio.Seguridad.AdministracionConfiguracion" %>
 
 <%@ Register src="../Comun/Controles/ucWebBarraProgreso.ascx" tagname="ucWebBarraProgreso" tagprefix="uc1" %>
-<%@ Register src="../Comun/Controles/UcWebBanner.ascx" tagname="UcWebBanner" tagprefix="uc3" %>
-<%@ Register src="../Comun/Controles/UcWebEncabezadoPagina.ascx" tagname="UcWebEncabezadoPagina" tagprefix="uc8" %>
 <%@ Register src="../Comun/Controles/UcWebMenuFuncionalidad.ascx" tagname="UcWebMenuFuncionalidad" tagprefix="uc2" %>
+<%@ Register src="../Comun/Controles/UcWebBanner.ascx" tagname="UcWebBanner" tagprefix="uc3" %>
+
+<%@ Register src="../Comun/Controles/UcWebEncabezadoPagina.ascx" tagname="UcWebEncabezadoPagina" tagprefix="uc8" %>
 
 <%@ Register src="../Comun/Controles/ucWebConsultorDinamico.ascx" tagname="ucWebConsultorDinamico" tagprefix="uc4" %>
 <%@ Register src="../Comun/Controles/UcWebMensaje.ascx" tagname="UcWebMensaje" tagprefix="uc5" %>
@@ -12,7 +13,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head runat="server">
-    <title> Admistración de  parámetros de Configuración </title>
+    <title> Admistración de Configuración </title>
     <meta charset="utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,8 +31,8 @@
 
     <meta property="og:title" content="KunGio" />
     <meta property="og:type" content="video-movie" />
-    <meta property="og:url" content="http://kugio-mx/inicio.aspx"" />
-    <meta property="og:image" content="Comun/favicon/Aplicacion.ico"" />
+    <meta property="og:url" content="http://kugio-mx/inicio.aspx" />
+    <meta property="og:image" content="Comun/favicon/Aplicacion.ico" />
 
     <link href="../Comun/LibreriasIconos/fontello/css/fontello.css" rel="stylesheet" />
     <link href="../Comun/LibreriasIconos/fontello/css/animation.css" rel="stylesheet" />
@@ -43,23 +44,23 @@
 </head>
 <body>
     <form id="frmConfiguracion" runat="server">
-    <div class="Pagina_Seccion">    
+      <div class="Pagina_Seccion">    
             <uc1:ucWebBarraProgreso ID="ucWebBarraProgreso1" runat="server" />
             <div id="textoAyuda"></div> 
             <header  class="Encabezado_Seccion">
                  <div class= "Menu_Seccion" >            
                    <uc8:UcWebEncabezadoPagina ID="UcWebEncabezadoPagina1" runat="server" />
-                    <uc2:UcWebMenuFuncionalidad ID="UcWebMenuFuncionalidad2" runat="server" Idmenu="14" />
+                   <uc2:UcWebMenuFuncionalidad ID="UcWebMenuFuncionalidad2" runat="server" Idmenu="14" />
+                                          
                 </div>
             </header>  
            <section class="Banner_Seccion">
                   <uc3:UcWebBanner ID="UcWebBanner1" runat="server"  Activo="true"  />
             </section>
-            <section class="Consultor_Seccion AltoGde" runat="server">
-                  <uc4:ucwebconsultordinamico ID="ucWebConsultorDinamico1"  runat="server"  max-Width="200px"   Wrap="True"  ActivarFiltro="true" ActivarSeleccion="true" ActivarResumir="true"  ActivarOrden="true"  GridLines="Both" CellSpacing="1"  TituloSeleccion=""   />    
-
-            </section>
-            <section class="Captura_Seccion  AltoTotal" runat="server">
+            <section class="Consultor_Seccion AltoTotal" runat="server">
+                  <uc4:ucwebconsultordinamico ID="ucWebConsultorDinamico1"  runat="server"  max-Width="70px" max-Heigth="100px"   Wrap="True"  ActivarFiltro="true" ActivarSeleccion="true" ActivarResumir="false"  ActivarOrden="true"  TituloSeleccion=""  NumeroRegistrosPagina="15" GridLines="Both"  TituloVentana="Acciones  de preguntas"  />    
+           </section>
+           <section class="Captura_Seccion  AltoTotal" runat="server">
                  <div ID="BloqueCaptura"  runat="server"> 
                        <uc5:UcWebMensaje ID="UcWebMensaje1" runat="server" Visible="false" TituloMensaje ="Operación"    ComportamientoEventos="Servidor"   />
                  </div> 

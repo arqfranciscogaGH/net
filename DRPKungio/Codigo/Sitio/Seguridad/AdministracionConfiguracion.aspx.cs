@@ -180,6 +180,7 @@ namespace Sitio.Seguridad
             ucWebConsultorDinamico1.NumeroRegistrosPagina = 10;
             ucWebConsultorDinamico1.NumeroRegistrosConsulta = 1000;
             ucWebConsultorDinamico1.DefinirColumnasConsulta( _tipoEntidad, "IdConfiguracion,Id,IdAplicacion,Descripcion,Activo", "IdConfiguracion");
+
         }
 
         private void InscribirEventos()

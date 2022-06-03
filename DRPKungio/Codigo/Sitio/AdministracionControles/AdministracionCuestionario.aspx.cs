@@ -38,8 +38,9 @@ namespace Sitio.AdministracionControles
         #region  paso  2  declaracion variables
 
         private ModeloSistema _contexto;
-        private string ClaveAplicacion = "";
-
+        private string ClaveAplicacion = "AdministracionCuestionarios";
+        private string ClaveMensajeOperacionCompleta = "1";
+        private string ClaveMensajePermiso = "2";
         //  reglas  de megocio
         private static AdministradorControles administradorNegocio;
 
@@ -99,7 +100,14 @@ namespace Sitio.AdministracionControles
             UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
             UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
 
-            CargarControles();
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                CargarControles();
+            }
+            else
+            {
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
         }
 
         //  metodo   carga  de  página  
@@ -109,12 +117,20 @@ namespace Sitio.AdministracionControles
             if (!IsPostBack)
             {
 
+            }
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                Configurar();
+                InscribirEventos();
+                ActualizarElementos(false);
+                ConfigurarAlCargarPaginaSiempre();
 
             }
-            Configurar();
-            InscribirEventos();
-            ConfigurarAlCargarPaginaSiempre();
-            ActualizarElementos();
+            else
+            {
+
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
             ucWebBarraProgreso1.DesActivar();
         }
 
@@ -147,13 +163,15 @@ namespace Sitio.AdministracionControles
             captura.IdEstausCaptura = 1;
 
             ClaveAplicacion = "AdministracionPreguntas";
+            
+
             captura2 = new Captura();
             captura2.IdAplicacion = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ObtenerAplicacion(ClaveAplicacion);
             captura2.IdSuscriptor = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.IdSuscriptor;
             captura2.IdPlaneacionCaptura = 1003;
             captura2.IdClasificacionCaptura = 1;
             captura2.IdEstausCaptura = 1;
-
+            ClaveAplicacion = "AdministracionCuestionarios";
         }
         // definición de  bloques  de  captura  de  datos
         public void CargarControles()
@@ -273,7 +291,7 @@ namespace Sitio.AdministracionControles
                     //  se limpia  captura secundaria
                     btnNuevo_Click2(null, null);
                     //  se actuliza  elementos secundarios
-                    ActualizarElementosConsultaSecundaria(null, null);
+                    ActualizarElementosConsultaSecundaria(null, null,true);
                 }
             }
         }
@@ -305,7 +323,7 @@ namespace Sitio.AdministracionControles
 
             _entidad2 = Obtener2();
             generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor2, captura2, _tipoEntidad2, _entidad2);
-            ActualizarElementosConsultaSecundaria(null, null);
+            ActualizarElementosConsultaSecundaria(null, null,true);
         }
 
         #endregion
@@ -370,7 +388,7 @@ namespace Sitio.AdministracionControles
                 administradorNegocio.GuardarCambios();
                 generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                 IdElemento = _entidad.IdContenedor;
-                ActualizarElementos();
+                ActualizarElementos(true);
             }
         }
 
@@ -384,7 +402,7 @@ namespace Sitio.AdministracionControles
                     _entidad = (ContenedorControl)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                     administradorNegocio.Actualizar<ContenedorControl>((ContenedorControl)_entidad);
                     administradorNegocio.GuardarCambios();
-                    ActualizarElementosConsultaPrincipal(sender, e);
+                    ActualizarElementosConsultaPrincipal(sender, e,true);
                 }
             }
         }
@@ -410,7 +428,7 @@ namespace Sitio.AdministracionControles
             {
 
             }
-            ActualizarElementosConsultaPrincipal(sender, e);
+            ActualizarElementosConsultaPrincipal(sender, e,true);
         }
 
         #endregion
@@ -474,7 +492,7 @@ namespace Sitio.AdministracionControles
                 IdElemento2 = _entidad2.IdPropiedadControl;
                 generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor2, captura2, _tipoEntidad2, _entidad2);
 
-                ActualizarElementosConsultaSecundaria(sender, e);
+                ActualizarElementosConsultaSecundaria(sender, e,true);
             }
         }
 
@@ -492,7 +510,7 @@ namespace Sitio.AdministracionControles
                     administradorNegocio.ActualizarControl(_entidad2, (int)AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IdIdiomaPorDefecto);
                     //administradorNegocio.Actualizar<PropiedadControl>((PropiedadControl)_entidad2);
                     administradorNegocio.GuardarCambios();
-                    ActualizarElementosConsultaSecundaria(sender, e);
+                    ActualizarElementosConsultaSecundaria(sender, e,true);
                 }
             }
         }
@@ -517,24 +535,24 @@ namespace Sitio.AdministracionControles
             {
 
             }
-            ActualizarElementosConsultaSecundaria(sender, e);
+            ActualizarElementosConsultaSecundaria(sender, e,true);
         }
 
 
 
-    #endregion
+        #endregion
 
-    #endregion
+        #endregion
 
-    #region  Paso  9 Métodos para   actualizar  grids
+        #region  Paso  9 Métodos para   actualizar  grids
 
-    public void ActualizarElementos()
+        public void ActualizarElementos(bool actualizar)
         {
-            ActualizarElementosConsultaPrincipal(null, null);
-            ActualizarElementosConsultaSecundaria(null, null);
+            ActualizarElementosConsultaPrincipal(null, null, actualizar);
+            ActualizarElementosConsultaSecundaria(null, null, actualizar);
         }
 
-        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e)
+        protected void ActualizarElementosConsultaPrincipal(object sender, EventArgs e, bool actualizar)
         {
             if (_entidad != null)
             {
@@ -544,7 +562,7 @@ namespace Sitio.AdministracionControles
             }
         }
 
-        protected void ActualizarElementosConsultaSecundaria(object sender, EventArgs e)
+        protected void ActualizarElementosConsultaSecundaria(object sender, EventArgs e, bool actualizar)
         {
             if (IdElemento != null && IdElemento != 0)
             {

@@ -170,17 +170,9 @@
           <Property Name="IdIdioma" Type="int" />
           <Property Name="Activo" Type="bit" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.ESTADO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="ESTADO">
           <Key>
             <PropertyRef Name="OBJECTID" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="AreaKm2" />
-            <PropertyRef Name="Shape_STArea__" />
-            <PropertyRef Name="Shape_STLength__" />
-            <PropertyRef Name="Shape_STArea_1" />
-            <PropertyRef Name="Shape_STLength_1" />
           </Key>
           <Property Name="OBJECTID" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -238,8 +230,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.ESTADO' no tiene definida 
           <Property Name="ColorMenu" Type="varchar" MaxLength="40" />
           <Property Name="ColorMarco" Type="varchar" MaxLength="40" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.ModuloSistema' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="ModuloSistema">
           <Key>
             <PropertyRef Name="IdModuloSistema" />
@@ -248,16 +238,9 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.ModuloSistema' no tiene de
           <Property Name="Nombre" Type="varchar" MaxLength="100" />
           <Property Name="Activo" Type="bit" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.MUNICIPIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="MUNICIPIO">
           <Key>
             <PropertyRef Name="OBJECTID" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Shape_STArea__" />
-            <PropertyRef Name="Shape_STLength__" />
-            <PropertyRef Name="Shape_STArea_1" />
-            <PropertyRef Name="Shape_STLength_1" />
           </Key>
           <Property Name="OBJECTID" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -275,12 +258,9 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.MUNICIPIO' no tiene defini
           <Property Name="Shape_STLength_1" Type="numeric" Precision="38" Scale="8" Nullable="false" />
           <Property Name="Shape" Type="geometry" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="OpcionMenu">
           <Key>
             <PropertyRef Name="IdOpcionMenu" />
-            <PropertyRef Name="IdMenu" />
           </Key>
           <Property Name="IdOpcionMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdMenu" Type="int" Nullable="false" />
@@ -306,8 +286,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene defin
           <Property Name="Titulo" Type="varchar" MaxLength="255" />
           <Property Name="Ayuda" Type="char" MaxLength="18" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Pais">
           <Key>
             <PropertyRef Name="IdPais" />
@@ -332,7 +310,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
             <PropertyRef Name="IdPersona" />
           </Key>
           <Property Name="IdPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdTipoPersona" Type="varchar" MaxLength="1" />
           <Property Name="RFC" Type="varchar" MaxLength="15" />
           <Property Name="FechaNacimiento" Type="date" />
           <Property Name="Curp" Type="varchar" MaxLength="19" />
@@ -347,6 +324,8 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <Property Name="IdSuscriptor" Type="int" />
           <Property Name="IdUsuario" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" />
+          <Property Name="Tipo" Type="varchar" MaxLength="2" />
+          <Property Name="IdTipoPersona" Type="varchar" MaxLength="2" />
         </EntityType>
         <EntityType Name="PlaneacionCaptura">
           <Key>
@@ -577,10 +556,15 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ErrorPersonalizado" EntityType="Self.ErrorPersonalizado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Idioma" EntityType="Self.Idioma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModuloSistema" EntityType="Self.ModuloSistema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUNICIPIO" EntityType="Self.MUNICIPIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpcionMenu" EntityType="Self.OpcionMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OpcionMenuIdioma" EntityType="Self.OpcionMenuIdioma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaneacionCaptura" EntityType="Self.PlaneacionCaptura" Schema="dbo" store:Type="Tables" />
@@ -594,74 +578,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <EntitySet Name="Terminologia" EntityType="Self.Terminologia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TerminologiaIdioma" EntityType="Self.TerminologiaIdioma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnidadNegocio" EntityType="Self.UnidadNegocio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ESTADO].[OBJECTID] AS [OBJECTID], 
-    [ESTADO].[Nombre] AS [Nombre], 
-    [ESTADO].[AreaKm2] AS [AreaKm2], 
-    [ESTADO].[XCentroide] AS [XCentroide], 
-    [ESTADO].[YCentroide] AS [YCentroide], 
-    [ESTADO].[IdPais] AS [IdPais], 
-    [ESTADO].[ClaveEstado] AS [ClaveEstado], 
-    [ESTADO].[MetaTerritorial] AS [MetaTerritorial], 
-    [ESTADO].[AvanceTerritorial] AS [AvanceTerritorial], 
-    [ESTADO].[Tipo] AS [Tipo], 
-    [ESTADO].[Shape_STArea__] AS [Shape_STArea__], 
-    [ESTADO].[Shape_STLength__] AS [Shape_STLength__], 
-    [ESTADO].[Shape_STArea_1] AS [Shape_STArea_1], 
-    [ESTADO].[Shape_STLength_1] AS [Shape_STLength_1], 
-    [ESTADO].[Shape] AS [Shape]
-    FROM [dbo].[ESTADO] AS [ESTADO]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ModuloSistema" EntityType="Self.ModuloSistema" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ModuloSistema].[IdModuloSistema] AS [IdModuloSistema], 
-    [ModuloSistema].[Nombre] AS [Nombre], 
-    [ModuloSistema].[Activo] AS [Activo]
-    FROM [dbo].[ModuloSistema] AS [ModuloSistema]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="MUNICIPIO" EntityType="Self.MUNICIPIO" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [MUNICIPIO].[OBJECTID] AS [OBJECTID], 
-    [MUNICIPIO].[Nombre] AS [Nombre], 
-    [MUNICIPIO].[AreaKm2] AS [AreaKm2], 
-    [MUNICIPIO].[XCentroide] AS [XCentroide], 
-    [MUNICIPIO].[YCentroide] AS [YCentroide], 
-    [MUNICIPIO].[ClaveEstado] AS [ClaveEstado], 
-    [MUNICIPIO].[ClaveMunicipio] AS [ClaveMunicipio], 
-    [MUNICIPIO].[Tipo] AS [Tipo], 
-    [MUNICIPIO].[MetaTerritorial] AS [MetaTerritorial], 
-    [MUNICIPIO].[AvanceTerritorial] AS [AvanceTerritorial], 
-    [MUNICIPIO].[Shape_STArea__] AS [Shape_STArea__], 
-    [MUNICIPIO].[Shape_STLength__] AS [Shape_STLength__], 
-    [MUNICIPIO].[Shape_STArea_1] AS [Shape_STArea_1], 
-    [MUNICIPIO].[Shape_STLength_1] AS [Shape_STLength_1], 
-    [MUNICIPIO].[Shape] AS [Shape]
-    FROM [dbo].[MUNICIPIO] AS [MUNICIPIO]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="OpcionMenu" EntityType="Self.OpcionMenu" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [OpcionMenu].[IdOpcionMenu] AS [IdOpcionMenu], 
-    [OpcionMenu].[IdMenu] AS [IdMenu], 
-    [OpcionMenu].[Orden] AS [Orden], 
-    [OpcionMenu].[Titulo] AS [Titulo], 
-    [OpcionMenu].[Ayuda] AS [Ayuda], 
-    [OpcionMenu].[TipoComando] AS [TipoComando], 
-    [OpcionMenu].[Comando] AS [Comando], 
-    [OpcionMenu].[Caracteristicas] AS [Caracteristicas], 
-    [OpcionMenu].[Parametros] AS [Parametros], 
-    [OpcionMenu].[IdPrivilegio] AS [IdPrivilegio], 
-    [OpcionMenu].[Color] AS [Color], 
-    [OpcionMenu].[Imagen] AS [Imagen], 
-    [OpcionMenu].[Activo] AS [Activo]
-    FROM [dbo].[OpcionMenu] AS [OpcionMenu]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Pais" EntityType="Self.Pais" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Pais].[IdPais] AS [IdPais], 
-    [Pais].[Nombre] AS [Nombre]
-    FROM [dbo].[Pais] AS [Pais]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_BitacoraError_Aplicacion" Association="Self.FK_BitacoraError_Aplicacion">
             <End Role="Aplicacion" EntitySet="Aplicacion" />
             <End Role="BitacoraError" EntitySet="BitacoraError" />
@@ -871,7 +787,7 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
             <PropertyRef Name="IdPersona" />
           </Key>
           <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdTipoPersona" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoPersona" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="RFC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
           <Property Name="Curp" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
@@ -886,6 +802,7 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <Property Name="IdSuscriptor" Type="Int32" />
           <Property Name="IdUsuario" Type="Int32" Nullable="false" />
           <Property Name="Activo" Type="Boolean" />
+          <Property Name="Tipo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PlaneacionCaptura">
           <Key>
@@ -949,59 +866,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <Property Name="IdSuscriptor" Type="Int32" />
           <Property Name="ClaveAplicacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="ESTADO">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="AreaKm2" />
-            <PropertyRef Name="Shape_STArea__" />
-            <PropertyRef Name="Shape_STLength__" />
-            <PropertyRef Name="Shape_STArea_1" />
-            <PropertyRef Name="Shape_STLength_1" />
-          </Key>
-          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AreaKm2" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
-          <Property Name="XCentroide" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="YCentroide" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="IdPais" Type="Int16" />
-          <Property Name="ClaveEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="MetaTerritorial" Type="Int32" />
-          <Property Name="AvanceTerritorial" Type="Int32" />
-          <Property Name="Tipo" Type="Int16" />
-          <Property Name="Shape_STArea__" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
-          <Property Name="Shape_STLength__" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
-          <Property Name="Shape_STArea_1" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
-          <Property Name="Shape_STLength_1" Type="Decimal" Precision="38" Scale="8" Nullable="false" />
-          <Property Name="Shape" Type="Geometry" />
-        </EntityType>
-        <EntityType Name="ModuloSistema">
-          <Key>
-            <PropertyRef Name="IdModuloSistema" />
-          </Key>
-          <Property Name="IdModuloSistema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="OpcionMenu">
-          <Key>
-            <PropertyRef Name="IdOpcionMenu" />
-            <PropertyRef Name="IdMenu" />
-          </Key>
-          <Property Name="IdOpcionMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdMenu" Type="Int32" Nullable="false" />
-          <Property Name="Orden" Type="Int16" />
-          <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Ayuda" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
-          <Property Name="TipoComando" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Comando" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Caracteristicas" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Parametros" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="IdPrivilegio" Type="Int32" />
-          <Property Name="Color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="Imagen" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" />
-        </EntityType>
         <Association Name="FK_BitacoraError_Aplicacion">
           <End Role="Aplicacion" Type="Self.Aplicacion" Multiplicity="0..1" />
           <End Role="BitacoraError" Type="Self.BitacoraError" Multiplicity="*" />
@@ -1033,9 +897,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <EntitySet Name="Puesto" EntityType="Self.Puesto" />
           <EntitySet Name="SesionUsuario" EntityType="Self.SesionUsuario" />
           <EntitySet Name="SesionUsuarioHistorial" EntityType="Self.SesionUsuarioHistorial" />
-          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" />
-          <EntitySet Name="ModuloSistema" EntityType="Self.ModuloSistema" />
-          <EntitySet Name="OpcionMenu" EntityType="Self.OpcionMenu" />
           <AssociationSet Name="FK_BitacoraError_Aplicacion" Association="Self.FK_BitacoraError_Aplicacion">
             <End Role="Aplicacion" EntitySet="Aplicacion" />
             <End Role="BitacoraError" EntitySet="BitacoraError" />
@@ -1064,8 +925,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <EntitySet Name="Terminologia" EntityType="Modelo.Terminologia" />
           <EntitySet Name="TerminologiaIdioma" EntityType="Modelo.TerminologiaIdioma" />
           <EntitySet Name="UnidadNegocio" EntityType="Modelo.UnidadNegocio" />
-          <EntitySet Name="MUNICIPIO" EntityType="Modelo.MUNICIPIO" />
-          <EntitySet Name="Pais" EntityType="Modelo.Pais" />
           <AssociationSet Name="FK_BitacoraError_IdError" Association="Modelo.FK_BitacoraError_IdError">
             <End Role="ErrorPersonalizado" EntitySet="ErrorPersonalizado" />
             <End Role="BitacoraError" EntitySet="BitacoraError" />
@@ -1101,6 +960,11 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
             <Parameter Name="IdArea" Mode="In" Type="String" />
             <Parameter Name="IdEstausCaptura" Mode="In" Type="Int16" />
           </FunctionImport>
+          <EntitySet Name="OpcionMenu" EntityType="Modelo.OpcionMenu" />
+          <EntitySet Name="ESTADO" EntityType="Modelo.ESTADO" />
+          <EntitySet Name="ModuloSistema" EntityType="Modelo.ModuloSistema" />
+          <EntitySet Name="MUNICIPIO" EntityType="Modelo.MUNICIPIO" />
+          <EntitySet Name="Pais" EntityType="Modelo.Pais" />
         </EntityContainer>
         <ComplexType Name="ObtenerPrivilegios_Result">
           <Property Type="String" Name="ClaveAplicacion" Nullable="true" MaxLength="30" />
@@ -1245,38 +1109,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <Property Name="IdSuscriptor" Type="Int32" Nullable="false" />
           <Property Name="Activo" Type="Boolean" />
         </EntityType>
-        <EntityType Name="MUNICIPIO">
-          <Key>
-            <PropertyRef Name="OBJECTID" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Shape_STArea__" />
-            <PropertyRef Name="Shape_STLength__" />
-            <PropertyRef Name="Shape_STArea_1" />
-            <PropertyRef Name="Shape_STLength_1" />
-          </Key>
-          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AreaKm2" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="XCentroide" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="YCentroide" Type="Decimal" Precision="38" Scale="8" />
-          <Property Name="ClaveEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="ClaveMunicipio" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Tipo" Type="Int16" />
-          <Property Name="MetaTerritorial" Type="Int32" />
-          <Property Name="AvanceTerritorial" Type="Int32" />
-          <Property Name="Shape_STArea__" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
-          <Property Name="Shape_STLength__" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
-          <Property Name="Shape_STArea_1" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
-          <Property Name="Shape_STLength_1" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
-          <Property Name="Shape" Type="Geometry" />
-        </EntityType>
-        <EntityType Name="Pais">
-          <Key>
-            <PropertyRef Name="IdPais" />
-          </Key>
-          <Property Name="IdPais" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK_BitacoraError_IdError">
           <End Type="Modelo.ErrorPersonalizado" Role="ErrorPersonalizado" Multiplicity="0..1" />
           <End Type="Modelo.BitacoraError" Role="BitacoraError" Multiplicity="*" />
@@ -1311,6 +1143,79 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <Property Type="Int32" Name="IdCaptura" Nullable="true" />
           <Property Type="String" Name="Estatus" Nullable="true" MaxLength="9" />
         </ComplexType>
+        <EntityType Name="OpcionMenu">
+          <Key>
+            <PropertyRef Name="IdOpcionMenu" />
+          </Key>
+          <Property Name="IdOpcionMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMenu" Type="Int32" Nullable="false" />
+          <Property Name="Orden" Type="Int16" />
+          <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ayuda" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="TipoComando" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Comando" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Caracteristicas" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Parametros" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdPrivilegio" Type="Int32" />
+          <Property Name="Color" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ESTADO">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaKm2" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="XCentroide" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="YCentroide" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="IdPais" Type="Int16" />
+          <Property Name="ClaveEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTerritorial" Type="Int32" />
+          <Property Name="AvanceTerritorial" Type="Int32" />
+          <Property Name="Tipo" Type="Int16" />
+          <Property Name="Shape_STArea__" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape_STLength__" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape_STArea_1" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape_STLength_1" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape" Type="Geometry" />
+        </EntityType>
+        <EntityType Name="ModuloSistema">
+          <Key>
+            <PropertyRef Name="IdModuloSistema" />
+          </Key>
+          <Property Name="IdModuloSistema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="MUNICIPIO">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaKm2" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="XCentroide" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="YCentroide" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="ClaveEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ClaveMunicipio" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="Int16" />
+          <Property Name="MetaTerritorial" Type="Int32" />
+          <Property Name="AvanceTerritorial" Type="Int32" />
+          <Property Name="Shape_STArea__" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape_STLength__" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape_STArea_1" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape_STLength_1" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Shape" Type="Geometry" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="IdPais" />
+          </Key>
+          <Property Name="IdPais" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1520,6 +1425,7 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
           <EntitySetMapping Name="Persona">
             <EntityTypeMapping TypeName="Modelo.Persona">
               <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
                 <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
                 <ScalarProperty Name="RFC" ColumnName="RFC" />
@@ -1602,55 +1508,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
                 <ScalarProperty Name="Equipo" ColumnName="Equipo" />
                 <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
                 <ScalarProperty Name="ClaveAplicacion" ColumnName="ClaveAplicacion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ESTADO">
-            <EntityTypeMapping TypeName="Modelo.ESTADO">
-              <MappingFragment StoreEntitySet="ESTADO">
-                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="AreaKm2" ColumnName="AreaKm2" />
-                <ScalarProperty Name="XCentroide" ColumnName="XCentroide" />
-                <ScalarProperty Name="YCentroide" ColumnName="YCentroide" />
-                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
-                <ScalarProperty Name="ClaveEstado" ColumnName="ClaveEstado" />
-                <ScalarProperty Name="MetaTerritorial" ColumnName="MetaTerritorial" />
-                <ScalarProperty Name="AvanceTerritorial" ColumnName="AvanceTerritorial" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Shape_STArea__" ColumnName="Shape_STArea__" />
-                <ScalarProperty Name="Shape_STLength__" ColumnName="Shape_STLength__" />
-                <ScalarProperty Name="Shape_STArea_1" ColumnName="Shape_STArea_1" />
-                <ScalarProperty Name="Shape_STLength_1" ColumnName="Shape_STLength_1" />
-                <ScalarProperty Name="Shape" ColumnName="Shape" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ModuloSistema">
-            <EntityTypeMapping TypeName="Modelo.ModuloSistema">
-              <MappingFragment StoreEntitySet="ModuloSistema">
-                <ScalarProperty Name="IdModuloSistema" ColumnName="IdModuloSistema" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OpcionMenu">
-            <EntityTypeMapping TypeName="Modelo.OpcionMenu">
-              <MappingFragment StoreEntitySet="OpcionMenu">
-                <ScalarProperty Name="IdOpcionMenu" ColumnName="IdOpcionMenu" />
-                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
-                <ScalarProperty Name="Orden" ColumnName="Orden" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Ayuda" ColumnName="Ayuda" />
-                <ScalarProperty Name="TipoComando" ColumnName="TipoComando" />
-                <ScalarProperty Name="Comando" ColumnName="Comando" />
-                <ScalarProperty Name="Caracteristicas" ColumnName="Caracteristicas" />
-                <ScalarProperty Name="Parametros" ColumnName="Parametros" />
-                <ScalarProperty Name="IdPrivilegio" ColumnName="IdPrivilegio" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1814,35 +1671,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MUNICIPIO">
-            <EntityTypeMapping TypeName="Modelo.MUNICIPIO">
-              <MappingFragment StoreEntitySet="MUNICIPIO">
-                <ScalarProperty Name="Shape" ColumnName="Shape" />
-                <ScalarProperty Name="Shape_STLength_1" ColumnName="Shape_STLength_1" />
-                <ScalarProperty Name="Shape_STArea_1" ColumnName="Shape_STArea_1" />
-                <ScalarProperty Name="Shape_STLength__" ColumnName="Shape_STLength__" />
-                <ScalarProperty Name="Shape_STArea__" ColumnName="Shape_STArea__" />
-                <ScalarProperty Name="AvanceTerritorial" ColumnName="AvanceTerritorial" />
-                <ScalarProperty Name="MetaTerritorial" ColumnName="MetaTerritorial" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="ClaveMunicipio" ColumnName="ClaveMunicipio" />
-                <ScalarProperty Name="ClaveEstado" ColumnName="ClaveEstado" />
-                <ScalarProperty Name="YCentroide" ColumnName="YCentroide" />
-                <ScalarProperty Name="XCentroide" ColumnName="XCentroide" />
-                <ScalarProperty Name="AreaKm2" ColumnName="AreaKm2" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pais">
-            <EntityTypeMapping TypeName="Modelo.Pais">
-              <MappingFragment StoreEntitySet="Pais">
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ObtenerPlaneacionCaptura" FunctionName="Modelo.Store.ObtenerPlaneacionCaptura">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Modelo.ObtenerPlaneacionCaptura_Result">
@@ -1881,6 +1709,84 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.Pais' no tiene definida ni
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="OpcionMenu">
+            <EntityTypeMapping TypeName="Modelo.OpcionMenu">
+              <MappingFragment StoreEntitySet="OpcionMenu">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="IdPrivilegio" ColumnName="IdPrivilegio" />
+                <ScalarProperty Name="Parametros" ColumnName="Parametros" />
+                <ScalarProperty Name="Caracteristicas" ColumnName="Caracteristicas" />
+                <ScalarProperty Name="Comando" ColumnName="Comando" />
+                <ScalarProperty Name="TipoComando" ColumnName="TipoComando" />
+                <ScalarProperty Name="Ayuda" ColumnName="Ayuda" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="IdOpcionMenu" ColumnName="IdOpcionMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO">
+            <EntityTypeMapping TypeName="Modelo.ESTADO">
+              <MappingFragment StoreEntitySet="ESTADO">
+                <ScalarProperty Name="Shape" ColumnName="Shape" />
+                <ScalarProperty Name="Shape_STLength_1" ColumnName="Shape_STLength_1" />
+                <ScalarProperty Name="Shape_STArea_1" ColumnName="Shape_STArea_1" />
+                <ScalarProperty Name="Shape_STLength__" ColumnName="Shape_STLength__" />
+                <ScalarProperty Name="Shape_STArea__" ColumnName="Shape_STArea__" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="AvanceTerritorial" ColumnName="AvanceTerritorial" />
+                <ScalarProperty Name="MetaTerritorial" ColumnName="MetaTerritorial" />
+                <ScalarProperty Name="ClaveEstado" ColumnName="ClaveEstado" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+                <ScalarProperty Name="YCentroide" ColumnName="YCentroide" />
+                <ScalarProperty Name="XCentroide" ColumnName="XCentroide" />
+                <ScalarProperty Name="AreaKm2" ColumnName="AreaKm2" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModuloSistema">
+            <EntityTypeMapping TypeName="Modelo.ModuloSistema">
+              <MappingFragment StoreEntitySet="ModuloSistema">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdModuloSistema" ColumnName="IdModuloSistema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUNICIPIO">
+            <EntityTypeMapping TypeName="Modelo.MUNICIPIO">
+              <MappingFragment StoreEntitySet="MUNICIPIO">
+                <ScalarProperty Name="Shape" ColumnName="Shape" />
+                <ScalarProperty Name="Shape_STLength_1" ColumnName="Shape_STLength_1" />
+                <ScalarProperty Name="Shape_STArea_1" ColumnName="Shape_STArea_1" />
+                <ScalarProperty Name="Shape_STLength__" ColumnName="Shape_STLength__" />
+                <ScalarProperty Name="Shape_STArea__" ColumnName="Shape_STArea__" />
+                <ScalarProperty Name="AvanceTerritorial" ColumnName="AvanceTerritorial" />
+                <ScalarProperty Name="MetaTerritorial" ColumnName="MetaTerritorial" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="ClaveMunicipio" ColumnName="ClaveMunicipio" />
+                <ScalarProperty Name="ClaveEstado" ColumnName="ClaveEstado" />
+                <ScalarProperty Name="YCentroide" ColumnName="YCentroide" />
+                <ScalarProperty Name="XCentroide" ColumnName="XCentroide" />
+                <ScalarProperty Name="AreaKm2" ColumnName="AreaKm2" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="Modelo.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

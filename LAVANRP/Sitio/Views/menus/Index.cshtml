@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>menus</h2>
+
+<form id="frm">
+    <div class="col-lg-6  col-lf-offset-3">
+        Usuario
+        <input type="text" id="txtUsuario" />
+        Contrasea
+        <input type="text" id="txtContrasena" />
+        <input class="btn  btn-success" id="btnEnviar" value="Ingresar" />
+        <input class="btn  btn-success" id="btnIngresar" value="Ingresar" />
+    </div>
+</form>
+<script>
+    $("#btnEnviar").on("click", function (e) {
+        alert("click enviar");
+       
+    });
+    const botonIngresar = document.querySelector('#btnIngresar');
+    
+    alert("inicio");
+    window.onload = function () {
+ 
+        alert("click ingresar");
+    };
+
+    botonIngresar.addEventListener('click', filtrar);
+    function filtrar() {
+
+        alert('click');
+
+    }
+
+
+</script>
+
+
+     
+
+

@@ -31,7 +31,8 @@ namespace Sitio.Seguridad
 
 
         private string ClaveAplicacion = "AdministracionGrupo";
-
+        private string ClaveMensajeOperacionCompleta = "1";
+        private string ClaveMensajePermiso = "2";
         //  reglas  de megocio
 
         private static AdministradorGrupo administradorNegocio;
@@ -82,7 +83,14 @@ namespace Sitio.Seguridad
             UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
             UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
 
-            CargarControles();
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                CargarControles();
+            }
+            else
+            {
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
         }
 
         //  metodo   carga  de  página  
@@ -91,11 +99,21 @@ namespace Sitio.Seguridad
         {
             if (!IsPostBack)
             {
-            }http://localhost:57022/Seguridad/AdministracionAplicacion.aspx.cs
-            Configurar();
-            InscribirEventos();
-            ActualizarElementos(false);
-            ConfigurarAlCargarPaginaSiempre();
+
+            }
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                Configurar();
+                InscribirEventos();
+                ActualizarElementos(false);
+                ConfigurarAlCargarPaginaSiempre();
+
+            }
+            else
+            {
+
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
             ucWebBarraProgreso1.DesActivar();
         }
 
@@ -219,27 +237,38 @@ namespace Sitio.Seguridad
             LinkButton boton = (LinkButton)sender;
             string accion = boton.CommandName;
             //generadorControles.AsignaVaorResuestaYControl(contenedor, captura, "IdModulo", _entidad.IdModulo.ToString());
-            if (accion == "Nuevo")
+
+            String permiso = accion.Substring(0, 1);
+
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, permiso))
             {
-                btnNuevo_Click(sender, e);
+                if (accion == "Nuevo")
+                {
+                    btnNuevo_Click(sender, e);
+                }
+                else if (accion == "Agregar")
+                {
+                    btnAgregar_Click(sender, e);
+                }
+                else if (accion == "Modificar")
+                {
+                    btnActualizar_Click(sender, e);
+                }
+                else if (accion == "Eliminar")
+                {
+                    btnEliminar_Click(sender, e);
+                }
+                if (accion == "Agregar" || accion == "Modificar" || accion == "Eliminar")
+                {
+                    ActualizarElementos(true);
+                    UcWebMensaje1.MostrarMensaje("Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+                }
             }
-            else if (accion == "Agregar")
+            else
             {
-                btnAgregar_Click(sender, e);
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
             }
-            else if (accion == "Modificar")
-            {
-                btnActualizar_Click(sender, e);
-            }
-            else if (accion == "Eliminar")
-            {
-                btnEliminar_Click(sender, e);
-            }
-            if (accion == "Agregar" || accion == "Modificar" || accion == "Eliminar")
-            {
-                ActualizarElementos(true);
-                UcWebMensaje1.MostrarMensaje("Acción:" + accion, "Se realizó la  operación completa", UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
-            }
+
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)

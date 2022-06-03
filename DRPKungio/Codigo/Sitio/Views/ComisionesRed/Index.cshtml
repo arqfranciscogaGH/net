@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Sitio.Models.ConsultarComisionesPorSocio_Result>
+@{
+    ViewBag.Title = "Comisiones por red";
+    Layout = "~/Views/Shared/_layout_consulta.cshtml";
+}
+<h2>Comisiones por red</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(  model => model.Socio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Socio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuentaSocio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nivelRed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricpion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comisionSocioRed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Socio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CuentaSocio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nivelRed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricpion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.comisionSocioRed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estatus)
+            </td>
+        </tr>
+    }
+</table>
+

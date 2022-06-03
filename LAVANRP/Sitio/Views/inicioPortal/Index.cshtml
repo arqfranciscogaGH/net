@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Inicio</h2>
+
+<label>Id</label>
+<input type="text" id="IdDoc" />
+<label>Nombre de documento</label>
+<input type="text" id="nombre" />
+<label>Tipo</label>
+<select name="tipo" id="tipo">
+
+    <option value="PDF">PDF</option>
+
+    <option value="XLS">XLS</option>
+
+    <option value="XD">XD</option>
+
+    <option value="DOCX">DOCX</option>
+
+</select>
+<input class="btn  btn-success" id="btnEnviar" value="Ingresar" />
+<script>
+    $("#btnEnviar").on("click", function (e) {
+        alert("entro");
+        var Id_Doc = $("#IdDoc").val();
+        var NombreD = $("#nombre").val();
+        var Tipo = $("#tipo").val();
+        var filter = {
+            documento_ID: Id_Doc,
+            documento_Nombre: NombreD,
+            documento_Tipo: Tipo
+        }
+        $.ajax({
+            type: "post",
+            data: filter,
+            url: "@Url.Action("Guardar", "inicioPortal")",
+            success: function (data) {
+                switch (data.success) {
+                    case "OK":
+                        alert(Id_Doc + " " + NombreD + "" + Tipo);
+                        break;
+                    default:
+                        alert("error");
+                        break;
+                }
+            }
+        });
+    });
+</script>
+
+

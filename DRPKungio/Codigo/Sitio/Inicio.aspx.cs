@@ -22,31 +22,34 @@ namespace Sitio
             List<ImagenCarrusel> listaImagenes = db.ImagenCarrusel.ToList();
             foreach (ImagenCarrusel imagen in listaImagenes.Take(10))
             {
+                if (imagen.nombre != null && imagen.nombre != "")
+                {
+                    HtmlGenericControl divItem = new HtmlGenericControl("div");
+                    divItem.Attributes["class"] = "item";
+                    //divItem.Attributes["style"] = "background-image: url('Carrusel/s1.jpg')";
+                    divItem.Attributes["style"] = "background-image: url('Carrusel/" + imagen.nombre + "')";
 
-                HtmlGenericControl divItem = new HtmlGenericControl("div");
-                divItem.Attributes["class"] = "item";
-                //divItem.Attributes["style"] = "background-image: url('Carrusel/s1.jpg')";
-                divItem.Attributes["style"] = "background-image: url('Carrusel/" + imagen.nombre + "')";
+                    HtmlGenericControl divTitulo = new HtmlGenericControl("div");
+                    divTitulo.Attributes["class"] = "carrusel-titulo";
 
-                HtmlGenericControl divTitulo = new HtmlGenericControl("div");
-                divTitulo.Attributes["class"] = "carrusel-titulo";
+                    HtmlGenericControl divAnimacion = new HtmlGenericControl("div");
+                    divAnimacion.Attributes["class"] = "animated bounceInDown";
 
-                HtmlGenericControl divAnimacion = new HtmlGenericControl("div");
-                divAnimacion.Attributes["class"] = "animated bounceInDown";
+                    HtmlGenericControl h2 = new HtmlGenericControl("h2");
+                    h2.InnerHtml = imagen.titulo;
 
-                HtmlGenericControl h2 = new HtmlGenericControl("h2");
-                h2.InnerHtml = imagen.titulo;
+                    HtmlGenericControl p = new HtmlGenericControl("p");
+                    p.InnerHtml = imagen.mensaje;
 
-                HtmlGenericControl p = new HtmlGenericControl("p");
-                p.InnerHtml = imagen.mensaje;
+                    divAnimacion.Controls.Add(h2);
+                    divAnimacion.Controls.Add(p);
+                    divTitulo.Controls.Add(divAnimacion);
+                    divItem.Controls.Add(divTitulo);
 
-                divAnimacion.Controls.Add(h2);
-                divAnimacion.Controls.Add(p);
-                divTitulo.Controls.Add(divAnimacion);
-                divItem.Controls.Add(divTitulo);
+                    contenedor.Controls.Add(divItem);
+                    //ContenedorCarruselInicio.Controls.Add(divItem);
+                }
 
-                contenedor.Controls.Add(divItem);
-                //ContenedorCarruselInicio.Controls.Add(divItem);
             }
         }
 
@@ -59,66 +62,86 @@ namespace Sitio
             String correoIngresado = "";
             correoIngresado = txtCorreo.Text;
 
+            if  (txtTelefonoMovil.Text!=null && txtTelefonoMovil.Text!="")
+            {
+                Modelo db = new Modelo();
+                Cliente cliente = new Cliente();
+                cliente.nombre = txtNombre.Text;
+                cliente.correo = txtCorreo.Text;
+                cliente.acciones = "Atender Mensaje";
+                cliente.observaciones = txtMensaje.Text;
+                cliente.telefonoMovil = txtTelefonoMovil.Text;
+                db.Cliente.Add(cliente);
+                db.SaveChanges();
+            }
+
             if (correoIngresado != "")
+            {
+
                 destinatarios = destinatarios /*+ ","+ correoIngresado*/ ;
 
-            MailMessage m = new MailMessage();
-            SmtpClient sc = new SmtpClient();
-            m.From = new MailAddress(cuenta);
-            m.To.Add(destinatarios);
+                MailMessage m = new MailMessage();
+                SmtpClient sc = new SmtpClient();
+                m.From = new MailAddress(cuenta);
+                m.To.Add(destinatarios);
 
-            m.Subject = "El mensaje fue enviado del portal Web : " + txtNombre.Text;
-            String mensaje = "";
-            mensaje = "<h1> Mensaje desde portal Web </h1>";
-            mensaje += "<p> Nombre: " + txtNombre.Text + "</p>";
-            mensaje += "<p> txtMensaje: " + txtMensaje.Text + "</p>";
-            mensaje += "<p> Correo: " + txtCorreo.Text + "</p>";
-            m.Body = mensaje;
-            m.IsBodyHtml = true;
-            // sc.Host = txtMailServer.Text;
-            sc.Host = Servidor;
+                m.Subject = "Atender Mensaje : " + txtNombre.Text;
+                String mensaje = "";
+                mensaje = "<h1> Atender Mensaje  </h1>";
+                mensaje += "<p> Nombre: " + txtNombre.Text + "</p>";
+                mensaje += "<p> WhatsApp: " + txtTelefonoMovilC.Text + "</p>";
+                mensaje += "<p> Correo: " + txtCorreo.Text + "</p>";
+                mensaje += "<p> txtMensaje: " + txtMensaje.Text + "</p>";
 
-            string str1 = "gmail.com";
-            string str2 = cuenta;
-            if (str2.Contains(str1))
-            {
-                try
-                {
-                    sc.Port = 587;
-                    sc.Credentials = new System.Net.NetworkCredential(cuenta, contrasena);
-                    sc.EnableSsl = true;
-                    sc.Send(m);
-                    //lblStatus.Text = "Se envio  el correo  exitosamente";
-                    //Response.Write("Email Send successfully");
-                }
-                catch (Exception ex)
-                {
-                    //lblStatus.Text = "Intenete nuevamenete,revise las credenciales";
-                    //Response.Write("<BR><BR>* Please double check the From Address and Password to confirm that both of them are correct. <br>");
-                    //Response.Write("<BR><BR>If you are using gmail smtp to send email for the first time, please refer to this KB to setup your gmail account: http://www.smarterasp.net/support/kb/a1546/send-email-from-gmail-with-smtp-authentication-but-got-5_5_1-authentication-required-error.aspx?KBSearchID=137388");
-                    //Response.End();
-                    //throw ex;
-                }
-            }
-            else
-            {
-                try
-                {
-                    sc.Port = 25;
-                    sc.Credentials = new System.Net.NetworkCredential(cuenta, contrasena);
-                    sc.EnableSsl = false;
-                    sc.Send(m);
+                m.Body = mensaje;
+                m.IsBodyHtml = true;
+                // sc.Host = txtMailServer.Text;
+                sc.Host = Servidor;
 
-                    //lblStatus.Text = "Se envio  el correo  exitosamente";
-                    //Response.Write("Email Send successfully");
-                }
-                catch (Exception ex)
+                string str1 = "gmail.com";
+                string str2 = cuenta;
+                if (str2.Contains(str1))
                 {
-                    //lblStatus.Text = "Intenete nuevamenete,revise las credenciales";
-                    //Response.Write("<BR><BR>* Please double check the From Address and Password to confirm that both of them are correct. <br>");
-                    //Response.Write("<BR><BR>If you are using gmail smtp to send email for the first time, please refer to this KB to setup your gmail account: http://www.smarterasp.net/support/kb/a1546/send-email-from-gmail-with-smtp-authentication-but-got-5_5_1-authentication-required-error.aspx?KBSearchID=137388");
-                    //Response.End();
-                    //throw ex;
+                    try
+                    {
+
+                        sc.Port = 587;
+                        sc.Credentials = new System.Net.NetworkCredential(cuenta, contrasena);
+                        sc.EnableSsl = true;
+                        sc.Send(m);
+                        //lblStatus.Text = "Se envio  el correo  exitosamente";
+                        //Response.Write("Email Send successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        //lblStatus.Text = "Intenete nuevamenete,revise las credenciales";
+                        //Response.Write("<BR><BR>* Please double check the From Address and Password to confirm that both of them are correct. <br>");
+                        //Response.Write("<BR><BR>If you are using gmail smtp to send email for the first time, please refer to this KB to setup your gmail account: http://www.smarterasp.net/support/kb/a1546/send-email-from-gmail-with-smtp-authentication-but-got-5_5_1-authentication-required-error.aspx?KBSearchID=137388");
+                        //Response.End();
+                        //throw ex;
+                    }
+                }
+                else
+                {
+                    try
+                    {
+
+                        sc.Port = 25;
+                        sc.Credentials = new System.Net.NetworkCredential(cuenta, contrasena);
+                        sc.EnableSsl = false;
+                        sc.Send(m);
+
+                        //lblStatus.Text = "Se envio  el correo  exitosamente";
+                        //Response.Write("Email Send successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        //lblStatus.Text = "Intenete nuevamenete,revise las credenciales";
+                        //Response.Write("<BR><BR>* Please double check the From Address and Password to confirm that both of them are correct. <br>");
+                        //Response.Write("<BR><BR>If you are using gmail smtp to send email for the first time, please refer to this KB to setup your gmail account: http://www.smarterasp.net/support/kb/a1546/send-email-from-gmail-with-smtp-authentication-but-got-5_5_1-authentication-required-error.aspx?KBSearchID=137388");
+                        //Response.End();
+                        //throw ex;
+                    }
                 }
             }
         }
@@ -130,67 +153,84 @@ namespace Sitio
             String destinatarios = "contacto@kungio.mx";
             String correoIngresado = "";
             correoIngresado = txtCorreo.Text;
-
+            if (txtTelefonoMovil.Text != null && txtTelefonoMovil.Text != "")
+            {
+                Modelo db = new Modelo();
+                Cliente cliente = new Cliente();
+                cliente.nombre = txtNombreC.Text;
+                cliente.correo = txtCorreoC.Text;
+                cliente.acciones = "Precalificar";
+                cliente.telefonoMovil = txtTelefonoMovilC.Text;
+                cliente.referencia = txtImss.Text;
+                cliente.fechaNacimiento = txtFecNac.Text;
+                db.Cliente.Add(cliente);
+                db.SaveChanges();
+            }
             if (correoIngresado != "")
+            {
                 destinatarios = destinatarios /*+ ","+ correoIngresado*/ ;
 
-            MailMessage m = new MailMessage();
-            SmtpClient sc = new SmtpClient();
-            m.From = new MailAddress(cuenta);
-            m.To.Add(destinatarios);
-            m.Subject = "Solictud  Precalificate : " + txtPNombre.Text;
-            String mensaje = "";
-            mensaje = "<h1> Precalificate </h1>";
-            mensaje += "<p> Nombre: " + txtNombre.Text + "</p>";
-            mensaje += "<p> Fecha nacimiento: " + txtFecNac.Text + "</p>";
-            mensaje += "<p> No. Imss: " + txtImss.Text + "</p>";
-            mensaje += "<p> Correo: " + txtPCorreo.Text + "</p>";
-            m.Body = mensaje;
-            m.IsBodyHtml = true;
-            // sc.Host = txtMailServer.Text;
-            sc.Host = Servidor;
+                MailMessage m = new MailMessage();
+                SmtpClient sc = new SmtpClient();
+                m.From = new MailAddress(cuenta);
+                m.To.Add(destinatarios);
+                m.Subject = "Precalificar : " + txtNombreC.Text;
+                String mensaje = "";
+                mensaje = "<h1> Precalificar </h1>";
+                mensaje += "<p> Nombre: " + txtNombreC.Text + "</p>";
+                mensaje += "<p> WhatsApp: " + txtTelefonoMovilC.Text + "</p>";
+                mensaje += "<p> Correo: " + txtCorreoC.Text + "</p>";
+                mensaje += "<p> No. Imss: " + txtImss.Text + "</p>";
+                mensaje += "<p> Fecha nacimiento: " + txtFecNac.Text + "</p>";
+  
+ 
+                m.Body = mensaje;
+                m.IsBodyHtml = true;
+                // sc.Host = txtMailServer.Text;
+                sc.Host = Servidor;
 
-            string str1 = "gmail.com";
-            string str2 = cuenta;
-            if (str2.Contains(str1))
-            {
-                try
+                string str1 = "gmail.com";
+                string str2 = cuenta;
+                if (str2.Contains(str1))
                 {
-                    sc.Port = 587;
-                    sc.Credentials = new System.Net.NetworkCredential(cuenta, contrasena);
-                    sc.EnableSsl = true;
-                    sc.Send(m);
-                    //lblStatus.Text = "Se envio  el correo  exitosamente";
-                    //Response.Write("Email Send successfully");
+                    try
+                    {
+                        sc.Port = 587;
+                        sc.Credentials = new System.Net.NetworkCredential(cuenta, contrasena);
+                        sc.EnableSsl = true;
+                        sc.Send(m);
+                        //lblStatus.Text = "Se envio  el correo  exitosamente";
+                        //Response.Write("Email Send successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        //lblStatus.Text = "Intenete nuevamenete,revise las credenciales";
+                        //Response.Write("<BR><BR>* Please double check the From Address and Password to confirm that both of them are correct. <br>");
+                        //Response.Write("<BR><BR>If you are using gmail smtp to send email for the first time, please refer to this KB to setup your gmail account: http://www.smarterasp.net/support/kb/a1546/send-email-from-gmail-with-smtp-authentication-but-got-5_5_1-authentication-required-error.aspx?KBSearchID=137388");
+                        //Response.End();
+                        //throw ex;
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    //lblStatus.Text = "Intenete nuevamenete,revise las credenciales";
-                    //Response.Write("<BR><BR>* Please double check the From Address and Password to confirm that both of them are correct. <br>");
-                    //Response.Write("<BR><BR>If you are using gmail smtp to send email for the first time, please refer to this KB to setup your gmail account: http://www.smarterasp.net/support/kb/a1546/send-email-from-gmail-with-smtp-authentication-but-got-5_5_1-authentication-required-error.aspx?KBSearchID=137388");
-                    //Response.End();
-                    //throw ex;
-                }
-            }
-            else
-            {
-                try
-                {
-                    sc.Port = 25;
-                    sc.Credentials = new System.Net.NetworkCredential(cuenta, contrasena);
-                    sc.EnableSsl = false;
-                    sc.Send(m);
+                    try
+                    {
+                        sc.Port = 25;
+                        sc.Credentials = new System.Net.NetworkCredential(cuenta, contrasena);
+                        sc.EnableSsl = false;
+                        sc.Send(m);
 
-                    //lblStatus.Text = "Se envio  el correo  exitosamente";
-                    //Response.Write("Email Send successfully");
-                }
-                catch (Exception ex)
-                {
-                    //lblStatus.Text = "Intenete nuevamenete,revise las credenciales";
-                    //Response.Write("<BR><BR>* Please double check the From Address and Password to confirm that both of them are correct. <br>");
-                    //Response.Write("<BR><BR>If you are using gmail smtp to send email for the first time, please refer to this KB to setup your gmail account: http://www.smarterasp.net/support/kb/a1546/send-email-from-gmail-with-smtp-authentication-but-got-5_5_1-authentication-required-error.aspx?KBSearchID=137388");
-                    //Response.End();
-                    //throw ex;
+                        //lblStatus.Text = "Se envio  el correo  exitosamente";
+                        //Response.Write("Email Send successfully");
+                    }
+                    catch (Exception ex)
+                    {
+                        //lblStatus.Text = "Intenete nuevamenete,revise las credenciales";
+                        //Response.Write("<BR><BR>* Please double check the From Address and Password to confirm that both of them are correct. <br>");
+                        //Response.Write("<BR><BR>If you are using gmail smtp to send email for the first time, please refer to this KB to setup your gmail account: http://www.smarterasp.net/support/kb/a1546/send-email-from-gmail-with-smtp-authentication-but-got-5_5_1-authentication-required-error.aspx?KBSearchID=137388");
+                        //Response.End();
+                        //throw ex;
+                    }
                 }
             }
         }

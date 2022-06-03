@@ -30,5 +30,6 @@ namespace DRP.Modelo
         public Nullable<int> IdSuscriptor { get; set; }
         public int IdUsuario { get; set; }
         public Nullable<bool> Activo { get; set; }
+        public string Tipo { get; set; }
     }
 }

@@ -170,7 +170,7 @@ namespace Sitio
                     string IdPerfil = valoresControles.FirstOrDefault(c => c.Value.NombrePropiedad == "Perfil").Value.Respuesta;
                     idControlPerfil = valoresControles.FirstOrDefault(c => c.Value.NombrePropiedad == "Perfil").Value.IdControl;
                     AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.IdPerfil = IdPerfil;
-
+                    AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ObtenerPrivilegios();
                     AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ObtenerMenuPrincipal();
                    // AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.Privilegios = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ObtenerPrivilegios();
                 }

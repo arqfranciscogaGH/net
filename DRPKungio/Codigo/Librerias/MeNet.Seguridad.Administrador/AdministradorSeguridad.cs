@@ -508,7 +508,8 @@ namespace MeNet.Seguridad.Administrador
                     ParametrosSeguridadActual.IdPuesto = EmpleadoUsuario.IdPuesto.ToString();
                     ParametrosSeguridadActual.IdArea = EmpleadoUsuario.IdArea.ToString();
                     //AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IdSuscriptor = cuentaUsuario.IdSuscriptor;
-                    Privilegios = ObtenerPrivilegios();
+                    if (ListaPerfil != null && ListaPerfil.Count == 1)
+                        ObtenerPrivilegios();
                     Persona persona = _contexto.Persona.FirstOrDefault(s => s.IdUsuario == cuentaUsuario.IdUsuario);
                     if (persona != null)
                     {
@@ -550,10 +551,10 @@ namespace MeNet.Seguridad.Administrador
                     foreach (ObtenerPrivilegios_Result privilegio in privilegios)
                     {
 
-                        if (privilegio.Permiso != null && privilegio.Permiso != string.Empty)
+                        if (privilegio.IdPrivilegiAsignado!=null && privilegio.Permiso != null && privilegio.Permiso != string.Empty)
                         {
-                            existe = privilegio.Permiso.Contains(permiso);
-                            if (existe)
+                            existe = permiso.ToUpper() == "N" ? true : privilegio.Permiso.Contains(permiso);
+                            if (existe )
                                 return existe;
                         }
                     }
@@ -582,11 +583,11 @@ namespace MeNet.Seguridad.Administrador
         public List<ObtenerPrivilegios_Result> ObtenerPrivilegios()
         {
             AdministradorPrivilegio administradorPrivilegio = new AdministradorPrivilegio();
-            int? IdUsuario = ParametrosSeguridadActual.IdUsuario != string.Empty ? int.Parse(ParametrosSeguridadActual.IdUsuario):0;
+            int? IdUsuario = ParametrosSeguridadActual.IdUsuario != string.Empty ? int.Parse(ParametrosSeguridadActual.IdUsuario) : 0;
             int? IdPerfil = ParametrosSeguridadActual.IdPerfil != string.Empty ? int.Parse(ParametrosSeguridadActual.IdPerfil) : 0;
             int? IdGrupo = ParametrosSeguridadActual.IdGrupo != string.Empty ? int.Parse(ParametrosSeguridadActual.IdGrupo) : 0;
-
-            return administradorPrivilegio.ObtenerPrivilegios(IdUsuario, IdPerfil, IdGrupo).ToList();
+            Privilegios = administradorPrivilegio.ObtenerPrivilegios(IdUsuario, IdPerfil, IdGrupo).ToList();
+            return Privilegios;
         }
 
         public void RealizarTransaccionValidarSesionUsuario(SesionUsuario sesionUsuario, CuentaUsuario cuentaUsuario)

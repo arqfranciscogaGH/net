@@ -38,7 +38,8 @@ namespace Sitio.AdministracionControles
 
         private ModeloSistema _contexto;
         private string ClaveAplicacion = "AdministracionPlaneacion";
-
+        private string ClaveMensajeOperacionCompleta = "1";
+        private string ClaveMensajePermiso = "2";
         //  reglas  de megocio
         private static AdministradorPlaneacion administradorNegocio;
 
@@ -91,7 +92,18 @@ namespace Sitio.AdministracionControles
                 DefinirCaptura();
             }
             Page.Theme = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.Tema;
-            CargarControles();
+            UcWebMenuFuncionalidad2.DefinirMenuPrincipal();
+            UcWebEncabezadoPagina1.Usuario = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombreUsuario;
+            UcWebEncabezadoPagina1.Perfil = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ParametrosSeguridadActual.NombrePerfil;
+
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                CargarControles();
+            }
+            else
+            {
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
         }
 
         //  metodo   carga  de  página  
@@ -101,12 +113,20 @@ namespace Sitio.AdministracionControles
             if (!IsPostBack)
             {
 
+            }
+            if (AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ValidarPrivilegios(ClaveAplicacion, AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionSistemaActual.PermisoConsultar))
+            {
+                Configurar();
+                InscribirEventos();
+                ActualizarElementos(false);
+                ConfigurarAlCargarPaginaSiempre();
 
             }
-            Configurar();
-            InscribirEventos();
-            ConfigurarAlCargarPaginaSiempre();
-            ActulizarElementos();
+            else
+            {
+
+                UcWebMensaje1.MostrarMensaje(ClaveMensajePermiso, UcWebMensaje.TipoImagen.Informativo, UcWebMensaje.BotonesMensaje.Aceptar, this, ObtenerRespuesta);
+            }
             ucWebBarraProgreso1.DesActivar();
         }
 
@@ -255,7 +275,7 @@ namespace Sitio.AdministracionControles
                     //  se limpia  captura secundaria
                     btnNuevo_Click2(null, null);
                     //  se actuliza  elementos secundarios
-                    ActulizarElementosConsultaSecundaria(null, null);
+                    ActulizarElementosConsultaSecundaria(null, null,true);
                 }
             }
         }
@@ -339,7 +359,7 @@ namespace Sitio.AdministracionControles
                 administradorNegocio.GuardarCambios();
                 generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                 IdElemento = _entidad.IdPlaneacionCaptura;
-                ActulizarElementos();
+                ActualizarElementos(true);
             }
         }
 
@@ -354,7 +374,7 @@ namespace Sitio.AdministracionControles
                     administradorNegocio.Actualizar<PlaneacionCaptura>((PlaneacionCaptura)_entidad);
                     //administradorNegocio.ActualziarPlaneacion(_entidad);
                     administradorNegocio.GuardarCambios();
-                    ActulizarElementosConsultaPrincipal(sender, e);
+                    ActulizarElementosConsultaPrincipal(sender, e,true);
                 }
             }
         }
@@ -381,7 +401,7 @@ namespace Sitio.AdministracionControles
             {
 
             }
-            ActulizarElementosConsultaPrincipal(sender, e);
+            ActulizarElementosConsultaPrincipal(sender, e,true);
         }
 
         #endregion
@@ -439,7 +459,7 @@ namespace Sitio.AdministracionControles
                 administradorNegocio.GuardarCambios();
                 IdElemento2 = _entidad2.IdDefinicionCaptura;
                 generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor2, captura2, _tipoEntidad2, _entidad2);
-                ActulizarElementosConsultaSecundaria(sender, e);
+                ActulizarElementosConsultaSecundaria(sender, e,true);
             }
         }
 
@@ -455,7 +475,7 @@ namespace Sitio.AdministracionControles
                     administradorNegocio.Actualizar<DefinicionCaptura>((DefinicionCaptura)_entidad2);
                     administradorNegocio.ActualziarDefinicion(_entidad2);
                     administradorNegocio.GuardarCambios();
-                    ActulizarElementosConsultaSecundaria(sender, e);
+                    ActulizarElementosConsultaSecundaria(sender, e,true);
                 }
             }
         }
@@ -481,7 +501,7 @@ namespace Sitio.AdministracionControles
             {
 
             }
-            ActulizarElementosConsultaSecundaria(sender, e);
+            ActulizarElementosConsultaSecundaria(sender, e,true);
         }
 
         #endregion
@@ -490,13 +510,14 @@ namespace Sitio.AdministracionControles
 
         #region  Paso  9 Métodos para   actualizar  grids
 
-        public void ActulizarElementos()
+
+        public void ActualizarElementos(bool actualizar)
         {
-            ActulizarElementosConsultaPrincipal(null, null);
-            ActulizarElementosConsultaSecundaria(null, null);
+            ActulizarElementosConsultaPrincipal(null, null, actualizar);
+            ActulizarElementosConsultaSecundaria(null, null, actualizar);
         }
 
-        protected void ActulizarElementosConsultaPrincipal(object sender, EventArgs e)
+        protected void ActulizarElementosConsultaPrincipal(object sender, EventArgs e,bool actualizar)
         {
             if (_entidad != null)
             {
@@ -507,7 +528,7 @@ namespace Sitio.AdministracionControles
                 ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
             }
         }
-        protected void ActulizarElementosConsultaSecundaria(object sender, EventArgs e)
+        protected void ActulizarElementosConsultaSecundaria(object sender, EventArgs e, bool actualizar)
         {
             if (IdElemento != null && IdElemento != 0)
             {

@@ -45,9 +45,6 @@ namespace DRP.Modelo
         public virtual DbSet<Puesto> Puesto { get; set; }
         public virtual DbSet<SesionUsuario> SesionUsuario { get; set; }
         public virtual DbSet<SesionUsuarioHistorial> SesionUsuarioHistorial { get; set; }
-        public virtual DbSet<ESTADO> ESTADO { get; set; }
-        public virtual DbSet<ModuloSistema> ModuloSistema { get; set; }
-        public virtual DbSet<OpcionMenu> OpcionMenu { get; set; }
         public virtual DbSet<Domicilio> Domicilio { get; set; }
         public virtual DbSet<ErrorPersonalizado> ErrorPersonalizado { get; set; }
         public virtual DbSet<Privilegio> Privilegio { get; set; }
@@ -57,6 +54,9 @@ namespace DRP.Modelo
         public virtual DbSet<Terminologia> Terminologia { get; set; }
         public virtual DbSet<TerminologiaIdioma> TerminologiaIdioma { get; set; }
         public virtual DbSet<UnidadNegocio> UnidadNegocio { get; set; }
+        public virtual DbSet<OpcionMenu> OpcionMenu { get; set; }
+        public virtual DbSet<ESTADO> ESTADO { get; set; }
+        public virtual DbSet<ModuloSistema> ModuloSistema { get; set; }
         public virtual DbSet<MUNICIPIO> MUNICIPIO { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
     
