@@ -39,6 +39,7 @@
         <EntityTypeShape EntityType="Modelo.ModuloSistema" Width="1.5" PointX="6.375" PointY="10.75" />
         <EntityTypeShape EntityType="Modelo.MUNICIPIO" Width="1.5" PointX="15.375" PointY="16.75" />
         <EntityTypeShape EntityType="Modelo.Pais" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="Modelo.NivelRed" Width="1.5" PointX="3.375" PointY="17.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

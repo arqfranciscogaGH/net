@@ -258,9 +258,29 @@
           <Property Name="Shape_STLength_1" Type="numeric" Precision="38" Scale="8" Nullable="false" />
           <Property Name="Shape" Type="geometry" />
         </EntityType>
+        <EntityType Name="NivelRed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="llave" Type="varchar(max)" />
+          <Property Name="clave" Type="varchar(max)" />
+          <Property Name="nombre" Type="varchar(max)" />
+          <Property Name="comision" Type="float" />
+          <Property Name="orden" Type="int" />
+          <Property Name="socios" Type="int" />
+          <Property Name="operaciones" Type="int" />
+          <Property Name="importes" Type="int" />
+          <Property Name="fechaEstatus" Type="varchar" MaxLength="10" />
+          <Property Name="estatus" Type="smallint" />
+          <Property Name="color" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="OpcionMenu">
           <Key>
             <PropertyRef Name="IdOpcionMenu" />
+            
           </Key>
           <Property Name="IdOpcionMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdMenu" Type="int" Nullable="false" />
@@ -562,7 +582,7 @@
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ModuloSistema" EntityType="Self.ModuloSistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MUNICIPIO" EntityType="Self.MUNICIPIO" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OpcionMenu" EntityType="Self.OpcionMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NivelRed" EntityType="Self.NivelRed" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OpcionMenuIdioma" EntityType="Self.OpcionMenuIdioma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
@@ -578,6 +598,23 @@
           <EntitySet Name="Terminologia" EntityType="Self.Terminologia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TerminologiaIdioma" EntityType="Self.TerminologiaIdioma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnidadNegocio" EntityType="Self.UnidadNegocio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpcionMenu" EntityType="Self.OpcionMenu" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OpcionMenu].[IdOpcionMenu] AS [IdOpcionMenu], 
+    [OpcionMenu].[IdMenu] AS [IdMenu], 
+    [OpcionMenu].[Orden] AS [Orden], 
+    [OpcionMenu].[Titulo] AS [Titulo], 
+    [OpcionMenu].[Ayuda] AS [Ayuda], 
+    [OpcionMenu].[TipoComando] AS [TipoComando], 
+    [OpcionMenu].[Comando] AS [Comando], 
+    [OpcionMenu].[Caracteristicas] AS [Caracteristicas], 
+    [OpcionMenu].[Parametros] AS [Parametros], 
+    [OpcionMenu].[IdPrivilegio] AS [IdPrivilegio], 
+    [OpcionMenu].[Color] AS [Color], 
+    [OpcionMenu].[Imagen] AS [Imagen], 
+    [OpcionMenu].[Activo] AS [Activo]
+    FROM [dbo].[OpcionMenu] AS [OpcionMenu]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_BitacoraError_Aplicacion" Association="Self.FK_BitacoraError_Aplicacion">
             <End Role="Aplicacion" EntitySet="Aplicacion" />
             <End Role="BitacoraError" EntitySet="BitacoraError" />
@@ -965,6 +1002,7 @@
           <EntitySet Name="ModuloSistema" EntityType="Modelo.ModuloSistema" />
           <EntitySet Name="MUNICIPIO" EntityType="Modelo.MUNICIPIO" />
           <EntitySet Name="Pais" EntityType="Modelo.Pais" />
+          <EntitySet Name="NivelRed" EntityType="Modelo.NivelRed" />
         </EntityContainer>
         <ComplexType Name="ObtenerPrivilegios_Result">
           <Property Type="String" Name="ClaveAplicacion" Nullable="true" MaxLength="30" />
@@ -1215,6 +1253,23 @@
           </Key>
           <Property Name="IdPais" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NivelRed">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="llave" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="clave" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="comision" Type="Double" />
+          <Property Name="orden" Type="Int32" />
+          <Property Name="socios" Type="Int32" />
+          <Property Name="operaciones" Type="Int32" />
+          <Property Name="importes" Type="Int32" />
+          <Property Name="fechaEstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Int16" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1784,6 +1839,24 @@
               <MappingFragment StoreEntitySet="Pais">
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NivelRed">
+            <EntityTypeMapping TypeName="Modelo.NivelRed">
+              <MappingFragment StoreEntitySet="NivelRed">
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="fechaEstatus" ColumnName="fechaEstatus" />
+                <ScalarProperty Name="importes" ColumnName="importes" />
+                <ScalarProperty Name="operaciones" ColumnName="operaciones" />
+                <ScalarProperty Name="socios" ColumnName="socios" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="comision" ColumnName="comision" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="llave" ColumnName="llave" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

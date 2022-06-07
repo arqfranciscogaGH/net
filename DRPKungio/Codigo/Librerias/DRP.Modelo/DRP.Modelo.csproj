@@ -117,6 +117,9 @@
     <Compile Include="MUNICIPIO.cs">
       <DependentUpon>DRP.tt</DependentUpon>
     </Compile>
+    <Compile Include="NivelRed.cs">
+      <DependentUpon>DRP.tt</DependentUpon>
+    </Compile>
     <Compile Include="ObtenerPlaneacionCaptura_Result.cs">
       <DependentUpon>DRP.tt</DependentUpon>
     </Compile>

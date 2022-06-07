@@ -59,10 +59,10 @@
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.FlujoTrabajo.Administrador">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.FlujoTrabajo.Administrador.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.FlujoTrabajo.Administrador.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.AdministradorBaseDatos">
-      <HintPath>..\..\..\..\fga\Proyectos\net\MENet\LibreriasCompiladas\MeNet.Nucleo.AdministradorBaseDatos.dll</HintPath>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.AdministradorBaseDatos.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Nucleo.AdministradorConsultas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -136,6 +136,10 @@
     <Reference Include="MeNet.Nucleo.Variables, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\LibreriasCompiladas\MeNet.Nucleo.Variables.dll</HintPath>
+    </Reference>
+    <Reference Include="MeNet.Seguridad.Administrador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LibreriasCompiladas\MeNet.Seguridad.Administrador.dll</HintPath>
     </Reference>
     <Reference Include="MeNet.Seguridad.GeneradorMenus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1161,12 +1165,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Librerias\MeNet.Seguridad.Administrador\MeNet.Seguridad.Administrador.csproj">
-      <Project>{91165932-7ec8-4cd9-81aa-92e4c20bf290}</Project>
-      <Name>MeNet.Seguridad.Administrador</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

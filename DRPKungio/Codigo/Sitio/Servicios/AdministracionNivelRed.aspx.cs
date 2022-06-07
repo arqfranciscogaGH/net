@@ -19,7 +19,7 @@ using MeNet.Nucleo.Controles;
 //  clases  para  consultas 
 using MeNet.Nucleo.AdministradorConsultas;
 //  clases  para  modelo  de base de datos 
-using DRP.Modelo;
+using Sitio.Models;
 
 
 namespace Sitio.Servicios
@@ -29,7 +29,7 @@ namespace Sitio.Servicios
 
         #region  paso  2  declaracion variables
 
-        private string ClaveAplicacion = "AdministracionPuesto";
+        private string ClaveAplicacion = "AdministracionNivelRed";
         private string ClaveMensajeOperacionCompleta = "1";
         private string ClaveMensajePermiso = "2";
         //  reglas  de megocio
@@ -41,8 +41,8 @@ namespace Sitio.Servicios
         private static Control contenedor;
         private static Captura captura;
         private static Type _tipoEntidad;
-        private static Puesto _entidad;
-        private static List<Puesto> _lista;
+        private static NivelRed _entidad;
+        private static List<NivelRed> _lista;
         private static int IdElemento;
 
         //  controladores
@@ -50,7 +50,7 @@ namespace Sitio.Servicios
 
         // otros
 
-        static private int IdModulo;
+     
 
         #endregion
 
@@ -138,7 +138,7 @@ namespace Sitio.Servicios
 
             captura = new Captura();
             captura.IdAplicacion = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.ObtenerAplicacion(ClaveAplicacion);
-            captura.IdPlaneacionCaptura = 2015;
+            captura.IdPlaneacionCaptura = 5502;
             captura.IdClasificacionCaptura = 1;
             captura.IdSuscriptor = AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.SesionUsuarioActual.IdSuscriptor;
             captura.IdEstausCaptura = 1;
@@ -154,9 +154,9 @@ namespace Sitio.Servicios
         private void ConfigurarAlCargarPaginaSoloInicialmente()
         {
             administradorNegocio = new AdministradorComun();
-            _entidad = administradorNegocio.Instanciar<Puesto>();
+            _entidad = administradorNegocio.Instanciar<NivelRed>();
             _tipoEntidad = _entidad.GetType();
-            _lista = administradorNegocio.Consultar<Puesto>(s => s.Activo == true).ToList();
+            _lista = administradorNegocio.Consultar<NivelRed>(s => s.estatus == 1).ToList();
         }
 
         private void Configurar()
@@ -165,7 +165,7 @@ namespace Sitio.Servicios
             ucWebConsultorDinamico1.Paginacion = true;
             ucWebConsultorDinamico1.NumeroRegistrosPagina = 15;
             ucWebConsultorDinamico1.NumeroRegistrosConsulta = 1000;
-            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "IdPuesto,Nombre,Activo", "");
+            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "id,nombre,estatus", "");
         }
 
         private void InscribirEventos()
@@ -183,15 +183,15 @@ namespace Sitio.Servicios
 
         #region Paso  6 Métodos de acciones  en entidades
 
-        public Puesto Instanciar()
+        public NivelRed Instanciar()
         {
-            _entidad = administradorNegocio.Instanciar<Puesto>();
+            _entidad = administradorNegocio.Instanciar<NivelRed>();
             return _entidad;
         }
 
-        public Puesto Obtener()
+        public NivelRed Obtener()
         {
-            _entidad = administradorNegocio.Obtener<Puesto>(s => s.IdPuesto == IdElemento);
+            _entidad = administradorNegocio.Obtener<NivelRed>(s => s.id == IdElemento);
             return _entidad;
         }
 
@@ -261,23 +261,22 @@ namespace Sitio.Servicios
             Dictionary<string, AtributoControl> valoresControles = new Dictionary<string, AtributoControl>();
             valoresControles = generadorControles.ObtenerValoresControlesPorAplicacion(contenedor, captura);
             _entidad = Instanciar();
-            _entidad = (Puesto)generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor, captura, _tipoEntidad, _entidad);
+            _entidad = (NivelRed)generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor, captura, _tipoEntidad, _entidad);
             //_entidad.IdModulo = IdModulo;
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             _entidad = Instanciar();
-            _entidad = (Puesto)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
+            _entidad = (NivelRed)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
 
             if (_entidad != null)
             {
-                _entidad.IdPuesto = 0;
-                _entidad.IdSuscriptor = int.Parse(AdministradorSistema.ControaldorAplicacion.AdministradorSeguridad.IdSuscriptor.ToString());
-                administradorNegocio.Agregar((Puesto)_entidad);
+                _entidad.id = 0;
+                administradorNegocio.Agregar((NivelRed)_entidad);
                 administradorNegocio.GuardarCambios();
                 generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
-                IdElemento = _entidad.IdPuesto;
+                IdElemento = _entidad.id;
             }
         }
 
@@ -288,8 +287,8 @@ namespace Sitio.Servicios
                 _entidad = Obtener();
                 if (_entidad != null)
                 {
-                    _entidad = (Puesto)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
-                    administradorNegocio.Actualizar((Puesto)_entidad);
+                    _entidad = (NivelRed)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
+                    administradorNegocio.Actualizar((NivelRed)_entidad);
                     administradorNegocio.GuardarCambios();
                 }
             }
@@ -305,7 +304,7 @@ namespace Sitio.Servicios
 
                     if (_entidad != null)
                     {
-                        administradorNegocio.Eliminar((Puesto)_entidad);
+                        administradorNegocio.Eliminar((NivelRed)_entidad);
                         administradorNegocio.GuardarCambios();
                         generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor, captura, _tipoEntidad, Instanciar());
                     }
@@ -338,7 +337,7 @@ namespace Sitio.Servicios
 
                 //_lista = administradorNegocio.Consultar(s =>  s.Activo != null).ToList();
                 if (_lista == null || actualizar)
-                    _lista = administradorNegocio.ObtenerLista<Puesto>().ToList();
+                    _lista = administradorNegocio.ObtenerLista<NivelRed>().ToList();
 
             }
             ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);

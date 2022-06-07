@@ -59,6 +59,7 @@ namespace DRP.Modelo
         public virtual DbSet<ModuloSistema> ModuloSistema { get; set; }
         public virtual DbSet<MUNICIPIO> MUNICIPIO { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
+        public virtual DbSet<NivelRed> NivelRed { get; set; }
     
         public virtual int ActualizarPrivilegios(string accion, string tipoElemento, Nullable<int> idElemento, string privilegios)
         {
