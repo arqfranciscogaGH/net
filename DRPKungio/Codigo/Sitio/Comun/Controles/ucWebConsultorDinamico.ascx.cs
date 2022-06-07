@@ -603,14 +603,14 @@ namespace Sitio.Comun.Controles
             // && (Argumentos.Campos == null || Argumentos.Campos == string.Empty)
             if ((campos != null || campos != string.Empty) )
             {
-                if (cambioTipo==true)
-                {
+                //if (cambioTipo==true)
+                //{
                     campos = AdminisradorConsultorActual.AdministradorConsultasActual.CargarCamposInicialmente(Argumentos, campos);
                     Argumentos.Campos = campos;
                     List<string> listaCampos = campos.ToString().Split(',').ToList();
                     AdminisradorConsultorActual.AdministradorConsultasActual.ActualizarCamposSeleccionados(listaCampos);
                     cambioTipo = false;
-                }
+                //}
 
             }
         }

@@ -35,6 +35,7 @@ namespace Sitio.Servicios
         //  reglas  de megocio
 
         private static AdministradorComun administradorNegocio;
+        Modelo modelo = new Modelo();
         //  captura de etidades  y  listas 
 
         // primer   captura
@@ -155,8 +156,11 @@ namespace Sitio.Servicios
         {
             administradorNegocio = new AdministradorComun();
             _entidad = administradorNegocio.Instanciar<NivelRed>();
+            _entidad = new NivelRed();
             _tipoEntidad = _entidad.GetType();
-            _lista = administradorNegocio.Consultar<NivelRed>(s => s.estatus == 1).ToList();
+            //_tipoEntidad = _entidad.GetType();
+            //_lista = administradorNegocio.Consultar<NivelRed>(s => s.estatus == 1).ToList();
+            _lista = modelo.NivelRed.Where(s => s.estatus == 1).ToList();
         }
 
         private void Configurar()
@@ -165,7 +169,7 @@ namespace Sitio.Servicios
             ucWebConsultorDinamico1.Paginacion = true;
             ucWebConsultorDinamico1.NumeroRegistrosPagina = 15;
             ucWebConsultorDinamico1.NumeroRegistrosConsulta = 1000;
-            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "id,nombre,estatus", "");
+            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "id,nombre,estatus", "id");
         }
 
         private void InscribirEventos()
@@ -185,13 +189,13 @@ namespace Sitio.Servicios
 
         public NivelRed Instanciar()
         {
-            _entidad = administradorNegocio.Instanciar<NivelRed>();
+            _entidad = new NivelRed();
             return _entidad;
         }
 
         public NivelRed Obtener()
         {
-            _entidad = administradorNegocio.Obtener<NivelRed>(s => s.id == IdElemento);
+            _entidad = modelo.NivelRed.FirstOrDefault(s => s.id == IdElemento);
             return _entidad;
         }
 
@@ -337,7 +341,8 @@ namespace Sitio.Servicios
 
                 //_lista = administradorNegocio.Consultar(s =>  s.Activo != null).ToList();
                 if (_lista == null || actualizar)
-                    _lista = administradorNegocio.ObtenerLista<NivelRed>().ToList();
+                    _lista = modelo.NivelRed.Where(s => s.estatus == 1).ToList();
+                    //_lista = administradorNegocio.ObtenerLista<NivelRed>().ToList();
 
             }
             ucWebConsultorDinamico1.AsigarOrigenDatos(_lista);
