@@ -611,7 +611,6 @@ namespace Sitio.Comun.Controles
                     AdminisradorConsultorActual.AdministradorConsultasActual.ActualizarCamposSeleccionados(listaCampos);
                     cambioTipo = false;
                 }
-
             }
         }
 
