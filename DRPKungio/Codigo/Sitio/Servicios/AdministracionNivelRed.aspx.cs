@@ -161,6 +161,7 @@ namespace Sitio.Servicios
             //_tipoEntidad = _entidad.GetType();
             //_lista = administradorNegocio.Consultar<NivelRed>(s => s.estatus == 1).ToList();
             _lista = modelo.NivelRed.Where(s => s.estatus == 1).ToList();
+
         }
 
         private void Configurar()

@@ -590,6 +590,8 @@
     <Content Include="Seguridad\ParmetrosConfiguracion.aspx" />
     <Content Include="Seguridad\VerMenu.aspx" />
     <Content Include="Servicios\AdministracionNivelRed.aspx" />
+    <Content Include="Servicios\ConsultaComisionesRed.aspx" />
+    <Content Include="Servicios\ConsultaMisComisiones.aspx" />
     <Content Include="Servicios\RegistrarServicio.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
@@ -1095,6 +1097,20 @@
     </Compile>
     <Compile Include="Servicios\AdministracionNivelRed.aspx.designer.cs">
       <DependentUpon>AdministracionNivelRed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\ConsultaComisionesRed.aspx.cs">
+      <DependentUpon>ConsultaComisionesRed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicios\ConsultaComisionesRed.aspx.designer.cs">
+      <DependentUpon>ConsultaComisionesRed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\ConsultaMisComisiones.aspx.cs">
+      <DependentUpon>ConsultaMisComisiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicios\ConsultaMisComisiones.aspx.designer.cs">
+      <DependentUpon>ConsultaMisComisiones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Servicios\RegistrarServicio.aspx.cs">
       <DependentUpon>RegistrarServicio.aspx</DependentUpon>

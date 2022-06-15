@@ -487,10 +487,10 @@ h2 {
     position: absolute;
     /*visibility: hidden;*/
     /*align-content: flex-end;*/
-    right: 5%;
+    right: 10%;
     color: #E6E6E6;
-    margin: 1em 2em;
-    padding: 1px 1px;
+    margin: .5em 1em;
+    padding: 2px 2px;
     display: block;
     border-radius: 5px;
     z-index: 6000;

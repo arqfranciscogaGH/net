@@ -61,6 +61,7 @@ $(document).ready(function () {
     
 
     $('#IdBotonMenu').on('click', function () {
+      /*  debugger;*/
         var clase = $("#IdBotonMenu").attr('class');
        
         if ( clase == "MenuBotonActivacion icon-window-minimize") {
@@ -90,7 +91,7 @@ $(document).ready(function () {
         p.stopPropagation();
     });
     $('#IdBotonElementosSeguridad').on('hover', function () {
-
+        debuger;
         var claseseg = $("#IdContenedorSeguridad").attr('class');
         if (claseseg == 'ContenedorSeguridad')
         {
