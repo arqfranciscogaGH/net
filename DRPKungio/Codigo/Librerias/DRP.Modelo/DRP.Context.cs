@@ -31,7 +31,6 @@ namespace DRP.Modelo
         public virtual DbSet<Aplicacion> Aplicacion { get; set; }
         public virtual DbSet<Area> Area { get; set; }
         public virtual DbSet<BitacoraError> BitacoraError { get; set; }
-        public virtual DbSet<CuentaUsuario> CuentaUsuario { get; set; }
         public virtual DbSet<DefinicionCaptura> DefinicionCaptura { get; set; }
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
@@ -60,6 +59,8 @@ namespace DRP.Modelo
         public virtual DbSet<MUNICIPIO> MUNICIPIO { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
         public virtual DbSet<NivelRed> NivelRed { get; set; }
+        public virtual DbSet<CuentaUsuario> CuentaUsuario { get; set; }
+        public virtual DbSet<ImagenCarrusel> ImagenCarrusel { get; set; }
     
         public virtual int ActualizarPrivilegios(string accion, string tipoElemento, Nullable<int> idElemento, string privilegios)
         {

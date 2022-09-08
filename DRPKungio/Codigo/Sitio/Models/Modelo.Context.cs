@@ -29,13 +29,13 @@ namespace Sitio.Models
     
         public virtual DbSet<FlujoTrabajoDocumento> FlujoTrabajoDocumento { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<CuentaUsuario> CuentaUsuario { get; set; }
         public virtual DbSet<Directorio> Directorio { get; set; }
         public virtual DbSet<Suscripcion> Suscripcion { get; set; }
         public virtual DbSet<Configuracion> Configuracion { get; set; }
         public virtual DbSet<FTAvanzarActividad> FTAvanzarActividad { get; set; }
         public virtual DbSet<ImagenCarrusel> ImagenCarrusel { get; set; }
         public virtual DbSet<NivelRed> NivelRed { get; set; }
+        public virtual DbSet<CuentaUsuario> CuentaUsuario { get; set; }
     
         public virtual int ActualizarDirectorio(Nullable<int> id, string llave, string clave, string fecha, string nombre, string descripcion, string tipo, string direccion, string telefono, string correo, Nullable<int> idCategoria, Nullable<int> idSubCategoria, Nullable<int> idGiro, string latitud, string longitud, string rutaFoto, string urlFoto, string urlVideo, string paginaWeb, string facebook, string youTube, string otraRedSocial, Nullable<int> idSuscriptor, string fechaEstatus, Nullable<short> estatus)
         {
@@ -296,19 +296,6 @@ namespace Sitio.Models
                 new ObjectParameter("filtro", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarServiciosPorCliente_Result>("ConsultarServiciosPorCliente", idParameter, filtroParameter);
-        }
-    
-        public virtual ObjectResult<ConsultarSocios_Result> ConsultarSocios(Nullable<int> id, string filtro)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-    
-            var filtroParameter = filtro != null ?
-                new ObjectParameter("Filtro", filtro) :
-                new ObjectParameter("Filtro", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarSocios_Result>("ConsultarSocios", idParameter, filtroParameter);
         }
     
         public virtual ObjectResult<InsertarDirectorio_Result> InsertarDirectorio(Nullable<int> id, string llave, string clave, string fecha, string nombre, string descripcion, string tipo, string direccion, string telefono, string correo, Nullable<int> idCategoria, Nullable<int> idSubCategoria, Nullable<int> idGiro, string latitud, string longitud, string rutaFoto, string urlFoto, string urlVideo, string paginaWeb, string facebook, string youTube, string otraRedSocial, Nullable<int> idSuscriptor, string fechaEstatus, Nullable<short> estatus)
@@ -740,6 +727,32 @@ namespace Sitio.Models
                 new ObjectParameter("tipo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarComisionesPorSocio_Result>("ConsultarComisionesPorSocio", idSocioParameter, tipoParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarSocios_Result> ConsultarSocios(Nullable<int> id, string filtro)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarSocios_Result>("ConsultarSocios", idParameter, filtroParameter);
+        }
+    
+        public virtual ObjectResult<AdministracionUsuarios_Result> AdministracionUsuarios(string id, string accion)
+        {
+            var idParameter = id != null ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(string));
+    
+            var accionParameter = accion != null ?
+                new ObjectParameter("accion", accion) :
+                new ObjectParameter("accion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdministracionUsuarios_Result>("AdministracionUsuarios", idParameter, accionParameter);
         }
     }
 }

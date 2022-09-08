@@ -56,7 +56,7 @@
                   <uc3:UcWebBanner ID="UcWebBanner1" runat="server"  Activo="true"  />
             </section>
             <section class="Consultor_Seccion AltoTotal" runat="server">
-                  <uc4:ucwebconsultordinamico ID="ucWebConsultorDinamico1"  runat="server"  max-Width="200px"   Wrap="True"  ActivarFiltro="true" ActivarSeleccion="true" ActivarResumir="false"  ActivarOrden="true"  GridLines="Both" CellSpacing="1"  TituloSeleccion=""   />    
+                  <uc4:ucwebconsultordinamico ID="ucWebConsultorDinamico1"  runat="server"  max-Width="200px"   Wrap="True"  ActivarFiltro="true" ActivarSeleccion="true" ActivarResumir="false"  ActivarOrden="true"  GridLines="Both" CellSpacing="1" TituloVentana ="Niveles de Red" />    
 
             </section>
             <section class="Captura_Seccion AltoTotal" runat="server">

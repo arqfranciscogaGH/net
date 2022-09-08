@@ -71,7 +71,7 @@
           <Property Name="FechaCambioEstatus" Type="smalldatetime" />
           <Property Name="Tema" Type="varchar" MaxLength="30" />
           <Property Name="IdEstatusUsuario" Type="smallint" />
-          <Property Name="Activo" Type="tinyint" />
+          <Property Name="Activo" Type="bit" />
           <Property Name="IdSuscriptor" Type="int" />
           <Property Name="Sesiones" Type="int" />
           <Property Name="Intentos" Type="int" />
@@ -211,6 +211,10 @@
           <Parameter Name="idSuscriptor" Type="int" Mode="In" />
           <Parameter Name="fechaEstatus" Type="varchar" Mode="In" />
           <Parameter Name="estatus" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="AdministracionUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="accion" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="AvanzarActividad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ClaveFlujo" Type="nvarchar" Mode="In" />
@@ -416,7 +420,6 @@
         <EntityContainer Name="Modelo" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="FlujoTrabajoDocumento" EntityType="Self.FlujoTrabajoDocumento" />
           <EntitySet Name="Cliente" EntityType="DB_A72B95_drpModel.Cliente" />
-          <EntitySet Name="CuentaUsuario" EntityType="DB_A72B95_drpModel.CuentaUsuario" />
           <EntitySet Name="Directorio" EntityType="DB_A72B95_drpModel.Directorio" />
           <EntitySet Name="Suscripcion" EntityType="DB_A72B95_drpModel.Suscripcion" />
           <FunctionImport Name="ActualizarDirectorio">
@@ -490,10 +493,6 @@
           <FunctionImport Name="ConsultarServiciosPorCliente" ReturnType="Collection(DB_A72B95_drpModel.ConsultarServiciosPorCliente_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="filtro" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="ConsultarSocios" ReturnType="Collection(DB_A72B95_drpModel.ConsultarSocios_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
-            <Parameter Name="Filtro" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertarDirectorio" ReturnType="Collection(DB_A72B95_drpModel.InsertarDirectorio_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -618,11 +617,20 @@
           </FunctionImport>
           <EntitySet Name="ImagenCarrusel" EntityType="DB_A72B95_drpModel.ImagenCarrusel" />
           <FunctionImport Name="ConsultarComisiones" ReturnType="Collection(DB_A72B95_drpModel.ConsultarComisiones_Result)" />
+          <EntitySet Name="NivelRed" EntityType="DB_A72B95_drpModel.NivelRed" />
           <FunctionImport Name="ConsultarComisionesPorSocio" ReturnType="Collection(DB_A72B95_drpModel.ConsultarComisionesPorSocio_Result)">
             <Parameter Name="idSocio" Mode="In" Type="Int32" />
             <Parameter Name="tipo" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="NivelRed" EntityType="DB_A72B95_drpModel.NivelRed" />
+          <EntitySet Name="CuentaUsuario" EntityType="DB_A72B95_drpModel.CuentaUsuario" />
+          <FunctionImport Name="ConsultarSocios" ReturnType="Collection(DB_A72B95_drpModel.ConsultarSocios_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AdministracionUsuarios" ReturnType="Collection(DB_A72B95_drpModel.AdministracionUsuarios_Result)">
+            <Parameter Name="Id" Mode="In" Type="String" />
+            <Parameter Name="accion" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Cliente">
           <Key>
@@ -663,30 +671,6 @@
           <Property Name="acciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="fechaEstatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="Int16" />
-        </EntityType>
-        <EntityType Name="CuentaUsuario">
-          <Key>
-            <PropertyRef Name="IdUsuario" />
-          </Key>
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cuenta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contrasena" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="IdEstacionTrabajo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdUsuarioSuperior" Type="Int32" />
-          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
-          <Property Name="FechaVigencia" Type="DateTime" Precision="0" />
-          <Property Name="FechaCambioEstatus" Type="DateTime" Precision="0" />
-          <Property Name="Tema" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="IdEstatusUsuario" Type="Int16" />
-          <Property Name="Activo" Type="Byte" />
-          <Property Name="IdSuscriptor" Type="Int32" />
-          <Property Name="Sesiones" Type="Int32" />
-          <Property Name="Intentos" Type="Int32" />
-          <Property Name="IdIdioma" Type="Int32" />
-          <Property Name="Perfiles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Grupos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Expira" Type="Boolean" />
-          <Property Name="Privilegios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Directorio">
           <Key>
@@ -807,17 +791,6 @@
           <Property Type="Decimal" Name="importe" Nullable="true" Precision="16" Scale="2" />
           <Property Type="Int32" Name="idFlujoTrabajo" Nullable="true" />
           <Property Type="String" Name="servicio" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="ConsultarSocios_Result">
-          <Property Type="Int32" Name="idUsuario" Nullable="false" />
-          <Property Type="String" Name="cuenta" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="idUsuarioSuperior" Nullable="true" />
-          <Property Type="Int32" Name="idNivelRed" Nullable="false" />
-          <Property Type="String" Name="claveNivelRed" Nullable="true" />
-          <Property Type="String" Name="nivelRed" Nullable="true" />
-          <Property Type="Int32" Name="orden" Nullable="true" />
-          <Property Type="Double" Name="comision" Nullable="true" />
         </ComplexType>
         <ComplexType Name="InsertarDirectorio_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -1088,21 +1061,6 @@
           <Property Type="String" Name="Descricpion" Nullable="true" MaxLength="109" />
           <Property Type="Int16" Name="IdEstatusPago" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="ConsultarComisionesPorSocio_Result">
-          <Property Type="Int32" Name="IdBase" Nullable="false" />
-          <Property Type="Int32" Name="idComision" Nullable="false" />
-          <Property Type="Int32" Name="IdsocioOrigen" Nullable="true" />
-          <Property Type="String" Name="CuentaOrigen" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CuentaSocio" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="idSocio" Nullable="true" />
-          <Property Type="String" Name="Socio" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="nivelRed" Nullable="true" />
-          <Property Type="Decimal" Name="comisionSocioRed" Nullable="true" Precision="16" Scale="2" />
-          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="nombreCliente" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Descricpion" Nullable="true" MaxLength="109" />
-          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="9" />
-        </ComplexType>
         <EntityType Name="NivelRed">
           <Key>
             <PropertyRef Name="id" />
@@ -1120,6 +1078,83 @@
           <Property Name="estatus" Type="Int16" />
           <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="ConsultarComisionesPorSocio_Result">
+          <Property Type="Int32" Name="idBase" Nullable="false" />
+          <Property Type="Int32" Name="idComision" Nullable="false" />
+          <Property Type="Int32" Name="idSocioOrigen" Nullable="true" />
+          <Property Type="String" Name="cuentaOrigen" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="cuentaSocio" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="idSocio" Nullable="true" />
+          <Property Type="String" Name="socio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="nivelRed" Nullable="true" />
+          <Property Type="Decimal" Name="importeOperacion" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="Decimal" Name="comision" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="String" Name="tipo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="nombreCliente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="descricpion" Nullable="true" MaxLength="109" />
+          <Property Type="String" Name="estatus" Nullable="true" MaxLength="9" />
+        </ComplexType>
+        <EntityType Name="CuentaUsuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cuenta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstacionTrabajo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuarioSuperior" Type="Int32" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="FechaVigencia" Type="DateTime" Precision="0" />
+          <Property Name="FechaCambioEstatus" Type="DateTime" Precision="0" />
+          <Property Name="Tema" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstatusUsuario" Type="Int16" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="Sesiones" Type="Int32" />
+          <Property Name="Intentos" Type="Int32" />
+          <Property Name="IdIdioma" Type="Int32" />
+          <Property Name="Perfiles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Grupos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Expira" Type="Boolean" />
+          <Property Name="Privilegios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="ConsultarSocios_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="String" Name="cuenta" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="idUsuarioSuperior" Nullable="true" />
+          <Property Type="Int32" Name="idNivelRed" Nullable="false" />
+          <Property Type="String" Name="claveNivelRed" Nullable="true" />
+          <Property Type="String" Name="nivelRed" Nullable="true" />
+          <Property Type="Int32" Name="orden" Nullable="true" />
+          <Property Type="Double" Name="comision" Nullable="true" />
+          <Property Type="Boolean" Name="Activo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AdministracionUsuarios_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="String" Name="cuenta" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="contrasena" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="idUsuarioSuperior" Nullable="true" />
+          <Property Type="Int32" Name="idNivelRed" Nullable="false" />
+          <Property Type="String" Name="claveNivelRed" Nullable="true" />
+          <Property Type="String" Name="nivelRed" Nullable="true" />
+          <Property Type="Int32" Name="orden" Nullable="true" />
+          <Property Type="Double" Name="comision" Nullable="true" />
+          <Property Type="String" Name="perfiles" Nullable="true" />
+          <Property Type="String" Name="grupos" Nullable="true" />
+          <Property Type="String" Name="privilegios" Nullable="true" />
+          <Property Type="Int32" Name="sesiones" Nullable="true" />
+          <Property Type="Int32" Name="idIdioma" Nullable="true" />
+          <Property Type="Int32" Name="intentos" Nullable="true" />
+          <Property Type="String" Name="tema" Nullable="true" MaxLength="30" />
+          <Property Type="Boolean" Name="expira" Nullable="true" />
+          <Property Type="DateTime" Name="fechaVigencia" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="idSuscriptor" Nullable="true" />
+          <Property Type="String" Name="perfil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="grupo" Nullable="true" MaxLength="60" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1178,31 +1213,6 @@
                 <ScalarProperty Name="clave" ColumnName="clave" />
                 <ScalarProperty Name="llave" ColumnName="llave" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CuentaUsuario">
-            <EntityTypeMapping TypeName="DB_A72B95_drpModel.CuentaUsuario">
-              <MappingFragment StoreEntitySet="CuentaUsuario">
-                <ScalarProperty Name="Privilegios" ColumnName="Privilegios" />
-                <ScalarProperty Name="Expira" ColumnName="Expira" />
-                <ScalarProperty Name="Grupos" ColumnName="Grupos" />
-                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
-                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
-                <ScalarProperty Name="Intentos" ColumnName="Intentos" />
-                <ScalarProperty Name="Sesiones" ColumnName="Sesiones" />
-                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="IdEstatusUsuario" ColumnName="IdEstatusUsuario" />
-                <ScalarProperty Name="Tema" ColumnName="Tema" />
-                <ScalarProperty Name="FechaCambioEstatus" ColumnName="FechaCambioEstatus" />
-                <ScalarProperty Name="FechaVigencia" ColumnName="FechaVigencia" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
-                <ScalarProperty Name="IdUsuarioSuperior" ColumnName="IdUsuarioSuperior" />
-                <ScalarProperty Name="IdEstacionTrabajo" ColumnName="IdEstacionTrabajo" />
-                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
-                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1349,21 +1359,6 @@
                 <ScalarProperty Name="importe" ColumnName="importe" />
                 <ScalarProperty Name="idFlujoTrabajo" ColumnName="idFlujoTrabajo" />
                 <ScalarProperty Name="servicio" ColumnName="servicio" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ConsultarSocios" FunctionName="DB_A72B95_drpModel.Store.ConsultarSocios">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DB_A72B95_drpModel.ConsultarSocios_Result">
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="idUsuarioSuperior" ColumnName="idUsuarioSuperior" />
-                <ScalarProperty Name="idNivelRed" ColumnName="idNivelRed" />
-                <ScalarProperty Name="claveNivelRed" ColumnName="claveNivelRed" />
-                <ScalarProperty Name="nivelRed" ColumnName="nivelRed" />
-                <ScalarProperty Name="orden" ColumnName="orden" />
-                <ScalarProperty Name="comision" ColumnName="comision" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1703,25 +1698,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ConsultarComisionesPorSocio" FunctionName="DB_A72B95_drpModel.Store.ConsultarComisionesPorSocio">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DB_A72B95_drpModel.ConsultarComisionesPorSocio_Result">
-                <ScalarProperty Name="IdBase" ColumnName="IdBase" />
-                <ScalarProperty Name="idComision" ColumnName="idComision" />
-                <ScalarProperty Name="IdsocioOrigen" ColumnName="IdsocioOrigen" />
-                <ScalarProperty Name="CuentaOrigen" ColumnName="CuentaOrigen" />
-                <ScalarProperty Name="CuentaSocio" ColumnName="CuentaSocio" />
-                <ScalarProperty Name="idSocio" ColumnName="idSocio" />
-                <ScalarProperty Name="Socio" ColumnName="Socio" />
-                <ScalarProperty Name="nivelRed" ColumnName="nivelRed" />
-                <ScalarProperty Name="comisionSocioRed" ColumnName="comisionSocioRed" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
-                <ScalarProperty Name="Descricpion" ColumnName="Descricpion" />
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="NivelRed">
             <EntityTypeMapping TypeName="DB_A72B95_drpModel.NivelRed">
               <MappingFragment StoreEntitySet="NivelRed">
@@ -1740,6 +1716,96 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarComisionesPorSocio" FunctionName="DB_A72B95_drpModel.Store.ConsultarComisionesPorSocio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_A72B95_drpModel.ConsultarComisionesPorSocio_Result">
+                <ScalarProperty Name="idBase" ColumnName="idBase" />
+                <ScalarProperty Name="idComision" ColumnName="idComision" />
+                <ScalarProperty Name="idSocioOrigen" ColumnName="idSocioOrigen" />
+                <ScalarProperty Name="cuentaOrigen" ColumnName="cuentaOrigen" />
+                <ScalarProperty Name="cuentaSocio" ColumnName="cuentaSocio" />
+                <ScalarProperty Name="idSocio" ColumnName="idSocio" />
+                <ScalarProperty Name="socio" ColumnName="socio" />
+                <ScalarProperty Name="nivelRed" ColumnName="nivelRed" />
+                <ScalarProperty Name="importeOperacion" ColumnName="importeOperacion" />
+                <ScalarProperty Name="comision" ColumnName="comision" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="descricpion" ColumnName="descricpion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CuentaUsuario">
+            <EntityTypeMapping TypeName="DB_A72B95_drpModel.CuentaUsuario">
+              <MappingFragment StoreEntitySet="CuentaUsuario">
+                <ScalarProperty Name="Privilegios" ColumnName="Privilegios" />
+                <ScalarProperty Name="Expira" ColumnName="Expira" />
+                <ScalarProperty Name="Grupos" ColumnName="Grupos" />
+                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+                <ScalarProperty Name="Intentos" ColumnName="Intentos" />
+                <ScalarProperty Name="Sesiones" ColumnName="Sesiones" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdEstatusUsuario" ColumnName="IdEstatusUsuario" />
+                <ScalarProperty Name="Tema" ColumnName="Tema" />
+                <ScalarProperty Name="FechaCambioEstatus" ColumnName="FechaCambioEstatus" />
+                <ScalarProperty Name="FechaVigencia" ColumnName="FechaVigencia" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="IdUsuarioSuperior" ColumnName="IdUsuarioSuperior" />
+                <ScalarProperty Name="IdEstacionTrabajo" ColumnName="IdEstacionTrabajo" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarSocios" FunctionName="DB_A72B95_drpModel.Store.ConsultarSocios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_A72B95_drpModel.ConsultarSocios_Result">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idUsuarioSuperior" ColumnName="idUsuarioSuperior" />
+                <ScalarProperty Name="idNivelRed" ColumnName="idNivelRed" />
+                <ScalarProperty Name="claveNivelRed" ColumnName="claveNivelRed" />
+                <ScalarProperty Name="nivelRed" ColumnName="nivelRed" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="comision" ColumnName="comision" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AdministracionUsuarios" FunctionName="DB_A72B95_drpModel.Store.AdministracionUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_A72B95_drpModel.AdministracionUsuarios_Result">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="cuenta" ColumnName="cuenta" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idUsuarioSuperior" ColumnName="idUsuarioSuperior" />
+                <ScalarProperty Name="idNivelRed" ColumnName="idNivelRed" />
+                <ScalarProperty Name="claveNivelRed" ColumnName="claveNivelRed" />
+                <ScalarProperty Name="nivelRed" ColumnName="nivelRed" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="comision" ColumnName="comision" />
+                <ScalarProperty Name="perfiles" ColumnName="perfiles" />
+                <ScalarProperty Name="grupos" ColumnName="grupos" />
+                <ScalarProperty Name="privilegios" ColumnName="privilegios" />
+                <ScalarProperty Name="sesiones" ColumnName="sesiones" />
+                <ScalarProperty Name="idIdioma" ColumnName="idIdioma" />
+                <ScalarProperty Name="intentos" ColumnName="intentos" />
+                <ScalarProperty Name="tema" ColumnName="tema" />
+                <ScalarProperty Name="expira" ColumnName="expira" />
+                <ScalarProperty Name="fechaVigencia" ColumnName="fechaVigencia" />
+                <ScalarProperty Name="idSuscriptor" ColumnName="idSuscriptor" />
+                <ScalarProperty Name="perfil" ColumnName="perfil" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

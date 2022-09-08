@@ -177,7 +177,7 @@ namespace Sitio.Servicios
             ucWebConsultorDinamico1.Paginacion = true;
             ucWebConsultorDinamico1.NumeroRegistrosPagina = 15;
             ucWebConsultorDinamico1.NumeroRegistrosConsulta = 1000;
-            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "", "");
+            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "idComision,cuentaOrigen,socio,nivelRed,tipo,nombreCliente,importeOperacion,comision,estatus", "");
         }
 
         private void InscribirEventos()

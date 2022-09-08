@@ -722,6 +722,7 @@
     <Compile Include="Comun\Clases\AdministradorSistema.cs" />
     <Compile Include="Comun\Clases\TokenGenerator.cs" />
     <Compile Include="Comun\Clases\TokenValidationHandler.cs" />
+    <Compile Include="Controllers\AdministracionUsuariosController.cs" />
     <Compile Include="Controllers\ComisionesRedController.cs" />
     <Compile Include="Controllers\ConsultaComisionesController.cs" />
     <Compile Include="Comun\Controles\ListaPersonalizada.ascx.cs">
@@ -856,6 +857,9 @@
     </Compile>
     <Compile Include="inicioanterior.aspx.designer.cs">
       <DependentUpon>inicioanterior.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministracionUsuarios_Result.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AvanzarActividad_Result.cs">
       <DependentUpon>Modelo.tt</DependentUpon>

@@ -11,10 +11,11 @@ namespace Sitio.Models
 {
     using System;
     
-    public partial class ConsultarSocios_Result
+    public partial class AdministracionUsuarios_Result
     {
         public int idUsuario { get; set; }
         public string cuenta { get; set; }
+        public string contrasena { get; set; }
         public string nombre { get; set; }
         public Nullable<int> idUsuarioSuperior { get; set; }
         public int idNivelRed { get; set; }
@@ -22,6 +23,18 @@ namespace Sitio.Models
         public string nivelRed { get; set; }
         public Nullable<int> orden { get; set; }
         public Nullable<double> comision { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public string perfiles { get; set; }
+        public string grupos { get; set; }
+        public string privilegios { get; set; }
+        public Nullable<int> sesiones { get; set; }
+        public Nullable<int> idIdioma { get; set; }
+        public Nullable<int> intentos { get; set; }
+        public string tema { get; set; }
+        public Nullable<bool> expira { get; set; }
+        public Nullable<System.DateTime> fechaVigencia { get; set; }
+        public Nullable<int> idSuscriptor { get; set; }
+        public string perfil { get; set; }
+        public string grupo { get; set; }
+        public Nullable<bool> activo { get; set; }
     }
 }

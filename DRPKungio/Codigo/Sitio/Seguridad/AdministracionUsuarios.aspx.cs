@@ -192,7 +192,7 @@ namespace Sitio.Seguridad
             ucWebConsultorDinamico1.Paginacion = true;
             ucWebConsultorDinamico1.NumeroRegistrosPagina = 15;
             ucWebConsultorDinamico1.NumeroRegistrosConsulta = 1000;
-            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "IdUsuario,Cuenta,Activo", "");
+            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "", "");
         }
 
         private void InscribirEventos()
@@ -254,7 +254,8 @@ namespace Sitio.Seguridad
                             persona.IdUsuario = _entidad.IdUsuario;
                            
                         }
-                        persona.Activo = _entidad.Activo == 1 ? true : false;
+                        persona.Activo = _entidad.Activo;
+                        //persona.Activo = _entidad.Activo == 1 ? true : false;
                         generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, persona.GetType(), persona);
 
 
@@ -267,7 +268,8 @@ namespace Sitio.Seguridad
                             domicilio.IdUsuario = _entidad.IdUsuario;
                             domicilio.IdPersona = persona.IdPersona;
                         }
-                        domicilio.Activo = _entidad.Activo == 1 ? true : false;
+                        domicilio.Activo = _entidad.Activo;
+                        //domicilio.Activo = _entidad.Activo == 1 ? true : false;
                         generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, domicilio.GetType(), domicilio);
 
 
@@ -282,7 +284,8 @@ namespace Sitio.Seguridad
                                 empleado = new Empleado();
                                 empleado.IdUsuario = _entidad.IdUsuario;
                             }
-                            empleado.Activo = _entidad.Activo == 1 ? true : false;
+                            empleado.Activo = _entidad.Activo;
+                            //empleado.Activo = _entidad.Activo == 1 ? true : false;
                             generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, empleado.GetType(), empleado);
                         }
 

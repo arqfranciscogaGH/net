@@ -7,21 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sitio.Models
+namespace DRP.Modelo
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class ConsultarSocios_Result
+    public partial class ImagenCarrusel
     {
-        public int idUsuario { get; set; }
-        public string cuenta { get; set; }
+        public int idImagen { get; set; }
         public string nombre { get; set; }
-        public Nullable<int> idUsuarioSuperior { get; set; }
-        public int idNivelRed { get; set; }
-        public string claveNivelRed { get; set; }
-        public string nivelRed { get; set; }
-        public Nullable<int> orden { get; set; }
-        public Nullable<double> comision { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public string titulo { get; set; }
+        public string mensaje { get; set; }
+        public string ruta { get; set; }
+        public int idSuscriptor { get; set; }
+        public Nullable<bool> activo { get; set; }
     }
 }

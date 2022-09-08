@@ -426,7 +426,7 @@ namespace MeNet.Seguridad.Administrador
             cuentaUsuario = ObtenerCuentaUsuario(SesionSistemaActual.Cuenta);
             if (cuentaUsuario != null)
             {
-                if (cuentaUsuario.Activo != 1)
+                if (cuentaUsuario.Activo!=true )
                 {
                     mansaje = "La cuenta no esta activa";
 

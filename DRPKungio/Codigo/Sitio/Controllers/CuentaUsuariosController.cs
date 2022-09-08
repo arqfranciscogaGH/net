@@ -25,7 +25,7 @@ namespace Sitio.Controllers
             dynamic resultado = null;
             if (AdminisradorLLaves.validar(llave))
             {
-                resultado = db.CuentaUsuario;
+                resultado = db.CuentaUsuario.ToList();
                 return Ok(resultado);
             }
   

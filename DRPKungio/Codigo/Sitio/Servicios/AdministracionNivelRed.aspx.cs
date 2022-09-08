@@ -20,7 +20,7 @@ using MeNet.Nucleo.Controles;
 using MeNet.Nucleo.AdministradorConsultas;
 //  clases  para  modelo  de base de datos 
 using Sitio.Models;
-
+using System.Data.Entity;
 
 namespace Sitio.Servicios
 {
@@ -170,7 +170,7 @@ namespace Sitio.Servicios
             ucWebConsultorDinamico1.Paginacion = true;
             ucWebConsultorDinamico1.NumeroRegistrosPagina = 15;
             ucWebConsultorDinamico1.NumeroRegistrosConsulta = 1000;
-            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "id,nombre,estatus", "id");
+            ucWebConsultorDinamico1.DefinirColumnasConsulta(_tipoEntidad, "id,orden,nombre,comision", "id");
         }
 
         private void InscribirEventos()
@@ -191,6 +191,7 @@ namespace Sitio.Servicios
         public NivelRed Instanciar()
         {
             _entidad = new NivelRed();
+            _entidad.estatus = 1;
             return _entidad;
         }
 
@@ -278,8 +279,10 @@ namespace Sitio.Servicios
             if (_entidad != null)
             {
                 _entidad.id = 0;
-                administradorNegocio.Agregar((NivelRed)_entidad);
-                administradorNegocio.GuardarCambios();
+                modelo.NivelRed.Add(_entidad);
+                modelo.SaveChanges();
+                //administradorNegocio.Agregar((NivelRed)_entidad);
+                //administradorNegocio.GuardarCambios();
                 generadorControles.AsignarEntidadAControlesPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
                 IdElemento = _entidad.id;
             }
@@ -293,8 +296,11 @@ namespace Sitio.Servicios
                 if (_entidad != null)
                 {
                     _entidad = (NivelRed)generadorControles.GuardarEntidadPorAplicacion(BloqueCaptura, captura, _tipoEntidad, _entidad);
-                    administradorNegocio.Actualizar((NivelRed)_entidad);
-                    administradorNegocio.GuardarCambios();
+                    //administradorNegocio.Actualizar((NivelRed)_entidad);
+                    //administradorNegocio.GuardarCambios();
+           
+                    modelo.Entry(_entidad).State = EntityState.Modified;
+                    modelo.SaveChanges();
                 }
             }
         }
@@ -309,8 +315,11 @@ namespace Sitio.Servicios
 
                     if (_entidad != null)
                     {
-                        administradorNegocio.Eliminar((NivelRed)_entidad);
-                        administradorNegocio.GuardarCambios();
+
+                        //administradorNegocio.Eliminar((NivelRed)_entidad);
+                        //administradorNegocio.GuardarCambios();
+                        modelo.NivelRed.Remove(_entidad);
+                        modelo.SaveChanges();
                         generadorControles.AsignarEntidadAControlesPorAplicacion(contenedor, captura, _tipoEntidad, Instanciar());
                     }
                 }
@@ -342,7 +351,7 @@ namespace Sitio.Servicios
 
                 //_lista = administradorNegocio.Consultar(s =>  s.Activo != null).ToList();
                 if (_lista == null || actualizar)
-                    _lista = modelo.NivelRed.Where(s => s.estatus == 1).ToList();
+                    _lista = modelo.NivelRed.ToList();
                     //_lista = administradorNegocio.ObtenerLista<NivelRed>().ToList();
 
             }

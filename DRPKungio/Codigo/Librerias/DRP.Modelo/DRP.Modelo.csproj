@@ -108,6 +108,9 @@
     <Compile Include="Idioma.cs">
       <DependentUpon>DRP.tt</DependentUpon>
     </Compile>
+    <Compile Include="ImagenCarrusel.cs">
+      <DependentUpon>DRP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <DependentUpon>DRP.tt</DependentUpon>
     </Compile>

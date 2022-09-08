@@ -13,18 +13,19 @@ namespace Sitio.Models
     
     public partial class ConsultarComisionesPorSocio_Result
     {
-        public int IdBase { get; set; }
+        public int idBase { get; set; }
         public int idComision { get; set; }
-        public Nullable<int> IdsocioOrigen { get; set; }
-        public string CuentaOrigen { get; set; }
-        public string CuentaSocio { get; set; }
+        public Nullable<int> idSocioOrigen { get; set; }
+        public string cuentaOrigen { get; set; }
+        public string cuentaSocio { get; set; }
         public Nullable<int> idSocio { get; set; }
-        public string Socio { get; set; }
+        public string socio { get; set; }
         public string nivelRed { get; set; }
-        public Nullable<decimal> comisionSocioRed { get; set; }
-        public string Tipo { get; set; }
+        public Nullable<decimal> importeOperacion { get; set; }
+        public Nullable<decimal> comision { get; set; }
+        public string tipo { get; set; }
         public string nombreCliente { get; set; }
-        public string Descricpion { get; set; }
-        public string Estatus { get; set; }
+        public string descricpion { get; set; }
+        public string estatus { get; set; }
     }
 }

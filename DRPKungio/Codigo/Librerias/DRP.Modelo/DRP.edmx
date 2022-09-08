@@ -79,7 +79,7 @@
           <Property Name="FechaCambioEstatus" Type="smalldatetime" />
           <Property Name="Tema" Type="varchar" MaxLength="30" />
           <Property Name="IdEstatusUsuario" Type="smallint" />
-          <Property Name="Activo" Type="tinyint" />
+          <Property Name="Activo" Type="bit" />
           <Property Name="IdSuscriptor" Type="int" />
           <Property Name="Sesiones" Type="int" />
           <Property Name="Intentos" Type="int" />
@@ -208,6 +208,18 @@
           <Property Name="Titulo" Type="nvarchar" MaxLength="50" />
           <Property Name="Cultura" Type="nvarchar" MaxLength="30" />
           <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="ImagenCarrusel">
+          <Key>
+            <PropertyRef Name="idImagen" />
+          </Key>
+          <Property Name="idImagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="150" />
+          <Property Name="titulo" Type="nvarchar(max)" />
+          <Property Name="mensaje" Type="nvarchar(max)" />
+          <Property Name="ruta" Type="nvarchar(max)" />
+          <Property Name="idSuscriptor" Type="int" Nullable="false" />
+          <Property Name="activo" Type="bit" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -579,6 +591,7 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene defin
           <EntitySet Name="ESTADO" EntityType="Self.ESTADO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Idioma" EntityType="Self.Idioma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImagenCarrusel" EntityType="Self.ImagenCarrusel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ModuloSistema" EntityType="Self.ModuloSistema" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MUNICIPIO" EntityType="Self.MUNICIPIO" Schema="dbo" store:Type="Tables" />
@@ -690,30 +703,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene defin
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="Aplicacion" Relationship="Self.FK_BitacoraError_Aplicacion" FromRole="BitacoraError" ToRole="Aplicacion" />
           <NavigationProperty Name="ErrorPersonalizado" Relationship="Modelo.FK_BitacoraError_IdError" FromRole="BitacoraError" ToRole="ErrorPersonalizado" />
-        </EntityType>
-        <EntityType Name="CuentaUsuario">
-          <Key>
-            <PropertyRef Name="IdUsuario" />
-          </Key>
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cuenta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contrasena" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="IdEstacionTrabajo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdUsuarioSuperior" Type="Int32" />
-          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
-          <Property Name="FechaVigencia" Type="DateTime" Precision="0" />
-          <Property Name="FechaCambioEstatus" Type="DateTime" Precision="0" />
-          <Property Name="Tema" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="IdEstatusUsuario" Type="Int16" />
-          <Property Name="Activo" Type="Byte" />
-          <Property Name="IdSuscriptor" Type="Int32" />
-          <Property Name="Sesiones" Type="Int32" />
-          <Property Name="Intentos" Type="Int32" />
-          <Property Name="IdIdioma" Type="Int32" />
-          <Property Name="Perfiles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Grupos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Expira" Type="Boolean" />
-          <Property Name="Privilegios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DefinicionCaptura">
           <Key>
@@ -920,7 +909,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene defin
           <EntitySet Name="Aplicacion" EntityType="Self.Aplicacion" />
           <EntitySet Name="Area" EntityType="Self.Area" />
           <EntitySet Name="BitacoraError" EntityType="Self.BitacoraError" />
-          <EntitySet Name="CuentaUsuario" EntityType="Self.CuentaUsuario" />
           <EntitySet Name="DefinicionCaptura" EntityType="Self.DefinicionCaptura" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
           <EntitySet Name="Empresa" EntityType="Self.Empresa" />
@@ -1003,6 +991,8 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene defin
           <EntitySet Name="MUNICIPIO" EntityType="Modelo.MUNICIPIO" />
           <EntitySet Name="Pais" EntityType="Modelo.Pais" />
           <EntitySet Name="NivelRed" EntityType="Modelo.NivelRed" />
+          <EntitySet Name="CuentaUsuario" EntityType="Modelo.CuentaUsuario" />
+          <EntitySet Name="ImagenCarrusel" EntityType="Modelo.ImagenCarrusel" />
         </EntityContainer>
         <ComplexType Name="ObtenerPrivilegios_Result">
           <Property Type="String" Name="ClaveAplicacion" Nullable="true" MaxLength="30" />
@@ -1271,6 +1261,42 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene defin
           <Property Name="estatus" Type="Int16" />
           <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="CuentaUsuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cuenta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstacionTrabajo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuarioSuperior" Type="Int32" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="FechaVigencia" Type="DateTime" Precision="0" />
+          <Property Name="FechaCambioEstatus" Type="DateTime" Precision="0" />
+          <Property Name="Tema" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstatusUsuario" Type="Int16" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="IdSuscriptor" Type="Int32" />
+          <Property Name="Sesiones" Type="Int32" />
+          <Property Name="Intentos" Type="Int32" />
+          <Property Name="IdIdioma" Type="Int32" />
+          <Property Name="Perfiles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Grupos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Expira" Type="Boolean" />
+          <Property Name="Privilegios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ImagenCarrusel">
+          <Key>
+            <PropertyRef Name="idImagen" />
+          </Key>
+          <Property Name="idImagen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idSuscriptor" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1338,31 +1364,6 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene defin
                 <ScalarProperty Name="Referencia" ColumnName="Referencia" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CuentaUsuario">
-            <EntityTypeMapping TypeName="Modelo.CuentaUsuario">
-              <MappingFragment StoreEntitySet="CuentaUsuario">
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
-                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
-                <ScalarProperty Name="IdEstacionTrabajo" ColumnName="IdEstacionTrabajo" />
-                <ScalarProperty Name="IdUsuarioSuperior" ColumnName="IdUsuarioSuperior" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
-                <ScalarProperty Name="FechaVigencia" ColumnName="FechaVigencia" />
-                <ScalarProperty Name="FechaCambioEstatus" ColumnName="FechaCambioEstatus" />
-                <ScalarProperty Name="Tema" ColumnName="Tema" />
-                <ScalarProperty Name="IdEstatusUsuario" ColumnName="IdEstatusUsuario" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
-                <ScalarProperty Name="Sesiones" ColumnName="Sesiones" />
-                <ScalarProperty Name="Intentos" ColumnName="Intentos" />
-                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
-                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
-                <ScalarProperty Name="Grupos" ColumnName="Grupos" />
-                <ScalarProperty Name="Expira" ColumnName="Expira" />
-                <ScalarProperty Name="Privilegios" ColumnName="Privilegios" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1857,6 +1858,44 @@ advertencia 6002: La tabla o vista 'DB_A72B95_drp.dbo.OpcionMenu' no tiene defin
                 <ScalarProperty Name="clave" ColumnName="clave" />
                 <ScalarProperty Name="llave" ColumnName="llave" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CuentaUsuario">
+            <EntityTypeMapping TypeName="Modelo.CuentaUsuario">
+              <MappingFragment StoreEntitySet="CuentaUsuario">
+                <ScalarProperty Name="Privilegios" ColumnName="Privilegios" />
+                <ScalarProperty Name="Expira" ColumnName="Expira" />
+                <ScalarProperty Name="Grupos" ColumnName="Grupos" />
+                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
+                <ScalarProperty Name="IdIdioma" ColumnName="IdIdioma" />
+                <ScalarProperty Name="Intentos" ColumnName="Intentos" />
+                <ScalarProperty Name="Sesiones" ColumnName="Sesiones" />
+                <ScalarProperty Name="IdSuscriptor" ColumnName="IdSuscriptor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdEstatusUsuario" ColumnName="IdEstatusUsuario" />
+                <ScalarProperty Name="Tema" ColumnName="Tema" />
+                <ScalarProperty Name="FechaCambioEstatus" ColumnName="FechaCambioEstatus" />
+                <ScalarProperty Name="FechaVigencia" ColumnName="FechaVigencia" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="IdUsuarioSuperior" ColumnName="IdUsuarioSuperior" />
+                <ScalarProperty Name="IdEstacionTrabajo" ColumnName="IdEstacionTrabajo" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImagenCarrusel">
+            <EntityTypeMapping TypeName="Modelo.ImagenCarrusel">
+              <MappingFragment StoreEntitySet="ImagenCarrusel">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idSuscriptor" ColumnName="idSuscriptor" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idImagen" ColumnName="idImagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

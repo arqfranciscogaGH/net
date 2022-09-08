@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="Modelo.Aplicacion" Width="1.5" PointX="0.625" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelo.Area" Width="1.5" PointX="4.25" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelo.BitacoraError" Width="1.5" PointX="2.5" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelo.CuentaUsuario" Width="1.5" PointX="8.125" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelo.DefinicionCaptura" Width="1.875" PointX="5.75" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelo.Empleado" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Modelo.Empresa" Width="1.5" PointX="4.875" PointY="6.875" IsExpanded="true" />
@@ -40,6 +39,8 @@
         <EntityTypeShape EntityType="Modelo.MUNICIPIO" Width="1.5" PointX="15.375" PointY="16.75" />
         <EntityTypeShape EntityType="Modelo.Pais" Width="1.5" PointX="3.375" PointY="10.75" />
         <EntityTypeShape EntityType="Modelo.NivelRed" Width="1.5" PointX="3.375" PointY="17.75" />
+        <EntityTypeShape EntityType="Modelo.CuentaUsuario" Width="1.5" PointX="17.375" PointY="16.75" />
+        <EntityTypeShape EntityType="Modelo.ImagenCarrusel" Width="1.5" PointX="19.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

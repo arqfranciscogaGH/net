@@ -22,9 +22,9 @@ namespace Sitio.Controllers
         public IHttpActionResult GetSuscripcion(String llave)
         {
             if (AdminisradorLLaves.validar(llave))
-                return Ok(db.Suscripcion.ToList()); 
+                return Ok(db.Suscripcion.ToList());
             else
-                return null;
+                return NotFound();
         }
         // GET: api/Suscripciones/5
         [ResponseType(typeof(Suscripcion))]

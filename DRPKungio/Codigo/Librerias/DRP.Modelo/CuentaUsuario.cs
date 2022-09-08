@@ -24,7 +24,7 @@ namespace DRP.Modelo
         public Nullable<System.DateTime> FechaCambioEstatus { get; set; }
         public string Tema { get; set; }
         public Nullable<short> IdEstatusUsuario { get; set; }
-        public Nullable<byte> Activo { get; set; }
+        public Nullable<bool> Activo { get; set; }
         public Nullable<int> IdSuscriptor { get; set; }
         public Nullable<int> Sesiones { get; set; }
         public Nullable<int> Intentos { get; set; }
